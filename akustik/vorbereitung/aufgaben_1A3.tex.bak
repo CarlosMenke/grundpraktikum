@@ -12,11 +12,15 @@
 
 
 \begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
-  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden. Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren. Hierzu benötigen wir:\\
+  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden. Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren. Hierzu benötigen wirfolgende Geräte.\\
 
 \textbf{Benötigte Geräte:}
 \begin{itemize}
 \item Semsor CASSY
+\item Universalmikrofon mit Stativstange
+\item Sockel
+\Item Tischklemme
+\item
 \end{itemize}
   
   

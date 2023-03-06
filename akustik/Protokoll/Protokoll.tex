@@ -34,7 +34,13 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
     \end{equation}
     Es beschreibt wie sehr sich ein Material aus dehnt / komprimiert wenn ein Druck auf ihn ausgeübt wird.
     Es gilt allerdings nur im elastischen Bereich des Materials.\\
-
+    
+    Wenn wir mit dem Hammer auf das Ende des Stabes schlagen, so ensteht eine Druckwelle in ihm.
+    Diese durchläuft den Stab. Am andren Ende des wird dieser ein kleines Stück ausgedehnt.
+    Dieses sorgt dafür, das die Druckänderungen an die Luft übertragen wird.
+    Da der Stab aber ein Elastizitätsmodul besitzt, gibt es eine Rückstellkraft die die Ausdehnung des Stabes wieder zurückführt.
+    Diese Druckschwankung durchläuft den Stab periodisch.
+    Dadurch entsteht eine Stehende Welle in dem Stab, welche über die Enden des Stabes Schallwellen an die Umgebung abgibt.
 
     Wenn der Stab in Schwingung versetzt wird, bliden sich stehende Wellen in ihm aus.
     Wir wollen hierbei die Frequenz der Grundschwingung bestimmen.
@@ -50,13 +56,13 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
     Die Metallstäbe können aber als homogen genung angenommen werden, weshalb wir hier von einer longitudinal Welle ausgehen können.
     Aus der Wellengleichung ergibt sich:
     \begin{equation}
-         v = \sqrt{\frac{E}{p}}
+         v = \sqrt{\frac{E}{\rho}}
     \end{equation}
     \begin{equation}
-         E = v ^2 * p
+         E = v ^2 * \rho
     \end{equation}
     \begin{equation}
-         E = f * \lambda = 4 * f_0 * L ^2 * p
+        E = (f * \lambda)^2 * \rho = 4 * f_0 * L ^2 * \rho
     \end{equation}
     \begin{equation}
         E = f * \lambda = \frac{ 4 * f_0^2 * L ^2 * M}{\pi * (\frac{d}{2}) ^2}
@@ -70,7 +76,13 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
 
 \begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
 \subsection{Aufbau}
-  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden. Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren. Hierzu benötigen wirfolgende Geräte.\\
+  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden.
+    Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren.
+    Hierzu benötigen wirfolgende Geräte.\\
+
+    Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden.
+    Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen und analysieren können.
+    Hierzu benötigen wir folgende Geräte.\\
 
 \textbf{Benötigte Geräte:}
 \begin{itemize}

@@ -1,6 +1,8 @@
 
 \documentclass[twoside]{protokoll}
 \usepackage{graphicx}
+\usepackage{tabularx} % for better table formatting
+\usepackage{booktabs} % for better table formatting
 \praktikum{I}
 
 \versuchsgebiet{(Akustik)}
@@ -149,13 +151,42 @@ Da wir bei der Stange annehmen, dass diese einen kreisförmigen querschnitt hat,
 
 \begin{aufgabe}{Rohdaten}
      
-\begin{tabular}{|c|c|c|}
-\hline
-    Stab Material & Massee & Länge\\
-\hline
-Cell 3 & Cell 4 \\
-\hline
-\end{tabular}
+    \begin{table}[h]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Masse} & \textbf{Länge} \\
+            \midrule
+            Aluminium & 460.9g & 150cm \\
+            Messing & 1427.5g & 150cm \\
+            Kupfer & 1505.4g & 150cm \\
+            Stahl & 1327.4g & 150cm \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kuper} & \textbf{Stahl} \\
+            \midrule
+            1. & 12.05mm & 11.98mm & 11.98mm & 12.00mm \\
+            2. & 12.05mm & 12.01mm & 11.98mm & 12.00mm \\
+            3. & 12.06mm & 11.98mm & 11.98mm & 11.99mm \\
+            4. & 12.05mm & 11.99mm & 11.98mm & 12.00mm \\
+            5. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            6. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            7. & 12.06mm & 11.99mm & 11.98mm & 12.00mm \\
+            8. & 12.05mm & 11.99mm & 11.98mm & 12.00mm \\
+            9. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            10.& 12.07mm & 11.98mm & 11.98mm & 12.01mm \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
 \end{aufgabe}
 
 \begin{aufgabe}{Auswertung}

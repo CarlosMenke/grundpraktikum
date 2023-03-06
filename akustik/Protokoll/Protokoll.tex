@@ -1,0 +1,129 @@
+%
+% Vorlage für Versuchsprotokolle im Grundpraktikum an der RWTH Aachen
+% -------------------------------------------------------------------
+%
+% Bitte verwenden Sie diese Vorlage zur Erstellung Ihrer
+% Protokolle.
+%
+% Wenn möglich, drucken Sie Ihre Protokolle bitte doppelseitig
+% aus. Wenn Sie das Protokoll doppelseitig ausdrucken, verwenden Sie
+% die twoside Option ...
+\documentclass[twoside]{protokoll}
+% ... wenn Sie nicht doppelseitig ausdrucken können, lassen Sie sie
+% weg:
+%\documentclass{protokoll}
+
+% Setzen Sie hier "I" für den Teil 1 oder "II" für den Teil 2 ein:
+\praktikum{I}
+ 
+% Setzen Sie hier das jeweilige Versuchsgebiet ein (Mechanik,
+% Akustik, Thermodynamik, Elektrizitätslehre, usw.):
+\versuchsgebiet{(Akustik)}
+
+% Setzen Sie hier Ihren Namen und Ihre Matrikelnummer sowie Ihre
+% Gruppennummer ein (ohne die Klammern):
+\teilnehmer{Maximilian Carlos Menke, 434170}
+\teilnehmer{Andrea Roth, 428396}
+\gruppe{A3}
+
+\begin{document}
+ 
+% Ersetzen Sie den folgenden Text durch eine kurze Beschreibung der
+% Versuchsziele.
+\begin{versuchsziele}
+Ziel des Versuches ist, das Elastizitätzsmodul verschiedener Metallstäbe zu bestimmen.
+Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das Elastizitätsmodul in unserem Fall mit einer Dynamischen Messung bestimmt wird. Hierfür erzeugen wir stehende Wellen in den Metallstäben. So können wir mit der Frequenz und der Wellenlänge die Phasengeschwindigkeit und somit auch das Elastizitätsmodul bestimmen. 
+\end{versuchsziele}
+
+ 
+\section{1A3 Bestimmung des E-Moduls von Metallen}
+
+\begin{aufgabe}{Grundlagen}
+  % Knappe Beschreibung der theoretischen Grundlagen, Angabe der
+  % Fbenötigten Formel(n), ohne Herleitung. Definition der verwendeten
+  % Formelzeichen.
+    Da wir keine Statische Messung des E-Moduls durchführen können, verwenden wir hier eine dynamische Messung.
+    Fuer diese brauchen wir sowohl die Grundlagen aus der Akustik ueber stehende Wellen, als auch die Grundlagen von Festkoerpern.
+
+     
+    Wenn der Stab in Schwingung versetzt wird, bliden sich stehende Wellen aus.
+    Da der Stab an beiden Enden ein festes Ende fuer die Wellen in ihm hat, muss fuer Resonanz die Wellenlaenge: $\lambda = 2 * L$. 
+     
+    Dies kann umgeformt werden zu:
+    \begin{equation}
+        v = f * \lambda = f * 2 * L
+    \end{equation}
+
+    Aus der Lösung der Wellengleichung ergibt sich:
+    \begin{equation}
+         v = \sqrt{\frac{E}{p}}
+    \end{equation}
+    \begin{equation}
+         E = v ^2 * p
+    \end{equation}
+    \begin{equation}
+         E = f * \lambda = f * 2 * L ^2 * p
+    \end{equation}
+
+     
+\end{aufgabe}
+
+\begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
+  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden. Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren. Hierzu benötigen wir:\\
+
+  Beschreibung des Versuchsaufbaus einschließlich beschrifteter Skizze
+  oder Foto. Beschreibung der Versuchsdurchführung: Handgriffe an der
+  Apparatur, verwendete Messwerterfassungseinstellungen, Messbereiche,
+  Triggerbedingungen, etc.
+\end{aufgabe}
+
+
+
+\begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
+  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden. Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren. Hierzu benötigen wirfolgende Geräte.\\
+
+\textbf{Benötigte Geräte:}
+\begin{itemize}
+\item Semsor CASSY
+\item Universalmikrofon mit Stativstange
+\item Sockel
+\item Tischklemme
+\item Metallstange (Länge: 20cm)
+\item Kreuzmuffe
+\item Metallstift (Querschnitt: 4mm, Länge: 30mm)
+\item Gummi-Hammer
+\item Mikrometerschraube (Messbereich: 0-25mm, Genauigkeit: $\pm$ 0.01mm)
+\item Stahl-Bandmaß (Länge: 2m, Tolleranz: $\pm$ 0.7mm)
+\item verschiedene Metallstangen (Kupfer, Messing, Stahl, Aluminium)
+\item Analysewaage Sartorius BL 1500 (Genauigkeit: $\pm$ 0,2g)
+\end{itemize}
+  
+  
+  Beschreibung des Versuchsaufbaus einschließlich beschrifteter Skizze
+  oder Foto. Beschreibung der Versuchsdurchführung: Handgriffe an der
+  Apparatur, verwendete Messwerterfassungseinstellungen, Messbereiche,
+  Triggerbedingungen, etc.
+\end{aufgabe}
+
+\begin{aufgabe}{Rohdaten}
+  Stellen Sie die gemessenen Werte von $L$, $D$ und $M$ in
+  tabellarischer Form dar. Visualisieren Sie einige typische
+  Schwingungsverläufe sowie deren Fourierspektren in geeigneter
+  Weise.
+\end{aufgabe}
+
+\begin{aufgabe}{Auswertung}
+  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die
+  Schwingungsfrequenzen und tabellieren Sie die erhaltenen
+  Werte. Ermitteln Sie die Streuung der einzelnen $f_i$ und bestimmen
+  Sie daraus den statistischen Fehler auf den Mittelwert. Erläutern
+  und illustrieren Sie Ihr Vorgehen zur Bestimmung der systematischen
+  Unsicherheiten auf die Frequenz. Diskutieren Sie die Unsicherheiten
+  auf $L$, $D$ und $M$. Berechnen Sie den E-Modul und die Dichte der
+  vorliegenden Stangen und die zugehörigen statistischen und
+  systematischen Messunsicherheiten. Diskutieren Sie, welche
+  Fehlerbeiträge den Gesamtfehler dominieren. Vergleichen Sie Ihre
+  Ergebnisse mit einschlägigen Literaturwerten.
+\end{aufgabe}
+ 
+\end{document}

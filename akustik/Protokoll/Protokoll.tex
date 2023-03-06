@@ -1,6 +1,8 @@
 
 \documentclass[twoside]{protokoll}
 \usepackage{graphicx}
+\usepackage{tabularx} % for better table formatting
+\usepackage{booktabs} % for better table formatting
 \praktikum{I}
 
 \versuchsgebiet{(Akustik)}
@@ -104,13 +106,17 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
   \centering
   \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/Materialien.jpeg}
   \caption{Bild der Messgeräte und Metallstangen}
-  
-  \includegraphics[width=15cm, height=15cm,keepaspectratio ]{SkizzeAufbau}
+  \label{fig:image_label}
+  \centering
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/SkizzeAufbau.jpeg}
   \caption{Skizze des Versuchsaufbaus}
   \label{fig:image_label}
+  \centering
 \end{figure}
-
-
+ 
 Der Aufbau des Experiments kann der oben stehenden Skizze entnommen werden. 
 
 Zunächst werden mit zwei Tischklemmen Mikrofon und Metallstange an dem Tisch befestigt. Wobei die Stange mithilfe der Kreuzmuffe befestigt wird. In die Kreuzmuffe wird der Metallstift ortogonal zu der Stange hineingelegt, sodass diese beim mittigen einspannen nur an einem Punkt unterstütz wird. Die Stange also frei schwingen kann. 
@@ -180,10 +186,43 @@ Nach beendigung aller Messungen haben wir alles wieder abgebaut und an die dafü
 \end{aufgabe}
 
 \begin{aufgabe}{Rohdaten}
-  Stellen Sie die gemessenen Werte von $L$, $D$ und $M$ in
-  tabellarischer Form dar. Visualisieren Sie einige typische
-  Schwingungsverläufe sowie deren Fourierspektren in geeigneter
-  Weise.
+     
+    \begin{table}[h]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Masse} & \textbf{Länge} \\
+            \midrule
+            Aluminium & 460.9g & 150cm \\
+            Messing & 1427.5g & 150cm \\
+            Kupfer & 1505.4g & 150cm \\
+            Stahl & 1327.4g & 150cm \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kuper} & \textbf{Stahl} \\
+            \midrule
+            1. & 12.05mm & 11.98mm & 11.98mm & 12.00mm \\
+            2. & 12.05mm & 12.01mm & 11.98mm & 12.00mm \\
+            3. & 12.06mm & 11.98mm & 11.98mm & 11.99mm \\
+            4. & 12.05mm & 11.99mm & 11.98mm & 12.00mm \\
+            5. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            6. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            7. & 12.06mm & 11.99mm & 11.98mm & 12.00mm \\
+            8. & 12.05mm & 11.99mm & 11.98mm & 12.00mm \\
+            9. & 12.06mm & 11.98mm & 11.98mm & 12.00mm \\
+            10.& 12.07mm & 11.98mm & 11.98mm & 12.01mm \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
 \end{aufgabe}
 
 \begin{aufgabe}{Auswertung}

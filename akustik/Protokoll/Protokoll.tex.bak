@@ -68,9 +68,10 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
 \item Stahl-Bandmaß (Länge: 2m, Tolleranz: $\pm$ 0.7mm)
 \item verschiedene Metallstangen (Kupfer, Messing, Stahl, Aluminium)
 \item Analysewaage Sartorius BL 1500 (Genauigkeit: $\pm$ 0,2g)
-\end{itemize}
+\end{itemize}\\
+
 \graphicspath{ {./} }
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{SkizzeAufbau}
+\includegraphics{SkizzeAufbau}
 Den Aufbau des experiments können sie der oben stehenden Skizze entnehmen. Hier wurden mit zwei Tischklemmen Mirkofon und halterung für den Stab  
   
   Beschreibung des Versuchsaufbaus einschließlich beschrifteter Skizze

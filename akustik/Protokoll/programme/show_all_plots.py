@@ -15,6 +15,9 @@ import os
 
 global SHOW_PLOTS
 SHOW_PLOTS = False
+ 
+global PLOTS_DIR
+PLOTS_DIR = '../plots/434170_428396_1A3_'
 
 def cassy_plot(datei: str, x: str, y: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
@@ -123,9 +126,9 @@ def save_plot(datei: str, x: str, y: str, plotname: str):
     plt.ylabel(ystr)
     plt.title(plotname)
     plt.grid()
-    plt.savefig(plotname + "_plot.pdf")
+    plt.savefig(PLOTS_DIR + plotname + "_plot.pdf")
    
-def save_fft_plot(datei: str, x: str, y: str, plotname: str):
+def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = False):
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = 'Arial'
@@ -147,17 +150,21 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str):
     plt.legend()
 
     #fpeak_fft = analyse.peakfinder_schwerpunkt(freq_fft,amp_fft)
-    fpeak_fft = analyse.peak(freq_fft,amp_fft, 1000, 2000)
-    plt.axvline(fpeak_fft,color='black')
-    plt.title('Fourierspektrum' + ' fpeak = ' + str(round(fpeak_fft, 2)) + ' Hz')
+    if save_peak:
+        fpeak_fft = analyse.peak(freq_fft,amp_fft, 1000, 2000)
+        plt.axvline(fpeak_fft,color='black')
+        plt.title('FFT ' + plotname + ' fpeak = ' + str(round(fpeak_fft, 2)) + ' Hz')
+    else:
+        plt.title('FFT ' + plotname)
     plt.xlim(0.,np.max(freq_fft))
     plt.ylim(0.,np.max(amp_fft) * 1.1)
 
-    plt.savefig(plotname + "_fft_plot.pdf")
+    plt.savefig(PLOTS_DIR + plotname + "_fft.pdf")
      
 cassy_dir = "../../Messungen/"
-plots = [ "Alu_Messung_01", "Kupfer_Messung_02", "Stahl_Messung_01", "Messing_Messung_01" ]
-fft_plots = [ "Alu_Messung_01", "Kupfer_Messung_02", "Stahl_Messung_01", "Messing_Messung_01" ]
+plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
+fft_plots_with_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
+fft_plots = []
  
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
@@ -167,9 +174,7 @@ for filename in sorted(os.listdir(cassy_dir)):
                 save_plot(cassy_dir + filename, "t", "U_A1", plot)
         for plot in fft_plots:
             if plot in filename:
+                save_fft_plot(cassy_dir + filename, "t", "U_A1", plot, save_peak=False)
+        for plot in fft_plots_with_peak:
+            if plot in filename:
                 save_fft_plot(cassy_dir + filename, "t", "U_A1", plot)
-                 
-                 
-                 
-                 
-                 

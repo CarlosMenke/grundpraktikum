@@ -165,14 +165,14 @@ fft_plots_without_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_0
 fft_plots = ["Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Alu_Messung_07"]
 global start_values # wenn der Messwert in diesem Dictionary steht, wird der Startwert für die Plots gesetzt welcher nicht 0 ist
 start_values = {"Kupfer_Einsp_Fehler_01": 5000,
-                "Kupfer_Messung_03":5000,
+                "Kupfer_Messung_03":4500,
                 "Kupfer_Messung_04":5000,
                 "Kupfer_Messung_06":5000,
                 "Kupfer_Messung_07":5000,
                 "Kupfer_Messung_09":5000,
                 "Messing_Messung_06":5000,
                 "Messing_Messung_07":5000,
-                "Stahl_Messung_01":5000,
+                "Stahl_Messung_01":2000,
                 "Stahl_Messung_09":5000,
                 } # Der Startwert / 10000 ergibt die Startsekunde
  

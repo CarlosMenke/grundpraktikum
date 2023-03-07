@@ -246,6 +246,24 @@ In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro S
         \label{tab:mytable}
     \end{table}
 
+Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen aufgenommen. Wobei wir für jeden Stabe eine Reihe von 10 Messungen durchgeführt haben. Bei dem Kupferstab haben wir noch eine Messreihe aufgenommen, die wir später verwenden werden um den Systematischen Fehler aufgrund der Einspannung zu bestimmen. Zur übersichtlichkeit und damit im Späteren Verlauf klar ist Welche Messreihe welche ist, hier noch eine Auflistung von diesen:\\
+
+    \begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{c X X} 
+            \toprule
+            \textbf{Messreihe} & \textbf{Name} & \textbf{Beschreibung} \\
+            \midrule
+            1. & Kupfer\_Messung & 10mal Messung der Schwingung der Kupferstange \\\\
+            2. & Alu\_Messung & 10mal Messung der Schwingung der Aluminiumstange \\\\
+            3. & Stahl\_Messung & 10mal Messung der Schwingung der Stahlstange \\\\
+            4. & Messing\_Messung & 10mal Messung der Schwingung der Messingstange \\\\
+            5. & Kupfer\_Einsp\_Fehler & 6mal Messung der Schwingung bei verschiedenen 				Einspannpositionen Orientierungen und Kraft.  \\\\  
+            6. & Material\_Test & Pro Material einmalige Testmessung, zur überprüfung das alle Parameter stimmen \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
 
 % schlechte Messungen:
     % Alu Messung 09 (Peak nicht gefunden, viel rauchen)
@@ -307,10 +325,11 @@ Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des ak
          \sigma_fs = \frac{\sigma}{\sqrt{12}}
 \end{equation}
 
-Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch die 
+Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch den Einfluss der Einspannposition. Diesen schätzen wir mithilfe unserer Messreihe Kuper\_Einspann\_Fehler ab.  
 
 Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
 
+%TODO : Systematischer Fehler auf Frequenz bestimmen
 
 Tabelle der Systematischen Fehler auf einzelne Messgrößen: 
 
@@ -323,11 +342,14 @@ Tabelle der Systematischen Fehler auf einzelne Messgrößen:
             Masse & $\pm$0.2g \\
             Länge & $\pm$0.7mm\\
             Durchmesser & $\pm$0.01mm \\
-            Frequenz & $\pm$0.423mV\\
+            Frequenz & $\pm$0.423mV (Digitalisierung)\\
+            & $\pm$0.000000mV\\
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
+    
+Aus underen Messungen 1 bis 4 konten wir mithilfe der 
 
 
 

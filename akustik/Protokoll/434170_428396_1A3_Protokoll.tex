@@ -108,7 +108,7 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{Bilder/434170_428396_1A3_SkizzeAufbau.pdf}
+  \includegraphics[width=1\textwidth]{Bilder/434170_428396_1A3_SkizzeAufbau.pdf}
   \caption{Skizze des Versuchsaufbaus}
   \centering
 \end{figure}
@@ -171,12 +171,12 @@ Wir haben für die Messung keinen Trigger verwendet, sondern die Messung manuell
 
 Bei einer Messung hat einer aus unserer Gruppe mit dem Gummihammer den Kupferstab angeschlagen, wärend die andere Person kurz nach Anschlag die Messung gestartet hat, so dass, der Einschwingvorgang möglichst nicht mit aufgezeichnet wurde. Wir haben versucht den stab immer möglichst gleich an zu schlagen, also gleiche position und Kraft, damit die Messungen möglichst vergleichbar sind. Außerdem haben wir darauf geachtet, dass wir die Stange nur dann anschlagen, wenn niemand anders eine Stange des gleichen Materials anschlug.
 
-\begin{figure}[!tbp]
+\begin{figure}[H]
   \centering
-  \subfloat[Flower one.]{\includegraphics[width=0.3\textwidth]{Bilder/434170_428396_1A3_Materialien.pdf}\label{fig:f1}}
+  \subfloat[Anschlagen der Stange]{\includegraphics[width=0.3\textwidth]{Bilder/434170_428396_1A3_Hammer.pdf}\label{fig:f1}}
   \hfill
-  \subfloat[Flower two.]{\includegraphics[width=0.3\textwidth]{Bilder/434170_428396_1A3_Materialien.pdf}\label{fig:f2}}
-  \caption{My flowers.}
+  \subfloat[Position von Stange und Mikrofon]{\includegraphics[width=0.5\textwidth]{Bilder/434170_428396_1A3_MSNahaufnahme.pdf}\label{fig:f2}}
+  \caption{Anordnung zur Durchführung einer Messung}
 \end{figure}
 
 
@@ -189,6 +189,13 @@ Insgesamt haben wiir die Messung gleich wie bei der Testmessung 10 mal durchgef�
 
 Die Frequenz ist auch abhängig von der Einspannung der Stange, also von der Kraft und der position und der orientierung der Einspannung. Weswegen der Fehler aufgrund dieser Effekte auch beachtet werden muss. Dazu haben wir mit der Kupferstange Messungen durchgeführt bei denen wir die Einspannung um 1cm-2cm um den mittelpunkt variiert haben, sowie die Kraft mit der sie eingespannt ist, als auch die Rotation um die Längsachse.
 Diese haben wir als Messreihe für spätere bestimmung des Fehlers gespeichert.\\
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Bilder/434170_428396_1A3_Einspannung2.pdf}
+  \caption{Einspannungspunkt der Stange}
+  \centering
+\end{figure}
 
 Das selbe Vorgehen wie bei der Kupferstange haben wir auch bei den anderen Stangen durchgeführt. Wobei wir jedes mal zunächst eine Testmessung gemacht habe, um die Empfinlichkeit des Mikrofons für das Material spezifisch ein zu stellen, und zu sehen ob die gemessene Frequenz, und damit auch das E-Modul den Erwartungen entspircht. 
 
@@ -238,25 +245,74 @@ In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro S
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
-    
-%Bild von den Stangen und Messgeräten
 
 
 % Graph von schlechter Messung, 
 \end{aufgabe}
 
 \begin{aufgabe}{Auswertung}
-  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die
-  Schwingungsfreqünzen und tabellieren Sie die erhaltenen
-  Werte. Ermitteln Sie die Streuung der einzelnen $f_i$ und bestimmen
-  Sie daraus den statistischen Fehler auf den Mittelwert. Erläutern
-  und illustrieren Sie Ihr Vorgehen zur Bestimmung der systematischen
-  Unsicherheiten auf die Frequenz. Diskutieren Sie die Unsicherheiten
-  auf $L$, $D$ und $M$. Berechnen Sie den E-Modul und die Dichte der
-  vorliegenden Stangen und die zugehörigen statistischen und
-  systematischen Messunsicherheiten. Diskutieren Sie, welche
-  Fehlerbeiträge den Gesamtfehler dominieren. Vergleichen Sie Ihre
-  Ergebnisse mit einschlägigen Literaturwerten.
+
+Für die Auswertung der Daten und der Entgültigen Berechnung der Elastizitätsmoduls, müssen wir die Fehler auf folgende Größen beachten. Hier zählen sowohl die Statistischen Fehler als auch die Systematischen Fehler.\\
+
+
+\textbf{Fehlerbehaftete Größen:}
+\begin{itemize}
+\item Länge der Metallstangen (Systematischer Fehler)
+\item Masse der Metallstangen (Systematisher Fehler)
+\item Durchmesser der Metallstangen (Systematischer und Statistischer Fehler)
+\item Gemessene Schwingungsfrequenz (Systematischer und Statistischer Fehler)
+\end{itemize}
+
+Zunächst ein mal die Systematischen Fehler, diese müssen getrennt von den Statistischen Fehlern fortgeplanzt werden. Wir haben einen Systematischen Fehler auf alle unsere Messgrößen. Bei der Längenmessung rürt dies von der Genauigkeit des Bandmaß, dies hängt von der Güteklasse des Bandmaß ab. In unserem Fall haben wir die Güteklasse II. Bei der Analysewage  hängt dieser auch von der Genauigkeit ab, so wie bei der Mikrometerschraube. 
+Diese Informationen werden vom Hersteller gegeben, und können im Datenblatt des Geräts nachgeschlagen werden. 
+
+% TODO: Formelzeichen besser übersichtlich darstellen
+
+Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des akustischen Signals. Hierfür ist die verwendete Spannungsintervallbreite und die Auflösung (12Bit) relevant. Daraus berechnet sich der Systematische Fehler folgendermaßen. Wobei $\mathbf{\sigma}$ die Standardabweichung ist, $\mathbf{\sigma_fs}$ ist der Systematische Fehler auf die Frequenz, \textbf{I} die Spannungsintervallbreite (Da wir einen Bereich von -3V bis 3V gewählt haben) und \textbf{A} die Auflösung.
+
+\begin{equation}
+         \sigma = \frac{I}{A}
+    \end{equation}
+\begin{equation}
+         \Rightarrow 
+         \sigma_fs = \frac{\sigma}{\sqrt{12}}
+\end{equation}
+
+Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch die 
+
+Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
+
+
+Tabelle der Systematischen Fehler auf einzelne Messgrößen: 
+
+ \begin{table}[H]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X l} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Masse} \\
+            \midrule
+            Masse & $\pm$0.2g \\
+            Länge & $\pm$0.7mm\\
+            Durchmesser & $\pm$0.01mm \\
+            Frequenz & $\pm$0.423mV\\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
+
+
+%  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die
+%  Schwingungsfreqünzen und tabellieren Sie die erhaltenen
+%  Werte. Ermitteln Sie die Streuung der einzelnen $f_i$ und bestimmen
+%  Sie daraus den statistischen Fehler auf den Mittelwert. Erläutern
+%  und illustrieren Sie Ihr Vorgehen zur Bestimmung der systematischen
+%  Unsicherheiten auf die Frequenz. Diskutieren Sie die Unsicherheiten
+%  auf $L$, $D$ und $M$. Berechnen Sie den E-Modul und die Dichte der
+%  vorliegenden Stangen und die zugehörigen statistischen und
+%  systematischen Messunsicherheiten. Diskutieren Sie, welche
+%  Fehlerbeiträge den Gesamtfehler dominieren. Vergleichen Sie Ihre
+%  Ergebnisse mit einschlägigen Literaturwerten.
 \end{aufgabe}
  
 \end{document}

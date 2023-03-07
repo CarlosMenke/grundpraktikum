@@ -496,7 +496,6 @@ Da wir für Metalle erwarten, dass die Schwingungsfrequenz in diesem Bereich lie
 So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.
 In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Stangen dargestellt.
 
-Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1Mat2Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\mu$ im allgemeinen der Mittelwert ist, $s^2$ die Varianz und $\sigma_i$ der fehler auf die Größe ist.
 
 %TODO : Einfügen der Tabelle in der alle Frequenzen der Materialien aufgelistet sind
  \begin{table}[H]
@@ -513,7 +512,7 @@ Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (
     
 
 
-
+Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1Mat2Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\mu$ im allgemeinen der Mittelwert ist, $s^2$ die Varianz und $\sigma_i$ der fehler auf die Größe ist.
 
 \begin{equation}
 	\mu = \frac{1}{n}\sum_{n=1}^nx_i
@@ -532,31 +531,41 @@ Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statis
 
  \begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
+        \begin{tabularx}{0.8\textwidth}{X X X} % adjust width as needed
             \toprule
             \textbf{Metall Stange} & \textbf{Erwartungs Wert} & \textbf{Standardabweichung} \\
             \midrule
-            Stahl 15 & 1726.55 & 0.088 \\
-            Aluminium & 1673.51 & 0.17 \\
-            Messing & 1166.22 & 0.052 \\
-            Kuper & 1288.22 & 0.10 \\
+            Stahl 15 & 1726.55Hz & $\pm$0.088Hz \\
+            Aluminium & 1673.51Hz & $\pm$0.17Hz \\
+            Messing & 1166.22Hz & $\pm$0.052Hz \\
+            Kuper & 1288.22Hz & $\pm$0.10Hz \\
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
     
+Als weiteren Statistischen Fehler haben wer den Fehler der bei der mehrfachen Messung des Durchmessers der Stangen auftritt.
+Wir haben diese mehrfach gemessen, um zu überprüfen ob unsere Annahme, dass die Stange einen 
+Kreisförmigen Querschnitt hat gerechtfertigt ist. Zur bestimmung des Mittelwerts und Fehlers auf den Durchmesser 
+haben wir ebenfalls das Pythonprogramm ... benutzt. 
+Daraus ergibt sich:\\
 
-%  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die
-%  Schwingungsfreqünzen und tabellieren Sie die erhaltenen
-%  Werte. Ermitteln Sie die Streuung der einzelnen $f_i$ und bestimmen
-%  Sie daraus den statistischen Fehler auf den Mittelwert. Erläutern
-%  und illustrieren Sie Ihr Vorgehen zur Bestimmung der systematischen
-%  Unsicherheiten auf die Frequenz. Diskutieren Sie die Unsicherheiten
-%  auf $L$, $D$ und $M$. Berechnen Sie den E-Modul und die Dichte der
-%  vorliegenden Stangen und die zugehörigen statistischen und
-%  systematischen Messunsicherheiten. Diskutieren Sie, welche
-%  Fehlerbeiträge den Gesamtfehler dominieren. Vergleichen Sie Ihre
-%  Ergebnisse mit einschlägigen Literaturwerten.
+ \begin{table}[H]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Erwartungs Wert} & \textbf{Standardabweichung} \\
+            \midrule
+            Stahl 15 & 12.000mm & $\pm$0.001mm \\
+            Aluminium & 12.057mm & $\pm$0.002mm  \\
+            Messing & 11.986mm & $\pm$0.003mm \\
+            Kuper & 11.981mm & $\pm$0.001mm \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+
+Somit haben wir den Messfehler auf alle Größen bestimmt und können somit das elastizitätsmodul berechnen. Hierbei müssen die Statistischen und die Systematischen Fehler getrennt fortgeplanzt werden.
 
 \end{aufgabe}
  

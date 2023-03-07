@@ -8,10 +8,10 @@ Kupfer = [11.98, 11.98, 11.98, 11.98, 11.98, 11.99, 11.98, 11.98, 11.98, 11.98]
 Stahl15 = [12.00, 12.00, 11.99, 12.00, 12.00, 12.00, 12.00, 12.00, 12.00, 12.01]
 print(len(Stahl15))
 
-Alu_NP = np.array(Aluminium)/100
-M_NP = np.array(Messing)/100
-K_NP = np.array(Kupfer)/100
-S_NP = np.array(Stahl15)/100
+Alu_NP = np.array(Aluminium)/1000
+M_NP = np.array(Messing)/1000
+K_NP = np.array(Kupfer)/1000
+S_NP = np.array(Stahl15)/1000
 #print(Alu_NP[0])
 #print(len(Alu_NP))
 

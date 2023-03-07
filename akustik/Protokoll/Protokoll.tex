@@ -4,6 +4,8 @@
 \usepackage{tabularx} % for better table formatting
 \usepackage{booktabs} % for better table formatting
 \praktikum{I}
+\usepackage{subfig}
+
 
 \versuchsgebiet{(Akustik)}
 
@@ -102,13 +104,7 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
 \item Analysewaage Sartorius BL 1500 (Genauigkeit: $\pm$ 0,2g)
 \end{itemize}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/Materialien.jpeg}
-  \caption{Bild der Messgeräte und Metallstangen}
-  \label{fig:image_label}
-  \centering
-\end{figure}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/SkizzeAufbau.jpeg}
@@ -143,8 +139,24 @@ Die Länge haben wir mit dem Bandmaß gemessen, wobei hier darauf geachtet wurde
 
 Da wir bei der Stange annehmen, dass diese einen kreisförmigen querschnitt hat, was nicht perfekt zutreffen wird, führen wir die Messung des Durchmessers mehrfach durch. Hierfür verwenden wir die Mikrometerschraube. Wir messen an verschiedenen Stellen, dabei rotieren wir die Stange beliebig bei jeder Messung um die längsachse. Dies wiederholen wir zehn mal. Sodass wir für jede Stange 10 Messwerte für den Durchmesser haben.\\ 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/Materialien.jpeg}
+  \caption{Bild der Messgeräte und Metallstangen}
+  \label{fig:image_label}
+  \centering
+\end{figure}
+
 Als nächstes bauen wir den Versuch auf. Hier gehen wir genau so vor wie in der vorherigen beschreibung des Versuchsaufbaus. Als erstes haben wir die Kupferstange verwendet.
 Wobei wir zunächst die Tischklemme plaziert haben und die Stange mittig eingespannt. Hierfür haben wir von einem Ende der Stange auß, mit dem Maßband die Mitte bestimmt. Dann haben wir das Mikrofon passend zu der Stange positioniert, und an den Tisch montiert. Hierbei haben wir noch beachtet, dass die Stange nicht zu fest eingespannt werden sollte, da dies auswirkung auf die Frequenz hat. Außerdem haben wir überprüft, dass sie nur an einem Punkt aufliegt, sodass sie frei schwingen kann. Die Spitze des Mikrofons haben wir ungefähr 5mm entfernt vom Ende der Stange positioniert. Dies haben wir nach Augenmaß getan. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm,height=15cm,keepaspectratio]{Bilder/Gesamtaufbau.jpeg}
+  \caption{Bild der fertig aufgebauten Versuchsanordnung}
+  \label{fig:image_label}
+  \centering
+\end{figure}
 
 Dann haben wir das Mikrofon wie im Aufbau beschrieben an das Sensor Cassy angeschlossen und in betrieb genommen. Zunächst haben wir uns überlegt, was sinnvolle Messparameter sind. Da die Schallgeschwindigkeit in Metallen im bereich von mehrere 1000m/s liegt, muss das Messintervall im bereich von 10-100$\mu$s sein. Somit haben wir erste Testmessungen durchgeführt. Wobei wier diese mehrfach wiederholt haben, bis wir die Empfindlichkeit des Mikrofons so eingestellt hatten, dass wir den gesamten dynamischen bereich des Mikrofons ausnutzen, und nicht in die Sättigung kommen. Dann konnten wir eine erste FFT mit CASSY durchführen, und mit peakfinder die Frequenz des schwingenden Kupferstabs ungefähr bestimmen. Mit diesen Informationen haben wir dann unsere Messparameter eingestellt.\\
 
@@ -160,6 +172,16 @@ Wir haben für die Messung keinen Trigger verwendet, sondern die Messung manuell
 
 
 Bei einer Messung hat einer aus unserer Gruppe mit dem Gummihammer den Kupferstab angeschlagen, wärend die andere Person kurz nach Anschlag die Messung gestartet hat, so dass, der Einschwingvorgang möglichst nicht mit aufgezeichnet wurde. Wir haben versucht den stab immer möglichst gleich an zu schlagen, also gleiche position und Kraft, damit die Messungen möglichst vergleichbar sind. Außerdem haben wir darauf geachtet, dass wir die Stange nur dann anschlagen, wenn niemand anders eine Stange des gleichen Materials anschlug.
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Flower one.]{\includegraphics[width=5cm,height=5cm,keepaspectratio]{Bilder/Materialien.jpeg}\label{fig:f1}}
+  \hfill
+  \subfloat[Flower two.]{\includegraphics[width=5cm,height=5cm,keepaspectratio]{Bilder/Materialien.jpeg}\label{fig:f2}}
+  \caption{My flowers.}
+\end{figure}
+
+
 
 Mit unseren eingestellten Messparametern haben wir dann eine erste vollständige Testmessung durchgeführt um zu überprüfen, ob alle Einstellungen gut passen. Aus dieser Messung haben wir erneut mit der FFT die Frequenz der Grundschwingung bestimmt. Mit dieser konnten wir eine erste Überschlagsrechnung für das E-Modul von Kupfer anstellen.
 Diese ist im Messprotokoll zu finden. Da der Wert in der erwarteten Größenordnung lag, haben wir die Messreihe mit diesem Aufbau gestartet. 
@@ -186,7 +208,8 @@ Nach beendigung aller Messungen haben wir alles wieder abgebaut und an die dafü
 \end{aufgabe}
 
 \begin{aufgabe}{Rohdaten}
-     
+
+Der untenstehenden Tabelle können die Masse und die Länge der vermessenen Metallstangen entnehmen.  
     \begin{table}[h]
         \centering
         \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
@@ -202,6 +225,7 @@ Nach beendigung aller Messungen haben wir alles wieder abgebaut und an die dafü
         \label{tab:mytable}
     \end{table}
 
+In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro Stange 10 mal durchgeführt. Gemessen wurde mit der Milimeterschraube an verschiedenen Positionen.
     \begin{table}[h]
         \centering
         \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed

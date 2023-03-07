@@ -1,12 +1,8 @@
 import numpy as np
-from praktikum import cassy
-import numpy as np
-from numpy import sqrt,sin,cos,log,exp
-import scipy.fft
 import scipy.odr
-import argparse
 import matplotlib.pyplot as plt
-import re
+import os
+from praktikum import cassy, analyse
 
 Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
 Messing = [11.98, 12.01, 11.98, 11.99, 11.98, 11.98, 11.99, 11.99, 11.98, 11.98]
@@ -45,3 +41,34 @@ print('Ergebnis: Stahl_mean=%f+-%f' % (S_mean,S_err),'m')
 print(Alu_mean, 'Mittelwet des Durchmessers von Alu')
 print(Alu_stdabw, 'Standardabweichung des Durchmessers von Alu')
 print((Alu_err, 'Fehler auf den Durchmesser der Aluminiumstange'))
+   
+def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
+    start = start_values[plotname] if plotname in start_values else 0
+     
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x)
+    y = messung.datenreihe(y)
+     
+     # Fourier-Transformation
+    freq_fft,amp_fft = analyse.fourier_fft(x.werte[start:],y.werte[start:])
+    fpeak_fft = analyse.peak(freq_fft,amp_fft, 1000, 2000)
+    return fpeak_fft
+
+def get_all_peaks(material):
+    peaks_fft = []
+    cassy_dir = "../../Messungen/"
+    global start_values
+    start_values = {"Kupfer_Einsp_Fehler_01": 5000} # Der Startwert / 10000 ergibt die Startsekunde
+     
+    for dirpath, dirnames, filenames in os.walk(cassy_dir):
+        for filename in filenames:
+            if filename.endswith((".labx")) and "Kupfer_Messung" in filename:
+                peaks_fft.append(fft_peak(cassy_dir + filename, "t", "U_A1", filename))
+
+
+    Peaks_FFT_NP = np.array(peaks_fft)
+    return Peaks_FFT_NP
+ 
+print(get_all_peaks("Kupfer"))
+print(get_all_peaks("Stahl"))

@@ -267,8 +267,9 @@ Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen auf
 
      
     Alle folgenden Plots wurden mit dem Program programme/show\_all\_plots.py erstellt.
+    Die FFT haben wir in den Plots bis 5000Hz dargestellt, da wir mit einer Auflösung von 100$\mu s$ gemessen haben und nach dem Nequist Theorem theoreisch in der Fouieranalyse Frequenzen bis 5000Hz auflöst werden können.
 \begin{figure}[H]
-    \caption{Exemlpariche Messung für gute jedes Material und zugehörige Fouierspektren}
+    \caption{Exemlpariche Messung für jedes Material und zugehörige Fouierspektren}
   \centering
   \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Messing_Messung_01_plot.pdf}}
   \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_01_plot.pdf}}
@@ -294,6 +295,11 @@ Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen auf
   \centering
     \subfloat[Sättugung vom Mikrophon am Anfang der Messung]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Messung_09_plot.pdf}}
     \subfloat[Viele Störgeräusche]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_09_plot.pdf}}
+\end{figure}
+\begin{figure}[H]
+  \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Messung_09_fft.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_09_fft.pdf}}
 \end{figure}
 
 
@@ -423,11 +429,22 @@ Oben können sie die Aufgezeichnete Messung, welche wir aus der Auswertung herra
 
 \textbf{Liste der Messungen bei denen Teile weggeschnitten wurden:}
 \begin{itemize}
-\item Messung X
-\item Messung R
-\item Messung xyz
-\item Ich habe dich llieb
+\item Alu\_Messung\_8 bis 0.45s
+\item Kupfer\_Einsp\_Fehler\_1 bis 0.5s
+\item Kupfer\_Einsp\_Fehler\_5 ab 2s EVLT LOESCHEN
+\item Kupfer\_Einsp\_Fehler\_6 ab 2s
+\item Kupfer\_Messung\_1 ab 2.75s
+\item Kupfer\_Messung\_3 bis 0.5s
+\item Kupfer\_Messung\_4 bis 0.5s
+\item Kupfer\_Messung\_6 bis 0.5s
+\item Kupfer\_Messung\_7 bis 0.5s
+\item Kupfer\_Messung\_9 bis 0.5s
+\item Messing\_Messung\_6 bis 0.5s
+\item Messing\_Messung\_7 bis 0.5s
+\item Stahl\_Messung\_1 bis 0.2s
+\item Stahl\_Messung\_9 bis 0.5s
 \end{itemize}
+% TODO kupfer testmessung mit messung 1 austauschen
 
 
 Aus underen Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python durchgeführt haben die Grundfrequenz bestimmen. Hierführ haben wir das Lokale Maximum im intervall 1000 bis 2000 Herz ermittelt. Da wir für Metalle Erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, dies ist eine gerechtfertigte Einschränkung des Intervalls. So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.

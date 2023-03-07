@@ -59,7 +59,17 @@ def get_all_peaks(material):
     peaks_fft = []
     cassy_dir = "../../Messungen/"
     global start_values
-    start_values = {"Kupfer_Einsp_Fehler_01": 5000} # Der Startwert / 10000 ergibt die Startsekunde
+    start_values = {"Kupfer_Einsp_Fehler_01": 5000,
+                    "Kupfer_Messung_03":5000,
+                    "Kupfer_Messung_04":5000,
+                    "Kupfer_Messung_06":5000,
+                    "Kupfer_Messung_07":5000,
+                    "Kupfer_Messung_09":5000,
+                    "Messing_Messung_06":5000,
+                    "Messing_Messung_07":5000,
+                    "Stahl_Messung_01":5000,
+                    "Stahl_Messung_09":5000,
+                    } # Der Startwert / 10000 ergibt die Startsekunde
      
     for dirpath, dirnames, filenames in os.walk(cassy_dir):
         for filename in filenames:

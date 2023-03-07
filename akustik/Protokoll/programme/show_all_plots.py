@@ -16,14 +16,13 @@ import os
 global SHOW_PLOTS
 SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
  
-global PLOTS_DIR
+global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
 PLOTS_DIR = '../plots/434170_428396_1A3_'
 
 def cassy_plot(datei: str, x: str, y: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 24.0
     plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = 'Arial'
     plt.rcParams['font.weight'] = 'bold'
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.labelweight'] = 'bold'
@@ -87,7 +86,6 @@ def save_plot(datei: str, x: str, y: str, plotname: str):
     start = start_values[plotname] if plotname in start_values else 0
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = 'Arial'
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.linewidth'] = 0.75
     plt.rcParams['lines.linewidth'] = 0.5
@@ -132,7 +130,6 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = T
     start = start_values[plotname] if plot in start_values else 0
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['font.sans-serif'] = 'Arial'
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.linewidth'] = 0.75
     plt.rcParams['lines.linewidth'] = 0.5
@@ -163,11 +160,21 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = T
     plt.savefig(PLOTS_DIR + plotname + "_fft.pdf")
      
 cassy_dir = "../../Messungen/"
-plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01", "Kupfer_Einsp_Fehler_01"]
+plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01", "Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Alu_Messung_07"]
 fft_plots_without_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
-fft_plots = ["Kupfer_Einsp_Fehler_01"]
+fft_plots = ["Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Alu_Messung_07"]
 global start_values # wenn der Messwert in diesem Dictionary steht, wird der Startwert für die Plots gesetzt welcher nicht 0 ist
-start_values = {"Kupfer_Einsp_Fehler_01": 5000} # Der Startwert / 10000 ergibt die Startsekunde
+start_values = {"Kupfer_Einsp_Fehler_01": 5000,
+                "Kupfer_Messung_03":5000,
+                "Kupfer_Messung_04":5000,
+                "Kupfer_Messung_06":5000,
+                "Kupfer_Messung_07":5000,
+                "Kupfer_Messung_09":5000,
+                "Messing_Messung_06":5000,
+                "Messing_Messung_07":5000,
+                "Stahl_Messung_01":5000,
+                "Stahl_Messung_09":5000,
+                } # Der Startwert / 10000 ergibt die Startsekunde
  
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):

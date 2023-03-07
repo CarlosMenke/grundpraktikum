@@ -156,14 +156,14 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = F
         plt.title('FFT ' + plotname + ' fpeak = ' + str(round(fpeak_fft, 2)) + ' Hz')
     else:
         plt.title('FFT ' + plotname)
-    plt.xlim(0.,np.max(freq_fft))
+    plt.xlim(0.,2000)  # TODO : Vorherige plots bis 5000
     plt.ylim(0.,np.max(amp_fft) * 1.1)
 
     plt.savefig(PLOTS_DIR + plotname + "_fft.pdf")
      
 cassy_dir = "../../Messungen/"
-plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
-fft_plots_with_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
+plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" , "Kupfer_Einsp_Fehler_01"]
+fft_plots_with_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" , "Kupfer_Einsp_Fehler_01"]
 fft_plots = []
  
 for filename in sorted(os.listdir(cassy_dir)):

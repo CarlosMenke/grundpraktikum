@@ -381,11 +381,45 @@ Tabelle der Systematischen Fehler auf einzelne Messgrößen:
         \label{tab:mytable}
     \end{table}
     
-Aus underen Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python durchgeführt haben die Grundfrequenz bestimmen. Hierführ haben wir das Lokale Maximum im intervall 1000 bis 2000 Herz ermittelt. Da wir für Metalle Erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, ist dies eine gerechtfertigte Einschränkung des Intervalls. So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.
+Zunächst haben wir unsere gemessenen Daten der Schwingung aufbereitet und selektiert. Dies ist sinnvoll, da es verschiedene Fehlerquellen gibt (Störgeräusche, unsaubere Messung, übersteuerung, etc.) die das ergebniss verfälschen können. Diese Fehlerquellen können einen signifikanten einfluss auf das Endgültige Ergebniss haben. Um diesen Einfluss möglichst gering zu halten, sollten deshalb die Rohdaten alle angeschaut und aufbereitet werden. Hierbei muss auf verschiedene Dinge geachtet werden. Diese werden im Folgenden an Beispielen Diskutiert. 
 
 %TODO : Einfügen einer Grafik in der man viele Störgeräusche sieht. 
 
+\begin{figure}[H]
+  \centering
+  \subfloat[Spannungsverlauf der Messung mit Amplitude im gesättigten Bereich]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_01_plot.pdf}\label{fig:f1}}
+  \hfill
+  \subfloat[FFT der Messung mit Amplitude im gesättigten Bereich]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_01_fft.pdf}\label{fig:f2}}
+  \caption{Anordnung zur Durchführung einer Messung}
+\end{figure}
+
+
+Oben können sie einen Exemplarischen Graphen von einer Messung sehen, bei der es viele Störgeräusche gab. Wenn wir uns nun jedoch das Frequenzspektrum anschauen, können wir diese Störgeräusche klar von der frequenz des Stabes unterscheiden. Im Frequenzbereich der stange, sind keine störenden Geräusche, weswegen bei diesen Messdaten keine Datenpunkte entfernt werden müssen zur erhöhung der Genauheit. Dies gilt auch für alle weiteren Messungen in welchen Störgeräusche vorhanden waren. 
+
 Bei einigen Messungen wurde der Stab anfangs zu stark angeschlagen, weswegen die Gemessene Amplitude anfangs im gesättigten Bereich liegt. Da dies die gemessene Grundfrequenz beeeinflussen kann  haben wir bei diesen Messungen die Daten bis zu dem Punkt, dass die Amplitude unter 2.5V ist weg geschnitten. Dies verfälscht das Ergebnis nicht, da es nur ein kleines Intervall ist, und wir somit trotzdem Datenpunkte von mehr als 2.5s Messung haben. Dies ist ein ausreichend großes Intervall.\\
+In der Durchführung wurde bereits diskutiert, dass wir messintervalle von 100$\mu$s verwenden können und damit eine ausreichende abtastrate haben. Somit werden auch in einem Intervall von 2.5s  genügend Messpunkte aufgenommen, um daraus die Frequenz ermitteln zu können.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[Spannungsverlauf der Messung mit Amplitude im gesättigten Bereich]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_01_plot.pdf}\label{fig:f1}}
+  \hfill
+  \subfloat[FFT der Messung mit Amplitude im gesättigten Bereich]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_01_fft.pdf}\label{fig:f2}}
+  \caption{Anordnung zur Durchführung einer Messung}
+\end{figure}
+
+%TODO : Einfügen der Grafiken für den Abgeschnittenen und nicht abgeschnittenen Bereich
+
+Oben können sie einen Exemplarischen Graphen von unserer Messung: Kupfer\_Einsp\_Fehler\_01 sehen, in welchem man sehr gut sehen kann, dass anfangs die Amplitude im Gesättigten bereich war, und somit auch nichts über 2.5V aufgezeichnet wurde. In dieser Messung haben wir also 0.5s weggeschnitten damit der mögliche Effekt davon keinen Einfluss auf unser Ergebnis haben.
+Sie können auch die FFT dieser Messung sehen, und den daraus berechneten Peak. Wobei wir bei der FFT nur dem Relevanten Bereich zwischen 0 und 2000 Hz dargestellt haben. An dem Wert des Peaks können Sie sehen, dass das Wegschneiden des Anfangs einen Einfluss hatte. Dieser tritt jedoch erst in der zweiten Nachkommastelle auf. Ist also ein geringer Einfluss. Wir wollen ihn jedoch der Genauheithalber nicht vernachlässigen. Und schneiden somit bei den Messdaten bei denen anfangs Übersteuert wurde einen Teil ab. 
+
+
+Eine Genaue auflistung von allen Daten bei denen wir teile rausgenommen haben, zur bestimmung der Frequenz wird noch unten angestellt. dieses hier ist nur eine Exemplarische Diskussion warum es sinnvoll ist dies zu tun.
+
+Wir hatten bei unserer Messreihe 5. eine Messung (Kupfer\_einsp\_Fehler\_05) bei welcher auf Grund von störgeräuschen und anderen Messeinflüssen wir ein stark abweichendes Ergebnis vom Erwartungswert hatten. Diese Messung haben wir uns entschieden aus der auswertung herraus zu nehmen, da sie das Ergebniss verfälschen würde. Der Erwartungswert wird im späteren Verlauf noch ermittelt und diskutiert. Hier möchten wir jedoch darstellen wie wir unsere Daten zur entgültigen auswertung selektiert und aufbereitet haben.
+
+%TODO : Einfügen der messung Fehler 05 
+
+Oben können sie die Aufgezeichnete Messung, welche wir aus der Auswertung herrausnehmen sehen. In der FFT kann man sehr gut erkennen, dass wir auch eine vergleichsweise starke streuung der Frequenzen im bereich der zu Ermittelnden Grundfrequenz haben. Desweiteren können sie sehen, dass der berechnete Peak stark von den Erwartungswert abweicht, und diese Abweichung auch signifikant größer ist als die zu erwartende streuung der Ergebnisse. Dies lässt nur den schluss zu, dass bei dieser Messung sehr viele Messfehler aufgetreten sind. Und diese somit nicht geeignet ist zur Auswertung
 
 \textbf{Liste der Messungen bei denen Teile weggeschnitten wurden:}
 \begin{itemize}
@@ -395,9 +429,8 @@ Bei einigen Messungen wurde der Stab anfangs zu stark angeschlagen, weswegen die
 \item Ich habe dich llieb
 \end{itemize}
 
-In der Durchführung wurde bereits diskutiert, dass wir messintervalle von 100$\mu$s haben. Weswegen 
-Mit dieser Analyse haben wir folgende 
 
+Aus underen Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python durchgeführt haben die Grundfrequenz bestimmen. Hierführ haben wir das Lokale Maximum im intervall 1000 bis 2000 Herz ermittelt. Da wir für Metalle Erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, dies ist eine gerechtfertigte Einschränkung des Intervalls. So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.
 
 
 %  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die

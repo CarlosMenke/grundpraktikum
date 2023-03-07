@@ -63,12 +63,50 @@ def get_all_peaks(material):
      
     for dirpath, dirnames, filenames in os.walk(cassy_dir):
         for filename in filenames:
-            if filename.endswith((".labx")) and "Kupfer_Messung" in filename:
+            if filename.endswith((".labx")) and material in filename:
                 peaks_fft.append(fft_peak(cassy_dir + filename, "t", "U_A1", filename))
 
 
     Peaks_FFT_NP = np.array(peaks_fft)
     return Peaks_FFT_NP
- 
-print(get_all_peaks("Kupfer"))
-print(get_all_peaks("Stahl"))
+
+Messing_F = get_all_peaks("Messing")
+Kupfer_F =  get_all_peaks("Kupfer_Messung")
+Stahl_F = get_all_peaks("Stahl")
+Alu_F = get_all_peaks("Alu")
+
+'''print(get_all_peaks("Messing"))
+print(get_all_peaks("Kupfer_Messung"))'''
+
+Messing_F_mean = np.mean(Messing_F)
+M_F_sigma = np.std(Messing_F,ddof=1)
+M_err = M_F_sigma/np.sqrt(len(Messing_F))
+
+
+print("Messing", Messing_F_mean)
+print("Error auf Messing Frequenz:", M_err)
+
+Kupfer_F_mean = np.mean(Kupfer_F)
+K_F_sigma = np.std(Kupfer_F,ddof=1)
+K_err = K_F_sigma/np.sqrt(len(Kupfer_F))
+
+print("Kupfer", Kupfer_F_mean)
+print("Fehler auf Kupfer:", K_err)
+
+Stahl_F_mean = np.mean(Stahl_F)
+S_F_sigma = np.std(Stahl_F,ddof=1)
+S_err = S_F_sigma/np.sqrt(len(Stahl_F))
+
+print("Stahl:", Stahl_F_mean)
+print("Error auf Stahl Frequenz:", S_err)
+
+Alu_F_mean = np.mean(Alu_F)
+A_F_sigma = np.std(Alu_F,ddof=1)
+A_err = A_F_sigma/np.sqrt(len(Alu_F))
+
+print("Aluminium:", Alu_F_mean)
+print("error auf Frequenz Alu:", A_err)
+
+
+
+

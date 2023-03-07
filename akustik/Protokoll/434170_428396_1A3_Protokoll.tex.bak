@@ -448,29 +448,3 @@ Oben können sie die Aufgezeichnete Messung, welche wir aus der Auswertung herra
 
 
 Aus underen Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python durchgeführt haben die Grundfrequenz bestimmen. Hierführ haben wir das Lokale Maximum im intervall 1000 bis 2000 Herz ermittelt. Da wir für Metalle Erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, dies ist eine gerechtfertigte Einschränkung des Intervalls. So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.
-In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Stangen dargestellt.
-
-%TODO : Einfügen der Tabelle in der alle Frequenzen der Materialien aufgelistet sind
-
-Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1_Mat2_Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. 
-
-\begin{equation}
-	\mu = \frac{1}{n}
-\end{equation}
-
-
-%  Bestimmen Sie aus den aufgezeichneten Schwingungsvorgängen die
-%  Schwingungsfreqünzen und tabellieren Sie die erhaltenen
-%  Werte. Ermitteln Sie die Streuung der einzelnen $f_i$ und bestimmen
-%  Sie daraus den statistischen Fehler auf den Mittelwert. Erläutern
-%  und illustrieren Sie Ihr Vorgehen zur Bestimmung der systematischen
-%  Unsicherheiten auf die Frequenz. Diskutieren Sie die Unsicherheiten
-%  auf $L$, $D$ und $M$. Berechnen Sie den E-Modul und die Dichte der
-%  vorliegenden Stangen und die zugehörigen statistischen und
-%  systematischen Messunsicherheiten. Diskutieren Sie, welche
-%  Fehlerbeiträge den Gesamtfehler dominieren. Vergleichen Sie Ihre
-%  Ergebnisse mit einschlägigen Literaturwerten.
-
-\end{aufgabe}
- 
-\end{document}

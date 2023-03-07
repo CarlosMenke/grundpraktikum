@@ -84,7 +84,7 @@ def cassy_plot(datei: str, x: str, y: str):
 
 
 def save_plot(datei: str, x: str, y: str, plotname: str):
-    start = start_values[plot] if plot in start_values else 0
+    start = start_values[plotname] if plotname in start_values else 0
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = 'Arial'
@@ -129,7 +129,7 @@ def save_plot(datei: str, x: str, y: str, plotname: str):
     plt.savefig(PLOTS_DIR + plotname + "_plot.pdf")
    
 def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
-    start = start_values[plot] if plot in start_values else 0
+    start = start_values[plotname] if plot in start_values else 0
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.sans-serif'] = 'Arial'

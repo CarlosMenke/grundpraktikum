@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import os
 from praktikum import cassy, analyse
+import matplotlib.pyplot as plt
 
 ### Durchmesser der Stangen
 Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
@@ -87,6 +88,36 @@ Alu_F = get_all_peaks("Alu_Messung")
 
 frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
 print(pd.DataFrame(frequencies))
+ 
+global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
+PLOTS_DIR = '../plots/434170_428396_1A3_'
+ 
+def plot_errorbar(x, y, yerr, plotname):
+    plt.figure()
+    x = np.array(x)
+    y = np.array(y)
+    #TODO make fontsize smaller
+    # TODO dots smaller
+    # TODO achsenbeschriftung y aachse apsolute werte.
+    yerr = np.array(yerr)
+    plt.errorbar(x, y, yerr=yerr, fmt='.')
+    plt.xlabel("Category")
+    plt.ylabel("f / Hz")
+    plt.title("Frequenzen der Messungen mit Fehlerbalken")
+    plt.grid()
+    plt.savefig(PLOTS_DIR + plotname + ".pdf")
+
+ 
+A_err = 0.003 
+M_err = 0.003
+K_err = 0.003
+S_err = 0.003
+
+x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
+y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
+y_err =  np.concatenate((Alu_err * np.ones(len(Alu_F)), M_err * np.ones(len(Alu_F)), K_err * np.ones(len(Alu_F)), S_err * np.ones(len(Alu_F))))
+for i in range(0, 40, 10):
+    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], x[i])
  
 '''print(get_all_peaks("Messing"))
 print(get_all_peaks("Kupfer_Messung"))'''

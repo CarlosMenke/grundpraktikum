@@ -345,7 +345,7 @@ Für die Auswertung der Daten und der Entgültigen Berechnung der Elastizitätsm
 Zunächst ein mal die Systematischen Fehler, diese müssen getrennt von den Statistischen Fehlern fortgeplanzt werden. Wir haben einen Systematischen Fehler auf alle unsere Messgrößen. Bei der Längenmessung rürt dies von der Genauigkeit des Bandmaß, dies hängt von der Güteklasse des Bandmaß ab. In unserem Fall haben wir die Güteklasse II. Bei der Analysewage  hängt dieser auch von der Genauigkeit ab, so wie bei der Mikrometerschraube. 
 Diese Informationen werden vom Hersteller gegeben, und können im Datenblatt des Geräts nachgeschlagen werden. 
 
-% TODO: Formelzeichen besser übersichtlich darstellen
+%TODO : Formelzeichen besser übersichtlich darstellen
 
 Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des akustischen Signals. Hierfür ist die verwendete Spannungsintervallbreite und die Auflösung (12Bit) relevant. Daraus berechnet sich der Systematische Fehler folgendermaßen. Wobei $\mathbf{\sigma}$ die Standardabweichung ist, $\mathbf{\sigma_fs}$ ist der Systematische Fehler auf die Frequenz, \textbf{I} die Spannungsintervallbreite (Da wir einen Bereich von -3V bis 3V gewählt haben) und \textbf{A} die Auflösung.
 
@@ -381,7 +381,22 @@ Tabelle der Systematischen Fehler auf einzelne Messgrößen:
         \label{tab:mytable}
     \end{table}
     
-Aus underen Messungen 1 bis 4 konten wir mithilfe der 
+Aus underen Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python durchgeführt haben die Grundfrequenz bestimmen. Hierführ haben wir das Lokale Maximum im intervall 1000 bis 2000 Herz ermittelt. Da wir für Metalle Erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, ist dies eine gerechtfertigte Einschränkung des Intervalls. So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräuschen (Reden, andere Stangen, etc.) ermitteln.
+
+%TODO : Einfügen einer Grafik in der man viele Störgeräusche sieht. 
+
+Bei einigen Messungen wurde der Stab anfangs zu stark angeschlagen, weswegen die Gemessene Amplitude anfangs im gesättigten Bereich liegt. Da dies die gemessene Grundfrequenz beeeinflussen kann  haben wir bei diesen Messungen die Daten bis zu dem Punkt, dass die Amplitude unter 2.5V ist weg geschnitten. Dies verfälscht das Ergebnis nicht, da es nur ein kleines Intervall ist, und wir somit trotzdem Datenpunkte von mehr als 2.5s Messung haben. Dies ist ein ausreichend großes Intervall.\\
+
+\textbf{Liste der Messungen bei denen Teile weggeschnitten wurden:}
+\begin{itemize}
+\item Messung X
+\item Messung R
+\item Messung xyz
+\item Ich habe dich llieb
+\end{itemize}
+
+In der Durchführung wurde bereits diskutiert, dass wir messintervalle von 100$\mu$s haben. Weswegen 
+Mit dieser Analyse haben wir folgende 
 
 
 

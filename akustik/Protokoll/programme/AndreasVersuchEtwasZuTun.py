@@ -1,7 +1,9 @@
 import numpy as np
+import pandas as pd
 import os
 from praktikum import cassy, analyse
 
+### Durchmesser der Stangen
 Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
 Messing = [11.98, 12.01, 11.98, 11.99, 11.98, 11.98, 11.99, 11.99, 11.98, 11.98]
 Kupfer = [11.98, 11.98, 11.98, 11.98, 11.98, 11.99, 11.98, 11.98, 11.98, 11.98]
@@ -78,11 +80,14 @@ def get_all_peaks(material):
     Peaks_FFT_NP = np.array(peaks_fft)
     return Peaks_FFT_NP
 
-Messing_F = get_all_peaks("Messing")
+Messing_F = get_all_peaks("Messing_Messung")
 Kupfer_F =  get_all_peaks("Kupfer_Messung")
-Stahl_F = get_all_peaks("Stahl")
-Alu_F = get_all_peaks("Alu")
+Stahl_F = get_all_peaks("Stahl_Messung")
+Alu_F = get_all_peaks("Alu_Messung")
 
+frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
+print(pd.DataFrame(frequencies))
+ 
 '''print(get_all_peaks("Messing"))
 print(get_all_peaks("Kupfer_Messung"))'''
 
@@ -115,3 +120,7 @@ A_err = A_F_sigma/np.sqrt(len(Alu_F))
 
 print("Aluminium:", Alu_F_mean)
 print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
+
+## Die tabelle im latex format, damit ich nichts abtippen muss :D
+#for i in range(len(Alu_F)):
+    #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")

@@ -142,14 +142,14 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str):
     freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
     plt.plot(freq_fft,amp_fft,'.',markersize=3,color='olive',label="FFT")
     plt.xlabel('$f$ / Hz')
-    plt.ylabel('amp')
+    plt.ylabel('U_A1 / V')
     plt.grid()
     plt.legend()
 
     #fpeak_fft = analyse.peakfinder_schwerpunkt(freq_fft,amp_fft)
     fpeak_fft = analyse.peak(freq_fft,amp_fft, 1000, 2000)
     plt.axvline(fpeak_fft,color='black')
-    plt.title('Fourierspektrum' + ' fpeak = ' + str(fpeak_fft) + ' Hz')
+    plt.title('Fourierspektrum' + ' fpeak = ' + str(round(fpeak_fft, 2)) + ' Hz')
     plt.xlim(0.,np.max(freq_fft))
     plt.ylim(0.,np.max(amp_fft) * 1.1)
 

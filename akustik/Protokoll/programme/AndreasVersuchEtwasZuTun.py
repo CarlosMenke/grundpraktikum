@@ -1,5 +1,3 @@
-
-
 import numpy as np
 from praktikum import cassy
 import numpy as np

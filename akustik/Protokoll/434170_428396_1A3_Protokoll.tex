@@ -443,13 +443,22 @@ Wir wollen ihn jedoch der Genauheithalber nicht vernachlässigen.
 Und schneiden somit bei den Messdaten bei denen anfangs übersteuert wurde einen Teil ab. 
 
 
-Eine Genaue auflistung von allen Daten bei denen wir teile rausgenommen haben, zur bestimmung der Frequenz wird noch unten angestellt. dieses hier ist nur eine Exemplarische Diskussion warum es sinnvoll ist dies zu tun.
+Eine genaue Auflistung von allen Daten bei denen wir den Anfang oder das Ende weggeschnitten haben, zur bestimmung der Frequenz wird unten angegeben.
+Dieses hier ist nur eine Exemplarische Diskussion warum dies sinnvoll ist.
 
-Wir hatten bei unserer Messreihe 5. eine Messung (Kupfer\_einsp\_Fehler\_05) bei welcher auf Grund von störgeräuschen und anderen Messeinflüssen wir ein stark abweichendes Ergebnis vom Erwartungswert hatten. Diese Messung haben wir uns entschieden aus der auswertung herraus zu nehmen, da sie das Ergebniss verfälschen würde. Der Erwartungswert wird im späteren Verlauf noch ermittelt und diskutiert. Hier möchten wir jedoch darstellen wie wir unsere Daten zur entgültigen auswertung selektiert und aufbereitet haben.
+Wir hatten bei unserer Messreihe 5. eine Messung (Kupfer\_einsp\_Fehler\_05) bei welcher auf Grund von Störgeräuschen und anderen Messeinflüssen wir ein sehr unsauberes Frequenzspektrum nach der Fouieranalyse erhalten haben.
+\begin{figure}[H]
+  \centering
+    \caption{Messung mit sehr starken Störungen auch über 1000 Hz}
+  \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_05_plot.pdf}}
+  \hfill
+  \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_05_fft.pdf}}
+\end{figure}
 
-%TODO : Einfügen der messung Fehler 05 
-
-Oben können sie die Aufgezeichnete Messung, welche wir aus der Auswertung herrausnehmen sehen. In der FFT kann man sehr gut erkennen, dass wir auch eine vergleichsweise starke streuung der Frequenzen im Bereich der zu Ermittelnden Grundfrequenz haben. Desweiteren können sie sehen, dass der berechnete Peak stark von den Erwartungswert abweicht, und diese Abweichung auch signifikant größer ist als die zu erwartende streuung der Ergebnisse. Dies lässt nur den schluss zu, dass bei dieser Messung sehr viele Messfehler aufgetreten sind. Und diese somit nicht geeignet ist zur Auswertung
+In der FFT kann man sehr gut erkennen, dass wir auch eine vergleichsweise starke Streuung der Frequenzen im Bereich der zu Ermittelnden Grundfrequenz haben.
+Aufgrund der ungenauen Messung haben wir sie nicht bei der Auswertung berücksichtigt.
+Diese ist aber die einzige Messung, welche wir nicht berücksichtigt haben. \\
+ 
 
 \textbf{Liste der Messungen bei denen Teile weggeschnitten wurden:}
 \begin{itemize}
@@ -476,7 +485,7 @@ In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzel
 
 %TODO : Einfügen der Tabelle in der alle Frequenzen der Materialien aufgelistet sind
 
-Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1_Mat2_Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. 
+Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1\_Mat2\_Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. 
 
 \begin{equation}
 	\mu = \frac{1}{n}

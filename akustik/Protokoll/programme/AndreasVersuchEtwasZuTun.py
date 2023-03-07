@@ -41,8 +41,48 @@ print('Ergebnis: Stahl_mean=%f+-%f' % (S_mean,S_err),'m')
 print(Alu_mean, 'Mittelwet des Durchmessers von Alu')
 print(Alu_stdabw, 'Standardabweichung des Durchmessers von Alu')
 print((Alu_err, 'Fehler auf den Durchmesser der Aluminiumstange'))
+
+
+#Berechnung des Mittelwerts der dichte
+De =[Alu_err, M_err, K_err, S_err]
+D = [Alu_mean, M_mean, K_mean, S_mean]
+M = [0.4609, 1.4275, 1.5054, 1.3274]
+L = 1.5
+
+def roh(D, M, L):
+    print(D,M,L)
+    roh = M/(np.pi*(D/2)**2*L)
+    return roh
+
+for i, j in zip(D, M):
+    p = roh(i, j, L)
+    if i == Alu_mean:
+        print("Dichte von Aluminium:", f"{p:.2f}" )
+    if i == M_mean:
+        print("Dichte von Messing", f"{p:.2f}")
+    if i == K_mean:
+        print("Dichte von Kupfer", f"{p:.2f}")   
+    if i == S_mean:
+        print("Dichte von Stahl15", f"{p:.2f}")    
+ # Fehlerfortplanzung des Statistischen Fehlers auf die Dichte 
+       
+def sigma_roh(D, M, L, De):
+    s = ((8*M)/(np.pi*D**3*L))**2*De**2
+    return s
+
+for i, j, k in zip(D, M, De):
+    roh_err = np.sqrt(sigma_roh(i, j, L, k))
+    if i == Alu_mean:
+        print("stat. Fehler auf Dichte von Aluminium:", f"{roh_err:.2f}" )
+    if i == M_mean:
+        print("stat. Fehler auf Dichte von Messing", f"{roh_err:.2f}")
+    if i == K_mean:
+        print("stat. Fehler auf Dichte von Kupfer", f"{roh_err:.2f}")   
+    if i == S_mean:
+        print("stat. Fehler auf Dichte von Stahl15", f"{roh_err:.2f}")    
+    
    
-def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
+'''def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
     start = start_values[plotname] if plotname in start_values else 0
      
     data = cassy.CassyDaten(datei)
@@ -88,8 +128,8 @@ Alu_F = get_all_peaks("Alu_Messung")
 frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
 print(pd.DataFrame(frequencies))
  
-'''print(get_all_peaks("Messing"))
-print(get_all_peaks("Kupfer_Messung"))'''
+print(get_all_peaks("Messing"))
+print(get_all_peaks("Kupfer_Messung"))
 
 nachkommer_stellen = 3
 Messing_F_mean = np.mean(Messing_F)
@@ -124,3 +164,9 @@ print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
 ## Die tabelle im latex format, damit ich nichts abtippen muss :D
 #for i in range(len(Alu_F)):
     #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
+
+'''
+
+    
+    
+    

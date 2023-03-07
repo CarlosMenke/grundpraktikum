@@ -497,14 +497,24 @@ So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräusc
 In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Stangen dargestellt.
 
 
-%TODO : Einfügen der Tabelle in der alle Frequenzen der Materialien aufgelistet sind
  \begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{c c c c} % adjust width as needed
+        \begin{tabularx}{1.00\textwidth}{X X X X X} % adjust width as needed
             \toprule
-            \textbf{Stahl 15} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kupfer} \\
+            \textbf{Messung Nr.} & \textbf{Stahl 15} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kupfer} \\
             \midrule
-            10 &  15 & 1726.55 & 0.088 \\
+             
+                Nr. 1 & 1726.73Hz & 1673.88Hz & 1166.31Hz & 1288.93Hz \\
+                Nr. 2 & 1726.02Hz & 1673.85Hz & 1166.53Hz & 1288.11Hz \\
+                Nr. 3 & 1726.21Hz & 1673.61Hz & 1166.28Hz & 1288.03Hz \\
+                Nr. 4 & 1726.45Hz & 1673.73Hz & 1166.32Hz & 1288.15Hz \\
+                Nr. 5 & 1726.29Hz & 1673.67Hz & 1166.27Hz & 1287.99Hz \\
+                Nr. 6 & 1726.41Hz & 1673.81Hz & 1166.47Hz & 1288.03Hz \\
+                Nr. 7 & 1726.64Hz & 1673.02Hz & 1166.29Hz & 1288.02Hz \\
+                Nr. 8 & 1726.76Hz & 1673.52Hz & 1166.32Hz & 1288.13Hz \\
+                Nr. 9 & 1726.90Hz & 1671.98Hz & 1166.41Hz & 1288.13Hz \\
+                Nr. 10 & 1726.88Hz & 1673.6Hz & 1166.79Hz & 1288.66Hz \\
+                 
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
@@ -515,11 +525,11 @@ In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzel
 Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1Mat2Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\mu$ im allgemeinen der Mittelwert ist, $s^2$ die Varianz und $\sigma_i$ der fehler auf die Größe ist.
 
 \begin{equation}
-	\mu = \frac{1}{n}\sum_{n=1}^nx_i
+	\mu = \frac{1}{n}\sum_{i=1}^nx_i
 \end{equation}
 
 \begin{equation}
-	s^2 = \frac{1}{n-1}\sum_{n=1}^n(\mu-x_i)^2
+	s^2 = \frac{1}{n-1}\sum_{i=1}^n(\mu-x_i)^2
 \end{equation}
 
 \begin{equation}
@@ -531,14 +541,15 @@ Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statis
 
  \begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{X c l} % adjust width as needed
+        \begin{tabularx}{0.8\textwidth}{X X X} % adjust width as needed
             \toprule
             \textbf{Metall Stange} & \textbf{Erwartungs Wert} & \textbf{Standardabweichung} \\
             \midrule
-            Stahl 15 & 1726.55Hz & $\pm$0.088Hz \\
-            Aluminium & 1673.51Hz & $\pm$0.17Hz \\
-            Messing & 1166.22Hz & $\pm$0.052Hz \\
-            Kuper & 1288.22Hz & $\pm$0.10Hz \\
+            Stahl 15 & 1726.53Hz & $\pm$0.094Hz \\
+            Aluminium & 1673.47Hz & $\pm$0.18Hz \\
+            Messing & 1166.40Hz & $\pm$0.052Hz \\
+            Kupfer & 1288.22Hz & $\pm$0.10Hz \\
+
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
@@ -565,8 +576,53 @@ Daraus ergibt sich:\\
         \label{tab:mytable}
     \end{table}
 
-Somit haben wir den 
+Somit haben wir den Messfehler auf alle Größen bestimmt und können damit das elastizitätsmodul berechnen. Hierbei müssen die Statistischen und die Systematischen Fehler getrennt fortgeplanzt werden.
+
+Für die Fehlerfortplanzung der Statistischen Fehler gilt: (hier wir die Gaußsche fehlerfortplanzung verwendet) 
+
+\begin{equation}
+	\sigma_y^2 = \sum_{i,j=1}^n\left[\frac{\partial y}{\partial x_i}\frac{\partial y}{\partial x_j}\right]_{x=\mu}V_{ij}^2
+\end{equation}
+Hier steht $V_{ij}$ für die Varianz zwischen denn Variablen. In unserem Fall sind die Variablendie Masse, Länge, Grundfrequenz und Durchmesser. 
+Bei diesen können wir davon ausgehen, dass diese Größen unkorreliert sind. 
+Also unsere Längenmessung keinen Einfluss auf die Messung des Durchmessers und der Masse hatte.
+Das selbe gilt für die anderen Messgrößen. 
+Somit müssen wir den Mischterm auf Grund der Covarianz nicht beachten da diese null ist.
+Somit vereinfacht sich die Gauß'sche Fehlerfortplanzung zu:
+
+\begin{equation}
+	\sigma_y^2 = \sum_{i=1}^n\left[\frac{\partial y}{\partial x_i}\right]_{x=\mu}\sigma_{i}^2
+\end{equation}
+
+Bei den Systematischen Fehlern verwenden wir die Methode der Größtfehlerabschätzung. 
+Dies ist zwar eine sehr konservative schätzung des Fehlers, in diesem Fall jedoch sinnvoll,
+da Masse und Länge je nur einmal gemessen wurden. wenn nun $\Delta x_1$, $\Delta x_2$, $\Delta x_3$
+die eingehenden Einzelfehler sind, ist die lineare Fehlerfortplanzung: 
+
+\begin{equation}
+	\Delta y = \left|\frac{\partial y}{\partial x_1}\Delta x_1\right| + 
+	\left|\frac{\partial y}{\partial x_2}\Delta x_2\right| + 
+	\left|\frac{\partial y}{\partial x_3}\Delta x_3\right|
+\end{equation}
+
+
+Als Zwischenergebnis berechnen wir zuerst die Dichte. Hierführ berechnen wir den
+Erwartungswert der Dichte indem wir die Mittlewerte der Benötigten größen Verwenden. 
+Wir verwenden die Formel die in dem Abschnitt Grundlagen eingeführt werden. Die Rechnung haben wir mit Python durchgeführt. Diese können
 
 \end{aufgabe}
- 
+%TODO : Argumentation warum die Fehler unkoreliert sind
+%TODO : Elastizitätsmodul berechnen
+%TODO : Fehlerfortplanzung E-Modul
+%TODO : Fehlerfortplanzung Dichte
+%TODO : Darstellung der Frequenzen in Plot und err von systematisch
+%TODO : E-Modul in Plot
+%TODO : Vergleichen mit Literaturwerten
+%TODO : Diskussioon der Fehlerbeiträge, was dominiert den Gesamtfehler
+%TODO : Statistische messungenauigkeit auf L & M 
+%TODO : Vergleich mit Literaturwerten
+%TODO : Statistische Fehler mit Sigma Systematische mit Delta
+%TODO : Dichte bei Grundlagen hinzufügen
+%TODO : Gesamtprotokoll auf Konsistenz überprüfen in Bezeichnung 
+%TODO : Programme übersichtlich machen und kommentieren
 \end{document}

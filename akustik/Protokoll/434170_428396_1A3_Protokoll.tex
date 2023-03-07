@@ -497,7 +497,6 @@ So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräusc
 In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Stangen dargestellt.
 
 
-%TODO : Einfügen der Tabelle in der alle Frequenzen der Materialien aufgelistet sind
  \begin{table}[H]
         \centering
         \begin{tabularx}{1.00\textwidth}{X X X X X} % adjust width as needed
@@ -526,11 +525,11 @@ In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzel
 Aus den oben angeführten Frequen haben wir dann mit Hilfe eines Pyton program (Mat1Mat2Statistik) das Arythmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\mu$ im allgemeinen der Mittelwert ist, $s^2$ die Varianz und $\sigma_i$ der fehler auf die Größe ist.
 
 \begin{equation}
-	\mu = \frac{1}{n}\sum_{n=1}^nx_i
+	\mu = \frac{1}{n}\sum_{i=1}^nx_i
 \end{equation}
 
 \begin{equation}
-	s^2 = \frac{1}{n-1}\sum_{n=1}^n(\mu-x_i)^2
+	s^2 = \frac{1}{n-1}\sum_{i=1}^n(\mu-x_i)^2
 \end{equation}
 
 \begin{equation}
@@ -577,8 +576,57 @@ Daraus ergibt sich:\\
         \label{tab:mytable}
     \end{table}
 
-Somit haben wir den Messfehler auf alle Größen bestimmt und können somit das elastizitätsmodul berechnen. Hierbei müssen die Statistischen und die Systematischen Fehler getrennt fortgeplanzt werden.
+Somit haben wir den Messfehler auf alle Größen bestimmt und können damit das elastizitätsmodul berechnen. Hierbei müssen die Statistischen und die Systematischen Fehler getrennt fortgeplanzt werden.
+
+Für die Fehlerfortplanzung der Statistischen Fehler gilt: (hier wir die Gaußsche fehlerfortplanzung verwendet) 
+
+\begin{equation}
+	\sigma_y^2 = \sum_{i,j=1}^n\left[\frac{\partial y}{\partial x_i}\frac{\partial y}{\partial x_j}\right]_{x=\mu}V_{ij}^2
+\end{equation}
+Hier steht $V_{ij}$ für die Varianz zwischen denn Variablen. In unserem Fall sind die Variablendie Masse, Länge, Grundfrequenz und Durchmesser. 
+Bei diesen können wir davon ausgehen, dass diese Größen unkorreliert sind. 
+Also unsere Längenmessung keinen Einfluss auf die Messung des Durchmessers und der Masse hatte.
+Das selbe gilt für die anderen Messgrößen. 
+Somit müssen wir den Mischterm auf Grund der Covarianz nicht beachten da diese null ist.
+Somit vereinfacht sich die Gauß'sche Fehlerfortplanzung zu:
+
+\begin{equation}
+	\sigma_y^2 = \sum_{i=1}^n\left[\frac{\partial y}{\partial x_i}\right]_{x=\mu}\sigma_{i}^2
+\end{equation}
+
+Bei den Systematischen Fehlern verwenden wir die Methode der Größtfehlerabschätzung. 
+Dies ist zwar eine sehr konservative schätzung des Fehlers, in diesem Fall jedoch sinnvoll,
+da Masse und Länge je nur einmal gemessen wurden. wenn nun $\Delta x_1$, $\Delta x_2$, $\Delta x_3$
+die eingehenden Einzelfehler sind, ist die lineare Fehlerfortplanzung: \\
+
+\begin{equation}
+	\Delta y = \left|\frac{\partial y}{\partial x_1}\Delta x_1\right| + 
+	\left|\frac{\partial y}{\partial x_2}\Delta x_2\right| + 
+	\left|\frac{\partial y}{\partial x_3}\Delta x_3\right|
+\end{equation}\\
+
+
+Als Zwischenergebnis berechnen wir zuerst die Dichte. Hierführ berechnen wir den
+Erwartungswert der Dichte indem wir die Mittlewerte der Benötigten größen Verwenden. 
+Wir verwenden die Formel die in dem Abschnitt Grundlagen eingeführt werden. Die Rechnung haben wir mit Python durchgeführt. Diese können sie in der Datei ... nachlesen.\\
+
+\begin{equation}
+	formel\quad zur \quad berechnung \quad der \quad Dichte: \qquad \rho = \frac{M}{V} = \frac{4M}{\pi D^2L}
+\end{equation}
 
 \end{aufgabe}
- 
+%TODO : Argumentation warum die Fehler unkoreliert sind
+%TODO : Elastizitätsmodul berechnen
+%TODO : Fehlerfortplanzung E-Modul
+%TODO : Fehlerfortplanzung Dichte
+%TODO : Darstellung der Frequenzen in Plot und err von systematisch
+%TODO : E-Modul in Plot
+%TODO : Vergleichen mit Literaturwerten
+%TODO : Diskussioon der Fehlerbeiträge, was dominiert den Gesamtfehler
+%TODO : Statistische messungenauigkeit auf L & M 
+%TODO : Vergleich mit Literaturwerten
+%TODO : Statistische Fehler mit Sigma Systematische mit Delta
+%TODO : Dichte bei Grundlagen hinzufügen
+%TODO : Gesamtprotokoll auf Konsistenz überprüfen in Bezeichnung 
+%TODO : Programme übersichtlich machen und kommentieren
 \end{document}

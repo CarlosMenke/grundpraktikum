@@ -687,19 +687,41 @@ und Statistischen Fehlern auf die Einzelgrößen.
         \centering
         \begin{tabularx}{1\textwidth}{l X X X X} % adjust width as needed
             \toprule
-            \textbf{Stange} & Aluminium & Messing & Kupfer & Stahl \\
+            \textbf{Stange} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kupfer} & \textbf{Stahl} \\
             \midrule
-            Syst. Fehler auf Masse & $\pm$0.2g & $\pm$0.2g & $\pm$0.2g & $\pm$0.2g \\
-            Syst. Fehler auf Länge & $\pm$0.0007m & $\pm$0.0007m & $\pm$0.0007m & $\pm$0.0007m \\
-            Syst. Fehler auf Durchmesser & $\pm$0.00001m & $\pm$0.00001m & $\pm$0.00001m & $\pm$0.00001m \\
-            Syst. Fehler auf Frequenz & $\pm$0.22Hz & $\pm$0.22Hz & $\pm$0.22Hz & $\pm$0.22Hz\\
+            Syst. Fehler auf M & $\pm$0.0002kg & $\pm$0.0002kg & $\pm$0.0002kg & $\pm$0.0002kg \\
+            Syst. Fehler auf L & $\pm$0.0007m & $\pm$0.0007m & $\pm$0.0007m & $\pm$0.0007m \\
+            Syst. Fehler auf D & $\pm$0.00001m & $\pm$0.00001m & $\pm$0.00001m & $\pm$0.00001m \\
+
             \midrule
-            
+            Stat. Fehler auf M & 0 & 0 & 0 & 0 \\
+            Stst. Fehler auf L & 0 & 0 & 0 & 0 \\
+            Stst. Fehler auf D & $\pm$0.000002m & $\pm$0.000003m & $\pm$0.000001m & $\pm$0.000001m \\
+           
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
 
+In dieser Tabelle sind auch sämtliche eingegangenen Fehler bereits in SI Einheiten dargestellt. Somit kann auf den ersten Blick gesehen werden, welche Fehler den größeren 
+Einfluss haben. Wir können wir sehen, dass der gesamt systematische Fehler um 2 größenordnungen größer ist als jener des statistischen Fehlers. Wenn wir nun exemplarisch den Fehler auf den Durchmesser von Aluminium anschauen.
+ D = (12.057 $\pm$0.002 (stat), $\pm$0.01 (syst))mm 
+ 
+Erkennen wir, dass die relative Abweichung aufgrund des statistischen 
+Fehlers nur 0.017\% entspricht. wärend die auf Grund des Systematischen Fehlers
+0.083\% entspricht. Somit hat der systematische Feehler des Durchmessers
+einen größeren einfluss auf das Endergebnis. Wobei der Systematische Fehler auf Masse 
+Masse und Länge jewails größer ist als jener auf den Durchmesser. 
+Hier darf aber nicht vergessen werden, dass wir den Systematischen Fehler linear fortgeplanzt haben was zu einer sehr konservativen schätzung führt. Dies erhöht 
+natürlich den Einfluss der systematischen Fehler auf das Endergebnis. 
+
+Desweiteren kann man an der Tatsache, dass das statistische fehler auf den Durchmesser 
+signifikant kleiner ist als der Systematische erkennen, dass unser Annahme, 
+dass die Stangen zylinderförmig sind eine gerechtfertigte Annahme war. 
+
+Im gesamten können wir also sagen, dass die Systematischen Fehler auf M L und D, den
+Fehler auf die Dichte in endefekt dominiert haben. Wobei der Systematische Fehler auf
+die Länge den größten einfluss hatte.  
 
 Mit der Dichte können wir nurn auch das Elastizitätsmodul bestimmen. Dies wird mit der folgenden Formel berechnet. 
 
@@ -711,6 +733,8 @@ Hier müssen die Systematischen und die Statistischen Fehler ebenfalls getrennt 
 unkorreliert sind. Hierführ haben wir das selbe vorgehen wie bei der Dichte gewählt.
 Wir können also die Selben Formeln (14) (15) verwenden. 
 Wobei dieses mal für die Funktion y die Formel für das Elastizitätsmodul verwendet wird. Die Berechnung haben wir ebenfalls mit dem Pythonprogramm durchgeführt. 
+Die Rechnung haben wir mit ungerundeten Werten durchgeführt, damit Rundungsfehler nur einen kleinen Einfluss auf die Rechnung haben. 
+Dies Sollte auch dafür sorgen, dass das Ergebnis sich nicht verändert wenn wir Formel (18) oder Formel (6) verwenden.
 Die daraus folgenden Ergebnisse können sie der Untenstehenden Tabelle entnehmen. 
 
  \begin{table}[H]

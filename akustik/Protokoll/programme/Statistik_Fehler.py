@@ -287,7 +287,7 @@ for i in range(0, 40, 10):
 
 # Systematische Fehlerfortplanzung
 def syst_err_E(f, L, rho, df, dL, drho):
-    return round(abs(16 * f**2 * L * rho * dL)  + abs(16 * f * L**2 * rho * df) + abs(4 * f**2 * L**2 * drho), 0)
+    return round(abs(16 * f**2 * L * rho * dL)  +  abs(4 * f**2 * L**2 * drho), 0)
  
 syst_f = syst_err_f * np.ones(4)
 syst_L = Le * np.ones(4)

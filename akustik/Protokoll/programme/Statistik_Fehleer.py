@@ -155,10 +155,9 @@ def get_all_peaks(material):
                     "Stahl_Messung_09":5000,
                     } # Der Startwert / 10000 ergibt die Startsekunde
      
-    for dirpath, dirnames, filenames in os.walk(cassy_dir):
-        for filename in filenames:
-            if filename.endswith((".labx")) and material in filename:
-                peaks_fft.append(fft_peak(cassy_dir + filename, "t", "U_A1", filename))
+    for filename in sorted(os.listdir(cassy_dir)):
+        if filename.endswith((".labx")) and material in filename:
+            peaks_fft.append(fft_peak(cassy_dir + filename, "t", "U_A1", filename))
 
 
     Peaks_FFT_NP = np.array(peaks_fft)
@@ -168,52 +167,17 @@ Messing_F = get_all_peaks("Messing_Messung")
 Kupfer_F =  get_all_peaks("Kupfer_Messung")
 Stahl_F = get_all_peaks("Stahl_Messung")
 Alu_F = get_all_peaks("Alu_Messung")
+Kupfer_Einsp_Fehler_F = np.delete(get_all_peaks("Kupfer_Einsp_Fehler"), 4) # Messung 5 ist zu ungenau, deshalb wird sie exkludiert.
+print(pd.DataFrame({"Kupfer_Einsp_Fehler_F": Kupfer_Einsp_Fehler_F}))
 
 frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
 print(pd.DataFrame(frequencies))
+## Die tabelle im latex format, damit ich nichts abtippen muss :D
+# TODO dict to latex table
+#for i in range(len(Alu_F)):
+    #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
  
 
-global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
-PLOTS_DIR = '../plots/434170_428396_1A3_'
- 
-def plot_errorbar(x, y, yerr, plotname):
-    plt.rcParams['font.size'] = 12.0
-    plt.rcParams['font.family'] = 'sans-serif'
-    plt.rcParams['axes.labelsize'] = 'medium'
-    plt.rcParams['axes.linewidth'] = 0.75
-    plt.rcParams['lines.linewidth'] = 0.5
-     
-    fig, ax = plt.subplots()
-    x = np.array(x)
-    y = np.array(y)
-    #TODO make fontsize smaller
-    # TODO dots smaller
-    # TODO achsenbeschriftung y aachse apsolute werte.
-    yerr = np.array(yerr)
-    plt.errorbar(x, y, yerr=yerr, fmt='.', markersize=5, capsize=2, capthick=0.8, elinewidth=1.5)
-    plt.ylabel("f / Hz")
-    plt.autoscale()
-    formatter = ticker.ScalarFormatter(useOffset=False)
-    ax.yaxis.set_major_formatter(formatter)
-    plt.title(x[0] + " mit stat. Fehler " + str(yerr[0]) + " Hz")
-    ax.yaxis.set_label_coords(-0.1, 1.09)
-    plt.grid()
-    plt.savefig(PLOTS_DIR + plotname + ".pdf")
-
- 
-# systematischer fehler auf Alu, Messing, Kupfer, Stahl
-A_err = 0.03 
-M_err = 0.03
-K_err = 0.03
-S_err = 0.03
-
-x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
-y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
-y_err =  np.concatenate((A_err * np.ones(len(Alu_F)), M_err * np.ones(len(Alu_F)), K_err * np.ones(len(Alu_F)), S_err * np.ones(len(Alu_F))))
-print(y_err)
-for i in range(0, 40, 10):
-    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])
- 
 # Erwartungswert und Standardabweichung
 nachkommer_stellen = 3
 
@@ -282,3 +246,46 @@ for i, k in zip(f, rho):
 def sigma_E(f, L, rho, re, fe):
     s = 8*L**2*f*rho
     return s
+ 
+Alu_F_mean = np.mean(Alu_F)
+A_F_sigma = np.std(Alu_F,ddof=1)
+A_err = A_F_sigma/np.sqrt(len(Alu_F))
+
+print("Aluminium:", Alu_F_mean)
+print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
+ 
+# Systematischer Messfehler auf Frequenz
+global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
+PLOTS_DIR = '../plots/434170_428396_1A3_'
+ 
+def plot_errorbar(x, y, yerr, plotname):
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.linewidth'] = 0.75
+    plt.rcParams['lines.linewidth'] = 0.5
+     
+    fig, ax = plt.subplots()
+    x = np.array(x)
+    y = np.array(y)
+    yerr = np.array(yerr)
+    plt.errorbar(x, y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
+    plt.ylabel("f / Hz")
+    plt.autoscale()
+    formatter = ticker.ScalarFormatter(useOffset=False)
+    ax.yaxis.set_major_formatter(formatter)
+    plt.title(x[0] + " mit stat. Fehler " + str(yerr[0]) + " Hz")
+    ax.yaxis.set_label_coords(-0.1, 1.09)
+    plt.grid()
+    plt.savefig(PLOTS_DIR + plotname + ".pdf")
+
+ 
+# systematischer fehler auf Alu, Messing, Kupfer, Stahl
+sys_err = max(abs(min(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean), abs(max(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean))
+print("Statistischer Fehler auf die Frequenzen vom Einspannen:", round(sys_err,2 ))
+
+x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
+y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
+y_err =  sys_err * np.ones(len(Alu_F) * 4)
+for i in range(0, 40, 10):
+    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])

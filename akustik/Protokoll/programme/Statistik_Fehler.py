@@ -52,6 +52,7 @@ Kupfer_Einsp_Fehler_F = np.delete(get_all_peaks("Kupfer_Einsp_Fehler"), 4) # Mes
 print(pd.DataFrame({"Kupfer_Einsp_Fehler_F": Kupfer_Einsp_Fehler_F}))
 
 frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
+print("mit der FFT bestimmte Frequenzen für alle Messungen: ")
 print(pd.DataFrame(frequencies).round(2))
 ## Die tabelle im latex format, damit ich nichts abtippen muss :D
 # TODO dict to latex table
@@ -256,7 +257,7 @@ def plot_f_errorbar(x, y, yerr, plotname):
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
-    plt.title(x[0] + " mit stat. Fehler " + str(yerr[0]) + " Hz")
+    plt.title(x[0] + " mit syst. Fehler " + str(round(yerr[0], 2)) + " Hz")
     ax.yaxis.set_label_coords(-0.1, 1.09)
     plt.grid()
     plt.savefig(PLOTS_DIR + plotname + ".pdf")

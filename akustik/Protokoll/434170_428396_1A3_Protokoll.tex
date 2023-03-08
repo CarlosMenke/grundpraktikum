@@ -571,14 +571,14 @@ Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statis
 
  \begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{X X X} % adjust width as needed
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
             \toprule
-            \textbf{Metall Stange} & \textbf{Erwartungs Wert} & \textbf{Standardabweichung} \\
+            \textbf{Metall Stange} & \textbf{Erwartungswert der Frequenz} & \textbf{stat. Fehler auf die Frequenz} & \textbf{syst. Fehler auf die Frequenz} \\
             \midrule
-            Stahl 15 & 1726.53Hz & $\pm$0.094Hz \\
-            Aluminium & 1673.66Hz & $\pm$0.08Hz \\
-            Messing & 1166.40Hz & $\pm$0.052Hz \\
-            Kupfer & 1288.22Hz & $\pm$0.10Hz \\
+            Stahl 15 & 1726.53Hz & $\pm$0.094Hz & $\pm$0.2Hz\\
+            Aluminium & 1673.66Hz & $\pm$0.08Hz & $\pm$0.2Hz \\
+            Messing & 1166.40Hz & $\pm$0.052Hz & $\pm$0.2Hz \\
+            Kupfer & 1288.22Hz & $\pm$0.10Hz & $\pm$0.2Hz \\
 
             \bottomrule
         \end{tabularx}
@@ -635,6 +635,7 @@ die eingehenden Einzelfehler sind, ist die lineare Fehlerfortplanzung: \\
 	\left|\frac{\partial y}{\partial x_3}\Delta x_3\right|
 \end{equation}\\
 
+Hier gehen wir ebenfalls davon aus, dass die verschiedenen Größen unkorreliert sind. 
 
 Als Zwischenergebnis berechnen wir zuerst die Dichte. Hierführ berechnen wir den
 Erwartungswert der Dichte indem wir die Mittlewerte der Benötigten größen Verwenden. 
@@ -676,13 +677,20 @@ Hierraus ergeben sich folgende Erwartungswerte und Fehler auf die Dichte.
         \label{tab:mytable}
     \end{table}
 
+Dieser Tabelle können Sie entnehmen, dass der statistische und der Systematischen Fehler auf die Dichte in der gleichen Größenordnung liegen. 
+
+
 Mit der Dichte können wir nurn auch das Elastizitätsmodul bestimmen. Dies wird mit der folgenden Formel berechnet. 
 
     \begin{equation}
          E = (2fL)^2 \rho
     \end{equation}
     
-Hier müssen die Systematischen und die Statistischen Fehler ebenfalls getrennt fortgeplanzt werden. Hierführ haben wir das selbe vorgehen wie bei der Dichte gewählt. Wir können also die Selben Formeln (14) (15) verwenden. Wobei dieses mal für die Funktion y die Formel für das Elastizitätsmodul verwendet wird. Die Berechnung haben wir ebenfalls mit dem Pythonprogramm durchgeführt. Die daraus folgenden Ergebnisse können sie der Untenstehenden Tabelle entnehmen. 
+Hier müssen die Systematischen und die Statistischen Fehler ebenfalls getrennt fortgeplanzt werden. Wobei hier ebenfalls gilt, dass die einzelnen Messgrößen 
+unkorreliert sind. Hierführ haben wir das selbe vorgehen wie bei der Dichte gewählt.
+Wir können also die Selben Formeln (14) (15) verwenden. 
+Wobei dieses mal für die Funktion y die Formel für das Elastizitätsmodul verwendet wird. Die Berechnung haben wir ebenfalls mit dem Pythonprogramm durchgeführt. 
+Die daraus folgenden Ergebnisse können sie der Untenstehenden Tabelle entnehmen. 
 
  \begin{table}[H]
         \centering
@@ -699,8 +707,41 @@ Hier müssen die Systematischen und die Statistischen Fehler ebenfalls getrennt 
         \label{tab:mytable}
     \end{table}
 
+Zur übersichtlichen Diskussion der Fehler und deren Beitrag zu dem Entgültigen Ergebniss fügen wir hier erneut die Tabelle zu der dichte und der Frequenz ein um hier zu vergleichen welcher Fehler den größten Einfluss hatte. 
+
+ \begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Erwartungswert der Frequenz} & \textbf{stat. Fehler auf die Frequenz} & \textbf{syst. Fehler auf die Frequenz} \\
+            \midrule
+            Stahl 15 & 1726.53Hz & $\pm$0.094Hz & $\pm$0.2Hz\\
+            Aluminium & 1673.66Hz & $\pm$0.08Hz & $\pm$0.2Hz \\
+            Messing & 1166.40Hz & $\pm$0.052Hz & $\pm$0.2Hz \\
+            Kupfer & 1288.22Hz & $\pm$0.10Hz & $\pm$0.2Hz \\
+
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+    
+ \begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Metall Stange} & \textbf{Erwartungs Wert Dichte [$\frac{kg}{m^3•}$]} & \textbf{stat. Fehler auf die Dichte [$\frac{kg}{m^3•}$]} & \textbf{syst. Fehler auf Dichte [$\frac{kg}{m^3•}$]}\\
+            \midrule
+            Stahl 15 & 7824.53 & $\pm$1.94 & $\pm$4.23 \\
+            Aluminium & 2691.21 & $\pm$0.95 & $\pm$2.62 \\
+            Messing & 8434.25 & $\pm$4.30 & $\pm$4.38 \\
+            Kuper & 8901.94 & $\pm$1.49 & $\pm$4.49\\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
 
 \end{aufgabe}
+
 
 %TODO : Argumentation warum die Fehler unkoreliert sind
 %TODO : Elastizitätsmodul berechnen

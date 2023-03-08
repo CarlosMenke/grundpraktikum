@@ -501,10 +501,7 @@ Zum Abschätzen betrachten wir die größte Abweichung einer Einzelnen Fehler Me
 Da der Erwartungswert bei $1288.22 Hz$ liegt, hat die Messung 6 die Größte Abweichung von $0.22 Hz$.
 
 Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
-
-%TODO : Systematischer Fehler auf Frequenz bestimmen
-
-Tabelle der Systematischen Fehler auf einzelne Messgrößen: 
+ 
 
 \begin{table}[H]
     \centering
@@ -519,6 +516,7 @@ Tabelle der Systematischen Fehler auf einzelne Messgrößen:
         & $\pm$0.22Hz (Einspannung) \\
         \bottomrule
     \end{tabularx}
+    \caption{Tabelle mit Systematischen Fehlern auf einzelne Messgrößen}
     \label{tab:mytable}
 \end{table}
 
@@ -537,8 +535,10 @@ Da der Digitalisierungsfehler auf die Frequenz einen deutlich kleineren Einfluss
   \hfill
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_frequenzen_stat_err_Kupfer.pdf}}
 \end{figure}
- 
-Aus den oben angeführten Frequenz haben wir dann mit Hilfe eines Python Programm (Mat1Mat2Statistik) das Arithmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\mu$ im allgemeinen der Mittelwert ist, $s^2$ die Varianz und $\sigma_i$ der Fehler auf die Größe ist.
+
+\subsubsection{statistische Fehler} 
+
+Aus den oben angeführten Frequenz haben wir dann mit Hilfe eines Python Programm (Mat1Mat2Statistik) das Arithmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\pmb{\mu}$ im allgemeinen der Mittelwert ist, $\mathbf{s^2}$ die Varianz und $\pmb{\sigma_i}$ der Fehler auf die Größe ist.
 
 \begin{equation}
 	\mu = \frac{1}{n}\sum_{i=1}^nx_i
@@ -565,9 +565,9 @@ Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statis
             Aluminium & 1673.66Hz & $\pm$0.08Hz & $\pm$0.2Hz \\
             Messing & 1166.40Hz & $\pm$0.052Hz & $\pm$0.2Hz \\
             Kupfer & 1288.22Hz & $\pm$0.10Hz & $\pm$0.2Hz \\
-
             \bottomrule
         \end{tabularx}
+        \caption{Fehler auf die Frequenz der Stangen}
         \label{tab:mytable}
     \end{table}
     
@@ -580,7 +580,7 @@ Daraus ergibt sich:\\
 
  \begin{table}[H]
         \centering
-        \begin{tabularx}{1.0\textwidth}{X c c} % adjust width as needed
+        \begin{tabularx}{1.0\textwidth}{X X X} % adjust width as needed
             \toprule
             \textbf{Metall Stange} & \textbf{Erwartungswert auf den Durchmesser} & \textbf{stat. Fehler auf Durchmesser} \\
             \midrule
@@ -590,11 +590,12 @@ Daraus ergibt sich:\\
             Kupfer & 11.981mm & $\pm$0.001mm \\
             \bottomrule
         \end{tabularx}
+        \caption{Fehler auf den Durchmesser der Stangen}
         \label{tab:mytable}
     \end{table}
 
 Somit haben wir den Messfehler auf alle Größen bestimmt und können damit das Elastizitätsmodule berechnen. Hierbei müssen die Statistischen und die Systematischen Fehler getrennt fortgepflanzt werden.
-
+\subsubsection{Fehlerfortplanzung}
 Für die Fehlerfortpflanzung der Statistischen Fehler gilt: (hier wird die Gaußsche Fehlerfortpflanzung verwendet) 
 
 \begin{equation}
@@ -646,6 +647,8 @@ Diese Fehler können sie der Tabelle XYZ entnehmen.
 Dies Gleichung haben wir ebenfalls mit einem Python Skript (...)
 ausgewertet.
 
+\subsection{Berechnung der Dichte und Diskussiond des Ergebniss}
+
 Hieraus ergeben sich folgende Erwartungswert und Fehler auf die Dichte. 
 
 
@@ -662,8 +665,10 @@ Hieraus ergeben sich folgende Erwartungswert und Fehler auf die Dichte.
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
+        \caption{Ergebnis für die Dichte mit Fehler}
     \end{table}
 
+\subsubsection{Diskussion des Fehlers auf die Dichte}
 Dieser Tabelle können Sie entnehmen, dass der statistische und der Systematischen Fehler auf die Dichte in der gleichen Größenordnung liegen. 
 
 Um zu veranschaulichen welche Größen, den Größten Einfluss auf dieses Zwischenergebnis haben, hier noch ein mal eine Tabelle mit den Systematischen 
@@ -686,6 +691,7 @@ und Statistischen Fehlern auf die Einzelgrößen.
            
             \bottomrule
         \end{tabularx}
+        \caption{Sämtlich Fehler die in die Dichte eingeflossen sind}
         \label{tab:mytable}
     \end{table}
 
@@ -709,6 +715,7 @@ Im gesamten können wir also sagen, dass die Systematischen Fehler auf M L und D
 Fehler auf die Dichte in Endeffekt dominiert haben. Wobei der Systematische Fehler auf
 die Länge den größten Einfluss hatte.  
 
+\subsection{Berechnung des Elastizitätsmoduls und Diskussion des Ergebnis}
 Mit der Dichte können wir nun auch das Elastizitätsmodule bestimmen. Dies wird mit der folgenden Formel berechnet. 
 
     \begin{equation}
@@ -736,8 +743,10 @@ Die daraus folgenden Ergebnisse können sie der Unten stehenden Tabelle entnehme
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
+        \caption{Ergebnisse für das E-Modul mit Fehler}
     \end{table}
 
+\subsubsection{Diskussion des Fehlers auf das E-Modul}
 Zur übersichtlichen Diskussion der Fehler und deren Beitrag zu dem Endgültigen Ergebnis stellen wir Systematische und Statistische Fehler tabellarisch gegenüber.
 Hierbei ist f die Frequenz und $\rho$ die Dichte.
 
@@ -759,7 +768,9 @@ Hierbei ist f die Frequenz und $\rho$ die Dichte.
             stat. Fehler von L      & $\pm$0m     & $\pm$0m     & $\pm$0m     & $\pm$0m \\
             \bottomrule
         \end{tabularx}
+        \caption{Sämtliche Fehler die einfluss auf das E-Modul hatten}
     \end{table}
+    
 Wie zu sehen ist, ist der systematische Fehler auf die Frequenz deutlich größer als der statistische.
 Eine Mögliche Ursache dafür ist, das wir bei der Fehlerabschätzung für den statistischen Fehler bezüglich der Einspannposition eine sehr konservative Abschätzung gemacht haben,
 da wir den Wert mit der größten Abweichung vom Erwartungswert genommen haben.
@@ -785,8 +796,8 @@ Das E-Modul hat eine relative Abweichung von ca. 3\% beim Systematischen Fehler 
 Das bedeutet das die Systematischen Messfehler deutlich überwiegen.
  
 Der Statistische Messfehler auf das E-Modul wurde am stärksten von der Längenmessung beeinflusst, da diese den größten Einfluss auf den systematischen Fehler der Dichte hatte. \\
- 
-\textbf{Vergleich mit der Literatur} \\
+\subsection{Vergleich mit der Literatur} 
+
 Für die Kupferstange haben wir mit Hilfe der Datenbank (matweb.com) herausgefunden, das es 4 Kupfer Legierungen gibt (z.B Copper Alloy, UNS C64760, H06 Temper, Flat Products), welche ein in etwa passendes E-Modul.
 Das E-Modul der Legierung ist 132$GPa$, welches innerhalb der Messgenauigkeit unseres Ergebnisse liegt.
 Jedoch stimmt hier die dichte von 8800$kg/m^3$ nicht mit unserem gemessenen Wert überein.
@@ -806,7 +817,7 @@ Am besten zutreffen auf unsere Werte würde das Material (Bohler-Uddeholm BÖHLE
 7.82$kg/m^3$. Hier stimmt vor allem die Dichte sehr gut mit unserer Berechnung überein.\\
  
 Für Messing sind die passenden Legierungen alle Copper-Beryllium Legierungen(z.B Materion Beryllium Copper Alloy 165 Forgings \& Extrusions).
-Diese haben exakt die passende Dichte und ein E-Modul von 131 $GPa$, welches innerhalb des systematischen Messfehlers liegt.
+Diese haben exakt die passende Dichte und ein E-Modul von 131 $GPa$, welches innerhalb des systematischen Messfehlers liegt.\\
  
 Im gesamten können wir sagen, dass man mithilfe der Eigenschaften die wir von den Materialien bestimmt haben das genaue Material auf eine kleine Menge von Möglichkeiten einschränken kann. 
 Es reicht jedoch nicht aus, um das genaue Material zu bestimmen. Hierfür müssten wir 
@@ -816,13 +827,11 @@ um das Material weiter ein zu schränken, da die Werte in der Datenbank meist ni
 
 
 
-%TODO : Diskussioon der Fehlerbeiträge, was dominiert den Gesamtfehler
+
 %TODO : Gesamtprotokoll auf Konsistenz überprüfen in Bezeichnung 
 %TODO : Verwendete Zeichen in Formeln etc. Erklärt
 %TODO : Statistische Fehler mit Sigma Systematische mit Delta
 %TODO : Konsistenz von Standardabweichung und Fehler bezeichnung
-%TODO : Tabellen und Bilder eindeutig benennen
-%TODO : Zwischenüberschriften 
 \end{document}
 
  

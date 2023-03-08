@@ -122,8 +122,6 @@ for i, j in zip(D, M):
         print("Dichte von Stahl15", f"{p:.2f}")
     rho.append(p)
 
-print(pd.DataFrame({"Material": material_name, "Dichte": rho}).transpose())
-
  # Fehlerfortplanzung des Statistischen Fehlers auf die Dichte 
 
 stat_rho = []
@@ -175,9 +173,6 @@ for i, j in zip(D, M):
     if i == S_mean:
         print("syst. Fehler auf Dichte von Stahl15", f"{delt_roh:.2f}")
         syst_rho.append(delt_roh)
-
-print("Systematischer Fehler auf Rho: ", syst_rho)
-
 
 # Erwartungswert und Standardabweichung von f
 
@@ -283,7 +278,6 @@ def plot_errorbar(x, y, yerr, plotname):
  
 # Errorbar Plot: systematischer fehler für Frequenz auf Alu, Messing, Kupfer, Stahl
 syst_err_f = max(abs(min(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean), abs(max(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean))
-print("Statistischer Fehler auf die Frequenzen vom Einspannen:", round(syst_err_f, 2))
 
 x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
 y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
@@ -297,6 +291,5 @@ def syst_err_E(f, L, rho, df, dL, drho):
  
 syst_f = syst_err_f * np.ones(4)
 syst_L = Le * np.ones(4)
-print(f, L, rho)
 syst_E = [syst_err_E(f_temp, L, rho_temp, df, dL, drho) for f_temp, rho_temp, df, dL, drho in zip(f, rho, syst_f, syst_L, syst_rho)]
-print(pd.DataFrame({"Material": material_name, "Systematischer Fehler auf E": syst_E}).transpose())
+print(pd.DataFrame({"Material": material_name, "Syst. Fehler auf L":syst_L, "Syst. Fehler auf f":syst_f, "Syst. Fehler auf Rho":syst_rho, "Systematischer Fehler auf E": syst_E}).round(4).transpose())

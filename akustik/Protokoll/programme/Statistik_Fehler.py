@@ -161,18 +161,15 @@ def lin_err(D, M, L, Dee, Me, Le):
 # systematischer Fehler auf Dichte berechnen
 for i, j in zip(D, M):
     delt_roh = np.sqrt(lin_err(i, j, L, Dee, Me, Le))
+    syst_rho.append(delt_roh)
     if i == Alu_mean:
         print("syst. Fehler auf Dichte von Aluminium:", f"{delt_roh:.2f}" )
-        syst_rho.append(delt_roh)
-    if i == M_mean:
+    elif i == M_mean:
         print("syst. Fehler auf Dichte von Messing", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
-    if i == K_mean:
+    elif i == K_mean:
         print("syst. Fehler auf Dichte von Kupfer", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
-    if i == S_mean:
+    elif i == S_mean:
         print("syst. Fehler auf Dichte von Stahl15", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
 
 # Erwartungswert und Standardabweichung von f
 
@@ -219,16 +216,8 @@ def E(f,L,rho):
     E = (2*L*f)**2*rho
     return E
 
-for i, k in zip(f, rho):
-    E_Modul = E(i, L, k)
-    if i == Alu_F_mean:
-        print("E-Modul von Aluminium:", f"{E_Modul:.2f}" )
-    elif i == Messing_F_mean:
-        print("E-Modul von Messing", f"{E_Modul:.2f}")
-    elif i == Kupfer_F_mean:
-        print("E-Modul von Kupfer", f"{E_Modul:.2f}")
-    elif i == Stahl_F_mean:
-        print("E-Modul von Stahl15", f"{E_Modul:.2f}")
+E = [E(i, L, k) for i, k in zip(f, rho)]
+print(pd.DataFrame({"Name": material_name, "E-Modul": E}).round(0).transpose())
  
 # statistischer Fehler auf E- Modul berechnen 
 
@@ -251,7 +240,7 @@ for i, j, k, q in zip(f, rho, stat_rho, stat_f):
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
 PLOTS_DIR = '../plots/434170_428396_1A3_'
  
-def plot_errorbar(x, y, yerr, plotname):
+def plot_f_errorbar(x, y, yerr, plotname):
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['axes.labelsize'] = 'medium'
@@ -280,7 +269,7 @@ x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Al
 y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
 y_err =  syst_err_f * np.ones(len(Alu_F) * 4)
 for i in range(0, 40, 10):
-    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])
+    plot_f_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])
 
 # Systematische Fehlerfortplanzung
 def syst_err_E(f, L, rho, df, dL, drho):

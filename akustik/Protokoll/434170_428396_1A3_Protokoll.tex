@@ -70,10 +70,7 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
         E = (f \lambda)^2 \rho = 4 f_0 L ^2 \rho
     \end{equation}
     \begin{equation}
-        E = f \lambda = \frac{ 4 f_0^2 L ^2 M}{\pi (\frac{d}{2}) ^2}
-    \end{equation}
-    \begin{equation}
-        E = f \lambda = \frac{ 16 f_0^2 L ^2 M}{\pi d ^2}
+        E = \frac{ 16 f_0^2 L M}{\pi D ^2}
     \end{equation}
 
      
@@ -498,21 +495,22 @@ Dann haben wir noch einmal die Rotation der Stange um zufällige Werte veränder
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{0.7\textwidth}{X c} % adjust width as needed
+    \begin{tabularx}{0.7\textwidth}{X l} % adjust width as needed
         \toprule
         \textbf{Test Messung bei Kupfer} & \textbf{Frequenz} \\
         \midrule
-            1 & 1288.184607 Hz \\
-            2 & 1288.255610 Hz \\
-            3 & 1288.401788 Hz \\
-            4 & 1288.406941 Hz \\
-            6 & 1287.998759 Hz \\
+            1 & 1288.18Hz \\
+            2 & 1288.26 Hz \\
+            3 & 1288.40Hz \\
+            4 & 1288.41 Hz \\
+            6 & 1288.00 Hz \\
         \bottomrule
     \end{tabularx}
     \label{tab:mytable}
 \end{table}
 
-Zum Abschätzen des Systematischen Fehlers betrachten wir die größte Abweichung einer Einzelnen Fehler Messung vom Erwartungswert, nehmen diese dann als Toleranz.
+Wir gehen davon aus, das der systematische Fehler symetrisch verteilt ist.
+Zum Abschätzen betrachten wir die größte Abweichung einer Einzelnen Fehler Messung vom Erwartungswert und nehmen diese dann als Toleranz.
 Da der Erwartungswert bei $1288.22 Hz$ liegt, hat die Messung 6 die Größte Abweichung von $0.22 Hz$.
 
 Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
@@ -667,7 +665,7 @@ Hierraus ergeben sich folgende Erwartungswerte und Fehler auf die Dichte.
         \centering
         \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
             \toprule
-            \textbf{Metall Stange} & \textbf{Erwartungs Wert Dichte [$\frac{kg}{m^3•}$]} & \textbf{stat. Fehler auf die Dichte [$\frac{kg}{m^3•}$]} & \textbf{syst. Fehler auf Dichte [$\frac{kg}{m^3•}$]}\\
+            \textbf{Metall Stange} & \textbf{Erwartungs Wert Dichte [$\frac{kg}{m^3•}$]} & \textbf{stat. Fehler auf die Dichte [$\frac{kg}{m^3•}$]} & \textbf{syst. Fehler auf die Dichte [$\frac{kg}{m^3•}$]}\\
             \midrule
             Stahl 15 & 7824.53 & $\pm$1.94 & $\pm$4.23 \\
             Aluminium & 2691.21 & $\pm$0.95 & $\pm$2.62 \\
@@ -741,50 +739,71 @@ Die daraus folgenden Ergebnisse können sie der Untenstehenden Tabelle entnehmen
         \centering
         \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
             \toprule
-            \textbf{Metall Stange} & \textbf{Erwartungs Wert E-Modul [$\frac{kg}{m^3•}$]} & \textbf{stat. Fehler auf E-Modul [$\frac{kg}{m^3•}$]} & \textbf{syst. Fehler auf E-Modul [$\frac{kg}{m^3•}$]}\\
+            \textbf{Metall Stange} & \textbf{Erwartungswert E-Modul [$GPa$]} & \textbf{stat. Fehler auf E-Modul [$GPa$]} & \textbf{syst. Fehler auf E-Modul [$GPa$]}\\
             \midrule
-            Stahl 15 & 67845845351.06 & $\pm$10384925.86 & $\pm$4.23 \\
-            Aluminium & 103272189029.60 & $\pm$19781966.71 & $\pm$2.62 \\
-            Messing & 132955183122.45 & $\pm$21957501.64 & $\pm$4.38 \\
-            Kuper & 209917209819.69 & $\pm$28795587.38 & $\pm$4.49\\
+            Stahl 15 & 209.92 & $\pm$0.29  & $\pm$6.11 \\
+            Aluminium & 67.85 & $\pm$0.104 & $\pm$2.28 \\
+            Messing & 103.27  & $\pm$0.198 & $\pm$3.24 \\
+            Kupfer & 132.96   & $\pm$0.22  & $\pm$4.05 \\
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
 
-Zur übersichtlichen Diskussion der Fehler und deren Beitrag zu dem Entgültigen Ergebniss fügen wir hier erneut die Tabelle zu der dichte und der Frequenz ein um hier zu vergleichen welcher Fehler den größten Einfluss hatte. 
+Zur übersichtlichen Diskussion der Fehler und deren Beitrag zu dem Entgültigen Ergebniss stellen wir Systematische und Statistische Fehler tabelarisch gegenüber.
+Hierbei ist f die Frequenz und $\rho$ die Dichte.
 
  \begin{table}[H]
         \centering
-        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \begin{tabularx}{1\textwidth}{l X X X X} % adjust width as needed
             \toprule
-            \textbf{Metall Stange} & \textbf{Erwartungswert der Frequenz} & \textbf{stat. Fehler auf die Frequenz} & \textbf{syst. Fehler auf die Frequenz} \\
+            %\textbf{Metall Stange} & \textbf{Erwartungswert der Frequenz} & \textbf{stat. Fehler auf die Frequenz} & \textbf{syst. Fehler auf die Frequenz} \\
+            \textbf{Metall Stange} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kupfer} & \textbf{Stahl 15} \\
             \midrule
-            Stahl 15 & 1726.53Hz & $\pm$0.094Hz & $\pm$0.2Hz\\
-            Aluminium & 1673.66Hz & $\pm$0.08Hz & $\pm$0.2Hz \\
-            Messing & 1166.40Hz & $\pm$0.052Hz & $\pm$0.2Hz \\
-            Kupfer & 1288.22Hz & $\pm$0.10Hz & $\pm$0.2Hz \\
-
+            Erwartungswert von f & 1673.66Hz & 1166.40Hz & 1288.22Hz & 1726.53Hz \\
+            stat. Fehler von f & $\pm$0.08Hz & $\pm$0.052Hz & $\pm$0.10Hz & $\pm$0.094Hz \\
+            syst. Fehler von f & $\pm$0.2Hz & $\pm$0.2Hz & $\pm$0.2Hz & $\pm$0.2Hz \\
+            \midrule
+            stat. Fehler von $\rho$ & $\pm$0.95$kg/m^3$ & $\pm$4.30$kg/m^3$ & $\pm$1.49$kg/m^3$ & $\pm$1.94$kg/m^3$ \\
+            syst. Fehler von $\rho$ & $\pm$2.62$kg/m^3$ & $\pm$4.38$kg/m^3$ & $\pm$4.49$kg/m^3$ & $\pm$4.23$kg/m^3$ \\
+            \midrule
+            syst. Fehler von L      & $\pm$0.00007m     & $\pm$0.00007m     & $\pm$0.00007m     & $\pm$0.00007m \\
+            stat. Fehler von L      & $\pm$0m     & $\pm$0m     & $\pm$0m     & $\pm$0m \\
             \bottomrule
         \end{tabularx}
-        \label{tab:mytable}
     \end{table}
-    
- \begin{table}[H]
-        \centering
-        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
-            \toprule
-            \textbf{Metall Stange} & \textbf{Erwartungs Wert Dichte [$\frac{kg}{m^3•}$]} & \textbf{stat. Fehler auf die Dichte [$\frac{kg}{m^3•}$]} & \textbf{syst. Fehler auf Dichte [$\frac{kg}{m^3•}$]}\\
-            \midrule
-            Stahl 15 & 7824.53 & $\pm$1.94 & $\pm$4.23 \\
-            Aluminium & 2691.21 & $\pm$0.95 & $\pm$2.62 \\
-            Messing & 8434.25 & $\pm$4.30 & $\pm$4.38 \\
-            Kuper & 8901.94 & $\pm$1.49 & $\pm$4.49\\
-            \bottomrule
-        \end{tabularx}
-        \label{tab:mytable}
-    \end{table}
+Wie zu sehen ist, ist der systematische Fehler auf die Freqenz deutlich größer als der statistische.
+Eine Mögliche Ursache dafür ist, das wir bei der Fehlerabschätzung für den statistischen Fehler bezüglich der Einspannposition eine sehr konservative Abschätzung gemacht haben,
+da wir den Wert mit der größten Abweichung vom Erwartungswert genommen haben.
 
+Dies bedeutet das der größte Einfluss auf den Fehler der von der Frequenz stammt, aufgrund der Einspannung ist.
+Da wir bei der Druchführung der Messreihe die Einspannposition nicht verändert haben, ist der statistische Messfehler davon unbeeinflusst.
+
+Bezüglich der Dichte sind Statistischer und Systematischer Fehler ca. gleich groß. \\
+ 
+Zur veranschaulichung, ob der systematische Fehler der Dichte oder der Frequenz den größten Einfluss auf das Elastizitätsmodul hat, haben wir von beiden Fehlerquellen getrennt die relative Abweichung berechnet.
+Beispielhaft für Aluminium:
+$ \rho_{Aluminium} = 9.8 \quad 10^{-4} $ und $ f_{Aluminium} = 1.2 \quad 10^{-4} $
+Die relative Abweichung der Dichte ist größer als die der Frequenz. Dies ist auch bei allen anderen Stäben der Fall.
+
+Die systematische Fehler der Längenmessung ist sehr klein gegenüber den anderen Fehlern.
+
+Da in der Tabelle alle Werte in SI Einheiten dargestellt sind, kann man direkt ablesen,
+das bei der Fehlerfortpflanzung auf das E-Modul die Dichte den größten Einfluss hat. 
+Das bedeutet das sowohl der Systematischer wie der statistische Fehler am stärksten von der Dichte beeinfllusst wurden.
+Das heißt, das für den Statistischen Messfehler der größte Einfluss auf das E-Modul von dem Messen des Durchmessers der Stäbe mit der Millimeter Schraube kommt.
+Der Statistische Messfehler auf das E-Modul wurde am stärksten von der Längenmessung beeinflusst, da diese den größten Einfluss auf den systematischen Fehler der Dichte hatte. \\
+ 
+\textbf{Vergleich mit der Literatur} \\
+Für die Kupferstange haben wir mit hilfe der Datenbank (matweb.com) herausgefunden, das es 4 Kupfer Legierungen gibt (z.B Copper Alloy, UNS C64760, H06 Temper, Flat Products), welche ein in etwa passendes E-Modul.
+Das E-Modul der Legierung ist 132$GPa$, welches innerhalb der Messungenauigkeit unseres ergebnises liegt.
+Jedoch stimmt hier die dichte von 8800$kg/m^3$ nicht mit unserem gemessenen Wert überein.
+ 
+Für das Material (Oxygen-free high conductivity Copper, Hard, UNS C10200) passen sowohl die Dichte (8900$kg/m^3$) als auch das E-Modul (117-132 $GPa$) mit unseren gemessenen Werten im Ramen der Unsicherheit überein.
+ 
+Bei Aluminium gab es sehr viele treffer (z.B Aluminum 6463-T6). Diese haben alle ein E-Modul von 68.9 - 70.0 $GPa$.
+ 
+ 
 \end{aufgabe}
 
 %TODO : E-Modul in Plot

@@ -3,6 +3,7 @@ import pandas as pd
 import os
 from praktikum import cassy, analyse
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 ### Durchmesser der Stangen
 Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
@@ -176,35 +177,44 @@ global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passen
 PLOTS_DIR = '../plots/434170_428396_1A3_'
  
 def plot_errorbar(x, y, yerr, plotname):
-    plt.figure()
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.linewidth'] = 0.75
+    plt.rcParams['lines.linewidth'] = 0.5
+     
+    fig, ax = plt.subplots()
     x = np.array(x)
     y = np.array(y)
     #TODO make fontsize smaller
     # TODO dots smaller
     # TODO achsenbeschriftung y aachse apsolute werte.
     yerr = np.array(yerr)
-    plt.errorbar(x, y, yerr=yerr, fmt='.')
-    plt.xlabel("Category")
+    plt.errorbar(x, y, yerr=yerr, fmt='.', markersize=5, capsize=2, capthick=0.8, elinewidth=1.5)
     plt.ylabel("f / Hz")
-    plt.title("Frequenzen der Messungen mit Fehlerbalken")
+    plt.autoscale()
+    formatter = ticker.ScalarFormatter(useOffset=False)
+    ax.yaxis.set_major_formatter(formatter)
+    plt.title(x[0] + " mit stat. Fehler " + str(yerr[0]) + " Hz")
+    ax.yaxis.set_label_coords(-0.1, 1.09)
     plt.grid()
     plt.savefig(PLOTS_DIR + plotname + ".pdf")
 
  
-A_err = 0.003 
-M_err = 0.003
-K_err = 0.003
-S_err = 0.003
+# systematischer fehler auf Alu, Messing, Kupfer, Stahl
+A_err = 0.03 
+M_err = 0.03
+K_err = 0.03
+S_err = 0.03
 
 x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
 y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
-y_err =  np.concatenate((Alu_err * np.ones(len(Alu_F)), M_err * np.ones(len(Alu_F)), K_err * np.ones(len(Alu_F)), S_err * np.ones(len(Alu_F))))
+y_err =  np.concatenate((A_err * np.ones(len(Alu_F)), M_err * np.ones(len(Alu_F)), K_err * np.ones(len(Alu_F)), S_err * np.ones(len(Alu_F))))
+print(y_err)
 for i in range(0, 40, 10):
-    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], x[i])
+    plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])
  
-print(get_all_peaks("Messing"))
-print(get_all_peaks("Kupfer_Messung"))
-
+# Erwartungswert und Standardabweichung
 nachkommer_stellen = 3
 
 f = []

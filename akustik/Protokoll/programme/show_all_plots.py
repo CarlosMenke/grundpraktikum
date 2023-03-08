@@ -160,8 +160,8 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = T
     plt.savefig(PLOTS_DIR + plotname + "_fft.pdf")
      
 cassy_dir = "../../Messungen/"
-plots = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01", "Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Kupfer_Einsp_Fehler_05", "Alu_Messung_07"]
-fft_plots_without_peak = [ "Alu_Messung_01", "Alu_Messung_09", "Kupfer_Messung_02", "Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
+plots = [ "Alu_Messung_01", "Alu_Messung_08", "Kupfer_Messung_02", "Kupfer_Messung_09", "_Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01", "Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Kupfer_Einsp_Fehler_05", "Alu_Messung_07"]
+fft_plots_without_peak = [ "Alu_Messung_01", "Alu_Messung_08", "Kupfer_Messung_02", "Kupfer_Messung_09", "_Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
 fft_plots = ["Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Kupfer_Einsp_Fehler_05", "Alu_Messung_07"]
 global start_values # wenn der Messwert in diesem Dictionary steht, wird der Startwert für die Plots gesetzt welcher nicht 0 ist
 start_values = {"Kupfer_Einsp_Fehler_01": 5000,

@@ -243,16 +243,24 @@ for i, k in zip(f, rho):
         print("E-Modul von Stahl15", f"{E_Modul:.2f}")
         rho.append(p) 
  
+# statistischer Fehler auf E- Modul berechnen 
+
 def sigma_E(f, L, rho, re, fe):
-    s = 8*L**2*f*rho
+    s = (8*L**2*f*rho)**2*(fe)**2  + ((2*L*f**2))**2*(re)**2
     return s
  
-Alu_F_mean = np.mean(Alu_F)
-A_F_sigma = np.std(Alu_F,ddof=1)
-A_err = A_F_sigma/np.sqrt(len(Alu_F))
-
-print("Aluminium:", Alu_F_mean)
-print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
+for i, j, k, q in zip(f, rho, stat_rho, stat_f):
+    err_E = np.sqrt(sigma_E(i, L, j, k, q))
+    if i == Alu_F_mean:
+        print("stat. Fehler E-Modul von Aluminium:", f"{err_E:.2f}" )
+    if i == Messing_F_mean:
+        print("stat.Fehler E-Modul von Messing", f"{err_E:.2f}")
+    if i == Kupfer_F_mean:
+        print("stat. Fehler E-Modul von Kupfer", f"{err_E:.2f}")
+        rho.append(p)
+    if i == Stahl_F_mean:
+        print("stat. Fehler E-Modul von Stahl15", f"{err_E:.2f}")
+        
  
 # Systematischer Messfehler auf Frequenz
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer

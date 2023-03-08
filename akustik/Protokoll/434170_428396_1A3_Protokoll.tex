@@ -20,7 +20,7 @@
 
 \begin{versuchsziele}
 Ziel des Versuches ist, das Elastizitätsmodule verschiedener Metallstäbe zu bestimmen.
-Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das Elastizitätsmodule in unserem Fall mit einer Dynamischen Messung bestimmt wird. Hierfür erzeugen wir stehende Wellen in den Metallstäben. So können wir mit der Frequenz und der Wellenlänge die Phasengeschwindigkeit und somit auch das Elastizitätsmodule bestimmen. 
+Eine statische Messung liefert nur für dünne Drähte auswertbare Ergebnisse weswegen das Elastizitätsmodule in unserem Fall mit einer Dynamischen Messung bestimmt wird. Hierfür erzeugen wir stehende Wellen in den Metallstäben. So können wir mit der Frequenz und der Wellenlänge die Phasengeschwindigkeit und somit auch das Elastizitätsmodule bestimmen. 
 \end{versuchsziele}
 
 \begin{aufgabe}{Grundlagen}
@@ -28,28 +28,28 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
   % Fbenötigten Formel(n), ohne Herleitung. Definition der verwendeten
   % Formelzeichen.
     Da wir keine Statische Messung des E-Moduls durchführen können, verwenden wir hier eine dynamische Messung.
-    Für diese brauchen wir Grundlagen aus der Akustik über stehende Wellen, als auch von Festkörpern.
+    Für diese brauchen wir Grundlagen aus der Akustik, als auch aus der Elastomechanik.
 
 
     Das E-Modul ist ein Maß für die Dehnbarkeit eines Materials. Es ist Definiert als: 
     \begin{equation}
         E = \frac{\frac{F}{A}}{\frac{\Delta L}{L}}
     \end{equation}
-    Es beschreibt wie sehr sich ein Material aus dehnt / komprimiert wenn ein Druck auf ihn ausgeübt wird.
+    Es beschreibt wie sehr sich ein Material ausdehnt bzw. komprimiert wenn ein Druck auf es ausgeübt wird.
     Es gilt allerdings nur im elastischen Bereich des Materials.\\
     
-    Wenn wir mit dem Hammer auf das Ende des Stabes schlagen, so entsteht eine Druckwelle in ihm.
-    Diese durchläuft den Stab. Am andren Ende des wird dieser ein kleines Stück ausgedehnt.
+    Wenn wir mit dem Hammer auf das Ende der Stange schlagen, so entsteht eine Druckwelle in ihr.
+    Diese durchläuft die Stange. Am anderen Ende wird diese ein kleines Stück ausgelenkt.
     Dieses sorgt dafür, das die Druckänderung an die Luft übertragen wird.
-    Da der Stab aber ein Elastizitätsmodule besitzt, gibt es eine Rückstellkraft die die Ausdehnung des Stabes wieder zurückführt.
-    Diese Druckschwankung durchläuft den Stab periodisch.
-    Dadurch entsteht eine Stehende Welle in dem Stab, welche über die Enden des Stabes Schallwellen an die Umgebung abgibt.
+    Da die Stange aber ein Elastizitätsmodule besitzt, wirkt eine Rückstellkraft auf diese Auslenkung.
+    Diese Druckschwankung durchläuft die Stange periodisch.
+    Dadurch entsteht eine Stehende Welle in der Stange, welche über die Enden der Stange Schallwellen an die Umgebung abgibt.
 
-    Wenn der Stab in Schwingung versetzt wird, bilden sich stehende Wellen in ihm aus.
+    Wenn der Stange in Schwingung versetzt wird, bilden sich stehende Wellen in ihr aus.
     Wir wollen hierbei die Frequenz der Grundschwingung bestimmen.
-    Da der Stab an beiden Enden ein festes Ende für die Wellen hat, muss für Resonanz der Grundschwingung die Wellenlänge: $\lambda = 2 L$. 
+    Da die Stange an beiden Enden ein festes Ende für die Wellen hat, muss die Grundschwingung die Wellenlänge $\lambda = 2 L$ haben. 
      
-    Daraus ergibt sich: \\
+    Daraus ergibt sich (mit f = Frequenz der Grundschwingung und L = Länge der Stange): \\
     
     \begin{equation}
         v = f \lambda = f 2 L
@@ -57,24 +57,24 @@ Eine statische Messung liefert nur für dünne Drähte Ergebnisse weswegen das E
 
     In Luft breitet sich Schall immer als Longitudinale Welle aus.
     In Festkörpern muss die Rückstellkraft des Materials nicht zwangsweise entgegen der Ausbreitungsrichtung zeigen, weshalb hier allgemein auch eine Transversale Komponenten vorliegen kann.
-    Die Metallstäbe können aber als homogen genug angenommen werden, weshalb wir hier von einer longitudinal Welle ausgehen können.
+    Die Metallstäbe können aber als homogen genug angenommen werden, weshalb wir hier von einer reinen longitudinal Welle ausgehen können.
     Aus der Wellengleichung ergibt sich:
     \begin{equation}
          v = \sqrt{\frac{E}{\rho}}
     \end{equation}
-Hierbei bezeichnet $\rho$ die Dichte des Materials, v die Phasengeschwindigkeit der 
-longitutionalen Welle und E das E-Modul. Die dichte ist gegeben als:
+Hierbei bezeichnet $\rho$ die Dichte des Materials v die Phasengeschwindigkeit der 
+longitutionalen Welle, M die Masse, D der Durchmesser und E das E-Modul der Stange. Die Dichte ist gegeben als:
 	\begin{equation}
-	\rho = \frac{M}{V} \quad  mit \quad V = \pi\left(\frac{D}{2}\right)^2*L
+	\rho = \frac{M}{V} \quad  mit \quad V = \pi\left(\frac{D}{2}\right)^2 L
 	\end{equation}
     \begin{equation}
          E = v ^2 \rho
     \end{equation}
     \begin{equation}
-        E = (f \lambda)^2 \rho = 4 f_0 L ^2 \rho
+        E = (f \lambda)^2 \rho = 4 f L ^2 \rho
     \end{equation}
     \begin{equation}
-        E = \frac{ 16 f_0^2 L M}{\pi D ^2}
+        E = \frac{ 16 f^2 L M}{\pi D ^2}
     \end{equation}
 
      
@@ -82,24 +82,21 @@ longitutionalen Welle und E das E-Modul. Die dichte ist gegeben als:
 
 \begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
 \subsection{Versuchsaufbau}
-  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden.
-    Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen können und analysieren.
-    Hierzu benötigen wir folgende Geräte.\\
-
-    Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in dem Stab erzeugt wurden.
+  Für die Bestimmung des E-Moduls messen wir die Schallwellen die mithilfe eines Gummihammers in der Stange erzeugt werden.
     Diese werden in ein Digitales Signal umgewandelt das wir mithilfe des Sensor CASSY darstellen und analysieren können.
-    Hierzu benötigen wir folgende Geräte.\\
+    Hierzu benötigen wir folgende Geräte.\\\\\\\\
+
 
 \textbf{Benötigte Geräte:}
 \begin{itemize}
 \item Sensor CASSY
 \item Universalmikrofon mit Stativstange
 \item Sockel
-\item Tisch klemme
+\item Tischklemme
 \item Metallstange (Länge: 20cm) (Stativstange für Kreuzmuffe)
 \item Kreuzmuffe
 \item Metallstift (Querschnitt: 4mm, Länge: 30mm)
-\item Gummi-Hammer
+\item Gummihammer
 \item Mikrometerschraube (Messbereich: 0-25mm, Genauigkeit: $\pm$ 0.01mm)
 \item Stahl-Bandmaß (Länge: 2m, Toleranz: $\pm$ 0.7mm)
 \item verschiedene Metallstangen (Kupfer, Messing, Stahl, Aluminium)
@@ -117,12 +114,15 @@ longitutionalen Welle und E das E-Modul. Die dichte ist gegeben als:
 Der Aufbau des Experiments kann der oben stehenden Skizze entnommen werden. \\
 
 
-Zunächst werden mit zwei Tisch klemmen Mikrofon und Metallstange an dem Tisch befestigt. Wobei die Stange mithilfe der Kreuzmuffe befestigt wird. In die Kreuzmuffe wird der Metallstift orthogonal zu der Stange hineingelegt, sodass diese beim mittigen einspannen nur an einem Punkt unterstützt wird. Die Stange also frei schwingen kann. 
+Zunächst werden mit zwei Tischklemmen Mikrofon und Metallstange an dem Tisch befestigt. Wobei die Stange mithilfe der Kreuzmuffe befestigt wird. In die Kreuzmuffe wird der Metallstift orthogonal zu der Stange hineingelegt, sodass diese beim mittigen einspannen nur an einem Punkt unterstützt wird. Die Stange also frei schwingen kann. 
 
-Das Universalmikrofon und die Metallstange werden auf eine Linie gebracht, mit 5mm Abstand. Sodass Das Mikrofon die Schallwellen gut aufzeichnen kann, aber nicht beschädigt wird, falls die Stange zu stark angeschlagen wird. Während der gesamten Durchführung muss darauf geachtet werden, dass die Position der beiden sich nicht gegeneinander verschieben. 
+Das Universalmikrofon und die Metallstange werden auf eine Linie gebracht, mit 5mm Abstand.
+So kann das Mikrofon die Schallwellen gut aufzeichnen, wird aber nicht beschädigt, falls die Stange zu stark angeschlagen wird.
+Während der gesamten Durchführung muss darauf geachtet werden, dass die Position sich nicht gegeneinander verschiebt. 
 
 
-Das Universalmikrofon wird in den Sensor CASSY eingesteckt, wobei das Gelbe Kabel(in der Skizze rot) in die Buxe für die Spannung, und das schwarze in die für die Erdung gesteckt wird. Das Mikrofon wird auf den Amplitudenmodus $\sim$ gestellt. Der Gummihammer wird verwendet um auf das, dem Mikrofon abgewandte, Ende der Metallstange zu schlagen. Damit werden die Metallstangen zum schwingen angeregt.
+Das Universalmikrofon wird an den Sensor CASSY angeschlossen, wobei das Gelbe Kabel (in der Skizze rot) in die Buxe für die Spannung, und das schwarze in die für die Erdung gesteckt wird.
+Das Mikrofon wird auf den Amplitudenmodus $\sim$ gestellt. Der Gummihammer wird verwendet um auf das, dem Mikrofon abgewandte, Ende der Metallstange zu schlagen. Damit werden die Metallstangen zum schwingen angeregt.
 
 \subsection{Durchführung}
 
@@ -138,10 +138,11 @@ Zunächst haben wir die Metallstangen kategorisiert nach dem Material aus welche
 \end{itemize}
 
 Von diesen haben wir dann jeweils, Länge, Masse und Durchmesser bestimmt. 
-Die Länge haben wir mit dem Bandmaß gemessen, wobei hier darauf geachtet wurde, dass das Bandmaß straff ist. Die Masse haben wir mit der Analyse wage bestimmt, indem wir die Stange mittig auf der Wage platziert haben. 
+Die Länge haben wir mit dem Bandmaß gemessen, wobei hier darauf geachtet wurde, dass das Bandmaß straff ist.
+Die Masse haben wir mit der Analysewaage bestimmt, indem wir die Stange mittig auf der Waage platziert haben. 
 
 
-Da wir bei der Stange annehmen, dass diese einen kreisförmigen Querschnitt hat, was nicht perfekt zutreffen wird, führen wir die Messung des Durchmessers mehrfach durch. Hierfür verwenden wir die Mikrometerschraube. Wir messen an verschiedenen Stellen, dabei rotieren wir die Stange beliebig bei jeder Messung um die längsachse. Dies wiederholen wir zehn mal. Sodass wir für jede Stange 10 Messwerte für den Durchmesser haben.\\ 
+Da wir bei der Stange annehmen, dass diese einen kreisförmigen Querschnitt hat, führen wir die Messung des Durchmessers mehrfach durch. Hierfür verwenden wir die Mikrometerschraube. Wir messen an verschiedenen Stellen, dabei rotieren wir die Stange beliebig bei jeder Messung um die Längsachse. Dies wiederholen wir zehn mal. Sodass wir für jede Stange 10 Messwerte für den Durchmesser haben.\\ 
 
 \begin{figure}[H]
   \centering
@@ -151,7 +152,10 @@ Da wir bei der Stange annehmen, dass diese einen kreisförmigen Querschnitt hat,
 \end{figure}
 
 Als nächstes bauen wir den Versuch auf. Hier gehen wir genau so vor wie in der vorherigen Beschreibung des Versuchsaufbaus. Als erstes haben wir die Kupferstange verwendet.
-Wobei wir zunächst die Tisch klemme platziert haben und die Stange mittig eingespannt. Hierfür haben wir von einem Ende der Stange aus, mit dem Maß-band die Mitte bestimmt. Dann haben wir das Mikrofon passend zu der Stange positioniert, und an den Tisch montiert. Hierbei haben wir noch beachtet, dass die Stange nicht zu fest eingespannt werden sollte, da dies Auswirkung auf die Frequenz hat. Außerdem haben wir überprüft, dass sie nur an einem Punkt aufliegt, sodass sie frei schwingen kann. Die Spitze des Mikrofons haben wir ungefähr 5mm entfernt vom Ende der Stange positioniert. Dies haben wir nach Augenmaß getan. 
+Wobei wir zunächst die Tischklemme platziert haben und die Stange mittig eingespannt. Hierfür haben wir von einem Ende der Stange aus, mit dem Maß-band die Mitte bestimmt. Dann haben wir das Mikrofon passend zu der Stange positioniert, und an den Tisch montiert.
+Zu beachten war, dass die Stange nicht zu fest eingespannt wird, da dies Auswirkung auf die Frequenz hat.
+Außerdem haben wir überprüft, dass sie nur an einem Punkt aufliegt, sodass sie frei schwingen kann.
+Die Spitze des Mikrofons haben wir nach Augenmaß 5mm vom Ende der Stange entfernt positioniert.
 
 \begin{figure}[H]
   \centering
@@ -160,7 +164,10 @@ Wobei wir zunächst die Tisch klemme platziert haben und die Stange mittig einge
   \centering
 \end{figure}
 
-Dann haben wir das Mikrofon wie im Aufbau beschrieben an das Sensor CASSY angeschlossen und in betrieb genommen. Zunächst haben wir uns überlegt, was sinnvolle Messparameter sind. Da die Schallgeschwindigkeit in Metallen im Bereich von mehrere 1000m/s liegt, muss das Messintervall im Bereich von 10-100$\mu$s sein. Somit haben wir erste Testmessung durchgeführt. Wobei wir diese mehrfach wiederholt haben, bis wir die Empfindlichkeit des Mikrofons so eingestellt hatten, dass wir den gesamten dynamischen Bereich des Mikrofons ausnutzen, und nicht in die Sättigung kommen. Dann konnten wir eine erste FFT mit CASSY durchführen, und mit peakfinder die Frequenz des schwingenden Kupferstanges ungefähr bestimmen. Mit diesen Informationen haben wir dann unsere Messparameter eingestellt.\\
+Dann haben wir das Mikrofon wie im Aufbau beschrieben an das Sensor CASSY angeschlossen und in betrieb genommen. Zunächst haben wir uns überlegt, was sinnvolle Messparameter sind. Da die Schallgeschwindigkeit in Metallen im Bereich von mehrere 1000m/s liegt, muss das Messintervall im Bereich von 10-100$\mu$s sein. Damit haben wir erste Testmessung durchgeführt.
+Wobei wir diese mehrfach wiederholt haben, bis wir die Empfindlichkeit des Mikrofons so eingestellt hatten, dass wir den gesamten dynamischen Bereich des Mikrofons ausnutzen, und nicht in die Sättigung kommen.
+Dann konnten wir eine erste FFT mit CASSY durchführen, und mit peakfinder die Frequenz des schwingenden Kupferstanges ungefähr bestimmen.
+Mit diesen Informationen haben wir dann unsere Messparameter eingestellt.\\
 
 \textbf{Messparameter:}
 \begin{itemize}
@@ -170,10 +177,12 @@ Dann haben wir das Mikrofon wie im Aufbau beschrieben an das Sensor CASSY angesc
 \item Spannungsbereich: -3V bis 3V (Da der dynamisch Bereich des Mikrofons 2.5V ist)
 \end{itemize}
 
-Wir haben für die Messung keinen Trigger verwendet, sondern die Messung manuell gestartet. 
+Wir haben für die Messung keinen Trigger verwendet, sondern die Messung manuell gestartet. \\
 
 
-Bei einer Messung hat einer aus unserer Gruppe mit dem Gummihammer den Kupferstange angeschlagen, während die andere Person kurz nach Anschlag die Messung gestartet hat, so dass, der Einschwingvorgang möglichst nicht mit aufgezeichnet wurde. Wir haben versucht den Stab immer möglichst gleich an zu schlagen, also gleiche Position und Kraft, damit die Messungen möglichst vergleichbar sind. Außerdem haben wir darauf geachtet, dass wir die Stange nur dann anschlagen, wenn niemand anders eine Stange des gleichen Materials anschlug.
+Bei einer Messung hat einer aus unserer Gruppe mit dem Gummihammer die Kupferstange angeschlagen, die andere Person hat kurz nach Anschlag die Messung gestartet, so dass, der Einschwingvorgang möglichst nicht mit aufgezeichnet wurde.
+Wir haben versucht die Stange immer möglichst gleich an zu schlagen, also gleiche Position und Kraft, damit die Messungen möglichst vergleichbar sind.
+Außerdem haben wir darauf geachtet, dass wir die Stange nur dann anschlagen, wenn niemand anders eine Stange des gleichen Materials anschlug.
 
 \begin{figure}[H]
   \centering
@@ -185,7 +194,7 @@ Bei einer Messung hat einer aus unserer Gruppe mit dem Gummihammer den Kupfersta
 
 
 
-Mit unseren eingestellten Messparametern haben wir dann eine erste vollständige Testmessung durchgeführt um zu überprüfen, ob alle Einstellungen gut passen. Aus dieser Messung haben wir erneut mit der FFT die Frequenz der Grundschwingung bestimmt. Mit dieser konnten wir eine erste Überschlagsrechnung für das E-Modul von Kupfer anstellen.
+Mit unseren eingestellten Messparametern haben wir dann eine erste vollständige Testmessung durchgeführt um zu überprüfen, ob alle Einstellungen passen. Aus dieser Messung haben wir erneut mit der FFT die Frequenz der Grundschwingung bestimmt. Mit dieser konnten wir eine erste Überschlagsrechnung für das E-Modul von Kupfer anstellen.
 Diese ist im Messprotokoll zu finden. Da der Wert in der erwarteten Größenordnung lag, haben wir die Messreihe mit diesem Aufbau gestartet. 
 
 
@@ -201,9 +210,9 @@ Diese haben wir als Messreihe für spätere Bestimmung des Fehlers gespeichert.\
   \centering
 \end{figure}
 
-Das selbe Vorgehen wie bei der Kupferstange haben wir auch bei den anderen Stangen durchgeführt. Wobei wir jedes mal zunächst eine Testmessung gemacht habe, um die Empfindlichkeit des Mikrofons für das Material spezifisch ein zu stellen, und zu sehen ob die gemessene Frequenz, und damit auch das E-Modul den Erwartungen entspricht. 
+Das selbe Vorgehen wie bei der Kupferstange haben wir auch bei den anderen Stangen durchgeführt. Wobei wir jedes mal zunächst eine Testmessung aufgenommen habe, um die Empfindlichkeit des Mikrofons für das Material spezifisch ein zu stellen, und zu sehen ob die gemessene Frequenz, und damit auch das E-Modul den Erwartungen entspricht. 
 
-Sämtliche gemessenen Daten haben wir gespeichert, sodass wir diese zur Auswertung verwenden können. einige Messungen mussten wir wiederholen, da wir die Stange nicht richtig angeschlagen hatten, oder sie sich beim Anschlag vom Mikrofon weg gedreht hat. Ach durch Störgeräusche anderer Stangen, oder lautes Reden wurden einige Messungen gestört weswegen wir sie erneut durchführten.\\
+Sämtliche gemessenen Daten haben wir gespeichert, sodass wir diese zur Auswertung verwenden können. Einige Messungen mussten wir wiederholen, da wir die Stange nicht richtig angeschlagen hatten, oder sie sich beim Anschlag vom Mikrofon weg gedreht hat. Auch durch Störgeräusche anderer Stangen, oder lautes Reden wurden einige Messungen gestört weswegen wir sie erneut durchführten.\\
 
 Nach Beendigung aller Messungen haben wir alles wieder abgebaut und an die dafür vorgesehenen Orte zurückgelegt. 
 
@@ -212,7 +221,7 @@ Nach Beendigung aller Messungen haben wir alles wieder abgebaut und an die dafü
 
 \begin{aufgabe}{Rohdaten}
 
-Der unten stehenden Tabelle können die Masse und die Länge der vermessenen Metallstangen entnehmen. \\
+Der unten stehenden Tabelle können die Masse und die Länge der vermessenen Metallstangen entnommen. \\
     \begin{table}[H]
         \centering
         \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
@@ -229,7 +238,7 @@ Der unten stehenden Tabelle können die Masse und die Länge der vermessenen Met
         \label{tab:mytable}
     \end{table}
 
-In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro Stange 10 mal durchgeführt. Gemessen wurde mit der Milimeterschraube an verschiedenen Positionen.\\
+In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro Stange 10 mal durchgeführt. Gemessen wurde mit der Mikrometerschraube an verschiedenen Positionen.\\
     \begin{table}[H]
         \centering
         \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed
@@ -248,11 +257,13 @@ In dieser Tabelle finden sie die Messung des Durchmessers. Diese haben wir pro S
             10.& 12.07mm & 11.98mm & 11.98mm & 12.01mm \\
             \bottomrule
         \end{tabularx}
-        \caption{10mal Messung der Durchmesser der Stäbe}
+        \caption{Messung der Durchmesser der Stangen}
         \label{tab:mytable}
     \end{table}
 
-Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen aufgenommen. Wobei wir für jeden Stab eine Reihe von 10 Messungen durchgeführt haben. Bei dem Kupferstange haben wir noch eine Messreihe aufgenommen, die wir später verwenden werden um den Systematischen Fehler aufgrund der Einspannung zu bestimmen. Zur Übersichtlichkeit und damit im Späteren Verlauf klar ist Welche Messreihe welche ist, hier noch eine Auflistung von diesen:\\
+Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen aufgenommen.
+Wobei wir für jede Stange eine Reihe von 10 Messungen durchgeführt haben. Bei dem Kupferstange haben wir noch eine Messreihe aufgenommen, die wir später verwenden werden um den Systematischen Fehler aufgrund der Einspannung zu bestimmen.
+Zur Übersichtlichkeit und damit im Späteren Verlauf klar ist welche Messreihe welche ist, hier noch eine Auflistung von diesen:\\
 
     \begin{table}[H]
         \centering
@@ -276,7 +287,7 @@ Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen auf
     Alle folgenden Plots wurden mit dem Programm programme/show\_all\_plots.py erstellt.
     Die FFT haben wir in den Plots bis 5000Hz dargestellt, da wir mit einer Auflösung von 100$\mu s$ gemessen haben und nach dem Nequist Theorem theoretisch in der Fourieranalyse Frequenzen bis 5000Hz auflöst werden können.
 \begin{figure}[H]
-    \caption{Exemplarische Messung für jedes Material und zugehörige Fouierspektren}
+    \caption{Exemplarische Messung für jedes Material und zugehörige Fourierspektren}
   \centering
   \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Messing_Messung_01_plot.pdf}}
   \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_01_plot.pdf}}
@@ -298,15 +309,15 @@ Im Verlauf der Durchführung des Versuches haben wir verschiedene Messreihen auf
 \end{figure}
 
 \begin{figure}[H]
-    \caption{Exemplarische Messung mit Störungen und zugehörigen Fouierspektren}
+    \caption{Exemplarische Messung mit Störungen und zugehörigen Fourierspektren}
   \centering
-    \subfloat[Sättigung vom Mikrophon am Anfang der Messung]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Messung_09_plot.pdf}}
-    \subfloat[Viele Störgeräusche]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_09_plot.pdf}}
+    \subfloat[Sättigung vom Mikrophon am Anfang der Messung]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3__Kupfer_Messung_09_plot.pdf}}
+    \subfloat[Viele Störgeräusche]{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_08_plot.pdf}}
 \end{figure}
 \begin{figure}[H]
   \centering
-    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Messung_09_fft.pdf}}
-    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_09_fft.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3__Kupfer_Messung_09_fft.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_08_fft.pdf}}
 \end{figure}
 
 Sämtlichen Rohdaten befinden sich im Ordner Messungen. Die Namen der Datei haben die 
@@ -333,16 +344,16 @@ Die Bilder befinden sich im Ordner Bilder als PDF abgespeichert.
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Alu_Messung_07_fft.pdf}}
 \end{figure}
  
-Oben können sie Exemplarischen den Graphen der Messung Alu\_ Messung \_ 07 ehen, bei der es viele Störgeräusche gab.
-Wenn wir uns nun jedoch das Frequenzspektrum anschauen, können wir diese Störgeräusche klar von der Frequenz des Stabes unterscheiden.
-Im Frequenzbereich des Stabes, sind keine störenden Geräusche, weswegen bei diesen Messdaten keine Daten punkte entfernt werden müssen zur Erhöhung der Genauheit.
+Oben können sie Exemplarischen den Graphen der Messung Alu\_ Messung \_ 07 sehen, bei der es viele Störgeräusche gab.
+Wenn wir uns nun jedoch das Frequenzspektrum anschauen, können wir diese Störgeräusche klar von der Frequenz der Stange unterscheiden.
+Im Frequenzbereich der Stange, sind keine störenden Geräusche, weswegen bei diesen Messdaten keine Datenpunkte entfernt werden müssen zur Erhöhung der Genauheit.
 Dies gilt auch für alle weiteren Messungen in welchen Störgeräusche vorhanden waren. 
 
-Bei einigen Messungen wurde der Stab anfangs zu stark angeschlagen, weswegen die Gemessene Amplitude anfangs im gesättigten Bereich liegt.
-Da dies die gemessene Grenzfrequenz beeinflussen kann  haben wir bei diesen Messungen die Daten bis zu dem Punkt, wo die Amplitude unter 2.5V ist, weg geschnitten.
-Dies verfälscht das Ergebnis nicht, da es nur ein kleines Intervall ist, und wir somit trotzdem Daten punkte von mehr als 2.5s Messung haben.
+Bei einigen Messungen wurde die Stange anfangs zu stark angeschlagen, weswegen die gemessene Amplitude anfangs im gesättigten Bereich lag.
+Da dies die gemessene Resonanzfrequenz beeinflussen kann  haben wir bei diesen Messungen die Daten bis zu dem Punkt, an welchem die Amplitude unter 2.5V gefallen ist, weg geschnitten.
+Dies verfälscht das Ergebnis nicht, da es nur ein kleines Intervall ist, und wir somit trotzdem Datenpunkte von mehr als 2.5s Messung haben.
 Dies ist ein ausreichend großes Intervall.\\
-In der Durchführung wurde bereits diskutiert, dass wir Messintervalle von 100$\mu$s verwenden können und damit eine ausreichende Abtastrate haben.
+In der Durchführung wurde bereits diskutiert, dass wir Messintervalle von 100$\mu s$ verwenden können und damit eine ausreichende Abtastrate haben.
 Somit werden auch in einem Intervall von 2.5s  genügend Messpunkte aufgenommen, um daraus die Frequenz ermitteln zu können.
 
 \begin{figure}[H]
@@ -361,21 +372,21 @@ Somit werden auch in einem Intervall von 2.5s  genügend Messpunkte aufgenommen,
   \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_Kupfer_Einsp_Fehler_01_fft.pdf}}
 \end{figure}
 
-Oben können sie einen Exemplarischen Graphen von unserer Messung: Kupfer\_Einsp\_Fehler\_01 sehen, in welchem man sehr gut sehen kann, dass anfangs die Amplitude im gesättigten Bereich war, und somit auch nichts über 2.5V aufgezeichnet wurde.
-In dieser Messung haben wir also 0.5s weggeschnitten damit der mögliche Effekt davon keinen Einfluss auf unser Ergebnis haben.
+Oben können sie einen Exemplarischen Graphen von unserer Messung: Kupfer\_Einsp\_Fehler\_01 sehen, in welchem man sehr gut sehen kann, dass anfangs die Amplitude im Gesättigten Bereich war, und somit auch nichts über 2.5V aufgezeichnet wurde.
+In dieser Messung haben wir also 0.5s weggeschnitten damit der mögliche Effekt davon keinen Einfluss auf unser Ergebnis hat.
 Sie können auch die FFT dieser Messung sehen, und den daraus berechneten Peak.
 Wobei wir bei der FFT nur dem Relevanten Bereich zwischen 0 und 2000 Hz dargestellt haben.
 An dem Wert des Peaks können Sie sehen, dass das Wegschneiden des Anfangs einen Einfluss hatte.
 Dieser tritt jedoch erst in der zweiten Nachkommastelle auf.
 Ist also ein geringer Einfluss.
 Wir wollen ihn jedoch der Genauheithalber nicht vernachlässigen.
-Und schneiden somit bei den Messdaten bei denen anfangs überteuert wurde einen Teil ab. \\
+Und schneiden somit bei den Messdaten, bei denen anfangs überteuert wurde, einen Teil ab. \\
 
 
-Eine genaue Auflistung von allen Daten bei denen wir den Anfang oder das Ende weggeschnitten haben, zur Bestimmung der Frequenz wird unten angegeben.
-Dieses hier ist nur eine Exemplarische Diskussion warum dies sinnvoll ist.
+Eine genaue Auflistung von allen Daten bei denen wir den Anfang der Daten weggeschnitten haben, zur Bestimmung der Frequenz, wird unten angegeben.
+Dieses hier ist nur eine Exemplarische Diskussion warum dies sinnvoll ist. \\
 
-Wir hatten bei unserer Messreihe 5. eine Messung (Kupfer\_einsp\_Fehler\_05) bei welcher auf Grund von Störgeräusche und anderen Messeinflüssen wir ein sehr unsauberes Frequenzspektrum nach der Fourieranalyse erhalten haben.
+Wir hatten bei unserer Messreihe 5. eine Messung (Kupfer\_einsp\_Fehler\_05), bei welcher auf Grund von Störgeräusche und anderen Messeinflüssen, ein sehr unsauberes Frequenzspektrum nach der Fourieranalyse erhalten haben.
 \begin{figure}[H]
   \centering
     \caption{Messung mit sehr starken Störungen auch über 1000 Hz}
@@ -393,7 +404,7 @@ Diese ist aber die einzige Messung, welche wir nicht berücksichtigt haben. \\
 \begin{itemize}
 \item Alu\_Messung\_8 bis 0.45s
 \item Kupfer\_Einsp\_Fehler\_1 bis 0.5s
-\item Kupfer\_Einsp\_Fehler\_5 ab 2s EVLT LOESCHEN
+\item Kupfer\_Einsp\_Fehler\_5 aus der Auswertung genommen
 \item Kupfer\_Messung\_3 bis 0.5s
 \item Kupfer\_Messung\_4 bis 0.5s
 \item Kupfer\_Messung\_6 bis 0.5s
@@ -412,7 +423,7 @@ Aus unseren Messreihen 1 bis 4 konten wir mithilfe einer FFT die wir mit Python 
 Hierfür haben wir das Lokale Maximum im Intervall 1000 bis 2000 Herz ermittelt, um Umgebungsrauschen nicht zu berücksichtigen.
 Da wir für Metalle erwarten, dass die Schwingungsfrequenz in diesem Bereich liegt, und eine Analyse der Rohdaten dieses auch für alle Messungen bestätigt hat, können wir dieses verlustfrei machen.
 So konnte auch sichergestellt werden, dass wir nicht die Peaks von Störgeräusche (Reden, Laufgeräusche, etc.) ermitteln.
-In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Messungen der Stangen dargestellt.
+In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzelnen Messungen der Stangen dargestellt (mit dem Programm Statistik\_Fehler).
 
 
  \begin{table}[H]
@@ -438,7 +449,7 @@ In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzel
 
 \subsection{Bestimmung der Fehler und Fehlerfortplanzung}
 
-Für die Auswertung der Daten und der Endgültigen Berechnung der Elastizitätsmodule, müssen wir die Fehler 
+Für die Auswertung der Daten und der endgültigen Berechnung der Elastizitätsmodule, müssen wir die Fehler 
 auf folgende Größen beachten. 
 Hier sind sowohl die Statistischen Fehler als auch die Systematischen Fehler relevant.\\
 
@@ -454,14 +465,14 @@ Hier sind sowohl die Statistischen Fehler als auch die Systematischen Fehler rel
 \subsubsection{Systematische Fehler}
 Die Systematischen Fehler müssen getrennt von den Statistischen Fehlern fortgepflanzt werden.
 Wir haben einen Systematischen Fehler auf alle unsere Messgrößen.
-Bei der Längenmessung rührt dies von der Genauigkeit des Bandmaß, das hängt von der Güteklasse des Bandmaßes ab.
+Bei der Längenmessung rührt dies von der Genauigkeit des Bandmaßes her.
 In unserem Fall haben wir die Güteklasse II.
-Bei der Analyse wage  hängt dieser auch von der Genauigkeit ab, so wie bei der Mikrometerschraube. 
+Bei der Analysewaage  hängt dieser auch von der Genauigkeit ab, so wie bei der Mikrometerschraube. 
  
 Diese Informationen werden vom Hersteller gegeben, und können im Datenblatt des Geräts nachgeschlagen werden. 
 
-Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des akustischen Signals. Hierfür ist die verwendete Spannungsintervallbreite und die Auflösung (12Bit) relevant. Daraus berechnet sich der Systematische Fehler folgendermaßen.\\
- Wobei $ \pmb{\Delta_{dig}} $ der Systematische Fehler auf die Frequenz auf Grund der digitalisierung ist, \textbf{I} die Spannungsintervallbreite (Da wir einen Bereich von -3V bis 3V gewählt haben) und \textbf{A} die Auflösung. Im Folgenden bezeichnen ein $\pmb{\Delta_i}$ immer einen Systematischen Fehler auf eine Messgröße und $ \pmb{\sigma_i}$ einen statistischen Fehler.\\ 
+Der Systematische Fehler der Frequenz kommt von der Digitalisierung des akustischen Signals. Hierfür ist die verwendete Spannungsintervallbreite und die Auflösung (12Bit) relevant. Daraus berechnet sich der Systematische Fehler. \\
+ Wobei $ \pmb{\Delta_{dig}} $ der Systematische Fehler auf die Frequenz auf Grund der Digitalisierung ist, \textbf{I} die Spannungsintervallbreite (Wir haben einen Bereich von -3V bis 3V gewählt) und \textbf{A} die Auflösung. Im Folgenden bezeichnen ein $\pmb{\Delta_i}$ immer einen Systematischen Fehler auf eine Messgröße und $ \pmb{\sigma_i}$ einen statistischen Fehler.\\ 
 \begin{equation}
          a = \frac{I}{A}
     \end{equation}
@@ -472,9 +483,9 @@ Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des ak
 
 Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch den Einfluss der Einspannposition.
 Dabei gehen wir davon aus, das der Systematische Fehler auf die Frequenz bei allen Stangen gleich ist.
-Deshalb haben wir zur Fehler Abschätzung nur eine Messreihe mit der Kupfer Stange durchgeführt.
-Dafür haben wir die Einspannposition um $\pm{0.5}{cm}$ verändert.
-Dann haben wir die Rotation der Stange um zufällige Werte verändert, und den Druck der Schraube (lose, mittel, fest) veränder.
+Deshalb haben wir zur Fehler abschätzung nur eine Messreihe mit der Kupfer Stange durchgeführt.
+Dafür haben wir die Einspannposition um $\pm{2cm}$ verändert.
+Dann haben wir die Rotation der Stange und den Druck der Schraube zufällig variiert.
  
 
 \begin{table}[H]
@@ -495,7 +506,7 @@ Dann haben wir die Rotation der Stange um zufällige Werte verändert, und den D
 \end{table}
 
 Wir gehen davon aus, das der systematische Fehler symmetrisch verteilt ist.
-Zum Abschätzen betrachten wir die größte Abweichung einer Einzelnen Fehler Messung vom Erwartungswert und nehmen diese dann als Toleranz.
+Zum abschätzen betrachten wir die größte Abweichung einer Einzelnen Fehler Messung vom Erwartungswert und nehmen diese dann als Toleranz.
 Da der Erwartungswert bei $1288.22 Hz$ liegt, hat die Messung 6 die Größte Abweichung von $0.22 Hz$.
 
 Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
@@ -505,7 +516,7 @@ Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
     \centering
     \begin{tabularx}{0.8\textwidth}{X l} % adjust width as needed
         \toprule
-        \textbf{Metall Stange} & \textbf{Masse} \\
+        \textbf{Messgröße} & \textbf{syst. Fehler} \\
         \midrule
         Masse & $\pm$0.2g \\
         Länge & $\pm$0.7mm\\
@@ -518,7 +529,7 @@ Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
     \label{tab:mytable}
 \end{table}
 
-Da der Digitalisierungsfehler auf die Frequenz einen deutlich kleineren Einfluss hat als der Einspannungsfehler, haben wir den Digitalisierungsfehler auf die Frequenz in der folgenden Fehlerbetrachtung vernachlässigt.
+Da der Digitalisierungsfehler auf die Frequenz einen deutlich kleineren Einfluss hat als der Einspannungsfehler haben, werden wir den Digitalisierungsfehler in der folgenden Fehlerbetrachtung vernachlässigt. \\
 Der Graph zeigt für jedes Material alle aus den Messdaten bestimmten Resonanzfrequenzen, mit unserem abgeschätzten systematischen Messfehler vom Einspannen.
 
 \begin{figure}[H]
@@ -537,7 +548,7 @@ Der Graph zeigt für jedes Material alle aus den Messdaten bestimmten Resonanzfr
 
 \subsubsection{statistische Fehler} 
 
-Aus den oben angeführten Frequenz haben wir dann mit Hilfe eines Python Programm (Mat1Mat2Statistik) das Arithmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\pmb{\mu}$ im allgemeinen der Mittelwert ist, $\mathbf{s^2}$ die Varianz und $\pmb{\sigma_i}$ der Fehler auf die Größe ist.
+Aus den oben angeführten Frequenz haben wir mit Hilfe des Python Programmes (Statistik\_Fehler) das Arithmetische mittel und daraus den Resultierenden statistischen Fehler berechnet. Hierfür haben wir folgende Beziehungen für Statistische Messunsicherheiten verwendet. Wobei $\pmb{\mu}$ im allgemeinen der Mittelwert ist, $\mathbf{s^2}$ die Varianz und $\pmb{\sigma_i}$ der Fehler auf die Größe ist ($\mathbf{x_i}$ sind die Datenpunkte und $\mathbf{n}$ die Anzahl der Messungen).
 
 \begin{equation}
 	\mu = \frac{1}{n}\sum_{i=1}^nx_i
@@ -551,7 +562,7 @@ Aus den oben angeführten Frequenz haben wir dann mit Hilfe eines Python Program
 	\sigma_f = \frac{s}{\sqrt{n}} 
 \end{equation}
 
-Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statistische Fehler.\\
+Für die verschiedenen Stangen ergeben sich folgende Mittelwerte und statistische Fehler.\\
 
 
  \begin{table}[H]
@@ -570,10 +581,10 @@ Für die verschiedenen Stangen ergaben sich dann Folgende Mittelwerte und statis
         \label{tab:mytable}
     \end{table}
     
-    % TODO: add python program name
-Als weiteren Statistischen Fehler haben wer den Fehler der bei der mehrfachen Messung des Durchmessers der Stangen auftritt.
-Wir haben diese mehrfach gemessen, um zu überprüfen ob unsere Annahme, dass die Stange einen 
-Kreisförmigen Querschnitt hat gerechtfertigt ist. Zur Bestimmung des Mittelwerts und Fehlers auf den Durchmesser 
+Beim mehrfachen messen des Durchmessers der Stäbe, trit ein weiterer statistischer Messfehler auf.
+Wir haben diesen mehrfach gemessen, um zu überprüfen ob unsere Annahme, dass die Stange einen 
+Kreisförmigen Querschnitt hat, gerechtfertigt ist.
+Zur Bestimmung des Mittelwerts und Fehlers auf den Durchmesser 
 haben wir ebenfalls das Pythonprogramm programme/Statistik\_Fehler.py benutzt. 
 Daraus ergibt sich:\\
 
@@ -600,12 +611,12 @@ Für die Fehlerfortpflanzung der Statistischen Fehler gilt: (hier wird die Gauß
 \begin{equation}
 	\sigma_y^2 = \sum_{i,j=1}^n\left[\frac{\partial y}{\partial x_i}\frac{\partial y}{\partial x_j}\right]_{x=\mu}V_{ij}^2
 \end{equation}
-$V_{ij}$ ist die Varianz zwischen denn Variablen. In unserem Fall sind die Variablen die Masse, Länge, Grenzfrequenz und Durchmesser. 
-Bei diesen können wir davon ausgehen, dass diese Größen unkorreliert sind. 
+$V_{ij}$ ist die Varianz zwischen denn Variablen. In unserem Fall sind die Variablen die Masse, Länge, Resonanzfrequenz und Durchmesser. 
+Bei diesen können wir davon ausgehen, dass sie unkorreliert sind. 
 Also unsere Längenmessung keinen Einfluss auf die Messung des Durchmessers und der Masse hatte.
 Das selbe gilt für die anderen Messgrößen. 
 Somit müssen wir den Mischterm auf Grund der Kovarianz nicht beachten da diese null ist.
-Somit vereinfacht sich die Gauß'sche Fehlerfortpflanzung zu:
+Die Gauß'sche Fehlerfortpflanzung vereinfacht sich zu:
 
 \begin{equation}
 	\sigma_y^2 = \sum_{i=1}^n\left[\frac{\partial y}{\partial x_i}\right]_{x=\mu}\sigma_{i}^2
@@ -622,11 +633,11 @@ die eingehenden Einzelfehler sind, ist die lineare Fehlerfortpflanzung: \\
 	\left|\frac{\partial y}{\partial x_3}\Delta x_3\right|
 \end{equation}\\
 
-Hier gehen wir ebenfalls davon aus, dass die verschiedenen Größen unkorreliert sind. 
+Hier gehen wir ebenfalls davon aus, dass die verschiedenen Größen unkorreliert sind.  \\
 
-Als Zwischenergebnis berechnen wir zuerst die Dichte. Hierfür berechnen wir den
+Als Zwischenergebnis berechnen wir die Dichte. Hierfür berechnen wir den
 Erwartungswert der Dichte indem wir die Mittelwerte der Benötigten Größen Verwenden. 
-Wir verwenden die Formel die in dem Abschnitt Grundlagen eingeführt werden. Die Rechnung haben wir mit Python durchgeführt. Diese können sie in der Datei ... nachlesen.\\
+Wir verwenden die Formel die in dem Abschnitt Grundlagen eingeführt werden. Die Rechnung haben wir mit Python durchgeführt (Statistik\_Fehler):
 
 \begin{equation}
     \text{Formel für die Dichte: }\qquad \rho = \frac{M}{V} = \frac{4M}{\pi D^2L}
@@ -640,13 +651,11 @@ Zusätzlich dazu haben wir noch systematische Fehler. Für unser spezifisches Pr
 	\left|\frac{-4M}{\pi D^2L^2}\Delta_L\right|
 \end{equation}\\
 
-Wobei Hier für M, L, D der Mittelwert bzw. der beste schätzwert für die Größen eingesetzt wird, abhängig 
+Wobei hier für M, L, D der Mittelwert bzw. der beste schätzwert für die Größen eingesetzt wird, abhängig 
 vom Material. Und $\Delta_i$ für die Systematischen Fehler auf die einzelnen Größen steht. 
-Diese Fehler können sie der Tabelle XYZ entnehmen. 
-Dies Gleichung haben wir ebenfalls mit einem Python Skript (...)
-ausgewertet.
+Diese Fehler können sie der Tabelle 5 entnehmen. 
 
-\subsection{Berechnung der Dichte und Diskussiond des Ergebniss}
+\subsection{Berechnung der Dichte und Diskussion des Ergebniss}
 
 Hieraus ergeben sich folgende Erwartungswert und Fehler auf die Dichte. 
 
@@ -670,7 +679,7 @@ Hieraus ergeben sich folgende Erwartungswert und Fehler auf die Dichte.
 \subsubsection{Diskussion des Fehlers auf die Dichte}
 Dieser Tabelle können Sie entnehmen, dass der statistische und der Systematischen Fehler auf die Dichte in der gleichen Größenordnung liegen. 
 
-Um zu veranschaulichen welche Größen, den Größten Einfluss auf dieses Zwischenergebnis haben, hier noch ein mal eine Tabelle mit den Systematischen 
+Um zu veranschaulichen welche Größen, den Größten Einfluss auf dieses Zwischenergebnis haben, hier eine Tabelle mit den Systematischen 
 und Statistischen Fehlern auf die Einzelgrößen. 
 
  \begin{table}[H]
@@ -695,18 +704,16 @@ und Statistischen Fehlern auf die Einzelgrößen.
     \end{table}
 
 In dieser Tabelle sind auch sämtliche eingegangenen Fehler bereits in SI Einheiten dargestellt. Somit kann auf den ersten Blick gesehen werden, welche Fehler den größeren 
-Einfluss haben. Wir können wir sehen, dass der gesamt systematische Fehler um 2 Größenordnungen größer ist als jener des statistischen Fehlers. Wenn wir nun exemplarisch den Fehler auf den Durchmesser von Aluminium anschauen.
+Einfluss haben. Hier können wir sehen, dass der gesamt systematische Fehler um 2 Größenordnungen größer ist als jener des statistischen Fehlers. Wenn wir nun exemplarisch den Fehler auf den Durchmesser von Aluminium anschauen.
  D = (12.057 $\pm$0.002 (stat), $\pm$0.01 (syst))mm 
- 
 Erkennen wir, dass die relative Abweichung aufgrund des statistischen 
 Fehlers nur 0.017\% entspricht. während die auf Grund des Systematischen Fehlers
 0.083\% entspricht. Somit hat der systematische Fehler des Durchmessers
-einen größeren Einfluss auf das Endergebnis. Wobei der Systematische Fehler auf Masse 
-Masse und Länge jeweils größer ist als jener auf den Durchmesser. 
+einen größeren Einfluss auf das Endergebnis. Wobei der Systematische Fehler auf Masse und Länge jeweils größer ist als jener auf den Durchmesser. 
 Hier darf aber nicht vergessen werden, dass wir den Systematischen Fehler linear fortgepflanzt haben was zu einer sehr konservativen Schätzung führt. Dies erhöht 
 natürlich den Einfluss der systematischen Fehler auf das Endergebnis. 
 
-Des weiteren kann man an der Tatsache, dass das statistische Fehler auf den Durchmesser 
+Des weiteren kann man an der Tatsache, dass der statistische Fehler auf den Durchmesser 
 signifikant kleiner ist als der Systematische erkennen, dass unser Annahme, 
 dass die Stangen zylinderförmig sind eine gerechtfertigte Annahme war. 
 
@@ -723,11 +730,10 @@ Mit der Dichte können wir nun auch das Elastizitätsmodule bestimmen. Dies wird
     
 Hier müssen die Systematischen und die Statistischen Fehler ebenfalls getrennt fortgepflanzt werden. Wobei hier ebenfalls gilt, dass die einzelnen Messgrößen 
 unkorreliert sind. Hierfür haben wir das selbe vorgehen wie bei der Dichte gewählt.
-Wir können also die Selben Formeln (14) (15) verwenden. 
-Wobei dieses mal für die Funktion y die Formel für das Elastizitätsmodule verwendet wird. Die Berechnung haben wir ebenfalls mit dem Pythonprogramm durchgeführt. 
-Die Rechnung haben wir mit ungerundeten Werten durchgeführt, damit Rundungsfehler nur einen kleinen Einfluss auf die Rechnung haben. 
-Dies Sollte auch dafür sorgen, dass das Ergebnis sich nicht verändert wenn wir Formel (18) oder Formel (6) verwenden.
-Die daraus folgenden Ergebnisse können sie der Unten stehenden Tabelle entnehmen mit dem relativen Fehler in Klammern.
+Wir können also die selben Formeln (14) (15) verwenden. 
+Wobei dieses mal für die Funktion y die Formel des Elastizitätsmodules verwendet wurde. Die Berechnung haben wir ebenfalls mit dem Pythonprogramm durchgeführt. 
+Die Rechnung haben wir mit ungerundeten Werten durchgeführt, damit Rundungsfehler nur einen kleinen Einfluss auf das Ergebnis haben. 
+Die daraus folgenden Ergebnisse können sie der unten stehenden Tabelle entnehmen mit dem relativen Fehler in Klammern.
 
  \begin{table}[H]
         \centering
@@ -747,7 +753,6 @@ Die daraus folgenden Ergebnisse können sie der Unten stehenden Tabelle entnehme
 
 \subsubsection{Diskussion des Fehlers auf das E-Modul}
 Zur übersichtlichen Diskussion der Fehler und deren Beitrag zu dem Endgültigen Ergebnis stellen wir Systematische und Statistische Fehler tabellarisch gegenüber.
-Hierbei ist f die Frequenz und $\rho$ die Dichte.
 
  \begin{table}[H]
         \centering
@@ -767,7 +772,7 @@ Hierbei ist f die Frequenz und $\rho$ die Dichte.
             stat. Fehler von L      & $\pm$0m     & $\pm$0m     & $\pm$0m     & $\pm$0m \\
             \bottomrule
         \end{tabularx}
-        \caption{Sämtliche Fehler die einfluss auf das E-Modul hatten}
+        \caption{Sämtliche Fehler die einfluss auf das E-Modul haben}
     \end{table}
     
 Wie zu sehen ist, ist der systematische Fehler auf die Frequenz deutlich größer als der statistische.
@@ -794,44 +799,38 @@ Das heißt, das für den Statistischen Messfehler der größte Einfluss auf das 
 Das E-Modul hat eine relative Abweichung von ca. 3\% beim Systematischen Fehler bzw. ca. 0.15\% für den Statistischen Messfehler.
 Das bedeutet das die Systematischen Messfehler deutlich überwiegen.
  
-Der Statistische Messfehler auf das E-Modul wurde am stärksten von der Längenmessung beeinflusst, da diese den größten Einfluss auf den systematischen Fehler der Dichte hatte. \\
+Der Systematischen Messfehler auf das E-Modul wurde am stärksten von der Längenmessung beeinflusst, da diese den größten Einfluss auf den systematischen Fehler der Dichte hat. \\
 \subsection{Vergleich mit der Literatur} 
 
-Für die Kupferstange haben wir mit Hilfe der Datenbank (matweb.com) herausgefunden, das es 4 Kupfer Legierungen gibt (z.B Copper Alloy, UNS C64760, H06 Temper, Flat Products), welche ein in etwa passendes E-Modul.
+Im folgenden Abschnitt werden die Ergebnisse mit den Werten in der Datenbank matweb.com verglichen.
+\subsubsection{Kufper} 
+Für die Kupferstange fanden wir, dass es 4 Kupfer Legierungen gibt (z.B Copper Alloy, UNS C64760, H06 Temper, Flat Products), welche ein in etwa passendes E-Modul haben.
 Das E-Modul der Legierung ist 132$GPa$, welches innerhalb der Messgenauigkeit unseres Ergebnisse liegt.
-Jedoch stimmt hier die dichte von 8800$kg/m^3$ nicht mit unserem gemessenen Wert überein.
+Jedoch stimmt hier die Dichte von 8800$kg/m^3$ nicht mit unserem gemessenen Wert überein.
  
-ür das Material (Oxygen-free high conductivity Copper, Hard, UNS C10200) passen sowohl die Dichte (8900$kg/m^3$) als auch das E-Modul (117-132 $GPa$) mit unseren gemessenen Werten im Rahmen der Unsicherheit überein. \\
+Für das Material (Oxygen-free high conductivity Copper, Hard, UNS C10200) passen sowohl die Dichte (8900$kg/m^3$) als auch das E-Modul (117-132 $GPa$) mit unseren gemessenen Werten im Rahmen der Unsicherheit überein. \\
  
-Bei Aluminium gab es sehr viele Treffer von Aluminium (z.B Aluminium 6463-T6).
+\subsubsection{Aluminium}
+Bei Aluminium gab es sehr viele Materialmöglichkeiten, die in unserm Ergebnisbereich lagne (z.B Aluminium 6463-T6).
 Diese haben alle ein E-Modul von 68.9 - 69.0 $GPa$, welches etwas über dem von uns bestimmten Wert liegt, aber innerhalb der Unsicherheiten.
-Die Dichte aus der Datenbank von Aluminium ist ca 2690$kg/m^3$ entspricht exakt unserem Wert. \\
+Die Dichte aus der Datenbank von Aluminium ist ca 2690$kg/m^3$ entspricht exakt unserem Wert.
  
- 
+\subsubsection{Stahl}
 Im Fall von Stahl ist der Vergleich mit Literatur Werten etwas schwieriger. 
 Die Datenbank listet viele Stahl Legierungen auf welche auf unsere Messungen zutreffen.
 Diese sind meist mit einem großen Intervall angegeben, in welchem das Elastizitätsmodule liegt.
 Somit könnte unsere Stahl Stange aus der Gruppe (Overview of materials for AISI 5000 Series Steel) von Stahl stammen. Diese haben einen Bereich des E-Moduls von 200-210 $GPa$ und eine Dichte von 7.80-7.85$kg/m^3$. Hier Liegt unser Stahl am oberen Ende des Intervalls des E-Moduls. Die Unterschiede liegen jedoch noch im Rahnem der Messgenauigkeit. 
 Am besten zutreffen auf unsere Werte würde das Material (Bohler-Uddeholm BÖHLER M261 Extra Plastic Lens Mold Steel). Dieses hat ein E-Modul von 210 $GPa$ und eine Dichte von
-7.82$kg/m^3$. Hier stimmt vor allem die Dichte sehr gut mit unserer Berechnung überein.\\
+7.82$kg/m^3$. Hier stimmt vor allem die Dichte sehr gut mit unserer Berechnung überein.
  
+\subsubsection{Messing}
 Für Messing sind die passenden Legierungen alle Copper-Beryllium Legierungen(z.B Materion Beryllium Copper Alloy 165 Forgings \& Extrusions).
 Diese haben exakt die passende Dichte und ein E-Modul von 131 $GPa$, welches innerhalb des systematischen Messfehlers liegt.\\
  
+\subsubsection{Fazit}
 Im gesamten können wir sagen, dass man mithilfe der Eigenschaften die wir von den Materialien bestimmt haben das genaue Material auf eine kleine Menge von Möglichkeiten einschränken kann. 
 Es reicht jedoch nicht aus, um das genaue Material zu bestimmen. Hierfür müssten wir 
 eine weitere Eigenschaft bestimmen. Die Verringerung der Messfehler würde nicht reichen
-um das Material weiter ein zu schränken, da die Werte in der Datenbank meist nicht so genau angegeben sind. 
+um das Material weiter ein zu schränken, da die Werte in der Datenbank nicht so genau angegeben sind. 
 \end{aufgabe}
-
-
-
-
-%TODO : Gesamtprotokoll auf Konsistenz überprüfen in Bezeichnung 
-%TODO : Verwendete Zeichen in Formeln etc. Erklärt
-%TODO : Statistische Fehler mit Sigma Systematische mit Delta
-%TODO : Konsistenz von Standardabweichung und Fehler bezeichnung
-\end{document}
-
- 
 \end{document}

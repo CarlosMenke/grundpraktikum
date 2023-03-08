@@ -59,18 +59,11 @@ print(pd.DataFrame(frequencies))
     #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
  
 
-## Die tabelle im latex format, damit ich nichts abtippen muss :D
-#for i in range(len(Alu_F)):
-    #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
-
-
-
 ### Durchmesser der Stangen
 Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
 Messing = [11.98, 12.01, 11.98, 11.99, 11.98, 11.98, 11.99, 11.99, 11.98, 11.98]
 Kupfer = [11.98, 11.98, 11.98, 11.98, 11.98, 11.99, 11.98, 11.98, 11.98, 11.98]
 Stahl15 = [12.00, 12.00, 11.99, 12.00, 12.00, 12.00, 12.00, 12.00, 12.00, 12.01]
-print(len(Stahl15))
 
 Alu_NP = np.array(Aluminium)/1000
 M_NP = np.array(Messing)/1000
@@ -107,32 +100,29 @@ print(Alu_mean, 'Mittelwet des Durchmessers von Alu')
 
 #Berechnung des Mittelwerts der dichte
 
+material_name = ["Aluminium", "Messing", "Kupfer", "Stahl"]
 De =[Alu_err, M_err, K_err, S_err]
 D = [Alu_mean, M_mean, K_mean, S_mean]
 M = [0.4609, 1.4275, 1.5054, 1.3274]
 L = 1.5
 
-def roh(D, M, L):
-    #print(D,M,L)
+def rho_calc(D, M, L):
     roh = M/(np.pi*(D/2)**2*L)
     return roh
 rho = []
 for i, j in zip(D, M):
-    p = roh(i, j, L)
+    p = rho_calc(i, j, L)
     if i == Alu_mean:
         print("Dichte von Aluminium:", f"{p:.2f}" )
-        rho.append(p)
-    if i == M_mean:
+    elif i == M_mean:
         print("Dichte von Messing", f"{p:.2f}")
-        rho.append(p)
-    if i == K_mean:
+    elif i == K_mean:
         print("Dichte von Kupfer", f"{p:.2f}")
-        rho.append(p)
-    if i == S_mean:
+    elif i == S_mean:
         print("Dichte von Stahl15", f"{p:.2f}")
-        rho.append(p)
+    rho.append(p)
 
-print(rho)
+print(pd.DataFrame({"Material": material_name, "Dichte": rho}).transpose())
 
  # Fehlerfortplanzung des Statistischen Fehlers auf die Dichte 
 
@@ -165,10 +155,12 @@ Le = 0.0007 # Systematischer Fehler auf Länge
 
 syst_rho = []
 
+# linare Fehlerfortplanzung
 def lin_err(D, M, L, Dee, Me, Le):
     delt = abs(((-1)*8*M)/(np.pi*D**3*L)*Dee)+abs(4/(np.pi*D**2*L)*Me)+abs(((-1)*4*M)/(np.pi*D**2*L**2)*Le)
     return delt
 
+# systematischer Fehler auf Dichte berechnen
 for i, j in zip(D, M):
     delt_roh = np.sqrt(lin_err(i, j, L, Dee, Me, Le))
     if i == Alu_mean:
@@ -184,7 +176,7 @@ for i, j in zip(D, M):
         print("syst. Fehler auf Dichte von Stahl15", f"{delt_roh:.2f}")
         syst_rho.append(delt_roh)
 
-print(syst_rho)
+print("Systematischer Fehler auf Rho: ", syst_rho)
 
 
 # Erwartungswert und Standardabweichung von f
@@ -200,7 +192,7 @@ A_err = A_F_sigma/np.sqrt(len(Alu_F))
 f.append(Alu_F_mean)
 stat_f.append(A_err)
 print("Aluminium:", Alu_F_mean)
-print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
+print("Error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
 
 Messing_F_mean = np.mean(Messing_F)
 M_F_sigma = np.std(Messing_F,ddof=1)
@@ -225,9 +217,6 @@ f.append(Stahl_F_mean)
 stat_f.append(S_err)
 print("Stahl:", Stahl_F_mean)
 print("Error auf Stahl Frequenz:", round(S_err, nachkommer_stellen))
-
-#print(f)
-#print(stat_f)
 
 # E modul Berechnen
 
@@ -266,7 +255,7 @@ for i, j, k, q in zip(f, rho, stat_rho, stat_f):
     if i == Stahl_F_mean:
         print("stat. Fehler E-Modul von Stahl15", f"{err_E:.2f}")
 
-# Systematischer Messfehler auf Frequenz
+### Systematischer Messfehler auf Frequenz
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
 PLOTS_DIR = '../plots/434170_428396_1A3_'
  
@@ -292,12 +281,22 @@ def plot_errorbar(x, y, yerr, plotname):
     plt.savefig(PLOTS_DIR + plotname + ".pdf")
 
  
-# systematischer fehler auf Alu, Messing, Kupfer, Stahl
-sys_err = max(abs(min(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean), abs(max(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean))
-print("Statistischer Fehler auf die Frequenzen vom Einspannen:", round(sys_err,2 ))
+# Errorbar Plot: systematischer fehler für Frequenz auf Alu, Messing, Kupfer, Stahl
+syst_err_f = max(abs(min(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean), abs(max(Kupfer_Einsp_Fehler_F) - Kupfer_F_mean))
+print("Statistischer Fehler auf die Frequenzen vom Einspannen:", round(syst_err_f, 2))
 
 x = ["Aluminium"] * len(Alu_F) +  ["Messing"] * len(Alu_F) + ["Kupfer"] * len(Alu_F) + ["Stahl"] * len(Alu_F)
 y = np.concatenate((Alu_F, Messing_F, Kupfer_F, Stahl_F))
-y_err =  sys_err * np.ones(len(Alu_F) * 4)
+y_err =  syst_err_f * np.ones(len(Alu_F) * 4)
 for i in range(0, 40, 10):
     plot_errorbar(x[i:i+10] , y[i:i+10], y_err[i:i+10], "frequenzen_stat_err_" + x[i])
+
+# Systematische Fehlerfortplanzung
+def syst_err_E(f, L, rho, df, dL, drho):
+    return round(abs(16 * f**2 * L * rho * dL)  + abs(16 * f * L**2 * rho * df) + abs(4 * f**2 * L**2 * drho), 0)
+ 
+syst_f = syst_err_f * np.ones(4)
+syst_L = Le * np.ones(4)
+print(f, L, rho)
+syst_E = [syst_err_E(f_temp, L, rho_temp, df, dL, drho) for f_temp, rho_temp, df, dL, drho in zip(f, rho, syst_f, syst_L, syst_rho)]
+print(pd.DataFrame({"Material": material_name, "Systematischer Fehler auf E": syst_E}).transpose())

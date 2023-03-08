@@ -5,125 +5,6 @@ from praktikum import cassy, analyse
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
-### Durchmesser der Stangen
-Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
-Messing = [11.98, 12.01, 11.98, 11.99, 11.98, 11.98, 11.99, 11.99, 11.98, 11.98]
-Kupfer = [11.98, 11.98, 11.98, 11.98, 11.98, 11.99, 11.98, 11.98, 11.98, 11.98]
-Stahl15 = [12.00, 12.00, 11.99, 12.00, 12.00, 12.00, 12.00, 12.00, 12.00, 12.01]
-print(len(Stahl15))
-
-Alu_NP = np.array(Aluminium)/1000
-M_NP = np.array(Messing)/1000
-K_NP = np.array(Kupfer)/1000
-S_NP = np.array(Stahl15)/1000
-#print(Alu_NP[0])
-#print(len(Alu_NP))
-
-Alu_mean = np.mean(Alu_NP)
-Alu_stdabw = np.std(Alu_NP,ddof=1)
-Alu_err = Alu_stdabw/np.sqrt(len(Alu_NP))
-
-M_mean = np.mean(M_NP)
-M_stdabw = np.std(M_NP,ddof=1)
-M_err = M_stdabw/np.sqrt(len(M_NP))
-
-K_mean = np.mean(K_NP)
-K_stdabw = np.std(K_NP,ddof=1)
-K_err = K_stdabw/np.sqrt(len(K_NP))
-
-S_mean = np.mean(S_NP)
-S_stdabw = np.std(S_NP,ddof=1)
-S_err = S_stdabw/np.sqrt(len(S_NP))
-
-
-print('Ergebnis: Aluminium_mean=%f+-%f' % (Alu_mean,Alu_err),'m')
-print('Ergebnis: Messing_mean=%f+-%f' % (M_mean,M_err),'m')
-print('Ergebnis: Kupfer_mean=%f+-%f' % (K_mean,K_err),'m')
-print('Ergebnis: Stahl_mean=%f+-%f' % (S_mean,S_err),'m')
-print(Alu_mean, 'Mittelwet des Durchmessers von Alu')
-#print(Alu_stdabw, 'Standardabweichung des Durchmessers von Alu')
-#print((Alu_err, 'Fehler auf den Durchmesser der Aluminiumstange'))
-
-
-#Berechnung des Mittelwerts der dichte
-De =[Alu_err, M_err, K_err, S_err]
-D = [Alu_mean, M_mean, K_mean, S_mean]
-M = [0.4609, 1.4275, 1.5054, 1.3274]
-L = 1.5
-
-def roh(D, M, L):
-    #print(D,M,L)
-    roh = M/(np.pi*(D/2)**2*L)
-    return roh
-rho = []
-for i, j in zip(D, M):
-    p = roh(i, j, L)
-    if i == Alu_mean:
-        print("Dichte von Aluminium:", f"{p:.2f}" )
-        rho.append(p)
-    if i == M_mean:
-        print("Dichte von Messing", f"{p:.2f}")
-        rho.append(p)
-    if i == K_mean:
-        print("Dichte von Kupfer", f"{p:.2f}")
-        rho.append(p)
-    if i == S_mean:
-        print("Dichte von Stahl15", f"{p:.2f}")
-        rho.append(p)
-
-print(rho)
- # Fehlerfortplanzung des Statistischen Fehlers auf die Dichte 
-
-stat_rho = []
-       
-def sigma_roh(D, M, L, De):
-    s = ((8*M)/(np.pi*D**3*L))**2*De**2
-    return s
-
-for i, j, k in zip(D, M, De):
-    roh_err = np.sqrt(sigma_roh(i, j, L, k))
-    if i == Alu_mean:
-        print("stat. Fehler auf Dichte von Aluminium:", f"{roh_err:.2f}" )
-        stat_rho.append(roh_err)
-    if i == M_mean:
-        print("stat. Fehler auf Dichte von Messing", f"{roh_err:.2f}")
-        stat_rho.append(roh_err)
-    if i == K_mean:
-        print("stat. Fehler auf Dichte von Kupfer", f"{roh_err:.2f}")
-        stat_rho.append(roh_err)
-    if i == S_mean:
-        print("stat. Fehler auf Dichte von Stahl15", f"{roh_err:.2f}")
-        stat_rho.append(roh_err)
-
-print(stat_rho)
-
-Dee = 0.00001
-Me = 0.0002
-Le = 0.0007
-
-syst_rho = []
-
-def lin_err(D, M, L, Dee, Me, Le):
-    delt = abs(((-1)*8*M)/(np.pi*D**3*L)*Dee)+abs(4/(np.pi*D**2*L)*Me)+abs(((-1)*4*M)/(np.pi*D**2*L**2)*Le)
-    return delt
-
-for i, j in zip(D, M):
-    delt_roh = np.sqrt(lin_err(i, j, L, Dee, Me, Le))
-    if i == Alu_mean:
-        print("syst. Fehler auf Dichte von Aluminium:", f"{delt_roh:.2f}" )
-        syst_rho.append(delt_roh)
-    if i == M_mean:
-        print("syst. Fehler auf Dichte von Messing", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
-    if i == K_mean:
-        print("syst. Fehler auf Dichte von Kupfer", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
-    if i == S_mean:
-        print("syst. Fehler auf Dichte von Stahl15", f"{delt_roh:.2f}")
-        syst_rho.append(delt_roh)
-
-print(syst_rho)
-
 
 
 def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
@@ -178,7 +59,136 @@ print(pd.DataFrame(frequencies))
     #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
  
 
-# Erwartungswert und Standardabweichung
+## Die tabelle im latex format, damit ich nichts abtippen muss :D
+#for i in range(len(Alu_F)):
+    #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
+
+
+
+### Durchmesser der Stangen
+Aluminium = [12.05, 12.05, 12.06, 12.05, 12.06, 12.06, 12.06, 12.05, 12.06, 12.07]
+Messing = [11.98, 12.01, 11.98, 11.99, 11.98, 11.98, 11.99, 11.99, 11.98, 11.98]
+Kupfer = [11.98, 11.98, 11.98, 11.98, 11.98, 11.99, 11.98, 11.98, 11.98, 11.98]
+Stahl15 = [12.00, 12.00, 11.99, 12.00, 12.00, 12.00, 12.00, 12.00, 12.00, 12.01]
+print(len(Stahl15))
+
+Alu_NP = np.array(Aluminium)/1000
+M_NP = np.array(Messing)/1000
+K_NP = np.array(Kupfer)/1000
+S_NP = np.array(Stahl15)/1000
+
+# Berechnen des Durchmessers
+
+Alu_mean = np.mean(Alu_NP)
+Alu_stdabw = np.std(Alu_NP,ddof=1)
+Alu_err = Alu_stdabw/np.sqrt(len(Alu_NP))
+
+M_mean = np.mean(M_NP)
+M_stdabw = np.std(M_NP,ddof=1)
+M_err = M_stdabw/np.sqrt(len(M_NP))
+
+K_mean = np.mean(K_NP)
+K_stdabw = np.std(K_NP,ddof=1)
+K_err = K_stdabw/np.sqrt(len(K_NP))
+
+S_mean = np.mean(S_NP)
+S_stdabw = np.std(S_NP,ddof=1)
+S_err = S_stdabw/np.sqrt(len(S_NP))
+
+
+print('Ergebnis: Aluminium_mean=%f+-%f' % (Alu_mean,Alu_err),'m')
+print('Ergebnis: Messing_mean=%f+-%f' % (M_mean,M_err),'m')
+print('Ergebnis: Kupfer_mean=%f+-%f' % (K_mean,K_err),'m')
+print('Ergebnis: Stahl_mean=%f+-%f' % (S_mean,S_err),'m')
+print(Alu_mean, 'Mittelwet des Durchmessers von Alu')
+#print(Alu_stdabw, 'Standardabweichung des Durchmessers von Alu')
+#print((Alu_err, 'Fehler auf den Durchmesser der Aluminiumstange'))
+
+
+#Berechnung des Mittelwerts der dichte
+
+De =[Alu_err, M_err, K_err, S_err]
+D = [Alu_mean, M_mean, K_mean, S_mean]
+M = [0.4609, 1.4275, 1.5054, 1.3274]
+L = 1.5
+
+def roh(D, M, L):
+    #print(D,M,L)
+    roh = M/(np.pi*(D/2)**2*L)
+    return roh
+rho = []
+for i, j in zip(D, M):
+    p = roh(i, j, L)
+    if i == Alu_mean:
+        print("Dichte von Aluminium:", f"{p:.2f}" )
+        rho.append(p)
+    if i == M_mean:
+        print("Dichte von Messing", f"{p:.2f}")
+        rho.append(p)
+    if i == K_mean:
+        print("Dichte von Kupfer", f"{p:.2f}")
+        rho.append(p)
+    if i == S_mean:
+        print("Dichte von Stahl15", f"{p:.2f}")
+        rho.append(p)
+
+print(rho)
+
+ # Fehlerfortplanzung des Statistischen Fehlers auf die Dichte 
+
+stat_rho = []
+       
+def sigma_roh(D, M, L, De):
+    s = ((8*M)/(np.pi*D**3*L))**2*De**2
+    return s
+
+for i, j, k in zip(D, M, De):
+    roh_err = np.sqrt(sigma_roh(i, j, L, k))
+    if i == Alu_mean:
+        print("stat. Fehler auf Dichte von Aluminium:", f"{roh_err:.2f}" )
+        stat_rho.append(roh_err)
+    if i == M_mean:
+        print("stat. Fehler auf Dichte von Messing", f"{roh_err:.2f}")
+        stat_rho.append(roh_err)
+    if i == K_mean:
+        print("stat. Fehler auf Dichte von Kupfer", f"{roh_err:.2f}")
+        stat_rho.append(roh_err)
+    if i == S_mean:
+        print("stat. Fehler auf Dichte von Stahl15", f"{roh_err:.2f}")
+        stat_rho.append(roh_err)
+
+# Systematischer Fehler auf Dichte berechnen
+
+Dee = 0.00001 # systematischer Fehler auf Durchmesser
+Me = 0.0002 # Systematischer Fehler auf Masse
+Le = 0.0007 # Systematischer Fehler auf Länge
+
+syst_rho = []
+
+def lin_err(D, M, L, Dee, Me, Le):
+    delt = abs(((-1)*8*M)/(np.pi*D**3*L)*Dee)+abs(4/(np.pi*D**2*L)*Me)+abs(((-1)*4*M)/(np.pi*D**2*L**2)*Le)
+    return delt
+
+for i, j in zip(D, M):
+    delt_roh = np.sqrt(lin_err(i, j, L, Dee, Me, Le))
+    if i == Alu_mean:
+        print("syst. Fehler auf Dichte von Aluminium:", f"{delt_roh:.2f}" )
+        syst_rho.append(delt_roh)
+    if i == M_mean:
+        print("syst. Fehler auf Dichte von Messing", f"{delt_roh:.2f}")
+        syst_rho.append(delt_roh)
+    if i == K_mean:
+        print("syst. Fehler auf Dichte von Kupfer", f"{delt_roh:.2f}")
+        syst_rho.append(delt_roh)
+    if i == S_mean:
+        print("syst. Fehler auf Dichte von Stahl15", f"{delt_roh:.2f}")
+        syst_rho.append(delt_roh)
+
+print(syst_rho)
+
+
+# Erwartungswert und Standardabweichung von f
+
 nachkommer_stellen = 3
 
 f = []
@@ -219,12 +229,7 @@ print("Error auf Stahl Frequenz:", round(S_err, nachkommer_stellen))
 #print(f)
 #print(stat_f)
 
-## Die tabelle im latex format, damit ich nichts abtippen muss :D
-#for i in range(len(Alu_F)):
-    #print("Nr. " + str(i + 1) + " & " + str(round(Stahl_F[i], 2)) + "Hz & " + str(round(Alu_F[i], 2)) + "Hz & " + str(round(Messing_F[i], 2)) + "Hz & " + str(round(Kupfer_F[i], 2)) + "Hz \\\\")
-
-D = [Alu_mean, M_mean, K_mean, S_mean]
-
+# E modul Berechnen
 
 def E(f,L,rho):
     E = (2*L*f)**2*rho
@@ -243,16 +248,12 @@ for i, k in zip(f, rho):
         print("E-Modul von Stahl15", f"{E_Modul:.2f}")
         rho.append(p) 
  
+# statistischer Fehler auf E- Modul berechnen 
+
 def sigma_E(f, L, rho, re, fe):
-    s = 8*L**2*f*rho
+    s = (8*L**2*f*rho)**2
     return s
  
-Alu_F_mean = np.mean(Alu_F)
-A_F_sigma = np.std(Alu_F,ddof=1)
-A_err = A_F_sigma/np.sqrt(len(Alu_F))
-
-print("Aluminium:", Alu_F_mean)
-print("error auf Frequenz Alu:", round(A_err, nachkommer_stellen))
  
 # Systematischer Messfehler auf Frequenz
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer

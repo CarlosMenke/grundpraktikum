@@ -440,16 +440,16 @@ In der Folgenden Tabelle werden unsere Ergebnisse für die Frequenzen der einzel
             \toprule
             \textbf{Messung Nr.} & \textbf{Stahl 15} & \textbf{Aluminium} & \textbf{Messing} & \textbf{Kupfer} \\
             \midrule
-                Nr. 1 & 1726.29Hz & 1673.90Hz & 1166.79Hz & 1288.11Hz \\
-                Nr. 2 & 1726.45Hz & 1673.52Hz & 1166.53Hz & 1288.03Hz \\
-                Nr. 3 & 1726.76Hz & 1673.60Hz & 1166.31Hz & 1287.99Hz \\
-                Nr. 4 & 1726.41Hz & 1673.73Hz & 1166.32Hz & 1288.93Hz \\
-                Nr. 5 & 1726.88Hz & 1673.88Hz & 1166.47Hz & 1288.13Hz \\
-                Nr. 6 & 1726.21Hz & 1673.85Hz & 1166.28Hz & 1288.13Hz \\
-                Nr. 7 & 1726.02Hz & 1673.81Hz & 1166.27Hz & 1288.03Hz \\
-                Nr. 8 & 1726.90Hz & 1673.02Hz & 1166.41Hz & 1288.02Hz \\
-                Nr. 9 & 1726.64Hz & 1673.61Hz & 1166.32Hz & 1288.15Hz \\
-                Nr. 10 & 1726.73Hz & 1673.67Hz & 1166.29Hz & 1288.66Hz \\
+                Nr. 1 & 1726.73Hz & 1673.88Hz & 1166.31Hz & 1288.93Hz \\
+                Nr. 2 & 1726.02Hz & 1673.85Hz & 1166.53Hz & 1288.11Hz \\
+                Nr. 3 & 1726.21Hz & 1673.61Hz & 1166.28Hz & 1288.03Hz \\
+                Nr. 4 & 1726.45Hz & 1673.73Hz & 1166.32Hz & 1288.15Hz \\
+                Nr. 5 & 1726.29Hz & 1673.67Hz & 1166.27Hz & 1287.99Hz \\
+                Nr. 6 & 1726.41Hz & 1673.81Hz & 1166.47Hz & 1288.03Hz \\
+                Nr. 7 & 1726.64Hz & 1673.02Hz & 1166.29Hz & 1288.02Hz \\
+                Nr. 8 & 1726.76Hz & 1673.52Hz & 1166.32Hz & 1288.13Hz \\
+                Nr. 9 & 1726.9Hz & 1673.9Hz & 1166.41Hz & 1288.13Hz \\
+                Nr. 10 & 1726.88Hz & 1673.6Hz & 1166.79Hz & 1288.66Hz \\
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
@@ -488,7 +488,31 @@ Der Systematische Fehler bei der Frequenz kommt durch die Digitalisierung des ak
          \Delta_{dig} = \frac{a}{\sqrt{12}}
 \end{equation}
 
-Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch den Einfluss der Einspannposition. Diesen schätzen wir mithilfe unserer Messreihe Kuper\_Einspann\_Fehler ab.  
+Zusätzlich zu diesem Systematischen Fehler, erhalten wir noch einen Systematischen Fehler durch den Einfluss der Einspannposition.
+Dabei gehen wir davon aus, das der Systematische Fehler auf die Freqenz bei allen Stangen gleich ist.
+Deshalb haben wir zur Fehler Abschätzung nur eine Messreihe mit der Kupfer Stange durchgeführt.
+Dafür haben wir die Einspannposition um $\pm{0.5}{cm}$ verändert.
+Dann haben wir noch einmal die Rotation der Stange um zufällige Werte verändert, und den Druck der Schraube (lose, mittel, fest) veränder.
+ 
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{0.7\textwidth}{X c} % adjust width as needed
+        \toprule
+        \textbf{Test Messung bei Kupfer} & \textbf{Frequenz} \\
+        \midrule
+            1 & 1288.184607 Hz \\
+            2 & 1288.255610 Hz \\
+            3 & 1288.401788 Hz \\
+            4 & 1288.406941 Hz \\
+            6 & 1287.998759 Hz \\
+        \bottomrule
+    \end{tabularx}
+    \label{tab:mytable}
+\end{table}
+
+Zum Abschätzen des Systematischen Fehlers betrachten wir die größte Abweichung einer Einzelnen Fehler Messung vom Erwartungswert, nehmen diese dann als Toleranz.
+Da der Erwartungswert bei $1288.22 Hz$ liegt, hat die Messung 6 die Größte Abweichung von $0.22 Hz$.
 
 Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
 
@@ -496,25 +520,27 @@ Somit kennen wir die Systematischen Fehler auf alle unsere Größen.\\
 
 Tabelle der Systematischen Fehler auf einzelne Messgrößen: 
 
- \begin{table}[H]
-        \centering
-        \begin{tabularx}{0.8\textwidth}{X l} % adjust width as needed
-            \toprule
-            \textbf{Metall Stange} & \textbf{Masse} \\
-            \midrule
-            Masse & $\pm$0.2g \\
-            Länge & $\pm$0.7mm\\
-            Durchmesser & $\pm$0.01mm \\
-            Frequenz & $\pm$0.423mV (Digitalisierung)\\
-            & $\pm$0.000000mV\\
-            \bottomrule
-        \end{tabularx}
-        \label{tab:mytable}
-    \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{0.8\textwidth}{X l} % adjust width as needed
+        \toprule
+        \textbf{Metall Stange} & \textbf{Masse} \\
+        \midrule
+        Masse & $\pm$0.2g \\
+        Länge & $\pm$0.7mm\\
+        Durchmesser & $\pm$0.01mm \\
+        Frequenz & $\pm$0.423mV (Digitalisierung)\\
+        & $\pm$0.22Hz (Einspannung) \\
+        \bottomrule
+    \end{tabularx}
+    \label{tab:mytable}
+\end{table}
+
+Da der Digitalisierungsfehler auf die Frequenz einen deutlich kleineneren Einfluss hat als der Einspannungsfehler, haben wir den Digitalisierungsfehler auf die Frequenz in der folgenden Fehlerbetrachtung vernachlässigt.
 
 \begin{figure}[H]
   \centering
-    \caption{Statistischer Fehler auf die Frequenz}
+    \caption{Systematischer Fehler auf die Frequenz}
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_frequenzen_stat_err_Stahl.pdf}}
   \hfill
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/434170_428396_1A3_frequenzen_stat_err_Aluminium.pdf}}

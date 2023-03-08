@@ -52,7 +52,7 @@ Kupfer_Einsp_Fehler_F = np.delete(get_all_peaks("Kupfer_Einsp_Fehler"), 4) # Mes
 print(pd.DataFrame({"Kupfer_Einsp_Fehler_F": Kupfer_Einsp_Fehler_F}))
 
 frequencies = {"Aluminium": Alu_F, "Messing": Messing_F, "Kupfer": Kupfer_F, "Stahl": Stahl_F}
-print(pd.DataFrame(frequencies))
+print(pd.DataFrame(frequencies).round(2))
 ## Die tabelle im latex format, damit ich nichts abtippen muss :D
 # TODO dict to latex table
 #for i in range(len(Alu_F)):
@@ -223,14 +223,12 @@ for i, k in zip(f, rho):
     E_Modul = E(i, L, k)
     if i == Alu_F_mean:
         print("E-Modul von Aluminium:", f"{E_Modul:.2f}" )
-    if i == Messing_F_mean:
+    elif i == Messing_F_mean:
         print("E-Modul von Messing", f"{E_Modul:.2f}")
-    if i == Kupfer_F_mean:
+    elif i == Kupfer_F_mean:
         print("E-Modul von Kupfer", f"{E_Modul:.2f}")
-        rho.append(p)
-    if i == Stahl_F_mean:
+    elif i == Stahl_F_mean:
         print("E-Modul von Stahl15", f"{E_Modul:.2f}")
-        rho.append(p) 
  
 # statistischer Fehler auf E- Modul berechnen 
 
@@ -242,12 +240,11 @@ for i, j, k, q in zip(f, rho, stat_rho, stat_f):
     err_E = np.sqrt(sigma_E(i, L, j, k, q))
     if i == Alu_F_mean:
         print("stat. Fehler E-Modul von Aluminium:", f"{err_E:.2f}" )
-    if i == Messing_F_mean:
+    elif i == Messing_F_mean:
         print("stat.Fehler E-Modul von Messing", f"{err_E:.2f}")
-    if i == Kupfer_F_mean:
+    elif i == Kupfer_F_mean:
         print("stat. Fehler E-Modul von Kupfer", f"{err_E:.2f}")
-        rho.append(p)
-    if i == Stahl_F_mean:
+    elif i == Stahl_F_mean:
         print("stat. Fehler E-Modul von Stahl15", f"{err_E:.2f}")
 
 ### Systematischer Messfehler auf Frequenz

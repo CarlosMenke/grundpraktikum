@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+### Dieses Programm ließt die daten aus cassy_dir ein und speichert sie in PLOTS_DIR ab.
 ### Das Ziel dieses Programs ist es, alle Messdaten, mit der FFT und dem Peak im Frequenz bereich darzustellen.
 ### Wir haben es benutzt, um zu schauen, ob das finden des Peaks zu testen und die qualität der Daten zu überprüfen.
 ### Wenn SHOW_PLOTS auf True gesetzt ist, werden alle Plots angezeigt
@@ -18,6 +19,8 @@ SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformi
  
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
 PLOTS_DIR = '../plots/434170_428396_1A3_'
+ 
+cassy_dir = "../../Messungen/"
 
 def cassy_plot(datei: str, x: str, y: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
@@ -159,7 +162,6 @@ def save_fft_plot(datei: str, x: str, y: str, plotname: str, save_peak: bool = T
 
     plt.savefig(PLOTS_DIR + plotname + "_fft.pdf")
      
-cassy_dir = "../../Messungen/"
 plots = [ "Alu_Messung_01", "Alu_Messung_08", "Kupfer_Messung_02", "Kupfer_Messung_09", "_Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01", "Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Kupfer_Einsp_Fehler_05", "Alu_Messung_07"]
 fft_plots_without_peak = [ "Alu_Messung_01", "Alu_Messung_08", "Kupfer_Messung_02", "Kupfer_Messung_09", "_Kupfer_Messung_09", "Stahl_Messung_02", "Messing_Messung_01" ]
 fft_plots = ["Kupfer_Einsp_Fehler_01", "_Kupfer_Einsp_Fehler_01", "Kupfer_Einsp_Fehler_05", "Alu_Messung_07"]

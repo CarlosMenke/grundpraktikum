@@ -5,7 +5,14 @@ from praktikum import cassy, analyse
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
+### Dieses Programm liegßt die daten aus cassy_dir ein und speichert sie in PLOTS_DIR ab.
 
+### Systematischer Messfehler auf Frequenz
+global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
+PLOTS_DIR = '../plots/434170_428396_1A3_'
+ 
+global cassy_dir
+cassy_dir = "../../Messungen/"
 
 def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
     start = start_values[plotname] if plotname in start_values else 0
@@ -22,7 +29,6 @@ def fft_peak(datei: str, x: str, y: str, plotname: str, save_peak: bool = True):
 
 def get_all_peaks(material):
     peaks_fft = []
-    cassy_dir = "../../Messungen/"
     global start_values
     start_values = {"Kupfer_Einsp_Fehler_01": 5000,
                     "Kupfer_Messung_03":4500,
@@ -237,10 +243,6 @@ for i, j, k, q in zip(f, rho, stat_rho, stat_f):
     elif i == Stahl_F_mean:
         print("stat. Fehler E-Modul von Stahl15", f"{err_E:.2f}")
 
-### Systematischer Messfehler auf Frequenz
-global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
-PLOTS_DIR = '../plots/434170_428396_1A3_'
- 
 def plot_f_errorbar(x, y, yerr, plotname):
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'

@@ -186,10 +186,11 @@ Wiederstand
     \caption{Endlade Vorgang vom Wiederstand und dem Kondensator}
   \centering
 \end{figure}
-Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (rot) während des Entladens.
+Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
 Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
 Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
-Diese Entladekurven ensprechen dabei unserer erwartung, da sie in etwa nach einer exponentiellen abnahme aussehen.
+Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
+Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
 
 \begin{figure}[H]
   \centering
@@ -200,8 +201,29 @@ Diese Entladekurven ensprechen dabei unserer erwartung, da sie in etwa nach eine
 Die Abbildung zeigt den Spannungsverlauf von einem typischem Aufladevorgang.
 Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen konnten, und trotzdem das gesamte Display zum ablesen nutzen konnten.
 Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für die Auswerung allerdings Irrelevant ist.
-Auch hier entsprechen die beiden Kurven (zumindest nach Augenmaß) einer Exponentiellen abnahme im Fall der Kondendensator Spannung, bzw. einer Exponentiellen zuname für die Stromstärke.
+Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist anfangs groß und später klein.
+Nach augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
 
+Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Kondensator_Offset.pdf}
+    \caption{Bestimmung des Offsets für die Entladung des Kondensators mit Asymptote}
+  \centering
+\end{figure}
+In den Abbildungen kann man leider den Wert Cursor nicht sehen, weil wir dann kein Bild mehr mit dem Oszilloskop machen konnten.
+Um den Wert der Asymptote zu bestimmen, haben wir die dargestellte Zeit auf 10 $\tau$ vergrößert, da man mit dieser Einstellung schon in einen Bereich kam, wo die Spannungswerte am Kondensator nicht mehr abgenommen haben, sodern geschwankt sind.
+Wir haben dann den 
+ 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Wiederstand_Offset.pdf}
+    \caption{Bestimmung des Offsets für die Entladung des Kondensators mit Rauschen}
+  \centering
+\end{figure}
+Für den Offset des Wiederstandes haben wir eine Rauschmessung durchgeführt.
+Dafür haben wir die Spannung die über dem Wiederstand im Aufgeladenen Zustand  und im Endladenen Zustand lag, gemessen.
+Da diese um 2 Werte geschwankt ist, haben wir den Mittelwert genommen.
 
 
  

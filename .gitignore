@@ -3,8 +3,10 @@
 *.out
 *.aux
 *.log
+*.cls
 *.synctex.gz
 akustik/vorbereitung/Protokoll.pdf
+akustik/Protokoll/Protokoll.pdf
 akustik/Protokoll/434170_428396_1A3_Protokoll.pdf
 akustik/Protokoll/Protokoll.tex.bak
 akustik/Protokoll/plots

@@ -73,6 +73,35 @@
 - Spannungsbereich: Abhängig von Leistungsgrenze Wiederstand
 
 
+### Notizen
+
+sigma fehler auf den Einzelwert
+Fehlerbalken:
+    - Digitalisierungsfehler
+    - statistischer Fehler auf U
+    - x² wird immer schmaler desto mehr Messwerte man hat mit sqrt(f)
+    - so oft messen, dass sigma (statistischer Fehler) kleiner als sigma_d (digitalisierungsfehler) ist
+    - 10 Verschiedene Punkte
+    - Residuen anschauen um systematik zu sehen und beurteilen ob gute Anpassung
+    - fehler für lineare Regression ist immer statistischer Fehler
+    - Spannungsgrenze berechnen mit max I von Cassy und max P von Wiederstand
+    - Verwende statistischer Fehler auf den Einzelwert um fehler beim kondensator für lineare regression verwenden
+    - Fehler nach ln mit gauß fehlerfortpflanzung berechnen
+    - Was verwendet man für U0
+    - Überprüfung x² und reisdudenplot plot
+    - Ofset bestimmen mit Rauschmessung oder Asymtote
+    - ln((I-I_of)/I)
+    - systematischen fehler mit bereichsentwerte kürzt sich raus, bei der Verschiebmethode
+    - U_o und I_off bestimmen
+    - anhand des sprungs des cursors kann die genauigkeit dessen bestimmen ( 2 cursor punkte nebeneinander, dann d_U/sqrt(12))
+        -statistisch fortplanzen
+    - Jede kurve (Ladung entladung, strom Spannung) mindeststen 2x berechnen
+    - Fehler auf R am Ende als systematischer Fehler
+
+
+
+
+
 
 
 

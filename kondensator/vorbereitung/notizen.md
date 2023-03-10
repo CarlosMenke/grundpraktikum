@@ -1,14 +1,31 @@
+- https://docplayer.org/27617886-Protokoll-zum-anfaengerpraktikum-physik-messung-von-kapazitaeten-auf-und-entladung-von-kondensatoren-sebastian-finkel-sebastian-wilken.html
+ 
 ## Fragen
 - Resiuenplots mit syst. oder stat. Fehler dargestellt?
 - X quadrat anpassung: Statistische oder Systematischen Fehler verwenden. 
     - oder summe von beiden?
 - Im Resiuenplot: Nimmt man da die funktion, welche man aus der chi quadrat methode hat?
+ 
+## Vorgespraech:
+- Varianz bei chi quadrat ist n
+- Bei verschiebe Methode: Statistische fehler ist der fehler fuer die verschobenen Werte
+- statisticher Fehler auf den Einzelwert ist Fehler auf die Stromstärke beim Cassy (Wenn es keinne Trent gibt) (sigma gegn i vom wieder stand plotten)
+- wenn man ln(i-ioff / i0) gegen t auftragt, ist die Unsicherheit sigma / I
+- m ist -1/tau
+- bei sigma symt ist nur 0.001 * I / sqrt(3), da der offset kürzt
+- auch beim osziloskop gibt es einen offset: Rauschmessung
+- tau = delta t / ln(u1 - uoff / u2 - uoff)
+- delta U / sqrt(12) ist ablesegenauigkeit beim Osziloskop
+- beim Osziloskop nehme ablesegenauigkeit als statistischen Fehler
+
+ 
+    
+ 
 - Sind Spannung und Stromstärke korreliert?
 - Können wir die Messwerte auch linarisieren, und dann mit der Chiquadrat methode die linare funktion bestimmen?
 - wie bestimmt man auf die paramerter der linaren regresson die unsicherheiten schärtzen
 - Müssen wir die Methode der effektieven Varianz verwenden? Da unser x nur einen systematischen digitalisierungs fehler haben.
 - Sollen wir die qualität der Anpassung mit der Pull Methode bestimmen?
-
 
 
 ## Durchführung
@@ -98,10 +115,18 @@ Fehlerbalken:
     - Jede kurve (Ladung entladung, strom Spannung) mindeststen 2x berechnen
     - Fehler auf R am Ende als systematischer Fehler
 
+- Wiederstand bestimmen
+    - wie oft messen? Spannung von 0 - 3V?
+    - muss abtastrate als syst. Fehler berücksichtigt werden?
+    - Wie bestimme ich den statistischen Fehler auf U, wenn ich u festhalte in der Messung?
 
+- Beim Kondensator mit Osziloskop
+    - Soll man mit dem Curosr mehr als einen Datenpunkt ablesen?
+    - Sollen wir von allen Messungen ein Bild machen, oder reicht es sie in der Tabelle zu notieren?
+    - Was ist die systematische Fehler beim Ablesen? =0 da wir mit dem Curosr ablese?
+    - wie kommt man auf den statistischen fehler auf tau? Was meint ablese GEnauigkeit?
+    - Weahle ein großes Tau
 
-
-
-
-
-
+- CASSY Messung
+    - Für den statistischen Fehler: Ist es leichter das Rauschen vom Wiederstand zu verwenden oder die Asymptote?
+    - Was ist das Rauschen?

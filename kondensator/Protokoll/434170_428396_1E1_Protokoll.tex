@@ -24,21 +24,6 @@
 %  \centering
 %\end{figure}
 
-\begin{table}[H]
-        \centering
-        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
-            \toprule
-            \textbf{Metall Stange} & \textbf{Masse} & \textbf{Länge} \\
-            \midrule
-            Aluminium & 460.9g & 150cm \\
-            Messing & 1427.5g & 150cm \\
-            Kupfer & 1505.4g & 150cm \\
-            Stahl 15 & 1327.4g & 150cm \\
-            \bottomrule
-        \end{tabularx}
-        \caption{Masse und Länge der Stäbe}
-        \label{tab:mytable}
-    \end{table}
 
 
  
@@ -144,14 +129,22 @@ Wiederstand
   zwischen Kondensator und Wiederstand angeschlossen wird. Chanel 1 \& 2 werden wie im Schaltbild angeschlossen.
    So wird auf CH2 die Spannung die über den Kondensator abfällt gemessen, und 
   auf CH1 die Spannung die über den Wiederstand abfällt. 
-  
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_Osziloskop_02.pdf}
+  \caption{Bild der Schaltung}
+  \centering
+  \end{figure}
+ 
   Bei der Versuchsdurchführung haben wir wie im Aufbau bereits beschrieben den Versuch 
   aufgebaut. Um die Spannung ein zu stellen, und das die Auflösung des Osziloskop richtig zu
   wählen, haben wir das Sensor CASSY verwendet um die eingangsspannung zu bestimmen. Diese haben
   wir dann auf 7.11V geregelt, wobei der Wert welcher das Sensor CASSY gemessen hat leicht 
-  geschwankt hat zwischen 7.11V und 7.10V.  Zur Einstellung des Oszilloskops haben wir zunächst 
-  die Entladung des Kondensators betrachtet. Hierfür haben wir den Trigger auf CH2 auf 7.00V 
-  eingestellt steigende Flanke. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
+  geschwankt hat zwischen 7.11V und 7.10V. Die eingangsspannung haben wir so gewählt, 
+  damit wir vom Oszilloskop den Gesamten Bildschirm ausnutzen können Zur Einstellung des     Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
+  Hierfür haben wir den Trigger auf CH2 auf 7.00V 
+   steigende Flanke gestellt. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
   die Spannung am Kondensator negativ ist. Somit steigt die Spannung asymtotisch zu null. 
   Zum starten der Messung haben wir den in der Schaltung verbauten Taster betätigt.
   So konnten wir eine erste entladung aufzeichnen. Hierraus konnten wir dann die Restlichen 
@@ -164,21 +157,39 @@ Wiederstand
 	
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{schaltzkisse-osziloskop.pdf}
-  \caption{Schaltplan Oszilloskop}
+  \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Triggermenü_Osziloskop.pdf}
+  \caption{Triggermenü des Oszilloskops}
   \centering
 \end{figure}
 
+Oben sehen sie ein Bild des Triggermenüs des Osziloskops. Hier haben wir sämtliche Triggereinstellungen für das Messen des Entladens eingestellt gehabt. 
+Hier sieht man auch, dass wir das Signal von CH2 invertiert haben, um dieses angenehmer
+auf dem Bildschirm darstellen zu können. So konnten wir außerdem den Nullpunkt der beiden 
+Spannungsverläufe optisch an die ungefähr gleiche Stelle legen. Der folgenden Tabelle
+können sie die Einstellungen entnehmen die wir am Oszilloskop gemacht haben.
+Diese Einstellungen sind spezifisch für den Entladevorgang.
+
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed
+            \toprule
+            \textbf{Chanel} & \textbf{Kästchen} & \textbf{M} & \textbf{Trigger} & \textbf{Flanke} \\
+            \midrule
+            CH1 & 1.00V & 5.00ms & -- & -- \\
+            CH2 & 1.00V & 5.00ms & 7.00V & positiv \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Übersicht der Einstellungen am Oszilloskop}
+        \label{tab:mytable}
+    \end{table}
+
+Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. Um zu überprüfen ob diese passen und reproduzierbar sind. 
+
+%TODO : Hier ofsetmessung einfügen. 
 
 \end{aufgabe}
 
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{schaltzkisse-osziloskop.pdf}
-  \caption{Schaltplan Oszilloskop}
-  \centering
-\end{figure}
 
 \begin{figure}[H]
   \centering
@@ -191,6 +202,30 @@ Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Dars
 Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
 Diese Entladekurven ensprechen dabei unserer erwartung, da sie in etwa nach einer exponentiellen abnahme aussehen.
 
+Zur bestimmung von $\tau$ haben wir dann bei der Entladung insgesamt 4 Messungen durchgeführt. 
+Jewails 2 für Kondensator und Wiederstand. Dies haben wir getan um zu überprüfen ob unsere Messungen reproduzierbar waren. 
+Und um sicher zu gehen, dass unsere Messung kein Ausreißer war. 
+
+Für die Messung des Aufladevorgangs mussten wir nur die Trigger einstellungen ändern sonst konnten wir unsere Einstellungen übernehmen. In diesem Fall haben wir auch keins der Signale invertiert. 
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c c c} % adjust width as needed
+            \toprule
+            \textbf{Chanel} & \textbf{Kästchen} & \textbf{M} & \textbf{Trigger} & \textbf{Flanke} \\
+            \midrule
+            CH1 & 1.00V & 5.00ms & -- & -- \\
+            CH2 & 1.00V & 5.00ms & -80.0mV & positiv \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Übersicht der Einstellungen am Oszilloskop}
+        \label{tab:mytable}
+    \end{table}
+    
+Beim messen der Aufladung haben wir zunächst denn Schalter gedrückt und auch einige Sekunden gewartet, um sicher zu gehen, dass der Kondensator entladen war. 
+Dann haben wir den Schalter losgelassen un die Messung ist durch den Trigger automatisch gestartet. 
+Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim entladen jeh für Kondensator und Wiederstand 2 Messungen zur bestimmung von $\tau$ gemacht. 
+
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Aufladen_Kondensator_02.pdf}
@@ -202,7 +237,23 @@ Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen kon
 Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für die Auswerung allerdings Irrelevant ist.
 Auch hier entsprechen die beiden Kurven (zumindest nach Augenmaß) einer Exponentiellen abnahme im Fall der Kondendensator Spannung, bzw. einer Exponentiellen zuname für die Stromstärke.
 
+Zur bestimmung von Tau haben wir mit dem Cursors je zwei Messwerte abgelesen. 
+Mithilfe der Formeln die wir bereits in den Grundlagen eingeführt haben, konnten wir dann die Zeitkonstante bestimmen. 
+Diese erhalten wir indem wir den quotienten von unserem Werte Paar nehmen und dann nach $\tau$ umformen. Daraus ergibt sich :
 
+\begin{equation}
+	\tau = \frac{t_2 - t_1}{ln\left(\frac{u_1-U_{off}}{U_2-U_{off}}\right)}	
+\end{equation}
+
+Wobei wir hier noch den möglichen Ofset beachten müssen. Die obige Formel können wir jedoch nicht für den Aufladevorgang des Kondensators verwenden, wenn wir an diesem den Spannungsabfall messen, da die Funktion die diesen beschreibt von der Form $ y = 1 - e^x $ ist. 
+In diesem Fall erhalten wir für die Zeitkonstante:
+ 
+ \begin{equation}
+ other equation
+\end{equation}
+
+Somit können wir Die zeitkonstante für unsere Messungen bestimmen. Auf grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler. 
+Diesen können wir mit statischtischer Fehlerfortplanzung bestimmen.
 
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}

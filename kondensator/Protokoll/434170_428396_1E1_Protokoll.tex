@@ -40,7 +40,7 @@ zu bestimmen.
 Dieser wird durch eine Schaltung mit Wiederstand und Schalter bestimmt.
 Hierfür werden verschiedene Methoden verwendet. Mit dem Multimeter werden Kapazität
 und Wiederstand bestimmt.
-Mit dem Osziloskop wird die Kapazität bestimmt. Und mit Sensor CASSY 2 zunächst der 
+Mit dem Oszilloskop wird die Kapazität bestimmt. Und mit Sensor CASSY 2 zunächst der 
 Wiederstand 
 \end{versuchsziele}
 
@@ -142,7 +142,7 @@ Wiederstand
   \end{figure}
  
   Bei der Versuchsdurchführung haben wir wie im Aufbau bereits beschrieben den Versuch 
-  aufgebaut. Um die Spannung ein zu stellen, und das die Auflösung des Osziloskop richtig zu
+  aufgebaut. Um die Spannung ein zu stellen, und das die Auflösung des Oszilloskop richtig zu
   wählen, haben wir das Sensor CASSY verwendet um die eingangsspannung zu bestimmen. Diese haben
   wir dann auf 7.11V geregelt, wobei der Wert welcher das Sensor CASSY gemessen hat leicht 
   geschwankt hat zwischen 7.11V und 7.10V. Die eingangsspannung haben wir so gewählt, 
@@ -161,10 +161,9 @@ Wiederstand
   werden. So sind wir sicher gegangen, dass wir nur den relevanten teil der Entladung aufzeichnen, 
   und nicht die Zeitspanne in welchem die Spannungen asymtotisch gegen null streben. 
 
-	
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Triggermenü_Osziloskop.pdf}
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Triggermenü_Osziloskop.pdf}
   \caption{Triggermenü des Oszilloskops}
   \centering
 \end{figure}
@@ -213,6 +212,34 @@ Und um sicher zu gehen, dass unsere Messung kein Ausreißer war.
 
 \subsubsection{Bestimmung Ofset}
 
+Bei unsren Bildern vom Osziloskop haben wir diese mit der Osziloskop eigenen Funktion gemacht.
+Deshalb ist der Wert der Cursor auf den Bilder nicht mehr zu sehen, was uns erst im nachhinein aufgefallen ist.
+Wir haben aber alle Messwerte auf unsrem Messprotokoll notiert.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Kondensator_02.pdf}
+    \caption{Endlade Vorgang vom Wiederstand und dem Kondensator}
+  \centering
+\end{figure}
+Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
+Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
+Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
+Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
+Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Aufladen_Kondensator_02.pdf}
+    \caption{Aufladen Vorgang vom Wiederstand und dem Kondensator}
+  \centering
+\end{figure}
+Die Abbildung zeigt den Spannungsverlauf von einem typischem Aufladevorgang.
+Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen konnten, und trotzdem das gesamte Display zum ablesen nutzen konnten.
+Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für das Ergebnis allerdings Irrelevant ist.
+Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist anfangs groß und später klein.
+Nach Augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
+
 Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
 \begin{figure}[H]
   \centering
@@ -220,11 +247,11 @@ Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl de
     \caption{Bestimmung des Offsets für die Entladung des Kondensators mit Asymptote}
   \centering
 \end{figure}
-In den Abbildungen kann man leider den Wert Cursor nicht sehen, weil wir dann kein Bild mehr mit dem Oszilloskop machen konnten.
 Um den Wert der Asymptote zu bestimmen, haben wir die dargestellte Zeit auf 10 $\tau$ vergrößert, da man mit dieser Einstellung schon in einen Bereich kam, wo die Spannungswerte am Kondensator nicht mehr abgenommen haben, sodern geschwankt sind.
-Wir haben dann den 
+Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es geschwankt ist, da sie näherungsweise gleichverteilt waren.
  
 \begin{figure}[H]
+     
   \centering
     \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Wiederstand_Offset.pdf}
     \caption{Bestimmung des Offsets für die Entladung des Kondensators mit Rauschen}
@@ -293,6 +320,18 @@ Diesen können wir mit statischtischer Fehlerfortplanzung bestimmen.
 
 \end{aufgabe}
 
+Um den Statistischen Messfehler durch die Digitalisierung und das ablesen zu erhalten, haben wir geschaut wie groß die Intervalle des Cursors sind, welche wir beim ablesen bei unsern Bildschirm Einstellungen noch auflösen könne.
+ 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/osziloskop-test-cursor-genauigkeit.pdf}
+    \caption{Bestimmung der Genauigkeit des Cursors}
+  \centering
+\end{figure}
+Beim variiren des Cursors um die Zeit haben wir festgestellt, das die Genauigkeit des Cursors bei 20 $\mu s$ liegt.
+Beim Variiren der Spannung haben wir eine Ungenauigkeit von 0.04V gemessen.
+Dieses lässt sich auch auf alle Auf und Endlademessungen übertragen, da wir immer die gleichen Zoomeinstellungen im Fenster hatten, außer für die Offsetbestimmung der Asymptote.
+ 
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}
   Zeigen Sie für den Lade- und den Entladevorgang jeweils ein Bild des
@@ -313,8 +352,5 @@ Diesen können wir mit statischtischer Fehlerfortplanzung bestimmen.
   Vorversuch und mit den Herstellerangaben (Toleranz
   $\SI{5}{\percent}$).  
 \end{aufgabe}
-
- 
- 
  
 \end{document}

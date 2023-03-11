@@ -1,3 +1,4 @@
+from os import stat
 import numpy as np
 import pandas as pd
 import sympy as sp
@@ -18,13 +19,15 @@ U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
 #original offset
 Uoff = np.array([0.02, 0.02, 0.02, 0.02, -0.02, -0.02, -7.22, -7.22])
 # bessere offsets
-Uoff = np.array([0.04, 0.04, 0.04, 0.04, -0.04, -0.04, -7.22, -7.22])
+Uoff = np.array([0.04, 0.04, 0.04, 0.04, -0.06, -0.06, -7.22, -7.22])
  
 offsets1 = []
 # berechnung von Tau
-tau = (t1 - t2)/ np.log((U1-Uoff)/(U2-Uoff)) * 1000
-print(pd.DataFrame(tau, index=names_messung, columns=["Tau"]))
-print(np.std(tau, ddof=1))
+tau = (t2 - t1)/ np.log((U1-Uoff)/(U2-Uoff))
+messungen = {"Messung": names_messung, "t1": t1, "t2": t2, "U1": U1, "U2": U2, "Uoff": Uoff, "Tau": tau}
+print(pd.DataFrame(messungen))
+tau_std = np.std(tau, ddof=1)
+print(f"Die Standartabweichung von Tau ist {tau_std:2f} ms")
 
  
 def plot_tau_errorbar(x, y, yerr, plotname):
@@ -35,8 +38,8 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     plt.rcParams['lines.linewidth'] = 0.5
      
     fig, ax = plt.subplots()
-    plt.errorbar(x, y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
-    plt.ylabel("U / V")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
+    plt.ylabel("Tau in ms")
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
@@ -45,9 +48,6 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     plt.grid()
     plt.savefig(PLOTS_DIR + plotname + ".pdf")
 
-#TODO error auf tau einsetzten
-y_err = np.array(0.04 * np.ones(len(tau)))
-plot_tau_errorbar(names_messung, tau, y_err, "tau_errorbar")
 
 # andreas statistik
 
@@ -63,26 +63,12 @@ sp.pprint(sp.diff(ta, U_1))
 sp.pprint(sp.diff(ta, U_2))
 #sp.pprint(sp.diff(ta, U_o))
 
-
-'''
-t_1, t_2, U_1, U_2, U_o, U_0= sp.symbols('t_1 t_2 U_1 U_2 u_o U_0' , real=True)
-
-ta = (t_1 -t_2)/(sp.ln((U_1-U_o)/(U_2-U_o)))
-
-sig_tau = (sp.diff(ta, t_1))
-sp.pprint(sig_tau)
-
-
-
-
-def sig_tau(t1, t2, U1, U2, Uo):
-    a = sig_tau.subs(((t_1, t1), (t_2, t2), (U_1, U1), (U_2, U2), (U_o, Uo)))
-    return a
-
-print(sig_tau(1, 5, 4 ,3, 7))
-
-def sig_tau(t1, t2, U1, U2, Uo, U0):
-    a = ta.subs([(t_1, t1), (t_2, t2), (U_1, U1), (U_2, U2), (U_o, Uo), (U_0, U0)])
-    return a
-
-print(sig_tau(1, 5, 4 ,3, 4, 7))'''
+def stat_tau_calc(t_1, t_2, U_1, U_2, U_off, d_t, d_U):
+    return np.sqrt((1/np.log((U_1-U_off)/(U_2-U_off)) * d_t)**2 * 2 + ((t_1-t_2)/(np.log((U_1-U_off)/(U_2-U_off))**2 * (U_1-U_off)) * d_U)**2 + ((t_1-t_2)/(np.log((U_1-U_off)/(U_2-U_off))**2 * (U_2-U_off)) * d_U)**2)
+ 
+stat_tau = stat_tau_calc(t1, t2, U1, U2, Uoff, 0.0002, 0.04)
+messungen.update({"Statistischer Fehler": stat_tau})
+print(pd.DataFrame(messungen))
+ 
+#TODO error auf tau einsetzten
+plot_tau_errorbar(names_messung, tau, stat_tau, "tau_errorbar")

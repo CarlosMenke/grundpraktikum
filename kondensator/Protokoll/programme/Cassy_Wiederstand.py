@@ -16,7 +16,7 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     plt.rcParams['axes.labelweight'] = 'normal'
     plt.rcParams['axes.linewidth'] = 1.2
     plt.rcParams['lines.linewidth'] = 2.0
-    plt.rcParams["savefig.pad_inches"] = 1
+    plt.rcParams["savefig.pad_inches"] = 0.5
     data = cassy.CassyDaten(datei)
     messung = data.messung(1)
     x = messung.datenreihe(x)
@@ -48,8 +48,8 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     ax=fig.add_subplot(111, label="1")
     ax2=fig.add_subplot(111, label="2", frame_on=False)
     
-    ax.plot(x.werte, y.werte, color="black")
-    ax2.plot(x.werte, y_2.werte, color='red')
+    ax.plot(x.werte, y.werte, color="black", label = 'U')
+    ax2.plot(x.werte, y_2.werte, color='red', label = 'I')
     ax2.yaxis.tick_right()
 
     plt.title('Daten')
@@ -60,10 +60,12 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     ax.set_ylabel('I_A1/ A')
     ax.yaxis.set_label_position('right') 
     ax.yaxis.set_label_coords(1.2, 0.5)
+    ax2.legend(loc = 'upper left')
+    ax.legend(loc = 'upper right')
     
     #ax2-plt.ylabel(y_2str)
     
-    plt.savefig("plot.pdf", bbox_inches = 'tight')
+    plt.savefig("../plots/plot.pdf", bbox_inches = 'tight')
     
 '''    plt.figure()
     plt.subplot(2,1,1)
@@ -73,5 +75,10 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     plt.ylabel(ystr)
     plt.title(datei)
     plt.grid()'''
-    
+ 
+  
+for filename in sorted(os.listdir('../Cassy_Messdaten/')):
+    if filename.endswith((".labx")):
+        cassy_plot('../Cassy_Messdaten/' + filename, 't', 'U_B1', 'I_A1')
+a = []
 cassy_plot('../Cassy_Messdaten/messung-aufladen-kondensator-01.labx', 't', 'U_B1', 'I_A1')

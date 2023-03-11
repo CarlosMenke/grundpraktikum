@@ -5,7 +5,13 @@ from pylab import *
 import re
 import os
 
-def cassy_plot(datei: str, x: str, y: str, y_2: str):
+global SHOW_PLOTS
+SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
+ 
+cassy_dir = "../Cassy_Messdaten/"
+ 
+ 
+def cassy_plot(datei: str, x: str, y: str, y_2: str, plotname: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 14.0
     plt.rcParams['font.family'] = 'sans-serif'
@@ -50,10 +56,9 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     ax2.plot(x.werte, y_2.werte, color='red', label = 'I')
     ax2.yaxis.tick_right()
 
-    plt.title('Daten')
     plt.xlabel(xstr)
     plt.ylabel(ystr)
-    plt.title(datei)
+    plt.title(plotname)
     ax2.yaxis.set_label_coords(-0.2, 0.5)
     ax.set_ylabel('I_A1/ A')
     ax.yaxis.set_label_position('right') 
@@ -63,20 +68,15 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str):
     
     #ax2-plt.ylabel(y_2str)
     
-    plt.savefig("../plots/plot.pdf", bbox_inches = 'tight')
+    if SHOW_PLOTS: plt.show()
+    else: plt.savefig("../plots/" + plotname, bbox_inches = 'tight')
     
-'''    plt.figure()
-    plt.subplot(2,1,1)
-    plt.plot(x.werte, y.werte, y_2.werte)
-    plt.title('Daten')
-    plt.xlabel(xstr)
-    plt.ylabel(ystr)
-    plt.title(datei)
-    plt.grid()'''
- 
+plots = ['messung-aufladen-kondensator-01']
   
-for filename in sorted(os.listdir('../Cassy_Messdaten/')):
+ 
+for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
-        cassy_plot('../Cassy_Messdaten/' + filename, 't', 'U_B1', 'I_A1')
-a = []
-cassy_plot('../Cassy_Messdaten/messung-aufladen-kondensator-01.labx', 't', 'U_B1', 'I_A1')
+        if SHOW_PLOTS: cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", plot)
+        for plot in plots:
+            if plot in filename:
+                cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)

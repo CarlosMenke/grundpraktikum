@@ -1,5 +1,3 @@
-
-
 import matplotlib.pyplot as plt
 from praktikum import analyse
 from praktikum import cassy

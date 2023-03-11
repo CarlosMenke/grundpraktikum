@@ -149,16 +149,16 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
   	\item Taster
   \end{itemize}   
 
-  Wir haben uns entschieden den Gesamten Versuch mit einem 10$\mu$F Kondensator und einem 
-  1 k$\Omega$ Wiederstand durch zu führen. Hierfür haben wir uns entschieden, da dies dazu
-  führt, dass wir eine größere Zeitkonstante haben. Dies ist erwünschenswert, da der 
-  Lade/Entlad  Vorgang so langsamer verläuft. Somit haben wir eine Höhere Auflösung 
-  der Messungen dies Verringert den Fehler. Allerdings führt dies auch dazu, dass nur wenig
+  Wir haben uns entschieden den gesamten Versuch mit einem 10$\mu$F Kondensator und einem 
+  1 k$\Omega$ Wiederstand durch zu führen. Hierfür haben wir uns entschieden, da wir so
+  eine größere Zeitkonstante erhalten. Dies ist erwünschenswert, da der 
+  Lade/Entlade Vorgang so langsamer verläuft. Somit haben wir eine Höhere Auflösung 
+  der Messungen dies verringert den Messfehler. Allerdings führt dies auch dazu, dass nur wenig
   Strom durch den Wiederstand fließt. Ein großer Wiederstand erhöht also auch den Fehler auf 
   den Strom den wir später mit dem Sensor CASSY messen, da dieses nicht beliebig kleine 
   Ströme messen kann. Hier ist ein größeres $\tau$ (Zeitkonstante) jedoch über eine größere
-  Genauigkeit des Stroms zu wählen. Größere Wiederstände hätten jedoch keinen Sinn ergeben, 
-  da so der Strom nicht mehr messbar gewesen wäre.
+  Genauigkeit des Stroms zu wählen. Noch größere Wiederstände hätten jedoch keinen Sinn ergeben, 
+  da so der Strom nicht mehr gut messbar gewesen wäre.
   
   \subsection{Durchführung der Messung mit Oszilloskop}  
   
@@ -169,15 +169,15 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
   \centering
   \end{figure}
 
-  In der Obigen Skizze können Sie das Schaltbild zu dem Versuch sehen. 
+  In der obigen Skizze können Sie das Schaltbild zu dem Versuch sehen. 
   Auf dem Steckbrett werden hierfür Kondensator und Wiederstand in Reihe gesteckt.
   Parallel zu dem Kondensator wird ein Schalter eingebaut, der bei bedarf den Stromkreis
   schließen bzw. öffnen kann. Ebenfalls paralell wird eine Spannungsquelle angeschlossen. 
-  Hier wird das Sensor CASSY als Spannungsquelle Verwendet. Wir haben außerdem noch mit dem
-  Sensor CASSY die angelegte Spannung gemessen. An diese Schalltung muss dann noch das 
-  Oszilloskop angeschlossen werden. Dieses misst gegen die gleiche Masse. Weswegen die Masse
-  zwischen Kondensator und Wiederstand angeschlossen wird. Chanel 1 \& 2 werden wie im Schaltbild angeschlossen.
-   So wird auf CH2 die Spannung die über den Kondensator abfällt gemessen, und 
+  Hier wird das Sensor CASSY als Spannungsquelle verwendet. Wir haben außerdem noch mit dem
+  Sensor CASSY die angelegte Spannung gemessen. An diese Schalltung wird das
+  Oszilloskop angeschlossen. Für beide Channel wurde die gleiche Masse verwendent, welche zwischen Kondensator und Wiederstand angeschlossen war.
+  Chanel 1 \& 2 werden wie im Schaltbild angeschlossen.
+  So wird auf CH2 die Spannung die über den Kondensator abfällt gemessen, und 
   auf CH1 die Spannung die über den Wiederstand abfällt. 
 
   \begin{figure}[H]
@@ -188,11 +188,13 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
   \end{figure}
  
   Bei der Versuchsdurchführung haben wir wie im Aufbau bereits beschrieben den Versuch 
-  aufgebaut. Um die Spannung ein zu stellen, und das die Auflösung des Oszilloskop richtig zu
-  wählen, haben wir das Sensor CASSY verwendet um die eingangsspannung zu bestimmen. Diese haben
-  wir dann auf 7.11V geregelt, wobei der Wert welcher das Sensor CASSY gemessen hat leicht 
-  geschwankt hat zwischen 7.11V und 7.10V. Die eingangsspannung haben wir so gewählt, 
-  damit wir vom Oszilloskop den Gesamten Bildschirm ausnutzen können Zur Einstellung des     Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
+  aufgebaut. Um die Spannung ein zu stellen und die Auflösung des Oszilloskop richtig zu
+  wählen, haben wir das Sensor CASSY verwendet um die Eingangsspannung zu bestimmen. \\
+  Da unser Wiederstand eine Leistungsgrenze von 2W hat, und das CASSY maximal 0.1A liefert, muss die Spannung unter 10V liegen.
+  Um die maximale Auflösung des Oszilloskops auszunutzen, sollte das Signal den gesamen Werteberich auf dem Bildschirm ausfüllen.
+  Die Einstellung der y-Achse mit Darstellung bis 8V lag am dichtesten unter 10V. 
+  Um auch kleine schwankungen nach oben noch aufzeichnen zu können, haben wir 7.1V gewählt. \\
+  Zur Einstellung des Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
   
   \subsubsection{Entladung Kondensator}
   
@@ -200,7 +202,7 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
    steigende Flanke gestellt. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
   die Spannung am Kondensator negativ ist. Somit steigt die Spannung asymtotisch zu null. 
   Zum starten der Messung haben wir den in der Schaltung verbauten Taster betätigt.
-  So konnten wir eine erste entladung aufzeichnen. Hierraus konnten wir dann die Restlichen 
+  So konnten wir eine erste Entladung aufzeichnen. Hierraus konnten wir dann die Restlichen 
   Einstellungen schließen. Ziel war es, möglichst viel vom Entladevorgang auf zu zeichnen, und 
   einen kurzen Zeitraum vor dem Entladen.
   wir haben die Zeiteinstellungen so gewählt, dass 5 $\tau$ auf unserem Bildschirm angezeigt
@@ -214,11 +216,11 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
   \centering
 \end{figure}
 
-Oben sehen sie ein Bild des Triggermenüs des Osziloskops. Hier haben wir sämtliche Triggereinstellungen für das Messen des Entladens eingestellt gehabt. 
+Oben sehen sie ein Bild des Triggermenüs des Osziloskops. Hier haben wir sämtliche Triggereinstellungen für das Messen des Entladens eingestellt.
 Hier sieht man auch, dass wir das Signal von CH2 invertiert haben, um dieses angenehmer
 auf dem Bildschirm darstellen zu können. So konnten wir außerdem den Nullpunkt der beiden 
 Spannungsverläufe optisch an die ungefähr gleiche Stelle legen. Der folgenden Tabelle
-können sie die Einstellungen entnehmen die wir am Oszilloskop gemacht haben.
+können sie die Einstellungen entnehmen die wir am Oszilloskop vorgenommen haben.
 Diese Einstellungen sind spezifisch für den Entladevorgang.
 
 
@@ -249,17 +251,16 @@ Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. 
 \end{figure}
 Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
 Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
-Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
+Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können.
 Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
-Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
+Nach Augenmaß verlaufen diese auch beide Exponentiell, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
 
-Zur bestimmung von $\tau$ haben wir dann bei der Entladung insgesamt 4 Messungen durchgeführt. 
+Zur bestimmung von $\tau$ haben wir bei der Entladung insgesamt 4 Messungen durchgeführt. 
 Jewails 2 für Kondensator und Wiederstand. Dies haben wir getan um zu überprüfen ob unsere Messungen reproduzierbar waren. 
-Und um sicher zu gehen, dass unsere Messung kein Ausreißer war. 
+Und um sicher zu gehen, dass unsere Messung kein Ausreißer sind. 
 
-\subsubsection{Bestimmung Ofset}
 
-Bei unsren Bildern vom Osziloskop haben wir diese mit der Osziloskop eigenen Funktion gemacht.
+Bei unseren Bildern vom Osziloskop haben wir diese mit der Osziloskop eigenen Funktion gemacht.
 Deshalb ist der Wert der Cursor auf den Bilder nicht mehr zu sehen, was uns erst im nachhinein aufgefallen ist.
 Wir haben aber alle Messwerte auf unsrem Messprotokoll notiert.
 
@@ -271,25 +272,13 @@ Wir haben aber alle Messwerte auf unsrem Messprotokoll notiert.
 \end{figure}
 Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
 Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
-Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
 Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
 Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
 
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Aufladen_Kondensator_02.pdf}
-    \caption{Aufladen Vorgang vom Wiederstand und dem Kondensator}
-  \centering
-\end{figure}
-Die Abbildung zeigt den Spannungsverlauf von einem typischem Aufladevorgang.
-Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen konnten, und trotzdem das gesamte Display zum ablesen nutzen konnten.
-Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für das Ergebnis allerdings Irrelevant ist.
-Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist anfangs groß und später klein.
-Nach Augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
-
+\subsubsection{Bestimmung Ofset}
 Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
 Um den Wert der Asymptote zu bestimmen, haben wir die dargestellte Zeit auf 10 $\tau$ vergrößert, da man mit dieser Einstellung schon in einen Bereich kam, wo die Spannungswerte am Kondensator nicht mehr abgenommen haben, sodern geschwankt sind.
-Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es geschwankt ist, da sie näherungsweise gleichverteilt waren.
+Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es geschwankt ist, da sie näherungsweise gleichverteilt sind.
  
 \begin{figure}[H]
      
@@ -299,16 +288,30 @@ Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es gesc
   \centering
 \end{figure}
 
-Für den Offset des Wiederstandes haben wir eine Rauschmessung durchgeführt.
-Dafür haben wir die Spannung die über dem Wiederstand im Aufgeladenen Zustand  und im Endladenen Zustand lag, gemessen.
-Da diese um 2 Werte geschwankt sind, haben wir den Mittelwert genommen.
-
 Hier haben wir auch $U_0$ bestimmt indem wir mit dem Cursor das Signal von CH2 vor dem Begin des Eintladevorgangs abgetastet haben. Daraus ergab sich $U_0 = |7.22V|$ Hier hängt das Vorzeichen von der Polung ab. in unserem Fall war der Kondensator negativ geladen. (Im bild ist CH2 invertiert)
+Die Offsetspannung am Wiederstand beim Aufladen des Kondensators haben wir wie für die vorheringen Offsetspannungen die Asymptote bestimmt.
 
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1.0\textwidth}{X X} % adjust width as needed
+            \toprule
+            \textbf{Bauteil} & \textbf{Offset} \\
+            Endladen Wiederstand & $U_{off} = 0.04V$ \\
+            Endladen Kondensator & $U_{off} = 0.02V$ \\
+            Aufladen Wiederstand & $U_{off} = -0.06V$ \\
+            Aufladen Kondensator & $U_{0} = -7.22V$ \\
+            \midrule
+            \bottomrule
+        \end{tabularx}
+        \caption{Übersicht der Einstellungen am Oszilloskop}
+        \label{tab:mytable}
+    \end{table}
+    
  \subsubsection{Aufladen des Kondensators}
  
  
-Für die Messung des Aufladevorgangs mussten wir nur die Trigger einstellungen ändern sonst konnten wir unsere Einstellungen übernehmen. In diesem Fall haben wir auch keins der Signale invertiert. 
+Für die Messung des Aufladevorgangs mussten wir nur die Trigger Einstellungen ändern sonst konnten wir unsere Einstellungen übernehmen.
+In diesem Fall haben wir auch keins der Signale invertiert. 
 
 \begin{table}[H]
         \centering
@@ -324,7 +327,7 @@ Für die Messung des Aufladevorgangs mussten wir nur die Trigger einstellungen �
         \label{tab:mytable}
     \end{table}
     
-Beim messen der Aufladung haben wir zunächst denn Schalter gedrückt und auch einige Sekunden gewartet, um sicher zu gehen, dass der Kondensator entladen war. 
+Beim messen der Aufladung haben wir zunächst denn Schalter gedrückt und einige Sekunden gewartet, um sicher zu gehen, dass der Kondensator entladen war. 
 Dann haben wir den Schalter losgelassen un die Messung ist durch den Trigger automatisch gestartet. 
 Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim entladen jeh für Kondensator und Wiederstand 2 Messungen zur bestimmung von $\tau$ gemacht. 
 
@@ -337,30 +340,30 @@ Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim 
 Die Abbildung zeigt den Spannungsverlauf von einem typischem Aufladevorgang.
 Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen konnten, und trotzdem das gesamte Display zum ablesen nutzen konnten.
 Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für die Auswerung allerdings Irrelevant ist.
-Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist anfangs groß und später klein.
+Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist macht anfangs einen Sprung und fällt dann gegen Null ab.
 Nach augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
 
 \subsubsection{Bestimmung von $\tau$}
 
 Zur bestimmung von Tau haben wir mit dem Cursors je zwei Messwerte abgelesen. 
 Mithilfe der Formeln die wir bereits in den Grundlagen eingeführt haben, konnten wir dann die Zeitkonstante bestimmen. 
-Diese erhalten wir indem wir den quotienten von unserem Werte Paar nehmen und dann nach $\tau$ umformen. Daraus ergibt sich :
+Diese erhalten wir indem wir den Quotienten von unserem Werte Paar nehmen und dann nach $\tau$ umformen. Daraus ergibt sich:
 
 
 \begin{equation}
 	\tau = \frac{t_2 - t_1}{ln\left(\frac{U_1-U_{off}}{U_2-U_{off}}\right)}	
 \end{equation}
 
-Wobei wir hier noch den möglichen Ofset beachten müssen. Die obige Formel können wir jedoch nicht für den Aufladevorgang des Kondensators verwenden, wenn wir an diesem den Spannungsabfall messen, da die Funktion die diesen beschreibt von der Form $ y = 1 - e^x $ ist. 
+Wobei wir hier noch den möglichen Ofset beachten müssen. \\
+Die obige Formel können wir jedoch nicht für den Aufladevorgang des Kondensators verwenden, wenn wir an diesem den Spannungsabfall messen, da die Funktion die diesen beschreibt von der Form $ y = 1 - e^x $ ist. 
 In diesem Fall erhalten wir für die Zeitkonstante:
  
  \begin{equation}
  \tau = \frac{t_2 - t_1}{ln\left(\frac{U_0 - U_1}{U_0 - U_2}\right)}
 \end{equation}
 
-Somit können wir Die zeitkonstante für unsere Messungen bestimmen. Auf grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler. 
+Somit können wir Die Zeitkonstante für unsere Messungen bestimmen. Auf Grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler.  \\
 
-Um den Statistischen Messfehler durch die Digitalisierung und das ablesen zu erhalten, haben wir geschaut wie groß die Intervalle des Cursors sind, welche wir beim ablesen bei unsern Bildschirm Einstellungen noch auflösen könne.
  
 \begin{figure}[H]
   \centering
@@ -370,10 +373,11 @@ Um den Statistischen Messfehler durch die Digitalisierung und das ablesen zu erh
 \end{figure}
 
 
-Beim variiren des Cursors um einen schritt in  Zeit haben wir festgestellt, das die Genauigkeit des Cursors bei 20 $\mu s$ liegt.
+Beim variiren des Cursors um einen Schritt in der Zeit haben wir festgestellt, das die Genauigkeit des Cursors bei 20 $\mu s$ liegt.
 Beim Variiren der Spannung haben wir eine Schrittweite des Ablesens von 0.04V festgestellt.
 Diese Ableseungenauigkeit muss durch $\sqrt{12}$ geteilt werden, um daraus unseren Fehler auf t und U zu erhalten. 
-Dieses lässt sich auch auf alle Auf und Endlademessungen übertragen, da wir immer die gleichen Zoomeinstellungen im Fenster hatten, außer für die Offsetbestimmung der Asymptote. \\
+Dieses lässt sich auch auf alle Auf und Endlademessungen übertragen, da wir immer die gleichen Zoomeinstellungen im Fenster hatten, außer für die Offsetbestimmung. \\
+ 
 Den untenstehenden Rechnungen können sie somit unsere Fehler auf U und t entnehmen. 
 
 \begin{equation}
@@ -387,7 +391,7 @@ Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ab
 	\sigma_{\tau}^2 = \sum_{i,j=1}^n\left[\frac{\partial \tau}{\partial x_i}\frac{\partial \tau}{\partial x_j}\right]_{x=\mu}V_{ij}^2
 \end{equation}
 
-Wobei dies die Form für eine Größe mit zwei variablen ist, diese kann jedoch problemlos auf n Variablen erweitert werden.
+Wobei dies die Form für eine Größe mit zwei Variablen ist, diese kann jedoch problemlos auf n Variablen erweitert werden.
 Wir gehen davon aus, dass die Warscheinlichkeitsdichte zu unserem Fehler eine Gaußverteilung ist.
 Woraus wir schließen können, dass diese unkorreliert sind und sich somit der Fehler auf $\tau$ vereinfacht zu. 
 
@@ -402,6 +406,7 @@ Weshalb hier nach insgesamt vier Variablen abgeleitet werden muss. Jedoch ist de
 	\sigma_{\tau}^2 = \left[\frac{\partial \tau}{\partial t_1}\right]^2\sigma_{t_1}^2 + \left[\frac{\partial \tau}{\partial t_2}\right]^2\sigma_{t_2}^2 + \left[\frac{\partial \tau}{\partial U_1}\right]^2\sigma_{U_1}^2 + \left[\frac{\partial \tau}{\partial U_2}\right]^2\sigma_{U_2.}^2
 \end{equation}
 
+% TODO python programmname einfuegen
 Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm (...) durchgeführt. 
 
 \subsection{Messdaten mit Oszilloskop}

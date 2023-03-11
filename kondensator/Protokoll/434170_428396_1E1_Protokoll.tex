@@ -95,12 +95,12 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
   Der Skizze unten können Sie den Schaltplan für die Messungen entnehmen.
   
   \begin{figure}[H]
-  \centering
-  \subfloat[Schaltplan messen von R]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
-  \hfill
-  \subfloat[Schaltplan messen von C]{\includegraphics[width=0.5\textwidth]{Schaltung_C_Multimeter.pdf}\label{fig:f2}}
-  \caption{Schaltplan für Messungen mit dem Multimeter}
-\end{figure}
+      \centering
+      \subfloat[Schaltplan messen von R]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
+      \hfill
+      \subfloat[Schaltplan messen von C]{\includegraphics[width=0.5\textwidth]{Schaltung_C_Multimeter.pdf}\label{fig:f2}}
+      \caption{Schaltplan für Messungen mit dem Multimeter}
+  \end{figure}
 
 Dabei haben wir zur Messung des Wiederstands eines der Kabel an die Masse des Multimeters angeschlossen, und das andere Kabel an die Spannungsbuxe des Multimeters. Da wir wussten, dass wir ein Wiederstand im Bereich 1k$\Omega$ erwarten, haben wir den Drehregler auf 2 k$\Omega$ gestellt.\\ 
 
@@ -121,7 +121,16 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
         \label{tab:mytable}
     \end{table}
 
- \end{aufgabe}
+
+Hier ist eine Exemplarische darstellung unserer Messungen.
+Wie man sehen kann, sind sowohl die Spannung wie die Stromstäke normalverteilt.
+  \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{plots/messung-wiederstand-07.pdf}
+      \caption{Verteilung der gemessenen Spannung und Stromstärke}
+  \end{figure}
+Die Statistischen Fehler haben wir mittels Erwartungswert und Varianz auf die Spannung und die stromstärke berechnet.
+\end{aufgabe}
 
 
 \begin{aufgabe}{Vorversuch: Bestimmung des Ohmschen Widerstands}

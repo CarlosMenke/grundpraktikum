@@ -15,18 +15,6 @@
 \gruppe{A3}
 
 \begin{document}
- 
-
-%\begin{figure}[H]
-%  \centering
-%  \includegraphics[width=1\textwidth]{Bilder/434170_428396_1A3_SkizzeAufbau.pdf}
-%  \caption{Skizze des Versuchsaufbaus}
-%  \centering
-%\end{figure}
-
-
-
- 
 
 \begin{versuchsziele}
 \end{versuchsziele}
@@ -48,13 +36,41 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
 \begin{aufgabe}{Grundlagen}
   Knappe Beschreibung der theoretischen Grundlagen, Angabe der
   benötigten Formel(n), ohne Herleitung. Definition der verwendeten
-  Formelzeichen.
+  Formelzeichen. \\
+
+
+    Ziel des Versuchs ist es, die Kapazität eines Kondensators zu bestimmen.\\
+    Dies können wir messen, da die Spannungsverläufe von Kondensator und Wiederstand mit der Kapazität und dem Wiederstand zusammenhängen.
+    Allgemein gilt für einen Kondensator, der aufgeladen wird und mit einem Wiederstand in Reihe geschaltet wurde:
+    \begin{equation}
+        U_0 - U_C = U_R = I(t) R
+        = C\frac{dQ}{dt} R
+    \end{equation}
+    Diese DGL lässt sich mit Hilfe der seperation der Variablen lösen.
+    \begin{equation}
+        U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) = U_0 (1 + e^{\frac{-t}{\tau}})
+    \end{equation}
+    Für den Strom am Wiederstand ergibt sich damit:
+    \begin{equation}
+        I(t) = \frac{dQ}{dt} = C * dU_0 = \frac{U_0}{R} * e^{-\frac{t}{RC}} = I_0 * e^{-\frac{t}{\tau}}
+    \end{equation}
+    Für den Endladevorgan ergibt sich eine änliche DGL:
+    \begin{equation}
+        U_C(t) = - R I(t)
+        = - R C \frac{dU_C}{dt}
+    \end{equation}
+    Wenn an diese lößt, erhält man:
+    \begin{equation}
+        \Rightarrow U_C(t) = U_0 (e^{-\frac{t}{RC}})
+    \end{equation}
+    Für den Strom am Wiederstand kann man jetzt auch leicht mithilfe der Spannung am Kondensator berechnen:
+    \begin{equation}
+        I(t) = \frac{dQ}{dt} = C dU_0 = \frac{U_0}{R} e^{-\frac{t}{RC}} = I_0 e^{-\frac{t}{\tau}}
+    \end{equation}
+    Das bedeutet, das wenn man die Konstante $\tau$ bestimmt, z.B 2 Zeit Spannungs Wertepaare bestimmt, da man mit $C = \tau R$ die Kapazität berechnen kann.
+
+
 \end{aufgabe}
-
-% Bitte belassen Sie die Aufgabentexte in Ihrem Protokoll und beginnen
-% Sie hier mit der Lösung der ersten Aufgabe:
-
-
 
 \begin{aufgabe}{Vorversuch: Charakterisierung der verwendeten Bauteile}
   Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
@@ -586,4 +602,5 @@ Mit dem Wiederstand den wir im Vorversuch bestimmt haben...
 
 %TODO : Pythen Programm benennen, und am anfang der Auswertung rein bringen
 %TODO : Bei OSZILLOSKOP Mit Wiederstand die Kapazität bestimmen aus Tau
+
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen

@@ -190,7 +190,8 @@ Diese Einstellungen sind spezifisch für den Entladevorgang.
         \label{tab:mytable}
     \end{table}
 
-Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. Um zu überprüfen ob diese passen und reproduzierbar sind. 
+Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. Um zu überprüfen ob diese passen und reproduzierbar sind.
+
  
 
 
@@ -257,9 +258,12 @@ Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es gesc
     \caption{Bestimmung des Offsets für die Entladung des Kondensators mit Rauschen}
   \centering
 \end{figure}
+
 Für den Offset des Wiederstandes haben wir eine Rauschmessung durchgeführt.
 Dafür haben wir die Spannung die über dem Wiederstand im Aufgeladenen Zustand  und im Endladenen Zustand lag, gemessen.
 Da diese um 2 Werte geschwankt ist, haben wir den Mittelwert genommen.
+
+Hier haben wir auch $U_0$ bestimmt indem wir mit dem Cursor das Signal von CH2 vor dem Begin des Eintladevorgangs abgetastet haben. Daraus ergab sich $U_0 = 7.22V$
 
  \subsubsection{Aufladen des Kondensators}
  
@@ -315,10 +319,6 @@ In diesem Fall erhalten wir für die Zeitkonstante:
 \end{equation}
 
 Somit können wir Die zeitkonstante für unsere Messungen bestimmen. Auf grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler. 
-Diesen können wir mit statischtischer Fehlerfortplanzung bestimmen.
-
-
-\end{aufgabe}
 
 Um den Statistischen Messfehler durch die Digitalisierung und das ablesen zu erhalten, haben wir geschaut wie groß die Intervalle des Cursors sind, welche wir beim ablesen bei unsern Bildschirm Einstellungen noch auflösen könne.
  
@@ -330,7 +330,35 @@ Um den Statistischen Messfehler durch die Digitalisierung und das ablesen zu erh
 \end{figure}
 Beim variiren des Cursors um die Zeit haben wir festgestellt, das die Genauigkeit des Cursors bei 20 $\mu s$ liegt.
 Beim Variiren der Spannung haben wir eine Ungenauigkeit von 0.04V gemessen.
-Dieses lässt sich auch auf alle Auf und Endlademessungen übertragen, da wir immer die gleichen Zoomeinstellungen im Fenster hatten, außer für die Offsetbestimmung der Asymptote.
+Dieses lässt sich auch auf alle Auf und Endlademessungen übertragen, da wir immer die gleichen Zoomeinstellungen im Fenster hatten, außer für die Offsetbestimmung der Asymptote. \\
+
+
+Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ablesegenauigkeit statischtisch angenommen. Wobei wir eine ungenauigkeit auf das ablesen der Zeit als auch auf die Amplitude haben. Die Fehlerfortplfanzung lautet somit: 
+
+\begin{equation}
+	\sigma_{\tau}^2 = \sum_{i,j=1}^n\left[\frac{\partial \tau}{\partial x_i}\frac{\partial \tau}{\partial x_j}\right]_{x=\mu}V_{ij}^2
+\end{equation}
+
+Wobei dies die Form für eine Größe mit zwei variablen ist, diese kann jedoch problemlos auf n Variablen erweitert werden.
+Wir gehen davon aus, dass die Warscheinlichkeitsdichte zu unserem Fehler eine Gaußverteilung ist.
+Woraus wir schließen können, dass diese unkorreliert sind und sich somit der Fehler auf $\tau$ vereinfacht zu. 
+
+\begin{equation}
+	\sigma_{\tau}^2 = \sum_{i=1}^n\left[\frac{\partial \tau}{\partial x_i}\right]^2_{x=\mu}\sigma_{i}^2
+\end{equation}
+
+Wobei hier darauf geachtet werden muss, $\tau$ von 4 Variablen abhängig ist $\tau\left(t_1, t_2, U_1, U_2\right)$.
+Weshalb hier nach insgesamt vier Variablen abgeleitet werden muss. Jedoch ist der Fehler auf $t_1$, $t_2$ und auf $U_1$ , $U_2$ jewails gleich. Somit ergibt sich für unser spezifisches Problem folgende Form für die Fehlerfortplfanlzung. 
+
+\begin{equation}
+	\sigma_{\tau}^2 = \left[\frac{\partial \tau}{\partial t_1}\right]^2\sigma_{t_1}^2 + \left[\frac{\partial \tau}{\partial t_2}\right]^2\sigma_{t_2}^2 + \left[\frac{\partial \tau}{\partial U_1}\right]^2\sigma_{U_1}^2 + \left[\frac{\partial \tau}{\partial U_2}\right]^2\sigma_{U_2.}^2
+\end{equation}
+
+Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm durchgeführt. 
+
+\end{aufgabe}
+
+
  
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}

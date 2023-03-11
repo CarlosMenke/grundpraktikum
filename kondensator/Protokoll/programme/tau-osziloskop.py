@@ -7,15 +7,16 @@ t2 = np.array([0.0404, 0.0404, 0.0312, 0.0312, 0.0226, 0.0226, 0.0180, 0.0180])
 
 U1 = np.array([6.64, 6.64, 6.76, 6.76, -4.08, -4.08, -2.16, -2.16])
 #original offset
-Uoff = np.array([0.02, 0, 0, 0, 0, 0, -7.22, -7.22])
+Uoff = np.array([0.02, 0.02, 0.02, 0.02, 0.02, 0.02, -7.22, -7.22])
 # bessere offsets
-Uoff = np.array([0.04, 0.002, 0, 0, 0, 0, -7.22, -7.22])
+Uoff = np.array([0.02, 0.02, 0.02, 0.02, -0.02, -0.02, -7.22, -7.22])
 U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
 
 offsets1 = []
 # berechnung von Tau
-tau = (t1 - t2)/ np.log((U1-Uoff)/(U2-Uoff))
+tau = (t1 - t2)/ np.log((U1-Uoff)/(U2-Uoff)) * 1000
 print(pd.DataFrame(tau, index=names_messung, columns=["Tau"]))
+print(np.std(tau, ddof=1))
 
 
 # andreas statistik

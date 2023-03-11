@@ -87,6 +87,8 @@ Wiederstand
   und geben Sie sie mit statistischer und systematischer
   Messunsicherheit an.
   
+\subsection{Aufbau der Messung mit Osziloskop}  
+   
   Für diesen Teil des Gesamtversuchs benötigen wir folgende Geräte:
   
   \textbf{Benötigte Geräte:}
@@ -111,6 +113,8 @@ Wiederstand
   Ströme messen kann. Hier ist ein größeres $\tau$ (Zeitkonstante) jedoch über eine größere
   Genauigkeit des Stroms zu wählen. Größere Wiederstände hätten jedoch keinen Sinn ergeben, 
   da so der Strom nicht mehr messbar gewesen wäre.
+  
+  \subsection{Durchführung der Messung mit Oszilloskop}  
   
   \begin{figure}[H]
   \centering
@@ -143,6 +147,9 @@ Wiederstand
   wir dann auf 7.11V geregelt, wobei der Wert welcher das Sensor CASSY gemessen hat leicht 
   geschwankt hat zwischen 7.11V und 7.10V. Die eingangsspannung haben wir so gewählt, 
   damit wir vom Oszilloskop den Gesamten Bildschirm ausnutzen können Zur Einstellung des     Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
+  
+  \subsubsection{Entladung Kondensator}
+  
   Hierfür haben wir den Trigger auf CH2 auf 7.00V 
    steigende Flanke gestellt. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
   die Spannung am Kondensator negativ ist. Somit steigt die Spannung asymtotisch zu null. 
@@ -185,6 +192,26 @@ Diese Einstellungen sind spezifisch für den Entladevorgang.
     \end{table}
 
 Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. Um zu überprüfen ob diese passen und reproduzierbar sind. 
+ 
+
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Kondensator_02.pdf}
+    \caption{Endlade Vorgang vom Wiederstand und dem Kondensator}
+  \centering
+\end{figure}
+Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
+Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
+Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
+Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
+Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
+
+Zur bestimmung von $\tau$ haben wir dann bei der Entladung insgesamt 4 Messungen durchgeführt. 
+Jewails 2 für Kondensator und Wiederstand. Dies haben wir getan um zu überprüfen ob unsere Messungen reproduzierbar waren. 
+Und um sicher zu gehen, dass unsere Messung kein Ausreißer war. 
+
+\subsubsection{Bestimmung Ofset}
 
 Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
 \begin{figure}[H]
@@ -207,25 +234,9 @@ Für den Offset des Wiederstandes haben wir eine Rauschmessung durchgeführt.
 Dafür haben wir die Spannung die über dem Wiederstand im Aufgeladenen Zustand  und im Endladenen Zustand lag, gemessen.
 Da diese um 2 Werte geschwankt ist, haben wir den Mittelwert genommen.
 
-\end{aufgabe}
-
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Kondensator_02.pdf}
-    \caption{Endlade Vorgang vom Wiederstand und dem Kondensator}
-  \centering
-\end{figure}
-Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
-Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
-Dies haben wir gemacht, damit wir die Nulllinien angenehm aufeinander legen können, und um einen großteil des Bildschirmes vom Oszilloskop zum ablesen verwenden zu können, um ablese Fehler zu minimieren.
-Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
-Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
-
-Zur bestimmung von $\tau$ haben wir dann bei der Entladung insgesamt 4 Messungen durchgeführt. 
-Jewails 2 für Kondensator und Wiederstand. Dies haben wir getan um zu überprüfen ob unsere Messungen reproduzierbar waren. 
-Und um sicher zu gehen, dass unsere Messung kein Ausreißer war. 
-
+ \subsubsection{Aufladen des Kondensators}
+ 
+ 
 Für die Messung des Aufladevorgangs mussten wir nur die Trigger einstellungen ändern sonst konnten wir unsere Einstellungen übernehmen. In diesem Fall haben wir auch keins der Signale invertiert. 
 
 \begin{table}[H]
@@ -258,6 +269,8 @@ Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, 
 Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist anfangs groß und später klein.
 Nach augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
 
+\subsubsection{Bestimmung von $\tau$}
+
 Zur bestimmung von Tau haben wir mit dem Cursors je zwei Messwerte abgelesen. 
 Mithilfe der Formeln die wir bereits in den Grundlagen eingeführt haben, konnten wir dann die Zeitkonstante bestimmen. 
 Diese erhalten wir indem wir den quotienten von unserem Werte Paar nehmen und dann nach $\tau$ umformen. Daraus ergibt sich :
@@ -278,6 +291,7 @@ Somit können wir Die zeitkonstante für unsere Messungen bestimmen. Auf grund d
 Diesen können wir mit statischtischer Fehlerfortplanzung bestimmen.
 
 
+\end{aufgabe}
 
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}

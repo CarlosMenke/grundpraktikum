@@ -263,7 +263,7 @@ Für den Offset des Wiederstandes haben wir eine Rauschmessung durchgeführt.
 Dafür haben wir die Spannung die über dem Wiederstand im Aufgeladenen Zustand  und im Endladenen Zustand lag, gemessen.
 Da diese um 2 Werte geschwankt ist, haben wir den Mittelwert genommen.
 
-Hier haben wir auch $U_0$ bestimmt indem wir mit dem Cursor das Signal von CH2 vor dem Begin des Eintladevorgangs abgetastet haben. Daraus ergab sich $U_0 = 7.22V$
+Hier haben wir auch $U_0$ bestimmt indem wir mit dem Cursor das Signal von CH2 vor dem Begin des Eintladevorgangs abgetastet haben. Daraus ergab sich $U_0 = |7.22V|$ Hier hängt das Vorzeichen von der Polung ab. in unserem Fall war der Kondensator negativ geladen. (Im bild ist CH2 invertiert)
 
  \subsubsection{Aufladen des Kondensators}
  
@@ -354,12 +354,8 @@ Weshalb hier nach insgesamt vier Variablen abgeleitet werden muss. Jedoch ist de
 	\sigma_{\tau}^2 = \left[\frac{\partial \tau}{\partial t_1}\right]^2\sigma_{t_1}^2 + \left[\frac{\partial \tau}{\partial t_2}\right]^2\sigma_{t_2}^2 + \left[\frac{\partial \tau}{\partial U_1}\right]^2\sigma_{U_1}^2 + \left[\frac{\partial \tau}{\partial U_2}\right]^2\sigma_{U_2.}^2
 \end{equation}
 
-Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm durchgeführt. 
+Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm (...) durchgeführt. 
 
-\end{aufgabe}
-
-
- 
 \subsection{Messdaten mit Oszilloskop}
 Hier eine Übersicht von unsern finalen Messdaten. Dabei haben wir die Offsets immer vor der ensprechenden Messung bestimmt, da sich diese ändern können.
 Dabei haben wir bei jeder Messreihe einmal während der Messung Tau überschlagen (ohne Fehler) um zu sehen, ob die Messung sinnvoll ist.
@@ -402,6 +398,10 @@ $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustan
         \label{tab:mytable}
     \end{table}
     
+\end{aufgabe}
+
+
+    
  
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}
@@ -425,3 +425,5 @@ $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustan
 \end{aufgabe}
  
 \end{document}
+
+%TODO : Pyten Programm benennen, und am anfang der Auswertung rein bringen

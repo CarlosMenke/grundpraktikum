@@ -19,11 +19,11 @@ U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
 #original offset
 Uoff = np.array([0.02, 0.02, 0.02, 0.02, -0.02, -0.02, -7.22, -7.22])
 # bessere offsets
-Uoff = np.array([0.04, 0.04, 0.04, 0.04, -0.08, -0.08, -7.22, -7.22])
+Uoff = np.array([0.04, 0.04, 0.04, 0.04, -0.06, -0.06, -7.22, -7.22])
  
 offsets1 = []
 # berechnung von Tau
-tau = (t1 - t2)/ np.log((U1-Uoff)/(U2-Uoff))
+tau = (t2 - t1)/ np.log((U1-Uoff)/(U2-Uoff))
 messungen = {"Messung": names_messung, "t1": t1, "t2": t2, "U1": U1, "U2": U2, "Uoff": Uoff, "Tau": tau}
 print(pd.DataFrame(messungen))
 tau_std = np.std(tau, ddof=1)
@@ -38,7 +38,7 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     plt.rcParams['lines.linewidth'] = 0.5
      
     fig, ax = plt.subplots()
-    plt.errorbar(x, y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
     plt.ylabel("Tau in ms")
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)

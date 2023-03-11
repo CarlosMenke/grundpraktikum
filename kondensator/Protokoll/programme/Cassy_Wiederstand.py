@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from praktikum import analyse
 from praktikum import cassy
 from pylab import *
 import re
@@ -66,17 +65,15 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str, plotname: str):
     ax2.legend(loc = 'upper left')
     ax.legend(loc = 'upper right')
     
-    #ax2-plt.ylabel(y_2str)
-    
     if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname, bbox_inches = 'tight')
+    else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')
     
 plots = ['messung-aufladen-kondensator-01']
   
  
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
-        if SHOW_PLOTS: cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", plot)
+        if SHOW_PLOTS: cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", filename)
         for plot in plots:
             if plot in filename:
                 cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)

@@ -11,12 +11,12 @@ global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passen
 PLOTS_DIR = '../plots/434170_428396_1A3_'
  
 names_messung = ["1. Endladen am Wiederstand", "2. Endladen am Wiederstand", "1. Endladen am Kondensator", "2. Endladen am Kondensator",  "1. Aufladen am Wiederstand", "2. Aufladen am Wiederstand", "1. Aufladen am Kondensator", "2. Aufladen am Kondensator"]
-t1 = np.array([0.0006, 0.0006, 0.0004, 0.0004, 0.0045, 0.0045, 0.0034, 0.0034])
+t1 = np.array([0.0006, 0.0006, 0.0004, 0.0004, 0.0054, 0.0054, 0.0034, 0.0034])
 t2 = np.array([0.0404, 0.0404, 0.0312, 0.0312, 0.0226, 0.0226, 0.0180, 0.0180])
 
 U1 = np.array([6.64, 6.64, 6.76, 6.76, -4.08, -4.08, -2.16, -2.16])
 U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
-Uoff = np.array([0.04, 0.04, 0.02, 0.02, -0.06, -0.06, -7.22, -7.22])
+Uoff = np.array([0.04, 0.04, 0.02, 0.02, 0.06, 0.06, -7.22, -7.22])
  
 offsets1 = []
 # berechnung von Tau
@@ -70,7 +70,9 @@ print(pd.DataFrame(messungen).round(5))
  
 #TODO error auf tau einsetzten
 plot_tau_errorbar(names_messung, tau, stat_tau, "tau_errorbar")
+tau = np.delete(tau, 4)
+stat_tau = np.delete(stat_tau, 4)
 gewichteter_mittelwert = sum(tau/stat_tau**2)/sum(1/stat_tau**2)
 print(f"Der gewichtete Mittelwert von Tau ist {gewichteter_mittelwert:2f} ms")
-gewichteter_mittelwert_std = np.sqrt(1/sum(1/stat_tau**2))
+print(tau)
 print(f"Der gewichtete Mittelwert von Tau hat eine Standartabweichung von {gewichteter_mittelwert_std:2f} ms")

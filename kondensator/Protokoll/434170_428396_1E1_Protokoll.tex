@@ -37,11 +37,11 @@
 \begin{versuchsziele}
 Ziel des Versuchs ist die Kapazität eines Kondensators durch lade und entladevorgang
 zu bestimmen. 
-Dieser wird durch eine Schaltung mit Wiederstand und Schalter bestimmt.
+Dieser wird durch eine Schaltung mit Wiederstand und Schalter ermöglicht.
 Hierfür werden verschiedene Methoden verwendet. Mit dem Multimeter werden Kapazität
 und Wiederstand bestimmt.
-Mit dem Oszilloskop wird die Kapazität bestimmt. Und mit Sensor CASSY 2 zunächst der 
-Wiederstand 
+Mit dem Oszilloskop wird über die Zeitkonstante die Kapazität bestimmt. Mit Sensor CASSY 2 zunächst der Wiederstand und dann die Kapazit. 
+Diese Ergebnisse sollen dann untereinander verglichen werden.
 \end{versuchsziele}
 
 
@@ -59,7 +59,52 @@ Wiederstand
 \begin{aufgabe}{Vorversuch: Charakterisierung der verwendeten Bauteile}
   Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
   und Messbrücke.
-\end{aufgabe}
+  
+  
+  
+  Bevor wir mit dem Tatsächlichen Versuch angefangen haben, haben wir mit dem Multimeter zunächst die Bauteile Charakterisiert. Also Wiederstand und Kondensator gemessen. 
+  
+  \textbf{Verwendete Geräte}
+  \begin{itemize}
+  \item Mulltimeter
+  \item Rastersteckplatte DIN A4
+  \item 10 $\mu$F Kondensator
+  \item 1 k$\Omega$
+  \item Kabel rot/blau
+  
+  \end{itemize}
+  
+  Hierfür haben wir den Wiederstand auf die Steckplatte gesteckt und parallel dazu den Wiederstand gemessen.  Den Selben aufbau haben wir für den Kondensator verwendet. Der Skizze unten können Sie den Schaltplan für die Messungen entnehmen.
+  
+  \begin{figure}[H]
+  \centering
+  \subfloat[Schaltplan messen von R]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
+  \hfill
+  \subfloat[Schaltplan messen von C]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f2}}
+  \caption{Schaltplan für Messungen mit dem Multimeter}
+\end{figure}
+
+Dabei haben wir zur Messung des Wiederstands eines der Kabel an die Masse des Multimeters angeschlossen, und das andere Kabel an die Spannungsbuxe des Multimeters. Da wir wussten, dass wir ein Wiederstand im Bereich 1k$\Omega$ erwarten. Haben wir Beim dreregler auf 2 k$\Omega$ gestellt.\\ 
+
+Das selbe Vorgehen, haben wir beim Messen des Kondensators gewählt, Wobei wir hier das zweite Kabel in die buxe für mA gesteckt, und den Drehregler auf 20 $\mu$F geregelt. \\
+
+Aus dieser Messung haben wir die Folgenden Werte erhalten. Wobei wir die Daten für die Unsicherheit der Bedienungsanleitung entnehmen konnten.  
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X c c} % adjust width as needed
+            \toprule
+            \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
+            \midrule
+            Wiederstand & 0.991 k$\Omega$ & $\pm$ 0.8\% \\
+            CH2 & 10.36 $\mu$F & $\pm$ 2.5\%  \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Ergebnisse der Messung mit dem Multimeter}
+        \label{tab:mytable}
+    \end{table}
+
+ \end{aufgabe}
 
 
 \begin{aufgabe}{Vorversuch: Bestimmung des Ohmschen Widerstands}
@@ -89,9 +134,9 @@ Wiederstand
   
 \subsection{Aufbau der Messung mit Osziloskop}  
    
-  Für diesen Teil des Gesamtversuchs benötigen wir folgende Geräte:
+  Für diesen Teil des Gesamtversuchs benötigen wir folgende Geräte:\\
   
-  \textbf{Benötigte Geräte:}
+  \textbf{Verwendete Geräte:}
   \begin{itemize}
   	\item TDS 200 4B Oszilloskop
   	\item Sensor CASSY 2
@@ -398,13 +443,6 @@ $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustan
         \label{tab:mytable}
     \end{table}
     
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.7\textwidth]{plots/434170_428396_1A3_tau_errorbar.pdf}
-    \caption{Tau mit Feherl von allen Messungen}
-  \centering
-\end{figure}
- 
 \end{aufgabe}
 
 

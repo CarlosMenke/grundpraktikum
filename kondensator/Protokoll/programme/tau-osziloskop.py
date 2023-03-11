@@ -17,9 +17,7 @@ t2 = np.array([0.0404, 0.0404, 0.0312, 0.0312, 0.0226, 0.0226, 0.0180, 0.0180])
 U1 = np.array([6.64, 6.64, 6.76, 6.76, -4.08, -4.08, -2.16, -2.16])
 U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
 #original offset
-Uoff = np.array([0.02, 0.02, 0.02, 0.02, -0.02, -0.02, -7.22, -7.22])
-# bessere offsets
-Uoff = np.array([0.04, 0.04, 0.04, 0.04, -0.06, -0.06, -7.22, -7.22])
+Uoff = np.array([0.015, 0.015, 0.015, 0.015, -0.06, -0.06, -7.22, -7.22])
  
 offsets1 = []
 # berechnung von Tau
@@ -36,6 +34,7 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.linewidth'] = 0.75
     plt.rcParams['lines.linewidth'] = 0.5
+    plt.rcParams['savefig.pad_inches'] = 1.1
      
     fig, ax = plt.subplots()
     plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
@@ -44,9 +43,9 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Messung mit dem Oszilloskop")
-    ax.yaxis.set_label_coords(-0.1, 1.09)
+    ax.yaxis.set_label_coords(-0.2,0.50)
     plt.grid()
-    plt.savefig(PLOTS_DIR + plotname + ".pdf")
+    plt.savefig(PLOTS_DIR + plotname + ".pdf", bbox_inches='tight')
 
 
 # andreas statistik
@@ -72,3 +71,7 @@ print(pd.DataFrame(messungen))
  
 #TODO error auf tau einsetzten
 plot_tau_errorbar(names_messung, tau, stat_tau, "tau_errorbar")
+gewichteter_mittelwert = sum(tau/stat_tau**2)/sum(1/stat_tau**2)
+print(f"Der gewichtete Mittelwert von Tau ist {gewichteter_mittelwert:2f} ms")
+gewichteter_mittelwert_std = np.sqrt(1/sum(1/stat_tau**2))
+print(f"Der gewichtete Mittelwert von Tau hat eine Standartabweichung von {gewichteter_mittelwert_std:2f} ms")

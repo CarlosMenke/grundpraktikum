@@ -16,8 +16,7 @@ t2 = np.array([0.0404, 0.0404, 0.0312, 0.0312, 0.0226, 0.0226, 0.0180, 0.0180])
 
 U1 = np.array([6.64, 6.64, 6.76, 6.76, -4.08, -4.08, -2.16, -2.16])
 U2 = np.array([0.16, 0.16, 0.32, 0.32, -0.72, -0.68, -6.04, -6.04])
-#original offset
-Uoff = np.array([0.015, 0.015, 0.015, 0.015, -0.06, -0.06, -7.22, -7.22])
+Uoff = np.array([0.04, 0.04, 0.02, 0.02, -0.06, -0.06, -7.22, -7.22])
  
 offsets1 = []
 # berechnung von Tau
@@ -65,9 +64,9 @@ sp.pprint(sp.diff(ta, U_2))
 def stat_tau_calc(t_1, t_2, U_1, U_2, U_off, d_t, d_U):
     return np.sqrt((1/np.log((U_1-U_off)/(U_2-U_off)) * d_t)**2 * 2 + ((t_1-t_2)/(np.log((U_1-U_off)/(U_2-U_off))**2 * (U_1-U_off)) * d_U)**2 + ((t_1-t_2)/(np.log((U_1-U_off)/(U_2-U_off))**2 * (U_2-U_off)) * d_U)**2)
  
-stat_tau = stat_tau_calc(t1, t2, U1, U2, Uoff, 0.0002, 0.04)
+stat_tau = stat_tau_calc(t1, t2, U1, U2, Uoff, 0.0002/np.sqrt(12), 0.04/np.sqrt(12))
 messungen.update({"Statistischer Fehler": stat_tau})
-print(pd.DataFrame(messungen))
+print(pd.DataFrame(messungen).round(5))
  
 #TODO error auf tau einsetzten
 plot_tau_errorbar(names_messung, tau, stat_tau, "tau_errorbar")

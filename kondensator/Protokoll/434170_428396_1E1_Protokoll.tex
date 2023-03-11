@@ -410,18 +410,17 @@ Weshalb hier nach insgesamt vier Variablen abgeleitet werden muss. Jedoch ist de
 Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm (...) durchgeführt. 
 
 \subsection{Messdaten mit Oszilloskop}
-Hier eine Übersicht von unsern finalen Messdaten. Dabei haben wir die Offsets immer vor der ensprechenden Messung bestimmt, da sich diese ändern können.
-Dabei haben wir bei jeder Messreihe einmal während der Messung Tau überschlagen (ohne Fehler) um zu sehen, ob die Messung sinnvoll ist.
+Hier eine Übersicht von unsern finalen Messdaten. Dabei haben wir die Offsets immer vor der ensprechenden Messung bestimmt.
+Bei jeder Messreihe haben wir während der Messung $\tau$ überschlagen (ohne Fehler) um zu sehen, ob die Messung sinnvoll ist.
 Hier haben wir beim ausrechnen vom Tau den Offset berücksichtigt.
 $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustand mit dem Oszilloskop gemessen haben.
-% TODO offset notiren in tabelle
 
-Am anfang der Messung haben wir uns dafür entschieden, in einem möglichst großem Zeitintervall zu messen, da wir so weniger Unsicherheit auf die Zeit haben, und auch kleine schwankungen beim Entladen ausgleichen können.
-Dabei haben wir darauf geachtet, das der Anfangsmesspunkt mindestens $ \frac{1}{20} \tau $ nach dem Entlade beginn liegt.
-Da wir ein sehr großes $\tau$ von $10ms$ haben, und unsere Analyse der Rohdaten auf dem Oszilloskop ergeben hat das wir dort schon eine saubere abnahme haben, fanden wir dieses eine gute Annahme.
-Der Endpunkt der Messung haben wir dabei mindestens 120mV über der Grenzspannung gewählt, damit wir weit von Rauschen entfernt sind.
-Während der Messung haben wir gemerkt, das bei so kleinen Spannungen an der rechten Intervallsgrenze, die Ablesegenauigkeit der Spannung groß wird,
-und wir wengier Messfehler haben werden, wenn wir in einem kleineren Intervall messen.
+Am Anfang der Messung haben wir uns dafür entschieden, in einem möglichst großem Zeitintervall zu messen, da wir so weniger Unsicherheit auf die Zeit haben, und auch kleine Schwankungen beim Entladen ausgleichen können.
+Dabei haben wir darauf geachtet, das der erste Cursor mindestens $ \frac{1}{20} \tau $ nach dem Entlade beginn liegt.
+Da wir ein $\tau$ von $10ms$ haben, und unsere Analyse der Rohdaten auf dem Oszilloskop ergeben hat, dass wir dort keine Effekte des Schalters mehr haben, fanden wir dieses eine gute Annahme.
+Der Endpunkt der Messung haben wir dabei mindestens 120mV über der Grenzspannung gewählt, damit wir weit von Rauschen entfernt sind.\\
+Während der Messung haben wir gemerkt, das bei so kleinen Spannungen an der rechten Intervallsgrenze, die Ableseungenauigkeit der Spannung groß wird.
+Wir werden also wengier Messfehler haben, wenn wir in einem kleineren Intervall messen.
 Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgang (Messung 5-8) den Startpunkt etwas weiter weg gewählt haben vom Anfangszeitpunkt.
 
  
@@ -467,10 +466,12 @@ Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgan
     \caption{Tau von allen Messung mit Statistischem Fehler}
   \centering
 \end{figure}
-Wie in dem Plot zu sehen ist, ist die Standartabweichung auf $\tau$ durch unser kleiner gewähltes Messintervall ab Messung 3 deutlich geringer geworden.
-Das Aufgrund der angabe von den Komponenten berechnete $\tau$ von $10ms$ liegt als für alle Messungen, abgesehen von Messung 5, in der Abweichung des Messfehlers.
+Wie in dem Plot zu sehen ist, ist der Fehler auf $\tau$ durch unser kleiner gewähltes Messintervall ab Messung 3 deutlich geringer geworden.
+Unser erwartetes $\tau$ von $10ms$ liegt also für alle Messungen, abgesehen von Messung 5, im Rahmen des Messfehlers.
 Da dieser deutlich über dem von uns erwarteten Wert liegt, haben wir ihn in der folgenden Rechnung exkludiert.
-Der gewichtete Mittelwert ist dann: $\tau = (9.98 \pm 0.044)ms$.
+Der gewichtete Mittelwert ist dann: $\tau = (9.98 \pm 0.044)ms$.\\
+
+Mit dem Wiederstand den wir im Vorversuch bestimmt haben...
  
 \end{aufgabe}
 

@@ -177,8 +177,7 @@ def lin_reg(x, y, x_err, y_err, plotname):
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(x, y, x_err, y_err)
     print('Chiquadrat / nf:', chiq / (len(x)-2))
-    print('R =', R)
-    print('Fehler auf R = ', eR)
+    print('b:', b)
     axarray[0].plot(x, R*x+b, color='green')
     sigmaRes = np.sqrt((R*x_err)**2 + y_err**2)
     axarray[0].errorbar(x, y, xerr=x_err, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
@@ -192,10 +191,31 @@ def lin_reg(x, y, x_err, y_err, plotname):
 
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
+    return R, eR
 
 lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_alle')
 stromstaerke_mean = np.delete(stromstaerke_mean, 0)
 spannung_mean = np.delete(spannung_mean, 0)
 stromstaerke_stat = np.delete(stromstaerke_stat, 0)
 spannung_stat = np.delete(spannung_stat, 0)
-lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_final')
+
+R, R_stat = lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_final')
+
+## systematischer Fehler
+u_syst = (0.01 * spannung_mean + 0.005 * 10) / np.sqrt(3)
+i_syst = (0.02 * stromstaerke_mean + 0.005 * 0.003) / np.sqrt(3)
+
+u_mean_syst_minus = spannung_mean - u_syst
+i_mean_syst_minus = stromstaerke_mean - i_syst
+u_mean_syst_oben = spannung_mean + u_syst
+i_mean_syst_oben = stromstaerke_mean + i_syst
+syst_messdaten = {'U unten': u_mean_syst_minus, 'U oben': u_mean_syst_oben, 'U syst': u_syst, 'I unten': i_mean_syst_minus, 'I oben': i_mean_syst_oben, 'I syst': i_syst}
+print('Bestimmng des Systematischen Messfehlers\n', pd.DataFrame(syst_messdaten))
+R_oben, R_syst_oben = lin_reg(i_mean_syst_minus, u_mean_syst_oben, i_syst, u_syst, 'linare_regression_syst_oben')
+R_unten, R_syst_unten = lin_reg(i_mean_syst_oben, u_mean_syst_minus, i_syst, u_syst, 'linare_regression_syst_unten')
+R_syst = (abs(R_syst_oben-R_stat) + abs(R_syst_unten-R_stat)) / 2
+R_fehler = np.sqrt(R_stat**2 + R_syst**2)
+print('R_syst_oben =', R_syst_oben)
+print('R_syst_unten =', R_syst_unten)
+print('R_syst =', R_syst)
+print('R =', R)

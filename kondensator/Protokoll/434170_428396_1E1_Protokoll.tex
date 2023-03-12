@@ -225,13 +225,50 @@ Hier kann man die Häufigkeitsverteilung der einzelnen gemessenen Spannungen und
 Dabei hatten wir in diesem Experiment eine Spannung von 3.97V angelegt.
 Dabei fällt auf, das das Cassy nicht nur einen Spannungswert misst, sondern eine leichte Schwankung um diesen.
 Gleichges gilt für die Stromstärke.
+
+
   \begin{figure}[H]
       \centering
       \includegraphics[width=0.7\textwidth]{plots/messung-wiederstand-07.pdf}
       \caption{Verteilung der gemessenen Spannung und Stromstärke bei einer angelegen Spannung von 3.97V}
   \end{figure}
+  
+  
 Bei genauerer Betrachtung fällt auf, das sowohl Spannung wie auch Stromstärke einer Gaußverteilung folgen.
 Für die weitere Auswertung haben wir für jede Messung immer den Mittelwert und die Unsicherheit auf den Mittelwert berechnet.
+
+Für die Berechnung des Mittelwerts können wir folgenden Zusammenhang benutzen. 
+
+\begin{equation}
+	\bar{x} =\frac{1}{N} \sum_{i = 1}^N x_i
+\end{equation}
+
+Wobei N die Anzahl unserer Messpunkte ist, in unserem Fall 2001 und und $x_i$ der Wert der einzelnen Messpunkte. Diesen Mittelwert müssen wir für alle unsere Strom und Spannungsmessungen bestimmen. 
+Mit diesem können wir den Fehler auf den Mittelwert bestimmen. 
+
+\begin{equation}
+	\sigma^2 = \frac{1}{N-1} \sum_{i = 1}^N (x_i - \bar{\sigma})^2  \Rightarrow \bar{\sigma} = \frac{\sigma}{\sqrt{N}}
+\end{equation}
+
+Hier ist $\sigma$ die Standardabweichung auf den Einzelwert, und $\bar{\sigma}$ der Fehler auf den Einzelwert.
+
+Desweiteren Müssen wir den Digitalisierungsfehler in unserem Fall als statistischen Fehler betrachten, und auch bei der Linearen Regression beachten. 
+Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende Werte.
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{Mittelwert} & \textbf{statistische Fehler} & \textbf{gesamtfehler} \\
+            \midrule
+            50$\mu$s  & 0.1s & -- & -10V - 10V \\
+            Messwerte& $\Rightarrow$ N = 2001& & -0.01A - 0.01A\\
+            \bottomrule
+        \end{tabularx}
+        \caption{Mittelwerte mit ihren Fehlern}
+        \label{tab:mytable}
+    \end{table}
+
 \end{aufgabe}
 
 
@@ -616,5 +653,5 @@ Mit dem Wiederstand den wir im Vorversuch bestimmt haben...
 
 %TODO : Pythen Programm benennen, und am anfang der Auswertung rein bringen
 %TODO : Bei OSZILLOSKOP Mit Wiederstand die Kapazität bestimmen aus Tau
-
+%TODO : Korrektur von 11 Messwerten zu 10 Mesungen auf dem Protokoll
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen

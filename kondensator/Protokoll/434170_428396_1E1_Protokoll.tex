@@ -301,19 +301,50 @@ Der Gesamtfehler berechnet sich dabei aus der quadratischen addition von statist
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
 Mit der Methode der kleinsten Quadrate, kann aus den Berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
-Im folgenden Graphen sind die Spannungen und Stromwerte, mit linarer Regression geplottet.
+Im folgenden Graphen sind die Spannungen und Stromwerte, mit linarer Regression geplottet. Die Lineare Regression haben wir mit dem program (...) durchgeführt.
 
  \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{plots/lineare_regression.pdf}
+  \includegraphics[width=1\textwidth]{plots/lineare_regression_alle.pdf}
   \caption{Schaltplan Oszilloskop}
   \centering
   \end{figure}
 
 
-Im Residualplot ist zu sehen, das unsere Messwerte gleichmäßig um die linare Regression streuen, wobei diese immer außer zweimal in der Statistischen Ungenauigkeit liegt.
-Es liegt also keine Systematik vor, weshalb wir mit den Ergebnissen aus der linaren Regression fortfahren um den Wiederstand und seine Unsicherheit zu bestimmen.
+Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, dabei liegt die Lineare Regression, in den meisten Fällen im Rahmen des Fehlers.
+Dem unteren Graphen kann man ebenfalls entnehmen, dass hier keine Systematiken vorliegen. 
+Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, stark ausbricht. Weshalb wir diesen im folgenden Exkludieren werden, um die Genauigkeit unseres Ergebnis zu erhöhen.
 
+Der Außreißer ist die Messung bei 9V. Beim analysieren unserer Rohdaten fällt auf, dass auch unsere Testmessungen, welche wir bei 9V durchgeführt hatten, ebenfalls alle  nach oben ausgerissen sind, wenn wier diese in der Linearen Regression mitbeachtet haben.\\
+Dies könnte daran liegen, dass der Wiederstand sich bei dieser Spannung aufheizt, und somit größer wird, als sein eigener wert. 
+Da der Messvorgang jedoch nicht lange dauerte, und die 9V unsere erste Messung waren, also sich zu dem Zeitpunkt der Wiederstand am wenigsten aufgeheizt haben sollte ist es eher unwarscheinlich, dass die starke Abweichung daher kommt. \\
+
+Ein weiterer Grund die Messung bei 9V herraus zu nehmen liefert das $\frac{\chi^2}{ndof}$ Wobei hier "ndof" für die Anzahl der Freiheitzsgrade steht.
+
+\begin{equation}
+ndof = N_{Werte} - N_{Parameter}
+\end{equation}
+
+in unserem Fall haben wir 10 Werte und 2 Parameter in der Linearen Regression.
+
+Das $\chi^2$ ist dabei gegeben als:
+
+\begin{equation}
+	\chi^2 = \sum_{i=1}^N \frac{(U_i - (RI_i + b))^2}{\sigma_i^2}
+\end{equation}
+
+Hier steht $ U_i , I_i $ für die 
+
+$\frac{\chi^2}{ndof}$ ist ein Maß für die qualtät der Anpassung. 
+Ein weiteres 
+ Ergebnissen aus der linaren Regression fortfahren um den Wiederstand und seine Unsicherheit zu bestimmen.
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{plots/lineare_regression_final.pdf}
+  \caption{Schaltplan Oszilloskop}
+  \centering
+  \end{figure}
 zur
 %TODO : lineare regression disskutieren
 %TODO : Warum wir einen Messwert raus genommen haben
@@ -324,7 +355,7 @@ zur
  
 Den Fehler auf die Spannung im Residualplot haben wir wie folgt berechnet:
 \begin{equation}
-    \sigma_{U\_Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
+    \sigma_{U-Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
 \end{equation}
 
 

@@ -193,9 +193,9 @@ def lin_reg(x, y, x_err, y_err, plotname):
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
 
-lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'linare_regression_alle')
+lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_alle')
 stromstaerke_mean = np.delete(stromstaerke_mean, 0)
 spannung_mean = np.delete(spannung_mean, 0)
 stromstaerke_stat = np.delete(stromstaerke_stat, 0)
 spannung_stat = np.delete(spannung_stat, 0)
-lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'linare_regression_final')
+lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_final')

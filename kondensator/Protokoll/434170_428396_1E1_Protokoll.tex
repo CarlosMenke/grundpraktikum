@@ -218,11 +218,11 @@ Wir haben uns entschieden Einstellungen zu verwenden, die wir Problemlos auch f�
 Nachdem wir alle Einstellungen im CASSY vorgenommen hatten, starteten wir eine Testmessung. Bei dieser konnten wir erkennen, dass die Spannung und der Strom um einen Wert (ungefähr der eingestellte) fluktuiert. 
 Da dies unseren Erwartungen entsprochen hat, haben wir unsere tatsächliche Messung gestartet. 
 
-Hierführ haben wir eine Spannung mit dem CASSY Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für elf verschiedene Spannungswerte gemacht. \\
+Hierführ haben wir eine Spannung mit dem CASSY Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für 10 verschiedene Spannungswerte gemacht. \\
  
 
 Hier kann man die Häufigkeitsverteilung der einzelnen gemessenen Spannungen und Stromstärken sehen.
-Dabei hatten wir in diesem Experiment eine Spannung von 3.97V angelegt.
+Dabei hatten wir in dieser Messung eine Spannung von 3.97V angelegt.
 Dabei fällt auf, das das Cassy nicht nur einen Spannungswert misst, sondern eine leichte Schwankung um diesen.
 Gleichges gilt für die Stromstärke.
 
@@ -243,23 +243,23 @@ Für die Berechnung des Mittelwerts können wir folgenden Zusammenhang benutzen.
 	\bar{x} =\frac{1}{N} \sum_{i = 1}^N x_i
 \end{equation}
 
-Wobei N die Anzahl unserer Messpunkte ist, in unserem Fall 2001 und und $x_i$ der Wert der einzelnen Messpunkte. Diesen Mittelwert müssen wir für alle unsere Strom und Spannungsmessungen bestimmen. 
+Wobei N die Anzahl unserer Messpunkte ist, in unserem Fall 2001 und $x_i$ der Wert der einzelnen Messpunkte. Diesen Mittelwert müssen wir für alle unsere Strom und Spannungsmessungen bestimmen. 
 Mit diesem können wir den Fehler auf den Mittelwert bestimmen. 
 
 \begin{equation}
-	\sigma^2 = \frac{1}{N-1} \sum_{i = 1}^N (x_i - \bar{\sigma})^2  \Rightarrow \bar{\sigma} = \frac{\sigma}{\sqrt{N}}
+	\sigma^2 = \frac{1}{N-1} \sum_{i = 1}^N (x_i - \bar{x})^2  \Rightarrow \bar{\sigma} = \frac{\sigma}{\sqrt{N}}
 \end{equation}
 
-Hier ist $\sigma$ die Standardabweichung auf den Einzelwert, und $\bar{\sigma}$ der Fehler auf den Einzelwert.
+Hier ist $\sigma$ die Standardabweichung auf den Einzelwert, und $\bar{\sigma}$ der Fehler auf den Mittelwert.
 
-Desweiteren Müssen wir den Digitalisierungsfehler in unserem Fall als statistischen Fehler betrachten, und auch bei der Linearen Regression beachten. 
+Desweiteren müssen wir den Digitalisierungsfehler in unserem Fall als statistischen Fehler betrachten, und auch bei der Linearen Regression berücksichtigen. 
 Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende Werte.
 
 \begin{table}[H]
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
-        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma_{Ui}}}$ & \textbf{Gesamtfehler stat.} \\
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}_{Ui}}$ & \textbf{Gesamtfehler stat.} \\
         \midrule
         1 & 9.0V & 0.1mV & 3.8mV \\
         2 & 8.07V & 0.4mV & 15.9mV \\
@@ -280,7 +280,7 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
     \centering
     \begin{tabularx}{1\textwidth}{X X X X}
         \toprule
-        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma_{Ii}}}$ & \textbf{Gesamtfehler .stat} \\
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}_{Ii}}$ & \textbf{Gesamtfehler .stat} \\
         \midrule
         1 & 9.0mA & 341.0nA & 1.4mA \\
         2 & 8.1mA & 493.0nA & 1.4mA \\
@@ -297,12 +297,13 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
     \caption{Stromstärken mit Fehlern}
     \label{tab:mytable}
 \end{table}
-Der Gesamtfehler berechnet sich dabei aus der quadratischen addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
+Der Gesamtfehler berechnet sich dabei aus der quadratischen Addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
-Mit der Methode der kleinsten Quadrate, kann aus den Berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
-Im folgenden Graphen sind die Spannungen und Stromwerte, mit Linarer Regression Aufgetragen. 
-Im oberen Graphen Sind die Mittelwerte von Spannung und Strom gegeneinander Aufgetragen. Die grüne Gerade, ist die Anpassung einer Geraden an die Wertepaare.
+Mit der Methode der kleinsten Quadrate, kann aus den berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
+Im oberen Graphen sind die Mittelwerte von Spannung und Strom gegeneinander aufgetragen.
+Die grüne Gerade ist die Anpassung einer Geraden an die Wertepaare.
+ 
 Der untere Plot stellt dar, wie weit die Mittelwerte von der Linearen Regression abweichen.  
 Die Lineare Regression haben wir mit dem program (...) durchgeführt.\\
 
@@ -321,13 +322,13 @@ Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechne
 
 Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, dabei liegt die Lineare Regression, in den meisten Fällen im Rahmen des Fehlers.
 Dem unteren Graphen kann man ebenfalls entnehmen, dass hier keine Systematiken vorliegen. 
-Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, stark ausbricht. Weshalb wir diesen im folgenden Exkludieren werden, um die Genauigkeit unseres Ergebnis zu erhöhen.
+Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, stark ausbricht. Weshalb wir diesen im folgenden exkludieren werden, um die Genauigkeit unseres Ergebnis zu erhöhen.
 
-Der Außreißer ist die Messung bei 9V. Beim analysieren unserer Rohdaten fällt auf, dass auch unsere Testmessungen, welche wir bei 9V durchgeführt hatten, ebenfalls alle  nach oben ausgerissen sind, wenn wier diese in der Linearen Regression mitbeachtet haben.\\
-Dies könnte daran liegen, dass der Wiederstand sich bei dieser Spannung aufheizt, und somit größer wird, als sein eigener wert. 
+Der Außreißer ist die Messung bei 9V. Beim analysieren unserer Rohdaten fällt auf, dass auch unsere Testmessungen, welche wir bei 9V durchgeführt hatten, ebenfalls alle  nach oben ausgerissen sind, wenn wir diese in der Linearen Regression mitbeachtet haben.\\
+Dies könnte daran liegen, dass der Wiederstand sich bei dieser Spannung aufheizt, und somit größer wird, als sein eigentlicher Wert. 
 Da der Messvorgang jedoch nicht lange dauerte, und die 9V unsere erste Messung waren, also sich zu dem Zeitpunkt der Wiederstand am wenigsten aufgeheizt haben sollte ist es eher unwarscheinlich, dass die starke Abweichung daher kommt. \\
 
-Ein weiterer Grund die Messung bei 9V herraus zu nehmen liefert das $\frac{\chi^2}{ndof}$ Wobei hier "ndof" für die Anzahl der Freiheitzsgrade steht.
+Ein weiterer Grund die Messung bei 9V herraus zu nehmen liefert das $\frac{\chi^2}{ndof}$ Wobei hier "ndof"\ für die Anzahl der Freiheitzsgrade steht.
 
 \begin{equation}
 ndof = N_{Werte} - N_{Parameter}
@@ -342,8 +343,9 @@ Das $\chi^2$ ist dabei gegeben als:
 \end{equation}
 
 Hier steht $ U_i , I_i $ für die Mittelwerte der einzelnen Messungen und R für den aus der Linearen Regression bestimmten Wiederstand. 
-Das b stannt ebenfalls aus der Linearen Regression, und bezeichnet den U-Achsen Abschnitt unserer Anpassung. Dieses ist jedoch sehr klein, was zu erwarten war.
-$\frac{\chi^2}{ndof}$ ist ein Maß für die qualtät der Anpassung.  
+Das b stammt ebenfalls aus der Linearen Regression, und bezeichnet den U-Achsen Abschnitt unserer Anpassung. Dieses ist jedoch sehr klein, was zu erwarten war.
+ 
+$\frac{\chi^2}{ndof}$ ist ein Maß für die Qualtät der Anpassung.  
 Für das $\chi^2$ mit und ohne den Wert bei 9V ergibt sich:
 
 \begin{table}[H]
@@ -353,7 +355,7 @@ Für das $\chi^2$ mit und ohne den Wert bei 9V ergibt sich:
          & \textbf{Freiheitsgrade} & $\pmb{\frac{\chi^2}{ndof}}$ & \textbf{b} \\
         \midrule
         Alle Messungen: & 8 & 2.509 & 0.0002V \\
-         Bereinigt & 7 & 0.807 & 0.0027V \\
+         bereinigt & 7 & 0.807 & 0.0027V \\
 
         \bottomrule
     \end{tabularx}
@@ -370,45 +372,43 @@ Hier können wir sehen, dass die Quallität der Anpassung sich deutlich verbesse
   \centering
   \end{figure}
 
-Hier können wir sehen, die Lineare Regression nun im Rahmen beinahe aller Messfehler liegt und keine Systematik vorliegt.
-In dem Oberen Plot sind ebenfalls Fehlerbalken, diese sind jedoch nicht zu sehen, da sie im Vergleich zu der Skalierung sehr klein sind.\\
+Hier können wir sehen, dass die Lineare Regression nun im Rahmen beinahe aller Messfehler liegt und keine Systematik vorliegt.
+In dem oberen Plot sind ebenfalls Fehlerbalken, diese sind jedoch nicht zu sehen, da sie im Vergleich zu der Skalierung sehr klein sind.\\
 
-Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.807 ist etwas kleiner, was darauf schließen lässt, dass wir unsere Fehler unterschätzt haben. 
+Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.807 ist etwas kleiner, was darauf schließen lässt, dass wir unsere Fehler überschätzt haben. 
+ 
 Da wir jedoch nur 9 Datenpunkte haben, und somit 7 Freiheitsgrade ist $\frac{\chi^2}{ndof} = 0.807$ ein gutes Ergebniss. 
 
 Aus der Steigung der Geraden, der Linearen Regression können wir nun den Wiederstand bestimmen. Aus der linearen Regression erhalten wir ebenfalls den statistischen Fehler auf R.
  Dieser ergibt sich zu:\\
 
-{\centering R = (995.5 $\pm$0.283$_{stat}$)$\Omega$ \par}
-
+{\centering R = (995.5 $\pm$0.283$_{stat}$)$\Omega$ \par} 
 
 
 %TODO : Systematischen Fehler
 %TODO : Erwähnen welches Programm wir benutzen
- 
-
-
+\subsubsection{Systematische Fehler}
 Bei der Berechnung der Systematischen Fehlern haben wir die Verschiebemethode gewählt.
 Dafür haben wir Stromstärken und Spannungswerte um den Systematischen Fehler verschoben, d.h:
-\begin{equation}
-    U_{i,verschoben} = U_i \pm \sigma_{U_i,Systematisch}
-\end{equation}
 \begin{equation}
     \sigma_{U_i,Systematisch}=\frac{(0.01U_i+ 0.005 * U_{Bereichswert})}{\sqrt{3}}
 \end{equation}
 \begin{equation}
-    I_{i,verschoben} = I_i \pm \sigma_{I_i,Systematisch}
+    U_{i,verschoben} = U_i \pm \sigma_{U_i,Systematisch}
 \end{equation}
 \begin{equation}
     \sigma_{I_i,Systematisch}=\frac{(0.02I_i+ 0.005 * I_{Bereichswert})}{\sqrt{3}}
 \end{equation}
-Mit diesen verschobenen Werten haben wir jetzt erneut die Linare Regression durchgeführt.
+\begin{equation}
+    I_{i,verschoben} = I_i \pm \sigma_{I_i,Systematisch}
+\end{equation}
+Mit diesen verschobenen Werten haben wir erneut die Lineare Regression durchgeführt.
 Den Systematischen Fehler von U auf R haben wir mit folgender Formel berechnet:
 \begin{equation}
     \Delta R_{U+} = \frac{1}{2} (|R_{U+} - R| + |R_{U-} - R|)
 \end{equation}
 Das gleiche haben wir für den Systematischen Fehler von I auf R gemacht.
-Anschließen haben wir die systematischen Fehler quadratisch addiert, um den Gesamtsystematischen Fehler auf R zu erhalten.
+Anschließend haben wir die systematischen Fehler quadratisch addiert, um den Gesamtsystematischen Fehler auf R zu erhalten.
 Dieser war $R_{Systematisch} = 12.9\Omega$. \\
  
 Damit ergibt sich:

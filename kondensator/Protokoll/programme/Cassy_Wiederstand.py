@@ -129,6 +129,8 @@ def get_messdaten(datei: str, y: str):
     return np.array(y.werte)
 
 # auswertung zum wiederstand.
+datenpunkte = 2001
+ 
 spannung_mean = []
 spannung_std = []
 stromstaerke_mean = []
@@ -136,51 +138,55 @@ stromstaerke_std = []
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")) and 'messung-wiederstand' in filename:
         daten = get_messdaten(cassy_dir +filename, 'U_B1')
+        print(len(daten), "daten")
         spannung_mean.append(np.mean(daten))
         spannung_std.append(np.std(daten, ddof=1))
         daten = get_messdaten(cassy_dir +filename, 'I_A1')
         stromstaerke_mean.append(np.mean(daten))
         stromstaerke_std.append(np.std(daten, ddof=1))
  
+
 spannung_mean = np.array(spannung_mean)
 spannung_std = np.array(spannung_std)
-spannung_mean_std = spannung_std/np.sqrt(2001)
+spannung_mean_std = spannung_std/np.sqrt(datenpunkte)
  
 stromstaerke_mean = np.array(stromstaerke_mean)
 stromstaerke_std = np.array(stromstaerke_std)
-stromstaerke_mean_std = stromstaerke_std/np.sqrt(2001)
+stromstaerke_mean_std = stromstaerke_std/np.sqrt(datenpunkte)
  
 wiederstand_messdaten = {'U': spannung_mean, 'U_unischerheit': spannung_mean_std, 'U_std': spannung_std, 'I': stromstaerke_mean, 'I_unsicherheit': stromstaerke_mean_std,'I_std': stromstaerke_std}
 print(pd.DataFrame(wiederstand_messdaten))
 
 ### gesmater statistischer Fehler
-digitalisierung_std = 20 / 2**12 / np.sqrt(12)
-spannung_stat = np.sqrt(digitalisierung_std**2 + spannung_std**2)
-stromstaerke_stat = np.sqrt(digitalisierung_std**2 + stromstaerke_std**2)
+digitalisierung_U_std = 20 / 2**12 / np.sqrt(12)
+digitalisierung_A_std = 0.06 / 2**12 / np.sqrt(12)
+spannung_stat = np.sqrt(digitalisierung_U_std**2 + spannung_mean_std**2)
+stromstaerke_stat = np.sqrt(digitalisierung_A_std**2 + stromstaerke_mean_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
 
 print('statistischer Fehler: \n', pd.DataFrame(stat))
-for i in range(len(spannung_mean)):
-    print("" + str(i + 1) + " & " + str(round(spannung_mean[i], 2)) + "V & " + str(round(spannung_mean_std[i]*1000, 1)) + "mV & " + str(round(spannung_stat[i]*1000, 1)) + "mV \\\\")
+#for i in range(len(spannung_mean)):
+    #print("" + str(i + 1) + " & " + str(round(spannung_mean[i], 2)) + "V & " + str(round(spannung_mean_std[i]*1000, 1)) + "mV & " + str(round(spannung_stat[i]*1000, 1)) + "mV \\\\")
  
-for i in range(len(stromstaerke_mean)):
-    print("" + str(i + 1) + " & " + str(round(stromstaerke_mean[i]*1000, 1)) + "mA & " + str(round(stromstaerke_mean_std[i]*10**9, 0)) + "nA & " + str(round(stromstaerke_stat[i]*1000, 1)) + "mA \\\\")
+#for i in range(len(stromstaerke_mean)):
+    #print("" + str(i + 1) + " & " + str(round(stromstaerke_mean[i]*1000, 1)) + "mA & " + str(round(stromstaerke_mean_std[i]*10**9, 0)) + "nA & " + str(round(stromstaerke_stat[i]*1000, 1)) + "mA \\\\")
 
 
 fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
-R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean, stromstaerke_mean_std, spannung_mean_std)
+R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat)
 print('corr:', corr)
+print('Chiquadrat / nf:', chiq)
 print('R =', R)
 print('Fehler auf R = ', eR)
 axarray[0].plot(stromstaerke_mean, R*stromstaerke_mean+b, color='green')
-sigmaRes = np.sqrt((R*stromstaerke_mean_std)**2 + spannung_mean_std**2)
-axarray[0].errorbar(stromstaerke_mean, spannung_mean, xerr=stromstaerke_mean_std, yerr=spannung_mean_std, color='red', fmt='.', marker='o', markeredgecolor='red')
+sigmaRes = np.sqrt((R*stromstaerke_stat)**2 + spannung_stat**2)
+axarray[0].errorbar(stromstaerke_mean, spannung_mean, xerr=stromstaerke_stat, yerr=spannung_stat, color='red', fmt='.', marker='o', markeredgecolor='red')
 axarray[0].set_xlabel('$I$ / A')
 axarray[0].set_ylabel('$U$ / V')
 
 axarray[1].axhline(y=0., color='black', linestyle='--')
-axarray[1].errorbar(stromstaerke_mean, spannung_mean-(R*stromstaerke_mean+b), yerr=sigmaRes, color='red', fmt='.', marker='o', markeredgecolor='red', linewidth=3)
+axarray[1].errorbar(stromstaerke_mean, spannung_mean-(R*stromstaerke_mean+b), yerr=sigmaRes, color='red', fmt='.', marker='o', markeredgecolor='red', linewidth=2)
 axarray[1].set_xlabel('$I$ / A')
 axarray[1].set_ylabel('$(U-(RI+b))$ / V')
 

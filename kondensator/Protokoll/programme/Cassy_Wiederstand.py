@@ -5,7 +5,7 @@ import re
 import os
 
 global SHOW_PLOTS
-SHOW_PLOTS = True #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
+SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
  
 cassy_dir = "../Cassy_Messdaten/"
  

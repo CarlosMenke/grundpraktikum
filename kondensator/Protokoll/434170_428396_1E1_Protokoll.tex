@@ -143,11 +143,11 @@ Die Statistischen Fehler haben wir mittels Erwartungswert und Varianz auf die Sp
   Spannung $U$ gegen den Strom $I$ auf und bestimmen Sie aus der
   Steigung den Widerstand $R$ und seine statistische
   Messunsicherheit. Ermitteln Sie den systematischen Fehler mit der
-  Verschiebemethode.
+  Verschiebemethode.\\
   
   
   
-  Für die Bestimmung des wiederstands mit dem Sensor Cassy haben wir folgende Geräte verwendet:
+  Für die Bestimmung des wiederstands mit dem Sensor Cassy haben wir folgende Geräte verwendet:\\
   
   \textbf{Verwendete Geräte}
   
@@ -161,11 +161,11 @@ Die Statistischen Fehler haben wir mittels Erwartungswert und Varianz auf die Sp
   \end{itemize}
   
 Zum Aufbau des Experiments wird der zu messende Wiederstand auf die Steckplatte gesteckt. 
-In diesem Versuch soll sowohl Spannung als auch Strom am Wiederstand gemessen werden. Das schaltbild für diese Messung können sie in der folgenden Skizze sehen. \\
+In diesem Versuch soll sowohl Spannung als auch Strom am Wiederstand gemessen werden. Das Schaltbild für diese Messung können sie in der folgenden Skizze sehen. \\
 
   \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{Schaltung_R_Cassy.pdf}
+  \includegraphics[width=0.7\textwidth]{Schaltung_R_Cassy.pdf}
   \caption{Schaltbild Wiederstandsbestimmung mit Cassy}
   \centering
   \end{figure}
@@ -173,14 +173,14 @@ In diesem Versuch soll sowohl Spannung als auch Strom am Wiederstand gemessen we
  Die Spannungsquelle ist hierbei das Sensor CASSY das Paralell zu dem Wiederstand angeschlossen wird. In Reihe dazu wird der Strom gemessen. 
  Ebenfalls parallel zum wiederstand wird die Spannung gemessen. Diese Schaltung kann mit dem Steckbrett und den Kabeln aufgebaut werden. 
  Die Spannung wird beim CASSY über Input B gemessen, und die Stromstärke über Input A. 
- Jeh nach wahl der Position der Masse der beiden Eingänge erhält man unterschiedliche polung. Dies hat jedoch nur einfluss auf das Vorzeichen der Gemessenen Größen. 
+ Jeh nach wahl der Position der Masse der beiden Eingänge erhält man unterschiedliche Polung. Dies hat jedoch nur Einfluss auf das Vorzeichen der gemessenen Größen. 
  
 Bei der Versuchsdurchführung haben wir wie bereits oben beschrieben die Schaltung aufgebaut.\\
  
   \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_CASSY_R.pdf}
-  \caption{Bild der Schaltung zur bestimmung des Wiederstands mit CASSY}
+  \caption{Bild der Schaltung zur Bestimmung des Wiederstands mit CASSY}
   \centering
   \end{figure}
   
@@ -189,12 +189,14 @@ In dem Bild können Sie unsere Aufgebaute Schaltung sehen, und wie wir das CASSY
 Aus der Leistungsgrenze des Wiederstands und der maximalen Stromstärke des Cassy konnten wir schließen, dass wir an diesem Maximal 10V anlegen dürfen. Deshalb haben wir das Cassy auf 9V geregelt. 
 Als Intervall welches CASSY uns anzeigt haben wir -10V-10V verwendet. 
 Aufgrund unseres großen Wiederstands, fließen rellativ geringe Ströme. 
-Bei unserer Ersten Testmessung hatten wir ein zu großes Stromintervall gewählt, weshalb der Digitalisierungsfehler die Messung unauswertbar gemacht hat. Deshalb haben wir das kleinste Intervall für den Strom verwendet. 
+Bei unserer Ersten Testmessung hatten wir ein zu großes Stromintervall gewählt, weshalb der Digitalisierungsfehler die Messung dominiert hat. Deshalb haben wir das kleinste Intervall für den Strom verwendet. 
  Für die Messung haben wir keinen Trigger verwendet, sondern haben diese manuell gestartet. Hierführ haben wir nur das Messintervall und die Messzeit eingestellt. \\
- Zunächst haben wir eine Testmessung gemacht, ob wir ein Signal erhalten. Diese konnten wir auch verwenden um unsere Messzeit sinnvoll ein zu stellen. 
+ Zunächst haben wir eine Testmessung durchgeführt die wir manuel gestartet und gestopt haben, um zu sehen ob wir ein Signal erhalten. 
+Diese Messung konnten wir auch verwenden um unsere Messzeit sinnvoll ein zu stellen. 
  
 
  Wir wollen sicherstellen, dass der statistische Fehler auf die Strom und Spannungsmessung kleiner ist als der Fehler aufgrund der Digitalisierung. 
+ Da dieser durch mehr Messpunkte verkleinert werden kann, wärend der Digitalisierungsfehler gleich bleibt.
  Dafür haben wir erst kurz überschlagen, wie groß der Digitalisierungsfehler ist. Daraus konnten wir bestimmen wieviele Messpunkte wir mindestens brauchen um darunter zu liegen. 
  
  \begin{equation}
@@ -203,8 +205,7 @@ Bei unserer Ersten Testmessung hatten wir ein zu großes Stromintervall gewählt
  
  Die $2^{12}$ kommt aus der Digitalisierungsrate des CASSY und die $\sqrt{12}$ aus der Annahme, dass dieser Fehler gleichferteilt ist. 
  
- Desweiteren wissen wir, dass der Statistischen Fehler mit $ \bar{\sigma} = \frac{\sigma}{\sqrt{N}}$ bestimmt wirt. Dabei ist $\sigma$ die Standardabweichung zu der Verteilung unserer Messdaten. Diese können wir mit CASSY mit einem Gauß fit grob bestimmen. 
- Und verwenden um ein mindestwert für unsere Messwertanzahl N zu berechnen. Dabei fordern wir $\sigma_D > \bar{\sigma}$ Daraus konnten wir die mindestanzahl von Messpunkten die wir benötigen auf ca. 500 bestimmen. 
+ Desweiteren wissen wir, dass der Statistischen Fehler auf den Mittelwert mit $ \bar{\sigma} = \frac{\sigma}{\sqrt{N}}$ bestimmt wirt. Dabei ist $\sigma$ die Standardabweichung zu der Verteilung unserer Messdaten. Diese können wir in CASSY Lab 2 mit einem Gauß fit grob bestimmen, und verwenden um ein mindestwert für unsere Messwertanzahl N zu berechnen. Dabei fordern wir $\sigma_D > \bar{\sigma}$ Daraus konnten wir die mindestanzahl von Messpunkten die wir benötigen auf ca. 500 bestimmen. 
  
 \begin{table}[H]
         \centering
@@ -216,13 +217,13 @@ Bei unserer Ersten Testmessung hatten wir ein zu großes Stromintervall gewählt
             \textbf{Messwerte:}& $\Rightarrow$ N = 2001& & -0.01A - 0.01A\\
             \bottomrule
         \end{tabularx}
-        \caption{Ergebnisse der Messung mit dem Multimeter}
+        \caption{Messwertserfassungseinstellungen des CASSY}
         \label{tab:mytable}
     \end{table}
 
 Wir haben uns entschieden Einstellungen zu verwenden, die wir Problemlos auch für die Messung der Entladung des Kondensators verwenden können. Weswegen wir die Messzeit auf ca. zehn $\tau$ gewählt haben. 
 
-Nachdem wir alle Einstellungen im CASSY vorgenommen hatten, starteten wir eine Testmessung. Bei dieser konnten wir erkennen, dass die Spannung und der Strom um einen Wert fluktuiert. 
+Nachdem wir alle Einstellungen im CASSY vorgenommen hatten, starteten wir eine Testmessung. Bei dieser konnten wir erkennen, dass die Spannung und der Strom um einen Wert (ungefähr der eingestellte) fluktuiert. 
 Da dies unseren Erwartungen entsprochen hat, haben wir unsere tatsächliche Messung gestartet. 
 
 Hierführ haben wir eine Spannung mit dem Cassy Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für elf verschiedene Spannungswerte gemacht. 

@@ -63,8 +63,8 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str, plotname: str):
     ax.set_ylabel('I_A1/ A')
     ax.yaxis.set_label_position('right') 
     ax.yaxis.set_label_coords(1.2, 0.5)
-    ax2.legend(loc = 'upper left')
-    ax.legend(loc = 'upper right')
+    ax2.legend(loc = 'center left')
+    ax.legend(loc = 'center right')
     
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')

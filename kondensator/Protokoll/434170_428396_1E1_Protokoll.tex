@@ -205,10 +205,10 @@ Diese Messung konnten wir auch verwenden um unsere Messzeit sinnvoll ein zu stel
         \centering
         \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
             \toprule
-            \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Spannungs/Strom-intervall} \\
+            \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich} \\
             \midrule
             50$\mu$s  & 0.1s & -- & -10V - 10V \\
-            \textbf{Messwerte:}& $\Rightarrow$ N = 2001& & -0.01A - 0.01A\\
+            \textbf{Messwerte:}& $\Rightarrow$ N = 2001& & -0.003A - 0.003A\\
             \bottomrule
         \end{tabularx}
         \caption{Messwertserfassungseinstellungen des CASSY}
@@ -811,8 +811,8 @@ Damit ergibt sich für die Kapazität mit Unsicherheiten:
   Endergebnis für die Kapazität mit statistischer und systematischer
   Messunsicherheit an.
   
-  
-  
+\subsection{Aufbau und Durchführung der Messung der Kapazität des Kondensators}  
+
 Für die Bestimmung der Kapazität, betrachten wir mit CASSY wieder den Lade und Entladevorgang des Kondensators. 
 Hier ist der Aufbau der Schaltung sehr ähnlich zu der beim Oszilloskop. jedoch muss das CASSY anders angeschlossen werden.
 Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
@@ -825,7 +825,28 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
       \caption{Schaltung zur Bestimmung der Kapazität mit Cassy}
   \end{figure}
   
- Der oben stehenden Skizze und Bild können Sie den Aufbau der Schaltung entnehmen. 
+ Der oben stehenden Skizze und Bild können Sie den Aufbau der Schaltung entnehmen. Hier ist zu beachten, dass die Spannung am Kondensator parallel gemessen wird, und der Strom am Wiederstand in Reihe. 
+ Dabei muss der Wiederstand sich in dem Schaltkreis befinden welcher geschlossen wird wenn man den Schalter betätigt. 
+ Die Spannung wird über Input B des CASSY gemessen, die Stromstärke über Input A. Für die Messung haben wir die Selben Messwerterfassungseinstellungen wie für den Wiederstand verwendet. 
+ In diesem Fall haben wir die Messung mit einem Trigger gestartet, diesem musste angepasst werden, abhängig davon ob wir den Lade oder Entladevorgang messen wollten.
+ 
+ \begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X l} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich} \\
+            \midrule
+            Laden & 50$\mu$s  & 0.1s & UB1: 0.10V & -10V - 10V \\
+            & & & steigende Flanke & -0.003A - 0.003A\\
+            Entladen & 50$\mu$s  & 0.1s & 8.90V & -10V - 10V \\
+            & & & fallende Flanke & -0.003A - 0.003A\\
+            \bottomrule
+        \end{tabularx}
+        \caption{Messwertserfassungseinstellungen bei der Messung des Kondensators mit CASSY}
+        \label{tab:mytable}
+    \end{table}
+
+Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll, um die möglichen Ofsets auf Strom und Spannung zu bestimmen. 
 
 \end{aufgabe}
 
@@ -843,3 +864,4 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
 %TODO : Bei OSZILLOSKOP Mit Wiederstand die Kapazität bestimmen aus Tau
 %TODO : Korrektur von 11 Messwerten zu 10 Mesungen auf dem Protokoll
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen
+%TODO : Messprotokoll überarbeiten

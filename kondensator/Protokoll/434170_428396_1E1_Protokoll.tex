@@ -30,6 +30,7 @@ Hierfür werden verschiedene Methoden verwendet. Mit dem Multimeter werden Kapaz
 und Wiederstand bestimmt.
 Mit dem Oszilloskop wird über die Zeitkonstante die Kapazität bestimmt. Mit Sensor CASSY 2 zunächst der Wiederstand und dann die Kapazit. 
 Diese Ergebnisse sollen dann untereinander verglichen werden.
+
 \end{versuchsziele}
 
 
@@ -76,7 +77,7 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
   Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
   und Messbrücke.
   
-  
+\subsection{Messung mit Multimeter}
   
   Bevor wir mit dem Versuch angefangen haben, haben wir mit dem Multimeter zunächst die Bauteile charakterisiert, also Wiederstand und Kondensator vermessen.  \\
   
@@ -114,7 +115,7 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
             \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
             \midrule
             Wiederstand & 0.991 k$\Omega$ & $\pm$ 0.8\% \\
-            CH2 & 10.36 $\mu$F & $\pm$ 2.5\%  \\
+            Kondensator & 10.36 $\mu$F & $\pm$ 2.5\%  \\
             \bottomrule
         \end{tabularx}
         \caption{Ergebnisse der Messung mit dem Multimeter}
@@ -134,7 +135,7 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
   Messunsicherheit. Ermitteln Sie den systematischen Fehler mit der
   Verschiebemethode.\\
   
-  
+  \subsection{Aufbau Wiederstandsbestimmung mit CASSY}
   
   Für die Bestimmung des Wiederstands mit dem Sensor CASSY haben wir folgende Geräte verwendet:\\
   
@@ -163,7 +164,8 @@ In diesem Versuch soll sowohl Spannung als auch Strom am Wiederstand gemessen we
  Ebenfalls parallel zum wiederstand wird die Spannung gemessen. Diese Schaltung kann mit dem Steckbrett und den Kabeln aufgebaut werden. 
  Die Spannung wird beim CASSY über Input B gemessen, und die Stromstärke über Input A. 
  Jeh nach wahl der Position der Masse der beiden Eingänge erhält man unterschiedliche Polung. Dies hat jedoch nur Einfluss auf das Vorzeichen der gemessenen Größen. 
- 
+
+\subsection{Durchführung des Versuchs zur Bestimmung des Wiederstands}
 Bei der Versuchsdurchführung haben wir wie bereits oben beschrieben die Schaltung aufgebaut.\\
  
   \begin{figure}[H]
@@ -219,8 +221,11 @@ Nachdem wir alle Einstellungen im CASSY vorgenommen hatten, starteten wir eine T
 Da dies unseren Erwartungen entsprochen hat, haben wir unsere tatsächliche Messung gestartet. 
 
 Hierführ haben wir eine Spannung mit dem CASSY Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für 10 verschiedene Spannungswerte gemacht. \\
- 
 
+Im folgenden haben wir sämtliche Graphen, und Zahlenwerte mit hilfe des 
+programms "Cassy\_ Wiederstand.py"\ ermittelt und aus diesem übernommen. 
+ 
+\subsection{Diskussion der Ergebnisse}
 Hier kann man die Häufigkeitsverteilung der einzelnen gemessenen Spannungen und Stromstärken sehen.
 Dabei hatten wir in dieser Messung eine Spannung von 3.97V angelegt.
 Dabei fällt auf, das das Cassy nicht nur einen Spannungswert misst, sondern eine leichte Schwankung um diesen.
@@ -233,7 +238,7 @@ Gleichges gilt für die Stromstärke.
       \caption{Verteilung der gemessenen Spannung und Stromstärke bei einer angelegen Spannung von 3.97V}
   \end{figure}
   
-  
+\subsubsection{statistischer Fehler auf die Messungen} 
 Bei genauerer Betrachtung fällt auf, das sowohl Spannung wie auch Stromstärke einer Gaußverteilung folgen.
 Für die weitere Auswertung haben wir für jede Messung immer den Mittelwert und die Unsicherheit auf den Mittelwert berechnet.
 
@@ -300,6 +305,8 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
 Der Gesamtfehler berechnet sich dabei aus der quadratischen Addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
+\subsubsection{Lineare Regression}
+
 Mit der Methode der kleinsten Quadrate, kann aus den berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
 Im oberen Graphen sind die Mittelwerte von Spannung und Strom gegeneinander aufgetragen.
 Die grüne Gerade ist die Anpassung einer Geraden an die Wertepaare.
@@ -315,7 +322,7 @@ Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechne
  \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{plots/lineare_regression_alle.pdf}
-  \caption{Lineare Regression mitessungen}
+  \caption{Lineare Regression mit allen Messungen}
   \centering
   \end{figure}
 
@@ -385,8 +392,6 @@ Aus der Steigung der Geraden, der Linearen Regression können wir nun den Wieder
 {\centering R = (995.5 $\pm$0.283$_{stat}$)$\Omega$ \par} 
 
 
-%TODO : Systematischen Fehler
-%TODO : Erwähnen welches Programm wir benutzen
 \subsubsection{Systematische Fehler}
 Bei der Berechnung der Systematischen Fehlern haben wir die Verschiebemethode gewählt.
 Dafür haben wir Stromstärken und Spannungswerte um den Systematischen Fehler verschoben, d.h:
@@ -491,7 +496,7 @@ Damit ergibt sich:
   Um auch kleine schwankungen nach oben noch aufzeichnen zu können, haben wir 7.1V gewählt. \\
   Zur Einstellung des Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
   
-  \subsubsection{Entladung Kondensator}
+  \subsubsection{entladen des Kondensator}
   
   Hierfür haben wir den Trigger auf CH2 auf 7.00V 
    steigende Flanke gestellt. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
@@ -570,7 +575,7 @@ Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Dars
 Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
 Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
 
-\subsubsection{Bestimmung Ofset}
+\subsubsection{Bestimmung des Ofset}
 Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
 Um den Wert der Asymptote zu bestimmen, haben wir die dargestellte Zeit auf 10 $\tau$ vergrößert, da man mit dieser Einstellung schon in einen Bereich kam, wo die Spannungswerte am Kondensator nicht mehr abgenommen haben, sodern geschwankt sind.
 Wir haben dann den Mittelwert der beiden Spannungswerte genommen, um die es geschwankt ist, da sie näherungsweise gleichverteilt sind.
@@ -701,10 +706,10 @@ Weshalb hier nach insgesamt vier Variablen abgeleitet werden muss. Jedoch ist de
 	\sigma_{\tau}^2 = \left[\frac{\partial \tau}{\partial t_1}\right]^2\sigma_{t_1}^2 + \left[\frac{\partial \tau}{\partial t_2}\right]^2\sigma_{t_2}^2 + \left[\frac{\partial \tau}{\partial U_1}\right]^2\sigma_{U_1}^2 + \left[\frac{\partial \tau}{\partial U_2}\right]^2\sigma_{U_2.}^2
 \end{equation}
 
-% TODO python programmname einfuegen
-Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. Diese Rechnung haben wir mit dem Python Programm (...) durchgeführt. 
+Dieser Fehler muss für jede unserer Messungen neu berechnet werden, da die Formel von den jewailigen $t_1, t_2, U_1, U_2$ Abhängt. 
+Diese und alle folgenden Rechnungen ,so wie Graphen, haben wir mit dem Programm tau-osziloskop.py erstellt
 
-\subsection{Messdaten mit Oszilloskop}
+\subsection{Messdaten des Oszilloskop und Diskussion dieser}
 Hier eine Übersicht von unsern finalen Messdaten. Dabei haben wir die Offsets immer vor der ensprechenden Messung bestimmt.
 Bei jeder Messreihe haben wir während der Messung $\tau$ überschlagen (ohne Fehler) um zu sehen, ob die Messung sinnvoll ist.
 Hier haben wir beim ausrechnen vom Tau den Offset berücksichtigt.
@@ -784,6 +789,23 @@ Mit dem Wiederstand den wir im Vorversuch bestimmt haben...
   behandeln. Berechnen Sie das gewichtete Mittel und geben Sie Ihr
   Endergebnis für die Kapazität mit statistischer und systematischer
   Messunsicherheit an.
+  
+  
+  
+Für die Bestimmung der Kapazität, betrachten wir mit CASSY wieder den Lade und Entladevorgang des Kondensators. 
+Hier ist der Aufbau der Schaltung sehr ähnlich zu der beim Oszilloskop. jedoch muss das CASSY anders angeschlossen werden.
+Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
+
+  \begin{figure}[H]
+      \centering
+      \subfloat[Schaltbild für die Messung mit CASSY]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
+      \hfill
+      \subfloat[Bilder der Schaltung]{\includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_CASSY_nah.pdf}\label{fig:f2}}
+      \caption{Schaltung zur Bestimmung der Kapazität mit Cassy}
+  \end{figure}
+  
+ Der oben stehenden Skizze und Bild können Sie den Aufbau der Schaltung entnehmen. 
+
 \end{aufgabe}
 
 

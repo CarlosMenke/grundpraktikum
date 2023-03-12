@@ -6,7 +6,7 @@ import os
 import numpy as np
 
 global SHOW_PLOTS
-SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
+SHOW_PLOTS = True #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
  
 cassy_dir = "../Cassy_Messdaten/"
  
@@ -77,17 +77,33 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
     I_0 = 0.01
      
     lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
-    lin_U_A = np.log((np.abs(y.werte) - U_0)/U_0)
+    lin_U_A = np.log((-np.abs(y.werte) + U_0)/U_0)
     lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     
-    plt.plot(x.werte[start:end], lin_U[start:end])
+    print(lin_U_A)
+    if 'aufladen' in datei:
+        plt.figure()
+        plt.plot(x.werte, lin_U_A)
+        plt.title('Aufladen Spannung')
+        plt.figure()
+        plt.plot(x.werte, lin_I)
+    else:
+        plt.figure()
+        
+        
+    
+'''    plt.plot(x.werte[start:end], lin_U[start:end])
     plt.title('logarithmische Darstellung der Spannung')
     plt.figure()
     plt.plot(x.werte[start:end], lin_I[start:end])
     plt.title('logarithmische Darstellung der Stromstärke')
     if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname + '_log_'+ '.pdf', bbox_inches = 'tight')
+    else: plt.savefig("../plots/" + plotname + '_log_'+ '.pdf', bbox_inches = 'tight')'''
      
+    
+    #print('Werte der lin:', lin_U)
+    
+    
  
     
     
@@ -108,12 +124,13 @@ for filename in sorted(os.listdir(cassy_dir)):
         for plot in plots:
             if plot in filename:
                 if "aufladen" in filename or "entladen" in filename:
-                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
-        for plot in plots_log:
-            if plot in filename:
-                if "aufladen" in filename or "entladen" in filename:
-                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot, log=True)
+                    #cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
+                    pass
+        if "entladen" in filename:
+            cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", '...', log=True)
 
-
+'''cassy_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx','t', 'U_B1', 'I_A1','...', log=True )
+cassy_plot('../Cassy_Messdaten/messung-entladen-wiedertand-01.labx','t', 'U_B1', 'I_A1','...', log=True )
+cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )
 print('I_off = ', I_off)
-print('U_off = ', U_off)
+print('U_off = ', U_off)'''

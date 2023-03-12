@@ -159,7 +159,7 @@ print(pd.DataFrame(wiederstand_messdaten))
 
 ### gesmater statistischer Fehler
 digitalisierung_U_std = 20 / 2**12 / np.sqrt(12)
-digitalisierung_A_std = 0.06 / 2**12 / np.sqrt(12)
+digitalisierung_A_std = 0.006 / 2**12 / np.sqrt(12)
 spannung_stat = np.sqrt(digitalisierung_U_std**2 + spannung_mean_std**2)
 stromstaerke_stat = np.sqrt(digitalisierung_A_std**2 + stromstaerke_mean_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
@@ -176,7 +176,7 @@ fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'he
 
 R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat)
 print('corr:', corr)
-print('Chiquadrat / nf:', chiq)
+print('Chiquadrat / nf:', chiq / (len(stromstaerke_mean)-2))
 print('R =', R)
 print('Fehler auf R = ', eR)
 axarray[0].plot(stromstaerke_mean, R*stromstaerke_mean+b, color='green')

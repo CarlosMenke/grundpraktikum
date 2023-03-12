@@ -77,6 +77,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
     I_0 = 0.01
      
     lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+    lin_U_A = np.log((np.abs(y.werte) - U_0)/U_0)
     lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     
     plt.plot(x.werte[start:end], lin_U[start:end])

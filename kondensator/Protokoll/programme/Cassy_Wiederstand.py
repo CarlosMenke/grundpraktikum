@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 from praktikum import cassy
 from pylab import *
 import re
@@ -121,3 +122,42 @@ for filename in sorted(os.listdir(cassy_dir)):
                     cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
                 else: 
                     cassy_hist(cassy_dir + filename, "t", "U_B1", "I_A1", plot)
+
+def get_messdaten(datei: str, y: str):
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    y = messung.datenreihe(y)
+    return np.array(y.werte)
+
+# auswertung zum wiederstand.
+spannung_mean = []
+spannung_std = []
+stromstaerke_mean = []
+stromstaerke_std = []
+for filename in sorted(os.listdir(cassy_dir)):
+    if filename.endswith((".labx")) and 'messung-wiederstand' in filename:
+        daten = get_messdaten(cassy_dir +filename, 'U_B1')
+        spannung_mean.append(np.mean(daten))
+        spannung_std.append(np.std(daten, ddof=1))
+        daten = get_messdaten(cassy_dir +filename, 'I_A1')
+        stromstaerke_mean.append(np.mean(daten))
+        stromstaerke_std.append(np.std(daten, ddof=1))
+ 
+spannung_mean = np.array(spannung_mean)
+spannung_std = np.array(spannung_std)
+spannung_mean_std = spannung_std/np.sqrt(2001)
+ 
+stromstaerke_mean = np.array(stromstaerke_mean)
+stromstaerke_std = np.array(stromstaerke_std)
+stromstaerke_mean_std = stromstaerke_std/np.sqrt(2001)
+ 
+wiederstand_messdaten = {'U': spannung_mean, 'U_unischerheit': spannung_mean_std, 'U_std': spannung_std, 'I': stromstaerke_mean, 'I_unsicherheit': stromstaerke_mean_std,'I_std': stromstaerke_std}
+print(pd.DataFrame(wiederstand_messdaten))
+
+### gesmater statistischer Fehler
+digitalisierung_std = 20 / 2**12 / np.sqrt(12)
+spannung_stat = np.sqrt(digitalisierung_std**2 + spannung_std**2)
+stromstaerke_stat = np.sqrt(digitalisierung_std**2 + stromstaerke_std**2)
+stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
+
+print('statistischer Fehler: \n', pd.DataFrame(stat))

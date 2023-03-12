@@ -205,18 +205,20 @@ R, R_stat = lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannun
 u_syst = (0.01 * spannung_mean + 0.005 * 10) / np.sqrt(3)
 i_syst = (0.02 * stromstaerke_mean + 0.005 * 0.003) / np.sqrt(3)
 
-u_mean_syst_minus = spannung_mean - u_syst
-i_mean_syst_minus = stromstaerke_mean - i_syst
-u_mean_syst_oben = spannung_mean + u_syst
-i_mean_syst_oben = stromstaerke_mean + i_syst
-syst_messdaten = {'U unten': u_mean_syst_minus, 'U oben': u_mean_syst_oben, 'U syst': u_syst, 'I unten': i_mean_syst_minus, 'I oben': i_mean_syst_oben, 'I syst': i_syst}
-print('Bestimmng des Systematischen Messfehlers\n', pd.DataFrame(syst_messdaten))
-R_oben, R_syst_oben = lin_reg(i_mean_syst_minus, u_mean_syst_oben, i_syst, u_syst, 'linare_regression_syst_oben')
-R_unten, R_syst_unten = lin_reg(i_mean_syst_oben, u_mean_syst_minus, i_syst, u_syst, 'linare_regression_syst_unten')
-R_syst = (abs(R_syst_oben-R_stat) + abs(R_syst_unten-R_stat)) / 2
-R_fehler = np.sqrt(R_stat**2 + R_syst**2)
-print('R_syst_oben =', R_syst_oben)
-print('R_syst_unten =', R_syst_unten)
+R_u_oben, _ = lin_reg(stromstaerke_mean, spannung_mean + u_syst, stromstaerke_stat, spannung_stat, 'linare_regression_u_oben')
+R_u_unten, _ = lin_reg(stromstaerke_mean, spannung_mean - u_syst, stromstaerke_stat, spannung_stat, 'linare_regression_u_unten')
+R_u_syst = (abs(R_u_oben-R) + abs(R_u_unten-R)) / 2
+R_i_oben, _ = lin_reg(stromstaerke_mean + i_syst, spannung_mean, stromstaerke_stat, spannung_stat, 'linare_regression_i_oben')
+R_i_unten, _ = lin_reg(stromstaerke_mean - i_syst, spannung_mean, stromstaerke_stat, spannung_stat, 'linare_regression_i_unten')
+R_i_syst = (abs(R_i_oben-R) + abs(R_i_unten-R)) / 2
+R_syst = np.sqrt(R_u_syst**2 + R_i_syst**2)
+ 
+print('R_u_stat =', R_u_oben)
+print('R_i_stat =', R_i_oben)
+print('R_u_stat =', R_u_unten)
+print('R_i_stat =', R_i_unten)
+print('R_syst =', R_syst)
+print('R_stat =', R_stat)
 print('R_syst =', R_syst)
 print('R =', R)
 print('R error:', R_stat)

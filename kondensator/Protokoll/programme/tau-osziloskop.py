@@ -73,6 +73,16 @@ plot_tau_errorbar(names_messung, tau, stat_tau, "tau_errorbar")
 tau = np.delete(tau, 4)
 stat_tau = np.delete(stat_tau, 4)
 gewichteter_mittelwert = sum(tau/stat_tau**2)/sum(1/stat_tau**2)
-print(f"Der gewichtete Mittelwert von Tau ist {gewichteter_mittelwert:2f} ms")
-print(tau)
-print(f"Der gewichtete Mittelwert von Tau hat eine Standartabweichung von {gewichteter_mittelwert_std:2f} ms")
+gewichteter_mittelwert_std = np.sqrt(1/sum(1/stat_tau**2))
+print(f"Der gewichtete Mittelwert von Tau ist {gewichteter_mittelwert:2f} s")
+print(f"Der gewichtete Mittelwert von Tau hat eine Standartabweichung von {gewichteter_mittelwert_std} s")
+# kapazität und gesamtfehler
+R = 995.5
+R_syst = 12.2
+faktor = 1000000 # in mikrofarad
+C = faktor * gewichteter_mittelwert  / R
+C_stat = faktor * gewichteter_mittelwert_std / R
+C_syst = faktor * gewichteter_mittelwert / R**2 * R_syst
+print(f"Die Kapazität beträgt {C:.3f} uF")
+print(f"Die statistische Fehler von C beträgt {C_stat:.3f} uF")
+print(f"Die systematische Fehler von C beträgt {C_syst:.3f} uF")

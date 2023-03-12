@@ -108,5 +108,5 @@ for filename in sorted(os.listdir(cassy_dir)):
                     cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
 
 
-print(I_off)
-print(U_off)
+print('I_off = ', I_off)
+print('U_off = ', U_off)

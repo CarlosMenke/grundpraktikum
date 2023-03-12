@@ -120,18 +120,7 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
         \caption{Ergebnisse der Messung mit dem Multimeter}
         \label{tab:mytable}
     \end{table}
-
-
-Hier ist eine Exemplarische darstellung unserer Messungen.
-Wie man sehen kann, sind sowohl die Spannung wie die Stromstäke normalverteilt.
-  \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.7\textwidth]{plots/messung-wiederstand-07.pdf}
-      \caption{Verteilung der gemessenen Spannung und Stromstärke}
-  \end{figure}
-Die Statistischen Fehler haben wir mittels Erwartungswert und Varianz auf die Spannung und die stromstärke berechnet.
 \end{aufgabe}
-
 
 \begin{aufgabe}{Vorversuch: Bestimmung des Ohmschen Widerstands}
   Beschreiben Sie den Versuchsaufbau unter Verwendung eines
@@ -228,6 +217,18 @@ Da dies unseren Erwartungen entsprochen hat, haben wir unsere tatsächliche Mess
 
 Hierführ haben wir eine Spannung mit dem Cassy Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für elf verschiedene Spannungswerte gemacht. 
  
+
+Hier kann man die Häufigkeitsverteilung der einzelnen gemessenen Spannungen und Stromstärken sehen.
+Dabei hatten wir in diesem Experiment eine Spannung von 3.97V angelegt.
+Dabei fällt auf, das das Cassy nicht nur eine Spannung misst, sondern eine leicht Schwankende.
+Gleichges gilt für die Stromstärke.
+  \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{plots/messung-wiederstand-07.pdf}
+      \caption{Verteilung der gemessenen Spannung und Stromstärke bei einer angelegen Spannung von 3.97V}
+  \end{figure}
+Bei genauerer Betrachtung fällt auf, das sowohl Spannung wie auch Stromstärke eine Gaußverteilung haben.
+Für die weitere Auswertung haben wir für jede Messung immer den Mittelwert und die Unsicherheit auf den Mittelwert berechnet, sodass wir die anschließende linare Regression nicht mit allen 2000 Werte paaren durchgeführt haben.
 \end{aufgabe}
 
 

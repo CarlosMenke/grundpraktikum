@@ -832,7 +832,7 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
  
  \begin{table}[H]
         \centering
-        \begin{tabularx}{1\textwidth}{X X X X l} % adjust width as needed
+        \begin{tabularx}{1\textwidth}{X X X l l} % adjust width as needed
             \toprule
             \textbf{Messung} & \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich} \\
             \midrule
@@ -846,10 +846,12 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
         \label{tab:mytable}
     \end{table}
 
-Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll, um die möglichen Ofsets auf Strom und Spannung zu bestimmen. 
+Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll, um die möglichen Ofsets auf Strom und Spannung zu bestimmen.
+Für das Entladen des Kondensators haben wir diesen zunächst aufgeladen, und dann durch Drücken des Schalters die Entladung gestartet. 
+Die Messung ist durch die Triggereinstellungen automatisch gestartet.
+Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
 
 \end{aufgabe}
-
 
 \begin{aufgabe}{Zusammenfassung und Diskussion}
   Fassen Sie Ihre Ergebnisse zu den Kapazitäten zusammen und

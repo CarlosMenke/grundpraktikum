@@ -298,12 +298,23 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
     \label{tab:mytable}
 \end{table}
 Der Gesamtfehler berechnet sich dabei aus der quadratischen addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
-Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.
+Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
+Mit der Methode der kleinsten Quadrate, kann aus den Berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
 Im folgenden Graphen sind die Spannungen und Stromwerte, mit linarer Regression geplottet.
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{plots/lineare_regression.pdf}
+  \caption{Schaltplan Oszilloskop}
+  \centering
+  \end{figure}
+
 
 Im Residualplot ist zu sehen, das unsere Messwerte gleichmäßig um die linare Regression streuen, wobei diese fast nie in der Statistischen Ungenauigkeit liegt.
 Es liegt also keine Systematik vor, weshalb wir mit den Ergebnissen aus der linaren Regression fortfahren um den Wiederstand und seine Unsicherheit zu bestimmen.
+
+zur
  
  
 Den Fehler auf die Spannung im Residualplot haben wir wie folgt berechnet:

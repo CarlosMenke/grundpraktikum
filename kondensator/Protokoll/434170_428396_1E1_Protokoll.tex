@@ -259,7 +259,7 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
-        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}}$ & \textbf{Gesamtfehler stat.} \\
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma_{Ui}}}$ & \textbf{Gesamtfehler stat.} \\
         \midrule
         1 & 9.0V & 0.1mV & 3.8mV \\
         2 & 8.07V & 0.4mV & 15.9mV \\
@@ -280,7 +280,7 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
     \centering
     \begin{tabularx}{1\textwidth}{X X X X}
         \toprule
-        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}}$ & \textbf{Gesamtfehler .stat} \\
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma_{Ii}}}$ & \textbf{Gesamtfehler .stat} \\
         \midrule
         1 & 9.0mA & 341.0nA & 1.4mA \\
         2 & 8.1mA & 493.0nA & 1.4mA \\
@@ -301,12 +301,20 @@ Der Gesamtfehler berechnet sich dabei aus der quadratischen addition von statist
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
 Mit der Methode der kleinsten Quadrate, kann aus den Berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
-Im folgenden Graphen sind die Spannungen und Stromwerte, mit linarer Regression geplottet. Die Lineare Regression haben wir mit dem program (...) durchgeführt.
+Im folgenden Graphen sind die Spannungen und Stromwerte, mit Linarer Regression Aufgetragen. 
+Im oberen Graphen Sind die Mittelwerte von Spannung und Strom gegeneinander Aufgetragen. Die grüne Gerade, ist die Anpassung einer Geraden an die Wertepaare.
+Der untere Plot stellt dar, wie weit die Mittelwerte von der Linearen Regression abweichen.  
+Die Lineare Regression haben wir mit dem program (...) durchgeführt.\\
+
+Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechnet:
+\begin{equation}
+    \sigma_{U-Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
+\end{equation}
 
  \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{plots/lineare_regression_alle.pdf}
-  \caption{Schaltplan Oszilloskop}
+  \caption{Lineare Regression mitessungen}
   \centering
   \end{figure}
 
@@ -330,33 +338,55 @@ in unserem Fall haben wir 10 Werte und 2 Parameter in der Linearen Regression.
 Das $\chi^2$ ist dabei gegeben als:
 
 \begin{equation}
-	\chi^2 = \sum_{i=1}^N \frac{(U_i - (RI_i + b))^2}{\sigma_i^2}
+	\chi^2 = \sum_{i=1}^N \frac{(U_i - (RI_i + b))^2}{\sigma_{Ui}^2+(R\sigma_{Ii})^2}
 \end{equation}
 
-Hier steht $ U_i , I_i $ für die 
+Hier steht $ U_i , I_i $ für die Mittelwerte der einzelnen Messungen und R für den aus der Linearen Regression bestimmten Wiederstand. 
+Das b stannt ebenfalls aus der Linearen Regression, und bezeichnet den U-Achsen Abschnitt unserer Anpassung. Dieses ist jedoch sehr klein, was zu erwarten war.
+$\frac{\chi^2}{ndof}$ ist ein Maß für die qualtät der Anpassung.  
+Für das $\chi^2$ mit und ohne den Wert bei 9V ergibt sich:
 
-$\frac{\chi^2}{ndof}$ ist ein Maß für die qualtät der Anpassung. 
-Ein weiteres 
- Ergebnissen aus der linaren Regression fortfahren um den Wiederstand und seine Unsicherheit zu bestimmen.
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X}
+        \toprule
+         & \textbf{Freiheitsgrade} & $\pmb{\frac{\chi^2}{ndof}}$ & \textbf{b} \\
+        \midrule
+        Alle Messungen: & 8 & 2.509 & 0.0002V \\
+         Bereinigt & 7 & 0.807 & 0.0027V \\
 
+        \bottomrule
+    \end{tabularx}
+    \caption{Qualität der Anpassung}
+    \label{tab:mytable}
+  \end{table}
+
+Hier können wir sehen, dass die Quallität der Anpassung sich deutlich verbessert, wenn wir die Messung bei 9V aus der Auswertung nehmen.
+ 
  \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{plots/lineare_regression_final.pdf}
-  \caption{Schaltplan Oszilloskop}
+  \caption{Lineare Regression ohne Messung bei 9V}
   \centering
   \end{figure}
-zur
-%TODO : lineare regression disskutieren
-%TODO : Warum wir einen Messwert raus genommen haben
-%TODO : x/ddfo einführen und diskutieren
+
+Hier können wir sehen, die Lineare Regression nun im Rahmen beinahe aller Messfehler liegt und keine Systematik vorliegt.
+In dem Oberen Plot sind ebenfalls Fehlerbalken, diese sind jedoch nicht zu sehen, da sie im Vergleich zu der Skalierung sehr klein sind.\\
+
+Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.807 ist etwas kleiner, was darauf schließen lässt, dass wir unsere Fehler unterschätzt haben. 
+Da wir jedoch nur 9 Datenpunkte haben, und somit 7 Freiheitsgrade ist $\frac{\chi^2}{ndof} = 0.807$ ein gutes Ergebniss. 
+
+Aus der Steigung der Geraden, der Linearen Regression können wir nun den Wiederstand bestimmen. Aus der linearen Regression erhalten wir ebenfalls den statistischen Fehler auf R.
+ Dieser ergibt sich zu:\\
+
+{\centering R = (995.5 $\pm$0.283$_{stat}$)$\Omega$ \par}
+
+
 
 %TODO : Systematischen Fehler
+%TODO : Erwähnen welches Programm wir benutzen
  
- 
-Den Fehler auf die Spannung im Residualplot haben wir wie folgt berechnet:
-\begin{equation}
-    \sigma_{U-Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
-\end{equation}
+
 
 
 \end{aufgabe}

@@ -11,7 +11,7 @@ SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformi
 cassy_dir = "../Cassy_Messdaten/"
  
  
-def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str):
+def cassy_lin_plot(datei: str, x: str, y: str, z_I: str, plotname: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 14.0
     plt.rcParams['font.weight'] = 'normal'
@@ -45,29 +45,24 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str):
         ystr = '$%s$' % ysymbol
     if y.einheit:
         ystr += ' / %s' % y.einheit
-
-    fig=plt.figure()
-    #axi =  plt.subplot()
-    ax=fig.add_subplot(111, label="1")
-    ax2=fig.add_subplot(111, label="2", frame_on=False)
     
-    ax.plot(x.werte, y.werte, color="black", label = 'U')
-    ax2.plot(x.werte, z_I.werte, color='red', label = 'I')
-    ax2.yaxis.tick_right()
+    fig = plt.figure()
+    U_off = 0.04
+    U_0 = 9
+    I_off = 0.00003
+    I_0 = 0.01
 
-    plt.xlabel(xstr)
-    plt.ylabel(ystr)
-    plt.title(plotname)
-    ax2.yaxis.set_label_coords(-0.2, 0.5)
-    ax.set_ylabel('I_A1/ A')
-    ax.yaxis.set_label_position('right') 
-    ax.yaxis.set_label_coords(1.2, 0.5)
-    ax2.legend(loc = 'center left')
-    ax.legend(loc = 'center right')
+    lin_U = np.log((y.werte - U_off)/U_0)
+    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     
-    if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')
-plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02', 'messung-wiederstand-07']
+    plt.plot(x.werte, lin_U)
+    plt.figure()
+    plt.plot(x.werte, lin_I)
+    
+    
+cassy_lin_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx', 't', 'U_B1', 'I_A1', 'Test')
+
+'''plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02', 'messung-wiederstand-07']
   
  
 for filename in sorted(os.listdir(cassy_dir)):
@@ -78,6 +73,5 @@ for filename in sorted(os.listdir(cassy_dir)):
         for plot in plots:
             if plot in filename:
                 if "aufladen" in filename or "entladen" in filename:
-                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
+                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)'''
 
-lin = (I-I_off)/I_0

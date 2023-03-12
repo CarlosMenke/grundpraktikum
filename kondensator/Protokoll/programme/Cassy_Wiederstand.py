@@ -160,6 +160,11 @@ stromstaerke_stat = np.sqrt(digitalisierung_std**2 + stromstaerke_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
 
 print('statistischer Fehler: \n', pd.DataFrame(stat))
+for i in range(len(spannung_mean)):
+    print("" + str(i + 1) + " & " + str(round(spannung_mean[i], 2)) + "V & " + str(round(spannung_mean_std[i]*1000, 1)) + "mV & " + str(round(spannung_stat[i]*1000, 1)) + "mV \\\\")
+ 
+for i in range(len(stromstaerke_mean)):
+    print("" + str(i + 1) + " & " + str(round(stromstaerke_mean[i]*1000, 1)) + "mA & " + str(round(stromstaerke_mean_std[i]*10**9, 0)) + "nA & " + str(round(stromstaerke_stat[i]*1000, 1)) + "mA \\\\")
 
 
 fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
@@ -180,12 +185,4 @@ axarray[1].set_xlabel('$I$ / A')
 axarray[1].set_ylabel('$(U-(RI+b))$ / V')
 
 if SHOW_PLOTS: plt.show()
-else: plt.savefig("../plots/" + 'lineareregression' + '.pdf', bbox_inches = 'tight')
-
-
-
-
-
-
-
-
+else: plt.savefig("../plots/" + 'lineare_regression' + '.pdf', bbox_inches = 'tight')

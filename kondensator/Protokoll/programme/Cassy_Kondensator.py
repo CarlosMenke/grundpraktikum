@@ -11,7 +11,7 @@ SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformi
 cassy_dir = "../Cassy_Messdaten/"
  
  
-def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, offset=False):
+def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 14.0
     plt.rcParams['font.weight'] = 'normal'
@@ -26,7 +26,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, offset=False
     y = messung.datenreihe(y)
     z_I = messung.datenreihe(z_I)
      
-    if offset: 
+    if offsets_filename in datei:
         end = 490
         global I_off
         I_off = np.mean(z_I.werte[:end])
@@ -62,7 +62,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, offset=False
     ax2.plot(x.werte[:end], z_I.werte[:end], color='red', label = 'I')
     ax2.yaxis.tick_right()
 
-    if log:
+    if not log:
         if SHOW_PLOTS: plt.show()
         else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')
         return
@@ -80,21 +80,23 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, offset=False
     lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     
     plt.plot(x.werte[start:end], lin_U[start:end])
+    plt.title('logarithmische Darstellung der Spannung')
     plt.figure()
     plt.plot(x.werte[start:end], lin_I[start:end])
-    plt.show()
+    plt.title('logarithmische Darstellung der Stromstärke')
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '_log_'+ '.pdf', bbox_inches = 'tight')
      
  
     
     
-plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
-log = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
 global I_off
 global U_off
 # liste, wo nur die ersten 400 datenpunkte geplottet werden, und womit die offsetwerte global gesetzt werden
+global offsets_filename
 offsets_filename = 'messung-aufladen-kondensator-02'
+plots = ['messung-aufladen-wiederstand-01']
+plots_log = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
   
  
 for filename in sorted(os.listdir(cassy_dir)):
@@ -106,6 +108,10 @@ for filename in sorted(os.listdir(cassy_dir)):
             if plot in filename:
                 if "aufladen" in filename or "entladen" in filename:
                     cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
+        for plot in plots_log:
+            if plot in filename:
+                if "aufladen" in filename or "entladen" in filename:
+                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot, log=True)
 
 
 print('I_off = ', I_off)

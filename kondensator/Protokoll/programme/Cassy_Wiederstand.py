@@ -104,14 +104,13 @@ def cassy_hist(datei: str, x: str, y: str, y_2: str, plotname: str):
 
      
      
-plots = ['messung-aufladen-kondensator-01', 'messung-wiederstand-07']
+plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02', 'messung-wiederstand-07']
   
  
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
         if SHOW_PLOTS: 
             if "aufladen" in filename or "entladen" in filename:
-                continue
                 cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", filename)
             else:
                 cassy_hist(cassy_dir + filename, "t", "U_B1", "I_A1", filename)

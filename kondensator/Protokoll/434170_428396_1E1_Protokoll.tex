@@ -748,7 +748,7 @@ Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgan
             6. & 2. Aufladen     & $t_1 = 4.5 ms  $ & $U_1 = -4.08V$ & $(9.69 \pm 0.11)ms$ \\
             & Wiederstand  & $t_2 = 22.6 ms $  & $U_2 = -680mV$ \\
             \bottomrule
-            7. & 1. Aufladen     & $t_1 = 3.4 ms  $ & $U_1 = -2.16V$ & $(10.03 \pm 0.09)ms$ \\
+              7. & 1. Aufladen     & $t_1 = 3.4 ms  $ & $U_1 = -2.16V$ & $(10.03 \pm 0.09)ms$ \\
             & Kondensator  & $t_2 = 18.0 ms $  & $U_2 = -6.04V$ & $ U_0 = -7.22V$ \\
             \midrule
             8. & 2. Aufladen     & $t_1 = 3.4 ms  $ & $U_1 = -2.16V$ & $(10.03 \pm 0.09)ms$ \\
@@ -812,18 +812,19 @@ Damit ergibt sich für die Kapazität mit Unsicherheiten:
   Messunsicherheit an.
   
 \subsection{Aufbau und Durchführung der Messung der Kapazität des Kondensators}  
+   
 
 Für die Bestimmung der Kapazität, betrachten wir mit CASSY wieder den Lade und Entladevorgang des Kondensators. 
 Hier ist der Aufbau der Schaltung sehr ähnlich zu der beim Oszilloskop. jedoch muss das CASSY anders angeschlossen werden.
 Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
 
-  \begin{figure}[H]
-      \centering
-      \subfloat[Schaltbild für die Messung mit CASSY]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
-      \hfill
-      \subfloat[Bilder der Schaltung]{\includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_CASSY_nah.pdf}\label{fig:f2}}
-      \caption{Schaltung zur Bestimmung der Kapazität mit Cassy}
-  \end{figure}
+\begin{figure}[H]
+    \centering
+    \subfloat[Schaltbild für die Messung mit CASSY]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
+    \hfill
+    \subfloat[Bilder der Schaltung]{\includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_CASSY_nah.pdf}\label{fig:f2}}
+    \caption{Schaltung zur Bestimmung der Kapazität mit Cassy}
+\end{figure}
   
  Der oben stehenden Skizze und Bild können Sie den Aufbau der Schaltung entnehmen. Hier ist zu beachten, dass die Spannung am Kondensator parallel gemessen wird, und der Strom am Wiederstand in Reihe. 
  Dabei muss der Wiederstand sich in dem Schaltkreis befinden welcher geschlossen wird wenn man den Schalter betätigt. 
@@ -850,6 +851,32 @@ Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll
 Für das Entladen des Kondensators haben wir diesen zunächst aufgeladen, und dann durch Drücken des Schalters die Entladung gestartet. 
 Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
+
+ 
+Hier ist ein typischer Entladeverlauf vom Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Wiederstand generiert haben.
+    Dabei ist hierbei keiner der Graphen inertiert.
+    Diese ist dadurch charakterisiert, das der Strom anfangs sowie am Ende 0 ist, und nach einem anfänglichen Sprung nach Augenmaß exponentiell fällt.
+    Die Spannung fällt dabei ebenfalls ca. exponentiell von der Anfangsspannung auf 0 ab.
+    Auch ist in den Graphen der Pretrigger gut zu sehen.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\textwidth]{plots/messung-entladen-kondensator-02.pdf}
+    \caption{Beispielverlauf vom Entladevorgang}
+  \centering
+\end{figure}
+ 
+Unten ist ein Beispielhafter Spannungs und Stromverlauf vom aufladen zu sehen.
+Dabei ist darauf zu achten, das die Achse für die Stromstärke hier anders skaliert ist als beim entladen.
+Die Stromstärke fällt auch hier nach einem Anfänglichem starken anstieg ca. exponentiell ab.
+Die Spannung steigt dabei auf die Grenzspannung an.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.9\textwidth]{plots/messung-aufladen-kondensator-01.pdf}
+    \caption{Beispielverlauf vom Ladevorgang}
+  \centering
+\end{figure}
+
+Zum bestimmen der Offsets am den Kondensator und am Wiederstand haben wir den Mittelwert der Datenpunkte genommenwelche 
 
 \end{aufgabe}
 

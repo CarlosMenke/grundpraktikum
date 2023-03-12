@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from praktikum import cassy
+from praktikum import cassy, analyse
 from pylab import *
 import re
 import os
+import numpy as np
 
 global SHOW_PLOTS
 SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
@@ -14,7 +15,6 @@ cassy_dir = "../Cassy_Messdaten/"
 def cassy_plot(datei: str, x: str, y: str, y_2: str, plotname: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 14.0
-    plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.weight'] = 'normal'
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.labelweight'] = 'normal'
@@ -71,7 +71,6 @@ def cassy_plot(datei: str, x: str, y: str, y_2: str, plotname: str):
     
 def cassy_hist(datei: str, x: str, y: str, y_2: str, plotname: str):
     plt.rcParams['font.size'] = 12.0
-    plt.rcParams['font.family'] = 'sans-serif'
     plt.rcParams['font.weight'] = 'normal'
     plt.rcParams['axes.labelsize'] = 'medium'
     plt.rcParams['axes.labelweight'] = 'normal'
@@ -161,3 +160,32 @@ stromstaerke_stat = np.sqrt(digitalisierung_std**2 + stromstaerke_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
 
 print('statistischer Fehler: \n', pd.DataFrame(stat))
+
+
+fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
+
+R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean, stromstaerke_mean_std, spannung_mean_std)
+print('corr:', corr)
+print('R =', R)
+print('Fehler auf R = ', eR)
+axarray[0].plot(stromstaerke_mean, R*stromstaerke_mean+b, color='green')
+sigmaRes = np.sqrt((R*stromstaerke_mean_std)**2 + spannung_mean_std**2)
+axarray[0].errorbar(stromstaerke_mean, spannung_mean, xerr=stromstaerke_mean_std, yerr=spannung_mean_std, color='red', fmt='.', marker='o', markeredgecolor='red')
+axarray[0].set_xlabel('$I$ / A')
+axarray[0].set_ylabel('$U$ / V')
+
+axarray[1].axhline(y=0., color='black', linestyle='--')
+axarray[1].errorbar(stromstaerke_mean, spannung_mean-(R*stromstaerke_mean+b), yerr=sigmaRes, color='red', fmt='.', marker='o', markeredgecolor='red', linewidth=3)
+axarray[1].set_xlabel('$I$ / A')
+axarray[1].set_ylabel('$(U-(RI+b))$ / V')
+
+if SHOW_PLOTS: plt.show()
+else: plt.savefig("../plots/" + 'lineareregression' + '.pdf', bbox_inches = 'tight')
+
+
+
+
+
+
+
+

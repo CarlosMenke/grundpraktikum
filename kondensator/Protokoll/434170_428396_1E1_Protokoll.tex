@@ -771,12 +771,33 @@ Unser erwartetes $\tau$ von $10ms$ liegt also für alle Messungen, abgesehen von
 Da dieser deutlich über dem von uns erwarteten Wert liegt, haben wir ihn in der folgenden Rechnung exkludiert.
 Der gewichtete Mittelwert ist dann: $\tau = (9.98 \pm 0.044)ms$.\\
 
-Mit dem Wiederstand den wir im Vorversuch bestimmt haben...
+Der von uns bestimmte Wiederstand geht hier nur mit einer Statistischen Unsicherheit ein, da egal wie oft man das Experiment am Osziloskop durchführt, sich die Unsicherheit auf ihn nicht ändert.
+Dieser ist die Addition von dem Statistischen und Systematischen Fehler vom Versuch der bestimmung des Wiederstandes.
+$ R = (995.5 \pm 12.2) \Omega$\\
+
+
+Um nun die Kapazität mit Unsicherheiten zu berechenen, müssen die Fehler von der Zeitkonstante und dem Wiederstand fortgepflanzt werden.
+Dabei stammt der Statistische Fehler auf die Kapazität nur von $\tau$ und der Systematische von $R$.
+Für den Statistischen Fehler verwenden wir die Gauss'sche Fehlerfortpflanzung und den Zusammenhang $C = \frac{\tau}{R}$
+\begin{equation}
+    \sigma C_{Statistisch} = \sqrt{(\frac{\partial C}{\partial \tau})^2 \sigma_{\tau}^2}
+\end{equation}
+\begin{equation}
+    \sigma C_{Statistisch} = \sqrt{(\frac{1}{R})^2 \sigma_{\tau}^2} = 0.045 \mu F
+\end{equation}
+
+Für die Systematische Unsicherheit haben wir die linare Fehlerfortpflanzung verwendet.
+\begin{equation}
+    \sigma C_{Systematisch} = |\frac{\partial C}{\partial R} \sigma_R| = 0.123 \mu F
+\end{equation}
+
+Damit ergibt sich für die Kapazität mit Unsicherheiten:
+\begin{equation}
+    C = (10.027 \pm 0.045_{statistisch} \pm 0.123_{systematisch}) \mu F
+\end{equation}
  
 \end{aufgabe}
 
-
-    
  
  
 \begin{aufgabe}{Lade- und Entladekurven des Kondensators mit Cassy}

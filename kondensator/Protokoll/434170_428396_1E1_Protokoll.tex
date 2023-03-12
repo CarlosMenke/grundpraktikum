@@ -876,7 +876,12 @@ Die Spannung steigt dabei auf die Grenzspannung an.
   \centering
 \end{figure}
 
-Zum bestimmen der Offsets am den Kondensator und am Wiederstand haben wir den Mittelwert der Datenpunkte genommenwelche 
+Zum bestimmen der Offsets am den Kondensator haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem aufladen haben.
+Da wir einen Pretrigger von 500 Messpunkten eingestellt hatten, haben wir dort genügent Datenpunkte um den Mittelwert zu bestimmen.
+Dabei haben wir allerdings die letzten 100 Messpunkte nicht mit einbezogen, da diese durch den Trigger ausgelöst wurden und dort die Messung schon gestartet ist.
+Da wir davon ausgehen, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, haben wir den Mittelwert der Spannungswerte genommen.
+Gleiches gilt für die bestimmung der Offsets des Stroms.
+Hier einmal die Werte Graphisch dargestellt, welche wir zum bestimmen der Offsets genommen haben.
 
 \end{aufgabe}
 

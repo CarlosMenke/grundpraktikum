@@ -11,7 +11,7 @@ SHOW_PLOTS = True #for debugging, zeige alle Messdaten und die Fouriertrasformie
 cassy_dir = "../Cassy_Messdaten/"
  
  
-def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
+def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, offset=False, offset_u0=False):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 14.0
     plt.rcParams['font.weight'] = 'normal'
@@ -26,7 +26,11 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
     y = messung.datenreihe(y)
     z_I = messung.datenreihe(z_I)
      
-    if offsets_filename in datei:
+    if offset_u0:
+        end = 490
+        global U_0
+        U_0 = np.mean(y.werte[:end])
+    elif offset:
         end = 490
         global I_off
         I_off = np.mean(z_I.werte[:end])
@@ -109,9 +113,11 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False):
     
 global I_off
 global U_off
+global U_0
 # liste, wo nur die ersten 400 datenpunkte geplottet werden, und womit die offsetwerte global gesetzt werden
 global offsets_filename
-offsets_filename = 'messung-aufladen-kondensator-02'
+cassy_plot(cassy_dir +  'messung-aufladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset", offset=True)
+cassy_plot(cassy_dir +  'messung-entladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset_u0", offset_u0=True)
 plots = ['messung-aufladen-wiederstand-01']
 plots_log = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
   
@@ -133,4 +139,5 @@ for filename in sorted(os.listdir(cassy_dir)):
 cassy_plot('../Cassy_Messdaten/messung-entladen-wiedertand-01.labx','t', 'U_B1', 'I_A1','...', log=True )
 cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )
 print('I_off = ', I_off)
-print('U_off = ', U_off)'''
+print('U_off = ', U_off)
+print('U_off = ', U_0)'''

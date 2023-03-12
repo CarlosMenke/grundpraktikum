@@ -256,18 +256,61 @@ Desweiteren Müssen wir den Digitalisierungsfehler in unserem Fall als statistis
 Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende Werte.
 
 \begin{table}[H]
-        \centering
-        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
-            \toprule
-            \textbf{Messung} & \textbf{Mittelwert} & \textbf{statistische Fehler} & \textbf{gesamtfehler} \\
-            \midrule
-            50$\mu$s  & 0.1s & -- & -10V - 10V \\
-            Messwerte& $\Rightarrow$ N = 2001& & -0.01A - 0.01A\\
-            \bottomrule
-        \end{tabularx}
-        \caption{Mittelwerte mit ihren Fehlern}
-        \label{tab:mytable}
-    \end{table}
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}}$ & \textbf{Gesamtfehler stat.} \\
+        \midrule
+        1 & 9.0V & 0.1mV & 3.8mV \\
+        2 & 8.07V & 0.4mV & 15.9mV \\
+        3 & 7.07V & 0.1mV & 4.9mV \\
+        4 & 5.99V & 0.1mV & 3.3mV \\
+        5 & 4.97V & 0.0mV & 2.3mV \\
+        6 & 3.97V & 0.1mV & 5.0mV \\
+        7 & 2.95V & 0.1mV & 4.8mV \\
+        8 & 8.52V & 0.1mV & 3.4mV \\
+        9 & 7.53V & 0.0mV & 2.3mV \\
+        10 & 6.53V & 0.1mV & 4.0mV \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Spannungen mit Fehlern}
+    \label{tab:mytable}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X}
+        \toprule
+        \textbf{Messung} & \textbf{Mittelwert} & $\pmb{\bar{\sigma}}$ & \textbf{Gesamtfehler .stat} \\
+        \midrule
+        1 & 9.0mA & 341.0nA & 1.4mA \\
+        2 & 8.1mA & 493.0nA & 1.4mA \\
+        3 & 7.1mA & 339.0nA & 1.4mA \\
+        4 & 6.0mA & 329.0nA & 1.4mA \\
+        5 & 5.0mA & 332.0nA & 1.4mA \\
+        6 & 4.0mA & 339.0nA & 1.4mA \\
+        7 & 3.0mA & 341.0nA & 1.4mA \\
+        8 & 8.6mA & 337.0nA & 1.4mA \\
+        9 & 7.6mA & 331.0nA & 1.4mA \\
+        10 & 6.6mA & 331.0nA & 1.4mA \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Stromstärken mit Fehlern}
+    \label{tab:mytable}
+\end{table}
+Der Gesamtfehler berechnet sich dabei aus der quadratischen addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
+Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.
+
+Im folgenden Graphen sind die Spannungen und Stromwerte, mit linarer Regression geplottet.
+
+Im Residualplot ist zu sehen, das unsere Messwerte gleichmäßig um die linare Regression streuen, wobei diese fast nie in der Statistischen Ungenauigkeit liegt.
+Es liegt also keine Systematik vor, weshalb wir mit den Ergebnissen aus der linaren Regression fortfahren um den Wiederstand und seine Unsicherheit zu bestimmen.
+ 
+ 
+Den Fehler auf die Spannung im Residualplot haben wir wie folgt berechnet:
+\begin{equation}
+    \sigma_{U-Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
+\end{equation}
+
 
 \end{aufgabe}
 
@@ -535,7 +578,7 @@ Den untenstehenden Rechnungen können sie somit unsere Fehler auf U und t entneh
 \end{equation}
 
 
-Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ablesegenauigkeit statischtisch angenommen. Wobei wir eine ungenauigkeit auf das ablesen der Zeit als auch auf die Amplitude haben. Die Fehlerfortplfanzung lautet somit: 
+Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ablesegenauigkeit statischtisch angenommen. Wobei wir eine Ungenauigkeit auf das ablesen der Zeit als auch auf die Amplitude haben. Die Fehlerfortplfanzung lautet somit: 
 
 \begin{equation}
 	\sigma_{\tau}^2 = \sum_{i,j=1}^n\left[\frac{\partial \tau}{\partial x_i}\frac{\partial \tau}{\partial x_j}\right]_{x=\mu}V_{ij}^2

@@ -358,6 +358,31 @@ Den Fehler auf die Spannung im Residualplot haben wir wie folgt berechnet:
     \sigma_{U-Resultierend} = \sqrt{(R \sigma_I)^2 + (\sigma_U)^2}
 \end{equation}
 
+Bei der Berechnung der Systematischen Fehlern haben wir die Verschiebemethode gewählt.
+Dafür haben wir Stromstärken und Spannungswerte um den Systematischen Fehler verschoben, d.h:
+\begin{equation}
+    U_{i,verschoben} = U_i \pm \sigma_{U_i,Systematisch}
+\end{equation}
+\begin{equation}
+    \sigma_{U_i,Systematisch}=\frac{(0.01U_i+ 0.005 * U_{Bereichswert})}{\sqrt{3}}
+\end{equation}
+\begin{equation}
+    I_{i,verschoben} = I_i \pm \sigma_{I_i,Systematisch}
+\end{equation}
+\begin{equation}
+    \sigma_{I_i,Systematisch}=\frac{(0.02I_i+ 0.005 * I_{Bereichswert})}{\sqrt{3}}
+\end{equation}
+Mit diesen verschobenen Werten haben wir jetzt erneut die Linare Regression durchgeführt.
+Den Systematischen Fehler von U auf R haben wir mit folgender Formel berechnet:
+\begin{equation}
+    \Delta R_{U+} = \frac{1}{2} (|R_{U+} - R| + |R_{U-} - R|)
+\end{equation}
+Das gleiche haben wir für den Systematischen Fehler von I auf R gemacht.
+Anschließen haben wir die systematischen Fehler quadratisch addiert, um den Gesamtsystematischen Fehler auf R zu erhalten.
+Dieser war $R_{Systematisch} = 12.9\Omega$. \\
+ 
+Damit ergibt sich:
+\centering{R = $(995.5 \pm 0.3_{stat} \pm 12.9_{syst}) \Omega$}
 
 \end{aufgabe}
 

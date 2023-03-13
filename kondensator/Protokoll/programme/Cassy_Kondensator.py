@@ -29,7 +29,9 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
     if offset_u0:
         end = 490
         global U_0
+        global I_0
         U_0 = np.mean(y.werte[:end])
+        I_0 = np.mean(z_I.werte[:end])
     elif offset:
         end = 490
         global I_off
@@ -85,37 +87,27 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     start = 500
     end = 1000
-    U_off = 0.04
-    U_0 = 9
-    I_off = 0.00003
-    I_0 = 0.01
      
-    lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
-    lin_U_A = np.log((-np.abs(y.werte) + U_0)/U_0)
-    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
-    
-    print(lin_U_A)
-    if 'aufladen' in datei:
-        plt.figure()
-        plt.plot(x.werte, lin_U_A)
-        plt.title('Aufladen Spannung')
-        plt.figure()
-        plt.plot(x.werte, lin_I)
-    else:
-        plt.figure()
-        
-        
-    
-'''    plt.plot(x.werte[start:end], lin_U[start:end])
-    plt.title('logarithmische Darstellung der Spannung')
     plt.figure()
-    plt.plot(x.werte[start:end], lin_I[start:end])
-    plt.title('logarithmische Darstellung der Stromstärke')
+    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
+    if 'aufladen' in datei:
+        lin_U = np.log((-np.abs(y.werte) + U_0)/U_0)
+        plt.ylabel('log((- |U_B1| + U_0)/U_0)')
+    else:
+        lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+         
+    plt.title('logarithmische Darstellung der Spannung')
+    plt.plot(x.werte[start:end], lin_U[start:end])
+    plt.xlabel(xstr)
+    plt.title(plotname)
     if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname + '_log_'+ '.pdf', bbox_inches = 'tight')'''
-     
-    
-    #print('Werte der lin:', lin_U)
+    else: plt.savefig("../plots/" + plotname + '_U_log_'+ '.pdf', bbox_inches = 'tight')
+    plt.figure()
+    plt.title('logarithmische Darstellung der Stromstärke')
+    plt.plot(x.werte[start:end], lin_I[start:end])
+    plt.xlabel(xstr)
+    if SHOW_PLOTS: plt.show()
+    else: plt.savefig("../plots/" + plotname + '_A_log_'+ '.pdf', bbox_inches = 'tight')
     
     
  
@@ -124,6 +116,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
 global I_off
 global U_off
 global U_0
+global I_0
 # liste, wo nur die ersten 400 datenpunkte geplottet werden, und womit die offsetwerte global gesetzt werden
 global offsets_filename
 cassy_plot(cassy_dir +  'messung-aufladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset", offset=True)
@@ -137,18 +130,24 @@ for filename in sorted(os.listdir(cassy_dir)):
         if SHOW_PLOTS: 
             if "aufladen" in filename or "entladen" in filename:
                 cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", filename)
-        for plot in plots:
-            if plot in filename:
-                if "aufladen" in filename or "entladen" in filename:
-                    #cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
-                    pass
-        if "entladen" in filename:
-            cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", '...', log=True)
+                cassy_plot(cassy_dir + filename + '.labx', "t", "U_B1", "I_A1", '...', log=True)
+        else:
+            for plot in plots:
+                if plot in filename:
+                    if "aufladen" in filename or "entladen" in filename:
+                        cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
+                        pass
+            for plot in plots_log:
+                if plot in filename:
+                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot, log=True)
+
 
 '''cassy_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx','t', 'U_B1', 'I_A1','...', log=True )
 cassy_plot('../Cassy_Messdaten/messung-entladen-wiedertand-01.labx','t', 'U_B1', 'I_A1','...', log=True )
 cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )'''
 
+
 print('I_off = ', I_off)
+print('I_0 = ', I_0)
 print('U_off = ', U_off)
-print('U_= = ', U_0)
+print('U_0 = ', U_0)

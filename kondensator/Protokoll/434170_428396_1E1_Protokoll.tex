@@ -979,9 +979,9 @@ Hier einmal eine Darstellung, für Spannng und Stromstärke wo das gesamte Inter
     \centering
 \end{figure}
 
-Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 110 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
+Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 60 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
 Zudem sieht man, wie man am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 560 bis 610 betrachtet.
-In diesem Intervall sind 50 Messpunkte, und es ist $\frac{1}{2}\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
+In diesem Intervall sind 50 Messpunkte, und es ist $\frac{1}{4}\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
 Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in diesem Intervall.
 Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Funktion folgen.
 
@@ -1009,7 +1009,13 @@ Die Steigung der Geraden a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \
  
 In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der Fehler auf die Zeit aufgrund des gewählten Messintervalls.
 Auch der Fehler auf U und I aufgrund der statistischen fluktuaton wird beachtet. 
-Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen und wie vorher erkälrt fortgepflanzt und für die Linare Regression genommen.\\
+Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen und wie vorher erkälrt fortgepflanzt und für die Linare Regression verwendet.\\
+
+Zur Unterstützung unserer Annahme, dass die Qualität der Anpassung sich verbessert, wenn wir nur 50 Werte verwenden hier exemplarisch dargestellt die Lineare Regression mit 200 Messpunkten.\\
+
+An dieser Kann man sehen, dass die Messwerte gegen Ende der betrachteten Zeitspanne deutlich mehr streuen als am Anfang. 
+Die qualität der Linearen Regression nimmt also ab wenn wir diese inkludieren.
+Im Folgenden verwenden wir für die Auswertung das oben diskutierte Intervall mit 50 Messpunkten.   
 
 Unten können sie Exemplarisch eine der Linearen Regressionen sehen welche wir für alle Messungen durchgeführt haben.
 In der oberen Grafik sind die Messwerte für Strom oder Spannung gegen die Zeit aufgetragen.

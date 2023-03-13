@@ -279,7 +279,7 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
         \bottomrule
     \end{tabularx}
     \caption{Spannungen mit Fehlern}
-    \label{tab:mytable}
+    \label{tab:Tabelle 3}
 \end{table}
 \begin{table}[H]
     \centering
@@ -300,7 +300,7 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
         \bottomrule
     \end{tabularx}
     \caption{Stromstärken mit Fehlern}
-    \label{tab:mytable}
+    \label{tab:Tabelle 4}
 \end{table}
 Der Gesamtfehler berechnet sich dabei aus der quadratischen Addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
@@ -853,7 +853,9 @@ Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
 
  
-Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Wiederstand generiert haben.
+Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Kondensator generiert haben.
+Im folgenden Führen wir alle Rechnungen und Erstellungen von Graphen mit diesem Programm aus.\\
+
     Dabei ist hierbei keiner der Graphen inertiert.
     Diese ist dadurch charakterisiert, das der Strom anfangs sowie am Ende 0 ist, und nach einem anfänglichen Sprung nach Augenmaß exponentiell fällt.
     Die Spannung fällt dabei ebenfalls ca. exponentiell von der Anfangsspannung auf 0 ab.
@@ -876,8 +878,10 @@ Die Spannung steigt dabei auf die Grenzspannung an.
   \centering
 \end{figure}
 
+\subsubsection{Bestimmung des Kondensators}
 
-Zum bestimmen der Offsets am dem Kondensator haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem Aufladevorgang aufgenommen haben.
+Zum bestimmen der Offsets des Stroms und der Spannung, am dem Kondensator, haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem Aufladevorgang aufgenommen haben.
+wir gehen davon aus, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, somit ist das ein sinnvolles Vorgehen zur bestimmung des Ofsets.
 Da wir einen Pretrigger von 500 Messpunkten eingestellt hatten, haben wir dort genügent Datenpunkte um zu bestimmen wie weit der Strom bzw. die Spannung von der Nullinie abweicht.
 Wir allerdings die letzten 10 Messpunkte nicht mit einbezogen, da dort der Aufladevorgang bereits startete.
 In der Graphik erkennt man gut, dass die 450 Messpunkte vor dem Aufladevorgang nur rauschen war.
@@ -892,12 +896,37 @@ Daraus kann der Offset auf den Strom und die Spannung bestimmt werden.
 
 $I_{Offset} = 1.22 * 10^{-5} A$
 
-
 $U_{Offset} = 0.0098 V$
 
-Da wir davon ausgehen, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, haben wir den Mittelwert der Spannungswerte genommen.
-Gleiches gilt für die bestimmung der Offsets des Stroms.
-Hier einmal den Ausschnitt dargestellt, welche wir zum bestimmen der Offsets genommen haben.
+Für den Aufladevorgang des Kondensators ist ebenfalls $U_0$ von Relevanz. Also die Spannung welche der Kondensator hat wenn er komplett aufgeladen ist. 
+Diese kann man den Daten bestimmen die wir vor dem Entladevorgang aufgezeichnet haben. 
+Für die spätere Linearisierumg der daten, brauchen wir ebenfalls $I_0$ Also der maximale Strom der fließt. Diesen kann man mithilfe eines Peakfinders aus unseren Messdaten bestimmen.
+Hier ist er irrelevant ob man den Lade oder entladevorgang betrachtet.\\
+
+$ I_0 = Platzhalter A$
+
+$ U_0 = 9.01 V $
+
+
+\subsection{Linearisierung der Messergebnisse}
+
+Ziel unserer Messung ist es aus den Lade und Entladekurven die Zeitkonstante $\tau$ zu bestimmen. 
+Dies könnte man bestimmen, indem man eine Expondentialfunktion an die Datenpunkte  anpasst.
+Da dies jedoch ein aufwändiges Verfahren ist, ist es hier einfacher die Daten zu linearisieren und dann andiese eine lineare Regression an zu passen. 
+Da in unserem Fall die Spannungs und Stromwerte einer Expondentialfunktion folgen, müssen wir unsere Messwerte Logarythmieren, so wie die Fehler auf diese.\\
+
+Da wir in unserer Messung der Ladevorgänge die gleichen Messwertserfassungseinstellungen verwendet haben wie bei der Bestimmung des Wiederstands, können wir den statistischen Fehler den wir bei diesem auf Strom und Spannung bestimmt haben verwenden.
+Wie Sie tabelle  \ref{tab:Tabelle 3} und \ref{tab:Tabelle 4} sehen können, sind die Fehler auf diese bei allen Werten für V zimlich ähnlich. 
+Also können wir für den Fehler auf die Spannungen und Ströme in den Ladevorgängen den Mittelwert dieser Fehler verwenden.
+
+Wir transformieren unsere Messungen und Fehler nach folgender Vorschrift:
+
+\begin{equation}
+	S = \ln(X) \qquad \sigma_S = \frac{dS}{dX} \sigma_X
+\end{equation}
+
+
+
 
 \end{aufgabe}
 
@@ -906,11 +935,7 @@ Hier einmal den Ausschnitt dargestellt, welche wir zum bestimmen der Offsets gen
   vergleichen Sie sie untereinander, mit den Messungen aus dem
   Vorversuch und mit den Herstellerangaben (Toleranz
   $\SI{5}{\percent}$).  
-Wie der Graph eindeutig zeigt, hat die Aufladung des Kondensators noch nicht begonnen, und damit kann man diese Werte gut für die Offsetbestimmung verwenden.
- 
 
-Den Offset auf $U_0$ haben wir beim entladen des Kondensator vorm entladen vermessen.
-Auch hier wurde wieder der Mittelwert, der ersten 490 Messpunkte genommen, welche unten zu sehen ist.
 \end{aufgabe}
  
 \end{document}

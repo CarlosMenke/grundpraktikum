@@ -226,24 +226,22 @@ def lin_reg(x, y, y_err, plotname=''):
   
  
 global start
-start = 610
+start = 510
 global end
-end = 660
-t_err = 50 * 10**(-6) / np.sqrt(12) * np.ones(end-start)
-t_err = 10**(-10) * np.ones(end-start)
+end = 650
  
  #beispiel welches abgescheichert werden soll.
 example = 'messung-aufladen-kondensator-01'
 
 sigma_U = 0.00142
-sigma_I = 1.44*10**(-6)
+sigma_I = 1.44*10**(-5)
 
 def sigma_lin_U(U_i, sigma_U):
     lin_U_stat = 1/((U_i-U_off))*sigma_U
     return lin_U_stat
 
 def sigma_lin_I(I_i, sigma_I):
-    lin_I_stat = 1/((I_i+I_off))*sigma_I
+    lin_I_stat = 1/((I_i-I_off))*sigma_I
     return lin_I_stat
 
 def sigma_lin_U_A(U_i, sigma_U):

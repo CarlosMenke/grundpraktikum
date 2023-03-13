@@ -156,8 +156,8 @@ wiederstand_messdaten = {'U': spannung_mean, 'U_unischerheit': spannung_mean_std
 print(pd.DataFrame(wiederstand_messdaten))
 
 ### gesmater statistischer Fehler
-digitalisierung_U_std = 20 / 2**12 / np.sqrt(12)
-digitalisierung_A_std = 0.02 / 2**12 / np.sqrt(12)
+digitalisierung_U_std = 20 / (2**12) / np.sqrt(12)
+digitalisierung_A_std = 0.02 / (2**12) / np.sqrt(12)
 spannung_stat = np.sqrt(digitalisierung_U_std**2 + spannung_mean_std**2)
 stromstaerke_stat = np.sqrt(digitalisierung_A_std**2 + stromstaerke_mean_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}

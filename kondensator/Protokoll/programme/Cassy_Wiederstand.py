@@ -162,7 +162,8 @@ digitalisierung_A_std = 0.006 / 2**12 / np.sqrt(12)
 spannung_stat = np.sqrt(digitalisierung_U_std**2 + spannung_mean_std**2)
 stromstaerke_stat = np.sqrt(digitalisierung_A_std**2 + stromstaerke_mean_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
-
+U_stat_mean = np.mean(spannung_stat)
+I_stat_mean = np.mean(stromstaerke_stat)
 print('statistischer Fehler: \n', pd.DataFrame(stat))
 #for i in range(len(spannung_mean)):
     #print("" + str(i + 1) + " & " + str(round(spannung_mean[i], 2)) + "V & " + str(round(spannung_mean_std[i]*1000, 1)) + "mV & " + str(round(spannung_stat[i]*1000, 1)) + "mV \\\\")
@@ -221,3 +222,6 @@ print('R_stat =', R_stat)
 print('R_syst =', R_syst)
 print('R =', R)
 print('R error:', R_stat)
+
+print('Mittelwert der Statistischen Fehler auf U:', U_stat_mean)
+print('Mittelwert der Statistischen Fehler auf I', I_stat_mean)

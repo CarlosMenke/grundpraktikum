@@ -945,6 +945,21 @@ Dabei Transformieren wir Jewails die Spannungs und Stromwerte. In den Grundlagen
 
 Hier bezeichnet $U_{lin}$ die linearisierten Werte. Die letzte Gleichung wird verwendet um die Spannungsdaten beim aufladen des Kondensators zu linearisieren. 
 Der Aufladevorgang hat ein anderen funktionalen Zusammenhang.
+
+Für die Lineare Regression verwenden wir die Fehler wie oben beschrieben, diese sind:
+
+$\sigma_U = 0.0014 V $
+
+$\sigma_I = 5.51 \quad 10^{-7} A $
+
+Aus diesen Errgeben sich mit der Transformation folgende Vorschriften für die Fehler auf die Spannung und den Strom.
+
+\begin{equation}
+	\sigma_{lin U} = \frac{1}{\frac{U_i - U_{off}}{U_0}} \sigma_U \qquad
+	\sigma_{lin I} = \frac{1}{\frac{I_i - I_{off}}{I_0}} \sigma_I \qquad
+	\sigma_{lin U_A} = -\frac{1}{\frac{U_0 - U_i}{U_0}} \sigma_U
+\end{equation}
+
 \end{aufgabe}
 
 \begin{aufgabe}{Zusammenfassung und Diskussion}

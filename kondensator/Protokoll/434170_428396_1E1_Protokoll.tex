@@ -1109,22 +1109,21 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
 Wie man den Tabellen entnehmen kann, stimmen die Werte die wir für $\tau$ erhalten bei Spannungs und Strommessung ungefähr überein.
 Jedoch ist wie zu erwarten der Fehler auf des Ergebnis der Strommessung signifikant größer. 
 
-In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen 
- 
+In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen. Dabei sind die Werte für die Lineare Regression der Spannung relativ nahe an eins.
+Dies war aus dem Residuenplot bereits zu erwarten. Somit können wir schließen, dass unsere Messungen und auch Auswertung des Spannungsabfalls am Kondensator nahe an der Realität sind. 
+Auch der Fehler auf $\tau$ liegt hier bei 5 $\mu s$ was eine Abweichung von etwa 0.05\% entspricht.  
+Das Ergebnis auf $\tau$ ist also sehr genau wenn man nur den Statistischen Fehler betrachtet.\\
+
+Im Fall der Linearen Regression der Stromstärke kann man der Tabelle entnehmen, dass das $\frac{\chi^2}{ndof}$ etwa 15 ist.
+Die Anpassung also nicht gut ist. Dies konnten wir bereits dem Residuenplot entnehmen.
+Dort haben wir auch bereits diskutiert, was mögliche Ursachen sind. 
+Die Warscheinlichste Fehlerquelle ist jedoch nach wie vor der Messbereich der Stromstärke.
+
+
 Daraus ergibt sich das Gewichtete Mittel zu:\\
 
-Zusätzlich zu den statistischen Fehlern haben wir noch Systematische Fehler, die behandeln wir wie bei der Bestimmung des Wiederstands mittels der Verschiebmethode. 
-Die Systematischen Fehler sind hier jene welche von Hersteller des CASSY angegeben wurden. 
 
-\begin{equation}
-Platzhalter
-\end{equation}
-
-Das Gewichtete mittel der Zeitkonstante und der dazugehörige systematische Fehler und statistische Fehler ist somit:
-
-\begin{equation}
- Platzhalter
-\end{equation}
+Da das gewichtete Mittel von $\tau$ aus der Spannungsmessung und Strommessung annähernd gleich ist, verwenden wir im Folgenden das gewischtete Mittel dieser beiden. Dies vergrößert zwar unser Fehler auf $\tau$ ist in diesem Fall jedoch 
 
 Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
 
@@ -1150,4 +1149,5 @@ Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade u
 %TODO : Letzter Messpunkt bei 9V wieder in die Auswertung mit rein nehmen 
 %TODO : Intervall von Strom anpassen
 %TODO : Werte beim Wiederstand anpassen
+%TODO : Achsenbeschriftung und Grafiken Tabellen benennung überprüfen
 

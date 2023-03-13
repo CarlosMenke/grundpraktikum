@@ -985,6 +985,8 @@ In diesem Intervall sind 50 Messpunkte, und es ist $\frac{1}{4}\tau$ lang. Dies 
 Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in diesem Intervall.
 Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Funktion folgen.
 
+Bei dem Graphen der Stromstärke sehen wir, dass diese hier sehr stark fluktuiert. Dies kommt wie bereits mehrfach erwähnt von dem zu großen Messbereich. 
+
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_A_log.pdf}}
@@ -1004,7 +1006,7 @@ Die Statistischen Fehler auf $\tau$ können wir der Linearen Regression entnehme
 Die Steigung der Geraden a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
 
 \begin{equation}
-	\sigma_{\tau} = \left(\frac{1}{a^2}\right)^2 \sigma_a^2
+	\sigma_{\tau}^2 = \left(\frac{1}{a^2}\right)^2 \sigma_a^2
  \end{equation}
  
 In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der Fehler auf die Zeit aufgrund des gewählten Messintervalls.
@@ -1013,21 +1015,22 @@ Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstand
 
 Zur Unterstützung unserer Annahme, dass die Qualität der Anpassung sich verbessert, wenn wir nur 50 Werte verwenden hier exemplarisch dargestellt die Lineare Regression mit 200 Messpunkten.\\
 
-An dieser Kann man sehen, dass die Messwerte gegen Ende der betrachteten Zeitspanne deutlich mehr streuen als am Anfang. 
-Die qualität der Linearen Regression nimmt also ab wenn wir diese inkludieren.
-Im Folgenden verwenden wir für die Auswertung das oben diskutierte Intervall mit 50 Messpunkten.   
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{plots/messung-aufladen-kondensator-01.labx_linreg_U_gross.pdf}
     \caption{Darstellung der Messwerte mit ausgewählten Intervall}
     \centering
 \end{figure}
+
+An der unterne Grafik kann man sehen, dass die Messwerte gegen Ende der betrachteten Zeitspanne deutlich mehr streuen als am Anfang. 
+Die qualität der Linearen Regression nimmt also ab wenn wir diese inkludieren.
+Im Folgenden verwenden wir für die Auswertung das oben diskutierte Intervall mit 50 Messpunkten.  \\ 
+
  
 
 Unten können sie Exemplarisch eine der Linearen Regressionen sehen welche wir für alle Messungen durchgeführt haben.
 In der oberen Grafik sind die Messwerte für Strom oder Spannung gegen die Zeit aufgetragen.
-In der unteren Grafik ist die Abweichung der Messpunkte von der Anpassung dargestellt. 
+In der unteren Grafik ist die Abweichung der Messpunkte im Verlauf der Zeit von der Anpassung dargestellt. 
 Hier ist der Fehlerbalken auf die Punkte gegeben als $\pm \sigma_{linU}$ bzw. $\pm \sigma_{linI}$.
 
 \begin{figure}[H]
@@ -1037,9 +1040,11 @@ Hier ist der Fehlerbalken auf die Punkte gegeben als $\pm \sigma_{linU}$ bzw. $\
     \caption{Linare Regression mit Residuenplot für Stromstärke}
     \centering
 \end{figure}
-Wie zu sehen ist für die Messung der der Stromstärke, streuen die Messwerte gleichmäßig um die Anpassung und folgen keiner Systematik.
-Das bedeutet das wir die Offsets richtig bestimmt und verwenden wurde.
-Allerdings ist der verwendete Fehler etwas zu klein abgeschätzt worden, weshabl die Linare Regression fast nirgendwo in den Fehlerbalken liegt.
+
+Wie zu sehen ist für die Messung der Stromstärke, streuen die Messwerte gleichmäßig um die Anpassung und folgen keiner Systematik.
+Das bedeutet das wir die Offsets richtig bestimmt und verwenden haben.
+Allerdings ist der verwendete Fehler etwas zu klein abgeschätzt worden, weshabl die Linare Regression fast nirgendwo innerhalb des Fehlers liegt.
+Dies kann daran liegen, dass wir einen Fehler nicht betrachtet haben der noch mit einfluss nimmt auf unsere Messung. Jedoch ist uns keiner eingefallen. 
 
  
 \begin{figure}[H]
@@ -1049,9 +1054,12 @@ Allerdings ist der verwendete Fehler etwas zu klein abgeschätzt worden, weshabl
     \centering
 \end{figure}
  
+ Dies ist die Anpassung an die gemessenen Spannungswerte an dem Kondensator. Diese streuen ebenfalls um die Lineare regression, und es ist keine Systematik fest zu stellen. 
+ Im vergleich zu der Stromstärke passt hier jedoch der Fehler besser zu der Anpassung. 
+ Diese kann daran liegen, dass wir bei der Spannung das Messintervall besser ausgenutzt haben.
+ Da wir für die Lineare Regression nur Datenpunkte vom Anfang des Lade/Entladevorgangs verwendet haben, liegen diese noch rellativ nahe an der Bereichsobergrenze.\\
  
-
-Platzhalter Residuenplot
+ Somit ist davon aus zu gehen, dass wir für beide Messungen gute Mittelwerte auf $\tau$ erhalten werden, jedoch die Ungenauigkeit bei der Strommessung größer sein wird.
 
 Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante und deren Fehler. Wir geben hier auch für alle Lineare Regressionen deren $\frac{\chi^2}{ndof}$ an, zur prüfung der Quallität dieser Anpassungen.
 
@@ -1069,8 +1077,13 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
         \label{tab:mytable}
     \end{table}
     
+Wie man den Tabellen entnehmen kann, stimmen die Werte die wir für $\tau$ erhalten bei Spannungs und Strommessung ungefähr überein.
+Jedoch ist wie zu erwarten der Fehler auf des Ergebnis der Strommessung signifikant größer. 
+
+In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen 
  
-Daraus ergibt sich das Gewichtete Mittel zu:
+Daraus ergibt sich das Gewichtete Mittel zu:\\
+
 
 Zusätzlich zu den statistischen Fehlern haben wir noch Systematische Fehler, die behandeln wir wie bei der Bestimmung des Wiederstands mittels der Verschiebmethode. 
 Die Systematischen Fehler sind hier jene welche von Hersteller des CASSY angegeben wurden. 

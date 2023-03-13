@@ -147,7 +147,8 @@ for filename in sorted(os.listdir(cassy_dir)):
 
 '''cassy_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx','t', 'U_B1', 'I_A1','...', log=True )
 cassy_plot('../Cassy_Messdaten/messung-entladen-wiedertand-01.labx','t', 'U_B1', 'I_A1','...', log=True )
-cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )
+cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )'''
+
 print('I_off = ', I_off)
 print('U_off = ', U_off)
-print('U_off = ', U_0)'''
+print('U_= = ', U_0)

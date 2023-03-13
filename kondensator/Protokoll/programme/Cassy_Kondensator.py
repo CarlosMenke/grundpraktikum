@@ -118,7 +118,7 @@ global U_0
 global offsets_filename
 cassy_plot(cassy_dir +  'messung-aufladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset", offset=True)
 cassy_plot(cassy_dir +  'messung-entladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset_u0", offset_u0=True)
-plots = ['messung-aufladen-wiederstand-01']
+plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
 plots_log = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
   
  

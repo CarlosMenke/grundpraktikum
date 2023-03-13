@@ -47,6 +47,9 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
         U_0 - U_C = U_R = I(t) R
         = C\frac{dQ}{dt} R
     \end{equation}
+    Dabei ist $U_0$ die an den Stromkreis angelegte Spannung. Der besteht in diesen Falle nur aus einem in Reihe geschalteten Kondensator und einem Wiederstand.
+    $U_C$ ist die Spannung am Kondensator und $U_R$ die Spannung am Wiederstand. $I(t)$ ist der Strom durch den Wiederstand fließt und $R$ der Wiederstandswert.
+    $\frac{dQ}{dt}$ ist die Ladung, die pro Zeiteinheit durch den Wiederstand fließt.
     Diese DGL lässt sich mit Hilfe der seperation der Variablen lösen.
     \begin{equation}
         U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) = U_0 (1 + e^{\frac{-t}{\tau}})
@@ -60,7 +63,7 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
         U_C(t) = - R I(t)
         = - R C \frac{dU_C}{dt}
     \end{equation}
-    Wenn an diese lößt, erhält man:
+    Wenn man diese lößt, erhält man:
     \begin{equation}
         \Rightarrow U_C(t) = U_0 (e^{-\frac{t}{RC}})
     \end{equation}
@@ -69,6 +72,19 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
         I(t) = \frac{dQ}{dt} = C dU_0 = \frac{U_0}{R} e^{-\frac{t}{RC}} = I_0 e^{-\frac{t}{\tau}}
     \end{equation}
     Das bedeutet, das wenn man die Konstante $\tau$ bestimmt, z.B 2 Zeit Spannungs Wertepaare bestimmt, da man mit $C = \tau R$ die Kapazität berechnen kann.
+    Auch fällt auf, das immer $I(t)\propto e^{-t/\tau}$ gilt, und für den Auflade Vorgang auch $U_C(t) \propto e^{-t/\tau}$.
+    Beim Entladevorgan gilt: $U_C(t) - U_0 \propto e^{-t/\tau}$.
+    Wenn man noch einen Offset, also ein Rauschen bei der Nullline, berücksichtigen möchte, kann man die Gleichungen verallgemeineren:
+    \begin{equation}
+        U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) + U_{off} \ Aufladevorgang
+    \end{equation}
+    \begin{equation}
+        U_C(t) = U_0 e^{-\frac{t}{RC}} + U_{off} \ Entladevorgang
+    \end{equation}
+    \begin{equation}
+        I(t) = I_0 e^{-\frac{t}{RC}} + I_{off} \ Auf / Entladevorgang
+    \end{equation}
+
 
 
 \end{aufgabe}

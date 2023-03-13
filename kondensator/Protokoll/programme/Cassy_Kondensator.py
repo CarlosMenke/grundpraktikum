@@ -299,9 +299,9 @@ C = faktor * tau / R
 C_stat = faktor * 1/R * tau_stat
 R_syst = 12.2
 C_syst = faktor * tau / R **2 * R_syst
-print('C = ', C, 'uF')
-print('C syst = ', C_syst, 'uF')
-print('C stat = ', C_stat, 'uF')
+print(f'C = {C:.4}uF')
+print(f'C syst ={C_syst:.2f} uF')
+print(f'C stat ={C_stat:.4f} uF')
  
 ## systematischer Fehler
  

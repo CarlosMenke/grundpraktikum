@@ -176,12 +176,63 @@ for filename in sorted(os.listdir(cassy_dir)):
                     cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", plot, log=True)
 
 
-'''cassy_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx','t', 'U_B1', 'I_A1','...', log=True )
-cassy_plot('../Cassy_Messdaten/messung-entladen-wiedertand-01.labx','t', 'U_B1', 'I_A1','...', log=True )
-cassy_plot('../Cassy_Messdaten/messung-aufladen-wiederstand-02.labx','t', 'U_B1', 'I_A1','...', log=True )'''
-
-
 print('I_off = ', I_off)
 print('I_0 = ', I_0)
 print('U_off = ', U_off)
 print('U_0 = ', U_0)
+ 
+def get_log_values(datei, x, y, z_I):
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x)
+    y = messung.datenreihe(y)
+    z_I = messung.datenreihe(z_I)
+
+    if 'aufladen' in datei:
+        lin_U = np.log(np.abs((-1 * y.werte + U_0)/U_0))[start:end]
+    else:
+        lin_U = np.log(np.abs((y.werte - U_off)/U_0))[start:end]
+         
+    lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))[start:end]
+     
+    return x.werte[start:end], lin_U, lin_I
+ 
+def lin_reg(x, y, x_err, y_err, plotname=''):
+    fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
+
+    R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(x, y, x_err, y_err)
+    #print('Chiquadrat / nf:', chiq / (len(x)-2))
+    #print('b:', b)
+    axarray[0].plot(x, R*x+b, color='green')
+    sigmaRes = np.sqrt((R*x_err)**2 + y_err**2)
+    axarray[0].errorbar(x, y, xerr=x_err, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
+    axarray[0].set_xlabel('$I$ / A')
+    axarray[0].set_ylabel('$U$ / V')
+
+    axarray[1].axhline(y=0., color='black', linestyle='--')
+    axarray[1].errorbar(x, y-(R*x+b), yerr=sigmaRes, color='red', fmt='.', marker='o', markeredgecolor='red', linewidth=2)
+    axarray[1].set_xlabel('$I$ / A')
+    axarray[1].set_ylabel('$(U-(RI+b))$ / V')
+
+    if SHOW_PLOTS: plt.show()
+    elif plotname != '': plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
+    return R, eR
+  
+ 
+global start
+start = 510
+global end
+end = 710
+t_err = 0.00001 * np.ones(end-start)
+U_err = 0.00001 * np.ones(end-start)
+I_err = 0.1 * np.ones(end-start)
+example = 'messung-aufladen-kondensator-01'
+  
+for filename in sorted(os.listdir(cassy_dir)):
+    if filename.endswith((".labx")):
+        if "aufladen" in filename or "entladen" in filename:
+            t, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
+            lin_reg(t, lin_U, t_err, U_err)
+        if example in filename:
+            t, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
+            lin_reg(t, lin_U, t_err, U_err, plotname=example+'_linreg_U')

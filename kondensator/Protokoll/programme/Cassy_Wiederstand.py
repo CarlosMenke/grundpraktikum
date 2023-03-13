@@ -168,7 +168,7 @@ print('statistischer Fehler: \n', pd.DataFrame(stat))
     #print("" + str(i + 1) + " & " + str(round(spannung_mean[i], 2)) + "V & " + str(round(spannung_mean_std[i]*1000, 1)) + "mV & " + str(round(spannung_stat[i]*1000, 1)) + "mV \\\\")
  
 #for i in range(len(stromstaerke_mean)):
-    #print("" + str(i + 1) + " & " + str(round(stromstaerke_mean[i]*1000, 1)) + "mA & " + str(round(stromstaerke_mean_std[i]*10**9, 0)) + "nA & " + str(round(stromstaerke_stat[i]*1000, 1)) + "mA \\\\")
+    #print("" + str(i + 1) + " & " + str(round(stromstaerke_mean[i]*1000, 1)) + "mA & " + str(round(stromstaerke_mean_std[i]*10**9, 0)) + "nA & " + str(round(stromstaerke_stat[i]*10000000, 1)) + "uA \\\\")
 
 
 def lin_reg(x, y, x_err, y_err, plotname):

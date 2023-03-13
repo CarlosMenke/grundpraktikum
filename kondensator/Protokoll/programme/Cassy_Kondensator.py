@@ -31,6 +31,8 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
         global U_0
         global I_0
         U_0 = np.mean(y.werte[:end])
+        global U_0_fehler
+        U_0_fehler = np.std(y.werte[:end]) / np.sqrt(end)
          
         I_0 = min(z_I.werte[490:550])
     elif offset:
@@ -39,6 +41,8 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
         I_off = np.mean(z_I.werte[:end])
         global U_off
         U_off = np.mean(y.werte[:end])
+        global U_fehler
+        U_fehler = np.std(y.werte[:end]) / np.sqrt(end)
     else: end = len(x.werte)
 
     xsymbol = x.symbol
@@ -147,7 +151,9 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
     
 global I_off
 global U_off
+global U_fehler
 global U_0
+global U_0_fehler
 global I_0
 # liste, wo nur die ersten 400 datenpunkte geplottet werden, und womit die offsetwerte global gesetzt werden
 global offsets_filename
@@ -189,23 +195,23 @@ def get_log_values(datei, x, y, z_I):
     z_I = messung.datenreihe(z_I)
 
     if 'aufladen' in datei:
-        lin_U = np.log(np.abs((-1 * y.werte + U_0)/U_0))[start:end]
+        lin_U = np.log(np.abs((-1 * y.werte + U_0)))[start:end]
     else:
-        lin_U = np.log(np.abs((y.werte - U_off)/U_0))[start:end]
+        lin_U = np.log(np.abs((y.werte - U_off)))[start:end]
          
-    lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))[start:end]
+    lin_I = np.log(np.abs((z_I.werte - I_off)))[start:end]
      
     return x.werte[start:end], y.werte[start:end], z_I.werte[start:end], lin_U, lin_I
  
-def lin_reg(x, y, x_err, y_err, plotname=''):
+def lin_reg(x, y, y_err, plotname=''):
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
-    R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(x, y, x_err, y_err)
-    #print('Chiquadrat / nf:', chiq / (len(x)-2))
-    #print('b:', b)
+    R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)
+    print('Chiquadrat / nf:', chiq / (len(x)-2))
+    print('b:', b)
     axarray[0].plot(x, R*x+b, color='green')
-    sigmaRes = np.sqrt((R*x_err)**2 + y_err**2)
-    axarray[0].errorbar(x, y, xerr=x_err, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
+    sigmaRes = np.sqrt((R*0)**2 + y_err**2)
+    axarray[0].errorbar(x, y, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
     axarray[0].set_xlabel('$I$ / A')
     axarray[0].set_ylabel('$U$ / V')
 
@@ -220,53 +226,54 @@ def lin_reg(x, y, x_err, y_err, plotname=''):
   
  
 global start
-start = 510
+start = 610
 global end
-end = 710
-t_err = (50*10**(-6))/np.sqrt(12) * np.ones(end-start)
-U_err = 0.00001 * np.ones(end-start)
-I_err = 0.1 * np.ones(end-start)
+end = 660
+t_err = 50 * 10**(-6) / np.sqrt(12) * np.ones(end-start)
+t_err = 10**(-10) * np.ones(end-start)
+ 
+ #beispiel welches abgescheichert werden soll.
 example = 'messung-aufladen-kondensator-01'
 
-sigma_U = 0.0014
-sigma_I = 5.51*10**(-7)
+sigma_U = 0.00142
+sigma_I = 1.44*10**(-6)
 
-def sigma_lin_U(U_i, U_off, U_0, sigma_U):
-    lin_U_stat = 1/((U_i-U_off)/U_0)*sigma_U
+def sigma_lin_U(U_i, sigma_U):
+    lin_U_stat = 1/((U_i-U_off))*sigma_U
     return lin_U_stat
 
-def sigma_lin_I(I_i, I_off, I_0, sigma_I):
-    lin_I_stat = 1/((I_i-I_off)/I_0)*sigma_I
+def sigma_lin_I(I_i, sigma_I):
+    lin_I_stat = 1/((I_i+I_off))*sigma_I
     return lin_I_stat
 
-def sigma_lin_U_A(U_i, U_0, sigma_U):
-    lin_U_stat_A = 1/((U_0-U_i)/U_0)*sigma_U
+def sigma_lin_U_A(U_i, sigma_U):
+    lin_U_stat_A = -1/((U_0-U_i))*sigma_U
     return lin_U_stat_A
 
+tau_einzeln = []
+tau_einzeln_stat = []
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
-        if "aufladen" in filename or "entladen" in filename:
+        if '03' in filename: continue
+        if "messung-aufladen" in filename or "messung-entladen" in filename:
             t, y, z_I, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
             error_U = []
             if 'aufladen' in filename:
                 for i in y : 
-                    u = sigma_lin_U_A(i, U_0, sigma_U) 
-                    error_U.append(u)
+                    u = sigma_lin_U_A(i, sigma_U) 
+                    error_U.append(abs(u))
             else:
                 for i in y:
-                    u = sigma_lin_U(i, U_off, U_0, sigma_U)
+                    u = sigma_lin_U(i, sigma_U)
                     error_U.append(u)
             error_I = []
             for j in z_I:
-                i = sigma_lin_I(j, I_off, I_0, sigma_I)
-                error_I.append(i)
-            print(len(error_U))
-            error_I = []
-            lin_reg(t, lin_U, t_err, U_err)
-
-
-
-
-
-
-
+                i = sigma_lin_I(j, sigma_I)
+                error_I.append(abs(i))
+            m, m_err = lin_reg(t, lin_U, np.array(error_U), plotname=filename+'_linreg_U')
+            tau_einzeln.append(-1/m)
+            tau_einzeln_stat.append(-1/m_err)
+            m, m_err = lin_reg(t, lin_I, np.array(error_I), plotname=filename+'_linreg_I')
+            tau_einzeln.append(-1/m)
+            tau_einzeln_stat.append(-1/m_err)
+print('tau_einzeln = ', tau_einzeln)

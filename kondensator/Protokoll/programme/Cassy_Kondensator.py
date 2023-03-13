@@ -85,29 +85,60 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     fig = plt.figure()
      
-    start = 500
+    start = 550
     end = 1000
      
     plt.figure()
-    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     if 'aufladen' in datei:
         lin_U = np.log((-np.abs(y.werte) + U_0)/U_0)
         plt.ylabel('log((- |U_B1| + U_0)/U_0)')
     else:
         lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+        plt.ylabel('log((|U_B1| 0 U_off)/U_0)')
          
-    plt.title('logarithmische Darstellung der Spannung')
     plt.plot(x.werte[start:end], lin_U[start:end])
     plt.xlabel(xstr)
-    plt.title(plotname)
+    plt.title(plotname + 'log der Spannung')
     if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname + '_U_log_'+ '.pdf', bbox_inches = 'tight')
+    else: plt.savefig("../plots/" + plotname + '_U_log'+ '.pdf', bbox_inches = 'tight')
+     
+    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
     plt.figure()
-    plt.title('logarithmische Darstellung der Stromstärke')
+    plt.title(plotname + 'log der Stromstärke')
     plt.plot(x.werte[start:end], lin_I[start:end])
     plt.xlabel(xstr)
+    plt.ylabel('log((|I_A1| 0 I_off)/I_0)')
     if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname + '_A_log_'+ '.pdf', bbox_inches = 'tight')
+    else: plt.savefig("../plots/" + plotname + '_A_log' + '.pdf', bbox_inches = 'tight')
+     
+    if plotname in show_complete:
+        start = 500
+        end = len(x.werte)
+    else: return
+
+     
+    plt.figure()
+    if 'aufladen' in datei:
+        lin_U = np.log((-np.abs(y.werte) + U_0)/U_0)
+        plt.ylabel('log((- |U_B1| + U_0)/U_0)')
+    else:
+        lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+        plt.ylabel('log((|U_B1| 0 U_off)/U_0)')
+         
+    plt.plot(x.werte[start:end], lin_U[start:end])
+    plt.xlabel(xstr)
+    plt.title(plotname + 'log der Spannung')
+    if SHOW_PLOTS: plt.show()
+    else: plt.savefig("../plots/" + plotname + '_U_log_complete'+ '.pdf', bbox_inches = 'tight')
+     
+    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
+    plt.figure()
+    plt.title(plotname + 'log der Stromstärke')
+    plt.plot(x.werte[start:end], lin_I[start:end])
+    plt.xlabel(xstr)
+    plt.ylabel('log((|I_A1| 0 I_off)/I_0)')
+    if SHOW_PLOTS: plt.show()
+    else: plt.savefig("../plots/" + plotname + '_A_log_complete' + '.pdf', bbox_inches = 'tight')
     
     
  
@@ -122,7 +153,9 @@ global offsets_filename
 cassy_plot(cassy_dir +  'messung-aufladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset", offset=True)
 cassy_plot(cassy_dir +  'messung-entladen-kondensator-02' + '.labx', "t", "U_B1", "I_A1", "messung-offset_u0", offset_u0=True)
 plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
-plots_log = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02']
+plots_log = ['aufladen-kondensator-01', 'aufladen-kondensator-01', 'entladen-kondensator-02']
+global show_complete
+show_complete = ['aufladen-kondensator-01']
   
  
 for filename in sorted(os.listdir(cassy_dir)):
@@ -135,11 +168,11 @@ for filename in sorted(os.listdir(cassy_dir)):
             for plot in plots:
                 if plot in filename:
                     if "aufladen" in filename or "entladen" in filename:
-                        cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot)
+                        cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", plot)
                         pass
             for plot in plots_log:
                 if plot in filename:
-                    cassy_plot(cassy_dir + plot + '.labx', "t", "U_B1", "I_A1", plot, log=True)
+                    cassy_plot(cassy_dir + filename, "t", "U_B1", "I_A1", plot, log=True)
 
 
 '''cassy_plot('../Cassy_Messdaten/messung-entladen-kondensator-02.labx','t', 'U_B1', 'I_A1','...', log=True )

@@ -6,7 +6,7 @@ import os
 import numpy as np
 
 global SHOW_PLOTS
-SHOW_PLOTS = True #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
+SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
  
 cassy_dir = "../Cassy_Messdaten/"
  
@@ -65,6 +65,16 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
     ax.plot(x.werte[:end], y.werte[:end], color="black", label = 'U')
     ax2.plot(x.werte[:end], z_I.werte[:end], color='red', label = 'I')
     ax2.yaxis.tick_right()
+    
+    plt.xlabel(xstr)
+    plt.ylabel(ystr)
+    plt.title(plotname)
+    ax2.yaxis.set_label_coords(-0.2, 0.5)
+    ax.set_ylabel('I_A1/ A')
+    ax.yaxis.set_label_position('right') 
+    ax.yaxis.set_label_coords(1.2, 0.5)
+    ax2.legend(loc = 'center left')
+    ax.legend(loc = 'center right')
 
     if not log:
         if SHOW_PLOTS: plt.show()

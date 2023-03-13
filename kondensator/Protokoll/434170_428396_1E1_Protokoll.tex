@@ -114,8 +114,8 @@ Die Daten für die Unsicherheiten stammen aus der Bednungsanleitung des Multimet
             \toprule
             \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
             \midrule
-            Wiederstand & 0.991 k$\Omega$ & $\pm$ 0.8\% \\
-            Kondensator & 10.36 $\mu$F & $\pm$ 2.5\%  \\
+            Wiederstand & 0.991 k$\Omega$ & $\pm$ 0.008 $k\Omega$\% \\
+            Kondensator & 10.36 $\mu$F & $\pm$ 0.259 $\mu F$  \\
             \bottomrule
         \end{tabularx}
         \caption{Ergebnisse der Messung mit dem Multimeter}
@@ -819,7 +819,7 @@ Damit ergibt sich für die Kapazität mit Unsicherheiten:
   Endergebnis für die Kapazität mit statistischer und systematischer
   Messunsicherheit an.
   
-\subsection{Aufbau und Durchführung der Messung der Kapazität des Kondensators}  
+\subsection{Aufbau und Durchführung der Messung mit CASSY}  
    
 
 Für die Bestimmung der Kapazität, betrachten wir mit CASSY wieder den Lade und Entladevorgang des Kondensators. 
@@ -887,7 +887,7 @@ Die Spannung steigt dabei auf die Grenzspannung an.
   \centering
 \end{figure}
 
-\subsubsection{Bestimmung des Kondensators}
+\subsubsection{Bestimmung des Ofsets auf Strom und Spannung}
 
 Zum bestimmen der Offsets des Stroms und der Spannung, am dem Kondensator, haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem Aufladevorgang aufgenommen haben.
 wir gehen davon aus, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, somit ist das ein sinnvolles Vorgehen zur bestimmung des Ofsets.
@@ -996,7 +996,7 @@ Bei dem Graphen der Stromstärke sehen wir, dass diese hier sehr stark fluktuier
     \centering
 \end{figure}
  
-\subsection{Auswertung}
+\subsection{Auswertung mittels Linearer Regression}
 Wir haben insgesamt 8 Messungen durchführt, 4 Auflade Vorgänge und 4 Entlade Vorgänge.
 Hier haben wir auf unserem Messprotokoll und bei der Benennung der Datein noch unterschieden ob die Messung zum bestimmen des Wertes am Wiederstand oder am Kondensator gedacht war.
 Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch die Stromstärke am Wiederstand aufgezeichnet haben, haben wir uns dazu entschieden für allen Messungen jeweils mit der Spannung am Kondensator ein $\tau$ zu bestimmen sowie ein weiteres aus der Stromstärke am Wiederstand. \\
@@ -1105,7 +1105,7 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
         \label{tab:mytable}
     \end{table}
     
-
+\subsubsection{Diskussion der Ergebnisse}
 Wie man den Tabellen entnehmen kann, stimmen die Werte die wir für $\tau$ erhalten bei Spannungs und Strommessung ungefähr überein.
 Jedoch ist wie zu erwarten der Fehler auf des Ergebnis der Strommessung signifikant größer. 
 
@@ -1125,13 +1125,13 @@ Zwar ist der Fehler auf $\tau$ größer wenn wir das Ergebniss aus der Messung v
 Daraus ergibt sich das Gewichtete Mittel zu:
 
 \begin{equation}
- \tau = 0.01016 s
+ \tau = (10.16 \pm 0.0016) ms
 \end{equation}
 
 
 Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
 \begin{equation}
-    C = (10.02 \pm 0.0017_{statistisch} \pm 0.125_{systematisch}) \mu F
+    C = (10.21 \pm 0.0017_{statistisch} \pm 0.125_{systematisch}) \mu F
 \end{equation}
 
 Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade und Entladekurven am CASSY ergibt sich somit zu:
@@ -1143,27 +1143,36 @@ Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade u
   Fassen Sie Ihre Ergebnisse zu den Kapazitäten zusammen und
   vergleichen Sie sie untereinander, mit den Messungen aus dem
   Vorversuch und mit den Herstellerangaben (Toleranz
-  $\SI{5}{\percent}$).  
+  $\SI{5}{\percent}$).  \\
+  
+\subsection{Vergleich und Diskussion aller Ergebnisse für die Kapazität}
 
 \begin{table}[H]
         \centering
-        \begin{tabularx}{1\textwidth}{X X r r} % adjust width as needed
+        \begin{tabularx}{1\textwidth}{X X r} % adjust width as needed
             \toprule
-            \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
+            \textbf{Methode} & \textbf{Kapazität} & \textbf{Fehler}  \\
             \midrule
-            Aufladen & 0.0101 & 4.9 & 1.5 \\
-            Aufladen & 0.0102 & 4.9 & 1.2 \\
-            Aufladen & 0.0102 & 4.9 & 1.6 \\
-            Aufladen & 0.0101 & 4.9 & 1.7 \\
-            Entladen & 0.0102 & 4.9 & 1.4 \\
-            Endladen & 0.0102 & 4.9 & 1.4 \\
-            Endladen & 0.0102 & 4.9 & 1.3 \\
-            Endladen & 0.0102 & 4.9 & 1.3 \\
+            Multimeter & 10.36 $\mu$F & $\pm$ $0.259 \mu F$ \\
+            Oszilloskop & 10.03 $\mu F$ & $(\pm 0.05_{statistisch} \pm 0.12_{systematisch}) \mu F$ \\
+            Sensor CASSY & 10.21 $\mu F$ & $(\pm 0.002_{statistisch} \pm 0.13_{systematisch}) \mu F$\\
+            Hersteller Angabe & 10 $\mu F$ & $\pm 0.5 \mu F$\\
             \bottomrule
         \end{tabularx}
         \caption{$\tau$ aus der Linearen Regression}
         \label{tab:mytable}
     \end{table}
+  
+Der Tabelle können sie entnehmen, dass alle Messergebnisse innerhalb der Tolleranz des Herstellers liegen. Wobei alle unsere Messergebnisse leicht über 10 $\mu F$ liegen. 
+Hier is zu bemerken, dass bei den Messungen mit dem Oszilloskop und dem Sensor CASSY die Systematischen Fehler überwiegen.
+Dies sind Fehler welche wir nicht verkleinern können, mit den gegebenen Messmöglichkeiten. 
+Der Systematische Fehler stammt aus dem Wiederstand. Hier hat der Systematische Fehler des CASSY den größten Einfluss auf den Fehler.\\
+
+Wie zu erwarten, ist die Messung mit dem Digitalvoltmeter am ungenausten.
+Die größte Genauigkeit konnten wir mit dem Oszilloskop erzielen. Dies liegt daran, dass dieses einen kleineren systematischen Fehler hat. Wenn man die Fehler quadratisch addiert, fällt der Systematische Fehler stärker ins Gewicht, da dieser größer ist. 
+  
+Mit dem Sensor Cassy hatten wir dafür die größte Genauigkeit auf $\tau$.
+
   
 
 \end{aufgabe}
@@ -1174,8 +1183,5 @@ Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade u
 %TODO : Korrektur von 11 Messwerten zu 10 Mesungen auf dem Protokoll
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen
 %TODO : Messprotokoll überarbeiten
-%TODO : Letzter Messpunkt bei 9V wieder in die Auswertung mit rein nehmen 
-%TODO : Intervall von Strom anpassen
-%TODO : Werte beim Wiederstand anpassen
 %TODO : Achsenbeschriftung und Grafiken Tabellen benennung überprüfen
 

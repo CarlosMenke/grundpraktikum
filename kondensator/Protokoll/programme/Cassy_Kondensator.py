@@ -90,8 +90,8 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     fig = plt.figure()
      
-    start = 510
-    end = 1010
+    start = 660
+    end = 710
      
     plt.figure()
     if 'aufladen' in datei:
@@ -283,3 +283,23 @@ tau_std = np.sqrt(1//tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
 print('tau_mean = ', tau_mean)
 print('tau_std = ', tau_std)
 C = tau_mean / (995)
+ 
+ 
+ ## generiere plot mit groesserer abweichung
+end = 860
+for filename in sorted(os.listdir(cassy_dir)):
+    if filename.endswith((".labx")):
+        if '03' in filename: continue
+        if "messung-aufladen" in filename or "messung-entladen" in filename:
+            t, y, z_I, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
+            error_U = []
+            if 'aufladen' in filename:
+                for i in y : 
+                    u = sigma_lin_U_A(i, sigma_U) 
+                    error_U.append(abs(u))
+            else:
+                for i in y:
+                    u = sigma_lin_U(i, sigma_U)
+                    error_U.append(u)
+            m, m_err = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U_gross')
+            break

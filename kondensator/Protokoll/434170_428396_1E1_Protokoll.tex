@@ -307,14 +307,18 @@ Somit ergeben sich für den Statistischen Fehler auf die Mittelwerte folgende We
 Der Gesamtfehler berechnet sich dabei aus der quadratischen Addition von statistischem Fehler auf den Mittelwert und dem Digitalisierungsfehler.
 Wie zu sehen ist, ist der Fehler auf den Mittelwert bei der Spannung sowie bei der Stromstärke deutlich kleiner als der Digitalisierungsfehler.\\
 
+Was man hier auch erkennen kann ist, dass die Amplitude der Stromstärke zwischen 1/3 und 1/10 des Messbereichs liegt.
+Dies kommt daher, dass wir ein relativ großen Wiederstand gewählt haben, und deshalb kleine Ströme fließen. 
+Das CASSY Lab 2 hat jedoch als kleinsten Messbereich für die Stromstärke -0.03A bis 0.03A. 
+Weshalb hier der Digitalisierungsfehler sehr stark ins Gewicht fallen wird. 
+
 \subsubsection{Lineare Regression}
 
 Mit der Methode der kleinsten Quadrate, kann aus den berechneten Mittelwerten und deren Fehler nun eine Lineare Regression auf unsere Daten angepasst werden.
 Im oberen Graphen sind die Mittelwerte von Spannung und Strom gegeneinander aufgetragen.
 Die grüne Gerade ist die Anpassung einer Geraden an die Wertepaare.
  
-Der untere Plot stellt dar, wie weit die Mittelwerte von der Linearen Regression abweichen.  
-Die Lineare Regression haben wir mit dem program (...) durchgeführt.\\
+Der untere Plot stellt dar, wie weit die Mittelwerte von der Linearen Regression abweichen. \\
 
 Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechnet:
 \begin{equation}
@@ -329,15 +333,19 @@ Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechne
   \end{figure}
 
 
-Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, dabei liegt die Lineare Regression, in den meisten Fällen im Rahmen des Fehlers.
+Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, die Fehler jedoch signifikanz zu groß sind. 
+Dies kommt wie bereits oben erwähnt von dem Digitalisierungsfehler auf die Stromstärke. 
+Da der Digitalisierungsfehler jedoch ein fester Wert ist, kann dieser nicht verkleinert werden. Die qualität der Anpassung kann also nicht verbessert werden durch selektierung der Daten.
+
 Dem unteren Graphen kann man ebenfalls entnehmen, dass hier keine Systematiken vorliegen. 
-Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, stark ausbricht. Weshalb wir diesen im folgenden exkludieren werden, um die Genauigkeit unseres Ergebnis zu erhöhen.
+Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, ausbricht (Die Anpassung liegt nicht mehr im Rahmen dessen Fehlers).
+Weshalb wir diesen im folgenden exkludieren werden, um die Genauigkeit unseres Ergebnis zu erhöhen.
 
 Der Außreißer ist die Messung bei 9V. Beim analysieren unserer Rohdaten fällt auf, dass auch unsere Testmessungen, welche wir bei 9V durchgeführt hatten, ebenfalls alle  nach oben ausgerissen sind, wenn wir diese in der Linearen Regression mitbeachtet haben.\\
 Dies könnte daran liegen, dass der Wiederstand sich bei dieser Spannung aufheizt, und somit größer wird, als sein eigentlicher Wert. 
 Da der Messvorgang jedoch nicht lange dauerte, und die 9V unsere erste Messung waren, also sich zu dem Zeitpunkt der Wiederstand am wenigsten aufgeheizt haben sollte ist es eher unwarscheinlich, dass die starke Abweichung daher kommt. \\
 
-Ein weiterer Grund die Messung bei 9V herraus zu nehmen liefert das $\frac{\chi^2}{ndof}$ Wobei hier "ndof"\ für die Anzahl der Freiheitzsgrade steht.
+Ein weiterer Maß für die qualität der Anpassung liefert das  $\frac{\chi^2}{ndof}$ Wobei hier "ndof"\ für die Anzahl der Freiheitzsgrade steht.
 
 \begin{equation}
 ndof = N_{Werte} - N_{Parameter}
@@ -354,17 +362,15 @@ Das $\chi^2$ ist dabei gegeben als:
 Hier steht $ U_i , I_i $ für die Mittelwerte der einzelnen Messungen und R für den aus der Linearen Regression bestimmten Wiederstand. 
 Das b stammt ebenfalls aus der Linearen Regression, und bezeichnet den U-Achsen Abschnitt unserer Anpassung. Dieses ist jedoch sehr klein, was zu erwarten war.
  
-$\frac{\chi^2}{ndof}$ ist ein Maß für die Qualtät der Anpassung.  
-Für das $\chi^2$ mit und ohne den Wert bei 9V ergibt sich:
+ Für $\frac{\chi^2}{ndof}$ ergibt sich dann:
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{1\textwidth}{X X X X}
+    \begin{tabularx}{0.6\textwidth}{X X X}
         \toprule
-         & \textbf{Freiheitsgrade} & $\pmb{\frac{\chi^2}{ndof}}$ & \textbf{b} \\
+         \textbf{Freiheitsgrade}& $\pmb{\frac{\chi^2}{ndof}}$ & \textbf{b} \\
         \midrule
-        Alle Messungen: & 8 & 2.509 & 0.0002V \\
-         bereinigt & 7 & 0.807 & 0.0027V \\
+           7 & 0.094 & 0.0026V \\
 
         \bottomrule
     \end{tabularx}
@@ -372,7 +378,6 @@ Für das $\chi^2$ mit und ohne den Wert bei 9V ergibt sich:
     \label{tab:mytable}
   \end{table}
 
-Hier können wir sehen, dass die Quallität der Anpassung sich deutlich verbessert, wenn wir die Messung bei 9V aus der Auswertung nehmen.
  
  \begin{figure}[H]
   \centering
@@ -381,17 +386,18 @@ Hier können wir sehen, dass die Quallität der Anpassung sich deutlich verbesse
   \centering
   \end{figure}
 
-Hier können wir sehen, dass die Lineare Regression nun im Rahmen beinahe aller Messfehler liegt und keine Systematik vorliegt.
+Hier können wir sehen, dass die Lineare Regression nun im Rahmen aller Messfehler liegt und keine Systematik vorliegt.
 In dem oberen Plot sind ebenfalls Fehlerbalken, diese sind jedoch nicht zu sehen, da sie im Vergleich zu der Skalierung sehr klein sind.\\
 
-Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.807 ist etwas kleiner, was darauf schließen lässt, dass wir unsere Fehler überschätzt haben. 
- 
-Da wir jedoch nur 9 Datenpunkte haben, und somit 7 Freiheitsgrade ist $\frac{\chi^2}{ndof} = 0.807$ ein gutes Ergebniss. 
+Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.094 ist deutlich kleiner, was darauf schließen lässt, dass wir unsere Fehler überschätzt haben. 
+Dies liegt wie bereits oben erwähnt, an dem Digitalisierungsfehler auf I. Das lässt darauf schließen, dass unsere Annahme, dass es eine gute Wahl ist einen großen Wiederstand zu wählen falsch ist. 
+Zwar hat uns diese wahl ein größeres $\tau$ geliefert, was wie beim Oszilloskop Diskuttiert ebenfalls positive einflüsse auf die Messgenauigkeit hat. Da der kleinste Messbereich des CASSY jedoch -0.03A - 0.03A ist, überwiegt die daher stammende Ungenauigkeit jedoch.
+
 
 Aus der Steigung der Geraden, der Linearen Regression können wir nun den Wiederstand bestimmen. Aus der linearen Regression erhalten wir ebenfalls den statistischen Fehler auf R.
  Dieser ergibt sich zu:\\
 
-{\centering R = (995.5 $\pm$0.283$_{stat}$)$\Omega$ \par} 
+{\centering R = (995.5 $\pm$0.829$_{stat}$)$\Omega$ \par} 
 
 
 \subsubsection{Systematische Fehler}
@@ -419,7 +425,7 @@ Anschließend haben wir die systematischen Fehler quadratisch addiert, um den Ge
 Dieser war $R_{Systematisch} = 12.9\Omega$. \\
  
 Damit ergibt sich:
-\centering{R = $(995.5 \pm 0.3_{stat} \pm 12.9_{syst}) \Omega$}
+\centering{R = $(995.6 \pm 0.8_{stat} \pm 12.9_{syst}) \Omega$}
 
 \end{aufgabe}
 

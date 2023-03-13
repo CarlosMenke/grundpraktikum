@@ -1117,17 +1117,16 @@ Das Ergebnis auf $\tau$ ist also sehr genau wenn man nur den Statistischen Fehle
 Im Fall der Linearen Regression der Stromstärke kann man der Tabelle entnehmen, dass das $\frac{\chi^2}{ndof}$ etwa 15 ist.
 Die Anpassung also nicht gut ist. Dies konnten wir bereits dem Residuenplot entnehmen.
 Dort haben wir auch bereits diskutiert, was mögliche Ursachen sind. 
-Die Warscheinlichste Fehlerquelle ist jedoch nach wie vor der Messbereich der Stromstärke.
+Die Warscheinlichste Fehlerquelle ist jedoch nach wie vor der Messbereich der Stromstärke.\\
 
+Im Folgenden verwenden wir das gewichtete Mittel aller $\tau$ zur berechnen der Kapazität. 
+Zwar ist der Fehler auf $\tau$ größer wenn wir das Ergebniss aus der Messung von Strom und Spannung verwenden. Der Beitrag dieses Statistischen fehlers ist jedoch im Vergleich zum Systematischen Fehler der aus der Bestimmung des Wiederstands kommt vergleichsweise klein.
 
-Daraus ergibt sich das Gewichtete Mittel zu:\\
+Daraus ergibt sich das Gewichtete Mittel zu:
 
 \begin{equation}
- \tau = 0.01016
+ \tau = 0.01016 s
 \end{equation}
-
-Da das gewichtete Mittel von $\tau$ aus der Spannungsmessung und Strommessung annähernd gleich ist, verwenden wir im Folgenden das gewischtete Mittel dieser beiden. Dies vergrößert zwar unser Fehler auf $\tau$ ist in diesem Fall jedoch 
-
 
 
 Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
@@ -1145,6 +1144,27 @@ Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade u
   vergleichen Sie sie untereinander, mit den Messungen aus dem
   Vorversuch und mit den Herstellerangaben (Toleranz
   $\SI{5}{\percent}$).  
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X r r} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
+            \midrule
+            Aufladen & 0.0101 & 4.9 & 1.5 \\
+            Aufladen & 0.0102 & 4.9 & 1.2 \\
+            Aufladen & 0.0102 & 4.9 & 1.6 \\
+            Aufladen & 0.0101 & 4.9 & 1.7 \\
+            Entladen & 0.0102 & 4.9 & 1.4 \\
+            Endladen & 0.0102 & 4.9 & 1.4 \\
+            Endladen & 0.0102 & 4.9 & 1.3 \\
+            Endladen & 0.0102 & 4.9 & 1.3 \\
+            \bottomrule
+        \end{tabularx}
+        \caption{$\tau$ aus der Linearen Regression}
+        \label{tab:mytable}
+    \end{table}
+  
 
 \end{aufgabe}
  

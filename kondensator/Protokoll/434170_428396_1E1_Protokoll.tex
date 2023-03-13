@@ -824,7 +824,7 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
 
 \begin{figure}[H]
     \centering
-    \subfloat[Schaltbild für die Messung mit CASSY]{\includegraphics[width=0.5\textwidth]{Schaltung_R_Multimeter.pdf}\label{fig:f1}}
+    \subfloat[Schaltbild für die Messung mit CASSY]{\includegraphics[width=0.5\textwidth]{schaltzkitzze-cassy.pdf}\label{fig:f1}}
     \hfill
     \subfloat[Bilder der Schaltung]{\includegraphics[width=0.5\textwidth]{Bilder_Osziloskop/Schaltung_CASSY_nah.pdf}\label{fig:f2}}
     \caption{Schaltung zur Bestimmung der Kapazität mit Cassy}
@@ -929,9 +929,22 @@ Wir transformieren unsere Messungen und Fehler nach folgender Vorschrift:
 	S = \ln(X) \qquad \sigma_S = \frac{dS}{dX} \sigma_X
 \end{equation}
 
+Dabei Transformieren wir Jewails die Spannungs und Stromwerte. In den Grundlagen wurde bereits die funktionsvorschrift für diese Eingeführt. Wobei wir hier noch ein möglichen Ofset mitbeachten müssen. Daraus ergibt sich als Transformationsvorschrift für die Spannung und Stromwerte:
 
+\begin{equation}
+ U_{lin} = \ln\left(\left|\frac{U_i - U_{off}}{U_0}\right|\right)
+\end{equation}
 
+\begin{equation}
+ I_{lin} = \ln\left(\left|\frac{I_i - I_{off}}{I_0}\right|\right)
+\end{equation}
 
+\begin{equation}
+ U_{lin_A} = \ln\left(\left|\frac{U_0 - U_i}{U_0}\right|\right)
+\end{equation}
+
+Hier bezeichnet $U_{lin}$ die linearisierten Werte. Die letzte Gleichung wird verwendet um die Spannungsdaten beim aufladen des Kondensators zu linearisieren. 
+Der Aufladevorgang hat ein anderen funktionalen Zusammenhang.
 \end{aufgabe}
 
 \begin{aufgabe}{Zusammenfassung und Diskussion}

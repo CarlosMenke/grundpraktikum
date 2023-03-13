@@ -31,7 +31,8 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
         global U_0
         global I_0
         U_0 = np.mean(y.werte[:end])
-        I_0 = np.mean(z_I.werte[:end])
+         
+        I_0 = min(z_I.werte[490:550])
     elif offset:
         end = 490
         global I_off
@@ -90,10 +91,10 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     plt.figure()
     if 'aufladen' in datei:
-        lin_U = np.log((-np.abs(y.werte) + U_0)/U_0)
+        lin_U = np.log(np.abs((-1 * y.werte + U_0)/U_0))
         plt.ylabel('log((- |U_B1| + U_0)/U_0)')
     else:
-        lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+        lin_U = np.log(np.abs((y.werte - U_off)/U_0))
         plt.ylabel('log((|U_B1| 0 U_off)/U_0)')
          
     plt.plot(x.werte[start:end], lin_U[start:end])
@@ -102,7 +103,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '_U_log'+ '.pdf', bbox_inches = 'tight')
      
-    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
+    lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))
     plt.figure()
     plt.title(plotname + 'log der Stromstärke')
     plt.plot(x.werte[start:end], lin_I[start:end])
@@ -119,10 +120,10 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     plt.figure()
     if 'aufladen' in datei:
-        lin_U = np.log((-np.abs(y.werte) + U_0)/U_0)
+        lin_U = np.log(np.abs((-1 * y.werte + U_0)/U_0))
         plt.ylabel('log((- |U_B1| + U_0)/U_0)')
     else:
-        lin_U = np.log((np.abs(y.werte) - U_off)/U_0)
+        lin_U = np.log(np.abs((y.werte - U_off)/U_0))
         plt.ylabel('log((|U_B1| 0 U_off)/U_0)')
          
     plt.plot(x.werte[start:end], lin_U[start:end])
@@ -131,7 +132,7 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '_U_log_complete'+ '.pdf', bbox_inches = 'tight')
      
-    lin_I = np.log((np.abs(z_I.werte) - I_off)/I_0)
+    lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))
     plt.figure()
     plt.title(plotname + 'log der Stromstärke')
     plt.plot(x.werte[start:end], lin_I[start:end])

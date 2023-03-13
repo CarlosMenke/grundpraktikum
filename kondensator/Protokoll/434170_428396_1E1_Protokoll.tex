@@ -857,6 +857,7 @@ Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
 
  
+\subsection{Rohdaten}
 Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Kondensator generiert haben.
 Im folgenden Führen wir alle Rechnungen und Erstellungen von Graphen mit diesem Programm aus.\\
 
@@ -919,7 +920,8 @@ Dies könnte man bestimmen, indem man eine Expondentialfunktion an die Datenpunk
 Da dies jedoch ein aufwändiges Verfahren ist, ist es hier einfacher die Daten zu linearisieren und dann andiese eine lineare Regression an zu passen. 
 Da in unserem Fall die Spannungs und Stromwerte einer Expondentialfunktion folgen, müssen wir unsere Messwerte Logarythmieren, so wie die Fehler auf diese.\\
 
-Da wir in unserer Messung der Ladevorgänge die gleichen Messwertserfassungseinstellungen verwendet haben wie bei der Bestimmung des Wiederstands, können wir den statistischen Fehler den wir bei diesem auf Strom und Spannung bestimmt haben verwenden.
+Da wir in unserer Messung der Ladevorgänge die gleichen Messwertserfassungseinstellungen verwendet haben wie bei der Bestimmung des Wiederstands, können wir den statistischen Fehler den wir bei diesem auf Strom und Spannung bestimmt haben verwenden. 
+In diesen fließen sowohl der Fehler aufgrund der Digitalisierung ein, als auch aufgrund der statistischen fluktuation der Spannungs und Stromwerte.
 Wie Sie tabelle  \ref{tab:Tabelle 3} und \ref{tab:Tabelle 4} sehen können, sind die Fehler auf diese bei allen Werten für V zimlich ähnlich. 
 Also können wir für den Fehler auf die Spannungen und Ströme in den Ladevorgängen den Mittelwert dieser Fehler verwenden.
 
@@ -956,9 +958,9 @@ $\sigma_I = 5.51 \quad 10^{-7} A $
 Aus diesen Errgeben sich mit der Transformation folgende Vorschriften für die Fehler auf die Spannung und den Strom.
 
 \begin{equation}
-	\sigma_{lin U} = \frac{1}{\frac{U_i - U_{off}}{U_0}} \sigma_U \qquad
-	\sigma_{lin I} = \frac{1}{\frac{I_i - I_{off}}{I_0}} \sigma_I \qquad
-	\sigma_{lin U_A} = -\frac{1}{\frac{U_0 - U_i}{U_0}} \sigma_U
+	\sigma_{lin U} = \frac{1}{U_i - U_{off}} \sigma_U \qquad
+	\sigma_{lin I} = \frac{1}{I_i - I_{off}} \sigma_I \qquad
+	\sigma_{lin U_A} = -\frac{1}{U_0 - U_i} \sigma_U
 \end{equation}\\
  
 Für die Auswertung haben wir nicht das gesamte gemessene Intervall betrachtet, da man am Ende das Rauschen sehr deutlich sehen kann.
@@ -973,11 +975,85 @@ Hier einmal eine Darstellung, für Spannng und Stromstärke wo das gesamte Inter
     \centering
 \end{figure}
 
-Wie klar zu sehen ist, ist bei der Stromkärke am anfang noch ein kleiner knick.
-Darum haben wir dort die ersten 10 Messwerte nicht mit einbezogen.
-Zusem sieht man, wie man am ende nur noch Rauschen sieht, darum haben wir bis Messwert 1010 betrachtet.
-Somit ist dies noch ausreichend groß genug um eine linare Regression auszuführen.
+Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 10 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
+Zudem sieht man, wie man am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 510 bis 710 betrachtet.
+In diesem Intervall sind 200 Messpunkte, und es ist zwei$\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
+Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in diesem Intervall.
+Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Funktion folgen.
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_A_log.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_U_log.pdf}}
+    \caption{Darstellung der Messwerte mit ausgewählten Intervall}
+    \centering
+\end{figure}
  
+\subsection{Auswertung}
+Wir haben insgesamt 8 Messungen durchführt, 4 Auflade Vorgänge und 4 Entlade Vorgänge.
+Hier haben wir auf unserem Messprotokoll und bei der Benennung der Datein noch unterschieden ob die Messung zum bestimmen des Wertes am Wiederstand oder am Kondensator gedacht war.
+Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch am Wiederstand aufgezeichnet haben, haben wir uns dazu entschieden aus allen Messungen jeweils für die Spannung am Kondensator ein $\tau$
+zu bestimmen.\\ 
+Insgesamt werden wir dann 16 Werte für $\tau$  haben.\\
+
+Die Statistischen Fehler auf $\tau$ können wir der Linearen Regression entnehmen. 
+Die Steigung der Geradenen a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
+
+\begin{equation}
+	\sigma_{\tau} = \left(\frac{1}{a^2}\right)^2 \sigma_a^2
+ \end{equation}
+ 
+In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der fehler auf die Zeit aufgrund des gewählten Messintervalls.
+Auch der Fehler auf U und I aufgrund der statistischen fluktuaton wird beachtet. 
+Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen.\\
+
+Unten können sie Exemplarisch eine der Linearen Regressionen sehen welche wir für alle Messungen durchgeführt haben.
+In der oberen Grafik sind die Messwerte für Strom oder Spannung gegen die Zeit aufgetragen.
+In der unteren Grafik ist die Abweichung der Messpunkte von der Anpassung dargestellt. 
+Hier ist der Fehlerbalken auf die Punkte gegeben als Platzhalter
+
+Platzhalter Graph der Linearen Regression
+
+In diesem können wir sehen, dass die Messwerte sehr gut einer Linearen Funktion folgen. 
+
+Platzhalter Residuenplot
+
+Aus der Linearen Regression erhalten wir Folgende Werte für die Zeitkonstante und deren Fehler. Wir geben hier auch für alle Lineare Regressionen deren $\frac{\chi^2}{ndof}$ an, zur prüfung der Quallität dieser Anpassungen.
+
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X X} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{$\tau$} & \textbf{$\sigma_s$} & \textbf{$\sigma_{\tau}$} & $\frac{\chi^2}{ndof}$ \\
+            \midrule
+            Laden & 50$\mu$s  & 0.1s & UB1: 0.10V \\
+
+            \bottomrule
+        \end{tabularx}
+        \caption{$\tau$ aus der Linearen Regression}
+        \label{tab:mytable}
+    \end{table}
+    
+ 
+Daraus ergibt sich das Gewichtete Mittel zu:
+
+Zusätzlich zu den statistischen Fehlern haben wir noch Systematische Fehler, die behandeln wir wie bei der Bestimmung des Wiederstands mittels der Verschiebmethode. 
+Die Systematischen Fehler sind hier jene welche von Hersteller des CASSY angegeben wurden. 
+
+\begin{equation}
+Platzhalter
+\end{equation}
+
+Das Gewichtete mittel der Zeitkonstante und der dazugehörige systematische Fehler und statistische Fehler ist somit:
+
+\begin{equation}
+ Platzhalter
+\end{equation}
+
+Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
+
+Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade und Entladekurven am CASSY ergibt sich somit zu:
 
 
 \end{aufgabe}
@@ -993,7 +1069,7 @@ Somit ist dies noch ausreichend groß genug um eine linare Regression auszuführ
 \end{document}
 
 %TODO : Pythen Programm benennen, und am anfang der Auswertung rein bringen
-%TODO : Bei OSZILLOSKOP Mit Wiederstand die Kapazität bestimmen aus Tau
 %TODO : Korrektur von 11 Messwerten zu 10 Mesungen auf dem Protokoll
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen
 %TODO : Messprotokoll überarbeiten
+

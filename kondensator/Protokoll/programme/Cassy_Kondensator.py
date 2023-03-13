@@ -270,11 +270,13 @@ for filename in sorted(os.listdir(cassy_dir)):
                 error_I.append(abs(i))
             m, m_err = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U')
             tau_einzeln.append(-1/m)
-            tau_einzeln_stat.append(-1/m_err)
+            tau_einzeln_stat.append(m_err/m**2)
             m, m_err = lin_reg(t, lin_I, np.array(error_I), 'I / A', plotname=filename+'_linreg_I')
             tau_einzeln.append(-1/m)
-            tau_einzeln_stat.append(-1/m_err)
+            tau_einzeln_stat.append(m_err/m**2)
 print('tau_einzeln = ', tau_einzeln)
+messdaten_tau = {'tau Spannung': tau_einzeln[::2], 'tau Spannung stat.': tau_einzeln_stat[::2], 'tau Strom': tau_einzeln[1::2], 'tau Strom stat.': tau_einzeln_stat[1::2]}
+print(pd.DataFrame(messdaten_tau))
 
 tau_einzeln = np.array(tau_einzeln)
 tau_einzeln_stat = np.array(tau_einzeln_stat)

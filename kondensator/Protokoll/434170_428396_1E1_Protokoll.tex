@@ -853,7 +853,7 @@ Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
 
  
-Hier ist ein typischer Entladeverlauf vom Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Wiederstand generiert haben.
+Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Wiederstand generiert haben.
     Dabei ist hierbei keiner der Graphen inertiert.
     Diese ist dadurch charakterisiert, das der Strom anfangs sowie am Ende 0 ist, und nach einem anfänglichen Sprung nach Augenmaß exponentiell fällt.
     Die Spannung fällt dabei ebenfalls ca. exponentiell von der Anfangsspannung auf 0 ab.
@@ -876,22 +876,7 @@ Die Spannung steigt dabei auf die Grenzspannung an.
   \centering
 \end{figure}
 
-Zum bestimmen der Offsets am den Kondensator haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem aufladen haben.
-Da wir einen Pretrigger von 500 Messpunkten eingestellt hatten, haben wir dort genügent Datenpunkte um den Mittelwert zu bestimmen.
-Dabei haben wir allerdings die letzten 10 Messpunkte nicht mit einbezogen, da diese durch den Trigger ausgelöst wurden und dort die Messung schon gestartet ist.
-Das dieses auch wirklich gewähleistet ist, erkennt an daran, das in der Graphischen darstellung nur Rauschen vorhanden ist.
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.9\textwidth]{plots/messung-aufladen-kondensator-02_offsets.pdf}
-    \caption{Messpunkte für die Offset bestimmung}
-  \centering
-\end{figure}
-Dabei ist der $I_{Offset} = 1.22 * 10^{-5} A$
-Dabei ist der $U_{Offset} = 0.0098 V$
-
-Da wir davon ausgehen, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, haben wir den Mittelwert der Spannungswerte genommen.
-Gleiches gilt für die bestimmung der Offsets des Stroms.
-Hier einmal die Werte Graphisch dargestellt, welche wir zum bestimmen der Offsets genommen haben.
+Zum bestimmen der Offsets am den Kondensator und am Wiederstand haben wir den Mittelwert der Datenpunkte genommenwelche 
 
 \end{aufgabe}
 

@@ -234,7 +234,7 @@ end = 650
 example = 'messung-aufladen-kondensator-01'
 
 sigma_U = 0.00142
-sigma_I = 1.44*10**(-5)
+sigma_I = 4.24*10**(-6)
 
 def sigma_lin_U(U_i, sigma_U):
     lin_U_stat = 1/((U_i-U_off))*sigma_U

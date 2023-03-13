@@ -137,7 +137,6 @@ stromstaerke_std = []
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")) and 'messung-wiederstand' in filename:
         daten = get_messdaten(cassy_dir +filename, 'U_B1')
-        print(len(daten), "daten")
         spannung_mean.append(np.mean(daten))
         spannung_std.append(np.std(daten, ddof=1))
         daten = get_messdaten(cassy_dir +filename, 'I_A1')
@@ -158,7 +157,7 @@ print(pd.DataFrame(wiederstand_messdaten))
 
 ### gesmater statistischer Fehler
 digitalisierung_U_std = 20 / 2**12 / np.sqrt(12)
-digitalisierung_A_std = 0.006 / 2**12 / np.sqrt(12)
+digitalisierung_A_std = 0.02 / 2**12 / np.sqrt(12)
 spannung_stat = np.sqrt(digitalisierung_U_std**2 + spannung_mean_std**2)
 stromstaerke_stat = np.sqrt(digitalisierung_A_std**2 + stromstaerke_mean_std**2)
 stat = {'stat Spannung': spannung_stat, 'stat Stromstärke': stromstaerke_stat}
@@ -199,12 +198,14 @@ spannung_mean = np.delete(spannung_mean, 0)
 stromstaerke_stat = np.delete(stromstaerke_stat, 0)
 spannung_stat = np.delete(spannung_stat, 0)
 
+print('Das Ergebnis, mit geloeschten Messwerten: ')
 R, R_stat = lin_reg(stromstaerke_mean, spannung_mean, stromstaerke_stat, spannung_stat, 'lineare_regression_final')
 
 ## systematischer Fehler
 u_syst = (0.01 * spannung_mean + 0.005 * 10) / np.sqrt(3)
-i_syst = (0.02 * stromstaerke_mean + 0.005 * 0.003) / np.sqrt(3)
+i_syst = (0.02 * stromstaerke_mean + 0.005 * 0.02) / np.sqrt(3)
 
+print('chis von der verschiebemethode')
 R_u_oben, _ = lin_reg(stromstaerke_mean, spannung_mean + u_syst, stromstaerke_stat, spannung_stat, 'linare_regression_u_oben')
 R_u_unten, _ = lin_reg(stromstaerke_mean, spannung_mean - u_syst, stromstaerke_stat, spannung_stat, 'linare_regression_u_unten')
 R_u_syst = (abs(R_u_oben-R) + abs(R_u_unten-R)) / 2

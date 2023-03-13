@@ -979,9 +979,9 @@ Hier einmal eine Darstellung, für Spannng und Stromstärke wo das gesamte Inter
     \centering
 \end{figure}
 
-Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 10 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
-Zudem sieht man, wie man am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 510 bis 710 betrachtet.
-In diesem Intervall sind 200 Messpunkte, und es ist zwei$\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
+Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 110 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
+Zudem sieht man, wie man am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 560 bis 610 betrachtet.
+In diesem Intervall sind 50 Messpunkte, und es ist $\frac{1}{2}\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
 Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in diesem Intervall.
 Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Funktion folgen.
 
@@ -997,33 +997,49 @@ Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Fu
 \subsection{Auswertung}
 Wir haben insgesamt 8 Messungen durchführt, 4 Auflade Vorgänge und 4 Entlade Vorgänge.
 Hier haben wir auf unserem Messprotokoll und bei der Benennung der Datein noch unterschieden ob die Messung zum bestimmen des Wertes am Wiederstand oder am Kondensator gedacht war.
-Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch am Wiederstand aufgezeichnet haben, haben wir uns dazu entschieden aus allen Messungen jeweils für die Spannung am Kondensator ein $\tau$
-zu bestimmen.\\ 
+Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch die Stromstärke am Wiederstand aufgezeichnet haben, haben wir uns dazu entschieden für allen Messungen jeweils mit der Spannung am Kondensator ein $\tau$ zu bestimmen sowie ein weiteres aus der Stromstärke am Wiederstand. \\
 Insgesamt werden wir dann 16 Werte für $\tau$  haben.\\
 
 Die Statistischen Fehler auf $\tau$ können wir der Linearen Regression entnehmen. 
-Die Steigung der Geradenen a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
+Die Steigung der Geraden a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
 
 \begin{equation}
 	\sigma_{\tau} = \left(\frac{1}{a^2}\right)^2 \sigma_a^2
  \end{equation}
  
-In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der fehler auf die Zeit aufgrund des gewählten Messintervalls.
+In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der Fehler auf die Zeit aufgrund des gewählten Messintervalls.
 Auch der Fehler auf U und I aufgrund der statistischen fluktuaton wird beachtet. 
-Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen.\\
+Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen und wie vorher erkälrt fortgepflanzt und für die Linare Regression genommen.\\
 
 Unten können sie Exemplarisch eine der Linearen Regressionen sehen welche wir für alle Messungen durchgeführt haben.
 In der oberen Grafik sind die Messwerte für Strom oder Spannung gegen die Zeit aufgetragen.
 In der unteren Grafik ist die Abweichung der Messpunkte von der Anpassung dargestellt. 
-Hier ist der Fehlerbalken auf die Punkte gegeben als Platzhalter
+Hier ist der Fehlerbalken auf die Punkte gegeben als $\pm \sigma_{linU}$ bzw. $\pm \sigma_{linI}$.
 
-Platzhalter Graph der Linearen Regression
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/messung-aufladen-kondensator-02.labx_linreg_I.pdf}
+    \hfill
+    \caption{Linare Regression mit Residuenplot für Stromstärke}
+    \centering
+\end{figure}
+Wie zu sehen ist für die Messung der der Stromstärke, streuen die Messwerte gleichmäßig um die Anpassung und folgen keiner Systematik.
+Das bedeutet das wir die Offsets richtig bestimmt und verwenden wurde.
+Allerdings ist der verwendete Fehler etwas zu klein abgeschätzt worden, weshabl die Linare Regression fast nirgendwo in den Fehlerbalken liegt.
 
-In diesem können wir sehen, dass die Messwerte sehr gut einer Linearen Funktion folgen. 
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/messung-aufladen-kondensator-02.labx_linreg_U.pdf}
+    \caption{Darstellung der Messwerte mit ausgewählten Intervall}
+    \centering
+\end{figure}
+ 
+ 
 
 Platzhalter Residuenplot
 
-Aus der Linearen Regression erhalten wir Folgende Werte für die Zeitkonstante und deren Fehler. Wir geben hier auch für alle Lineare Regressionen deren $\frac{\chi^2}{ndof}$ an, zur prüfung der Quallität dieser Anpassungen.
+Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante und deren Fehler. Wir geben hier auch für alle Lineare Regressionen deren $\frac{\chi^2}{ndof}$ an, zur prüfung der Quallität dieser Anpassungen.
 
 \begin{table}[H]
         \centering

@@ -195,15 +195,15 @@ def get_log_values(datei, x, y, z_I):
     z_I = messung.datenreihe(z_I)
 
     if 'aufladen' in datei:
-        lin_U = np.log(np.abs((-1 * y.werte + U_0)))[start:end]
+        lin_U = np.log(np.abs((-1 * y.werte + U_0)/U_0))[start:end]
     else:
-        lin_U = np.log(np.abs((y.werte - U_off)))[start:end]
+        lin_U = np.log(np.abs((y.werte - U_off)/U_0))[start:end]
          
-    lin_I = np.log(np.abs((z_I.werte - I_off)))[start:end]
+    lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))[start:end]
      
     return x.werte[start:end], y.werte[start:end], z_I.werte[start:end], lin_U, lin_I
  
-def lin_reg(x, y, y_err, plotname=''):
+def lin_reg(x, y, y_err, y_label, plotname=''):
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)
@@ -212,12 +212,12 @@ def lin_reg(x, y, y_err, plotname=''):
     axarray[0].plot(x, R*x+b, color='green')
     sigmaRes = np.sqrt((R*0)**2 + y_err**2)
     axarray[0].errorbar(x, y, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
-    axarray[0].set_xlabel('$I$ / A')
-    axarray[0].set_ylabel('$U$ / V')
+    axarray[0].set_xlabel('$t$ / s')
+    axarray[0].set_ylabel(y_label)
 
     axarray[1].axhline(y=0., color='black', linestyle='--')
     axarray[1].errorbar(x, y-(R*x+b), yerr=sigmaRes, color='red', fmt='.', marker='o', markeredgecolor='red', linewidth=2)
-    axarray[1].set_xlabel('$I$ / A')
+    axarray[1].set_xlabel(y_label)
     axarray[1].set_ylabel('$(U-(RI+b))$ / V')
 
     if SHOW_PLOTS: plt.show()
@@ -226,9 +226,9 @@ def lin_reg(x, y, y_err, plotname=''):
   
  
 global start
-start = 510
+start = 560
 global end
-end = 710
+end = 610
  
  #beispiel welches abgescheichert werden soll.
 example = 'messung-aufladen-kondensator-01'
@@ -268,10 +268,10 @@ for filename in sorted(os.listdir(cassy_dir)):
             for j in z_I:
                 i = sigma_lin_I(j, sigma_I)
                 error_I.append(abs(i))
-            m, m_err = lin_reg(t, lin_U, np.array(error_U), plotname=filename+'_linreg_U')
+            m, m_err = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U')
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(-1/m_err)
-            m, m_err = lin_reg(t, lin_I, np.array(error_I), plotname=filename+'_linreg_I')
+            m, m_err = lin_reg(t, lin_I, np.array(error_I), 'I / A', plotname=filename+'_linreg_I')
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(-1/m_err)
 print('tau_einzeln = ', tau_einzeln)

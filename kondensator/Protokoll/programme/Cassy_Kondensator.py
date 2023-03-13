@@ -207,8 +207,8 @@ def lin_reg(x, y, y_err, y_label, plotname=''):
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)
-    print('Chiquadrat / nf:', chiq / (len(x)-2))
-    print('b:', b)
+    #print('Chiquadrat / nf:', chiq / (len(x)-2))
+    #print('b:', b)
     axarray[0].plot(x, R*x+b, color='green')
     sigmaRes = np.sqrt((R*0)**2 + y_err**2)
     axarray[0].errorbar(x, y, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
@@ -277,23 +277,25 @@ for filename in sorted(os.listdir(cassy_dir)):
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(m_err/m**2)
             chi.append(chi_n)
-print('tau_einzeln = ', tau_einzeln)
-messdaten_tau = {'tau Spannung': tau_einzeln[::2], 'tau Spannung stat.': tau_einzeln_stat[::2], 'tau Strom': tau_einzeln[1::2], 'tau Strom stat.': tau_einzeln_stat[1::2]}
+messdaten_tau = {'tau Spannung': tau_einzeln[::2], 'tau Spannung stat.': tau_einzeln_stat[::2], 'Chi Spannung':chi[::2], 'tau Strom': tau_einzeln[1::2], 'tau Strom stat.': tau_einzeln_stat[1::2], 'Chi Strom':chi[1::2]}
 print(pd.DataFrame(messdaten_tau))
-for i in range(len(tau_einzeln)//2):
-    print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i], 7)) + ' & ' + str(round(chi[2*i],1)) + ' \\\\')
+#for i in range(len(tau_einzeln)//2):
+    #print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i], 7)) + ' & ' + str(round(chi[2*i],1)) + ' \\\\')
 
-for i in range(len(tau_einzeln)//2):
-    print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i+1], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i+1], 7)) + ' & ' + str(round(chi[2*i+1],1)) + ' \\\\')
+#for i in range(len(tau_einzeln)//2):
+    #print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i+1], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i+1], 7)) + ' & ' + str(round(chi[2*i+1],1)) + ' \\\\')
 
 tau_einzeln = np.array(tau_einzeln)
 tau_einzeln_stat = np.array(tau_einzeln_stat)
 tau_mean = sum(tau_einzeln/tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
-tau_std = np.sqrt(1//tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
+tau_stat = np.sqrt(1/sum(1/tau_einzeln_stat**2))
+print('tau_mean Spannung = ', np.mean(tau_einzeln[::2]))
+print('tau_mean Stromstärke= ', np.mean(tau_einzeln[1::2]))
 print('tau_mean = ', tau_mean)
-print('tau_std = ', tau_std)
-C = tau_mean / (995)
+print('tau stat = ', tau_stat)
+print('C = ', tau_mean / 995.5)
  
+## systematischer Fehler
  
  ## generiere plot mit groesserer abweichung
 end = 860

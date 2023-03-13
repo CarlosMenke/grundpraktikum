@@ -1069,14 +1069,14 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
             \toprule
             \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
             \midrule
-            Aufladen Kondensator & 0.0101 & 4.9 & 1.5 \\
-            Aufladen Kondensator & 0.0102 & 4.9 & 1.2 \\
-            Aufladen Wiederstand & 0.0102 & 4.9 & 1.6 \\
-            Aufladen Wiederstand & 0.0101 & 4.9 & 1.7 \\
-            Entladen Kondensator & 0.0102 & 4.9 & 1.4 \\
-            Endladen Kondensator & 0.0102 & 4.9 & 1.4 \\
-            Endladen Wiederstand & 0.0102 & 4.9 & 1.3 \\
-            Endladen Wiederstand & 0.0102 & 4.9 & 1.3 \\
+            Aufladen & 0.0101 & 4.9 & 1.5 \\
+            Aufladen & 0.0102 & 4.9 & 1.2 \\
+            Aufladen & 0.0102 & 4.9 & 1.6 \\
+            Aufladen & 0.0101 & 4.9 & 1.7 \\
+            Entladen & 0.0102 & 4.9 & 1.4 \\
+            Endladen & 0.0102 & 4.9 & 1.4 \\
+            Endladen & 0.0102 & 4.9 & 1.3 \\
+            Endladen & 0.0102 & 4.9 & 1.3 \\
             \bottomrule
         \end{tabularx}
         \caption{$\tau$ aus der Linearen Regression}
@@ -1090,14 +1090,14 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
             \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
             \midrule
              
-            Aufladen Kondensator & 0.0101 & 14.6 & 7.9 \\
-            Aufladen Kondensator & 0.0102 & 14.8 & 10.9 \\
-            Aufladen Wiederstand & 0.0101 & 14.4 & 10.5 \\
-            Aufladen Wiederstand & 0.0101 & 14.3 & 11.9 \\
-            Entladen Kondensator & 0.0102 & 14.7 & 15.8 \\
-            Entalden Kondensator & 0.0102 & 14.6 & 9.6 \\
-            Entladen Wiederstand & 0.0102 & 14.6 & 14.6 \\
-            Entladen Wiederstand & 0.0101 & 14.5 & 11.3 \\
+            Aufladen & 0.0101 & 14.6 & 7.9 \\
+            Aufladen & 0.0102 & 14.8 & 10.9 \\
+            Aufladen & 0.0101 & 14.4 & 10.5 \\
+            Aufladen & 0.0101 & 14.3 & 11.9 \\
+            Entladen & 0.0102 & 14.7 & 15.8 \\
+            Entalden & 0.0102 & 14.6 & 9.6 \\
+            Entladen & 0.0102 & 14.6 & 14.6 \\
+            Entladen & 0.0101 & 14.5 & 11.3 \\
              
             \bottomrule
         \end{tabularx}
@@ -1120,13 +1120,17 @@ Die Systematischen Fehler sind hier jene welche von Hersteller des CASSY angegeb
 Platzhalter
 \end{equation}
 
+Die Werte für die Zeitkonstante sind zwar für bei der Spannung deutlich geringer, aber da wir im folgenden den gewichteten Mittelwert betrachten, ergibt es Sinn tortzdem beide zu betrachten.
 Das Gewichtete mittel der Zeitkonstante und der dazugehörige systematische Fehler und statistische Fehler ist somit:
 
 \begin{equation}
- Platzhalter
+ \tau = 0.01016
 \end{equation}
 
 Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
+\begin{equation}
+    C = (10.02 \pm 1.65_{statistisch} \pm 0.123_{systematisch}) \mu F
+\end{equation}
 
 Als Ergebniss für die Bestimmung der Kapazität des Kondensators mittels Lade und Entladekurven am CASSY ergibt sich somit zu:
 

@@ -1057,19 +1057,46 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
 
 \begin{table}[H]
         \centering
-        \begin{tabularx}{1\textwidth}{X X X X X} % adjust width as needed
+        \begin{tabularx}{1\textwidth}{X X r r} % adjust width as needed
             \toprule
-            \textbf{Messung} & \textbf{$\tau$} & \textbf{$\sigma_s$} & \textbf{$\sigma_{\tau}$} & $\frac{\chi^2}{ndof}$ \\
+            \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
             \midrule
-            Laden & 50$\mu$s  & 0.1s & UB1: 0.10V \\
-
+            Aufladen Kondensator & 0.0101 & 4.9 & 1.5 \\
+            Aufladen Kondensator & 0.0102 & 4.9 & 1.2 \\
+            Aufladen Wiederstand & 0.0102 & 4.9 & 1.6 \\
+            Aufladen Wiederstand & 0.0101 & 4.9 & 1.7 \\
+            Entladen Kondensator & 0.0102 & 4.9 & 1.4 \\
+            Endladen Kondensator & 0.0102 & 4.9 & 1.4 \\
+            Endladen Wiederstand & 0.0102 & 4.9 & 1.3 \\
+            Endladen Wiederstand & 0.0102 & 4.9 & 1.3 \\
             \bottomrule
         \end{tabularx}
         \caption{$\tau$ aus der Linearen Regression}
         \label{tab:mytable}
     \end{table}
     
- 
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X r r} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{$\tau \ in \ s$} & \textbf{$\sigma_{\tau} \ in \ \mu s$} & $\frac{\chi^2}{ndof}$ \\
+            \midrule
+             
+            Aufladen Kondensator & 0.0101 & 14.6 & 7.9 \\
+            Aufladen Kondensator & 0.0102 & 14.8 & 10.9 \\
+            Aufladen Wiederstand & 0.0101 & 14.4 & 10.5 \\
+            Aufladen Wiederstand & 0.0101 & 14.3 & 11.9 \\
+            Entladen Kondensator & 0.0102 & 14.7 & 15.8 \\
+            Entalden Kondensator & 0.0102 & 14.6 & 9.6 \\
+            Entladen Wiederstand & 0.0102 & 14.6 & 14.6 \\
+            Entladen Wiederstand & 0.0101 & 14.5 & 11.3 \\
+             
+            \bottomrule
+        \end{tabularx}
+        \caption{$\tau$ aus der Linearen Regression}
+        \label{tab:mytable}
+    \end{table}
+    
 Daraus ergibt sich das Gewichtete Mittel zu:
 
 Zusätzlich zu den statistischen Fehlern haben wir noch Systematische Fehler, die behandeln wir wie bei der Bestimmung des Wiederstands mittels der Verschiebmethode. 

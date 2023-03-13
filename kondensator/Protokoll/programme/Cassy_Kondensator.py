@@ -222,7 +222,7 @@ def lin_reg(x, y, y_err, y_label, plotname=''):
 
     if SHOW_PLOTS: plt.show()
     elif plotname != '': plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
-    return R, eR
+    return R, eR, chiq / (len(x)-2)
   
  
 global start
@@ -250,6 +250,7 @@ def sigma_lin_U_A(U_i, sigma_U):
 
 tau_einzeln = []
 tau_einzeln_stat = []
+chi = []
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
         if '03' in filename: continue
@@ -268,15 +269,22 @@ for filename in sorted(os.listdir(cassy_dir)):
             for j in z_I:
                 i = sigma_lin_I(j, sigma_I)
                 error_I.append(abs(i))
-            m, m_err = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U')
+            m, m_err, chi_n = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U')
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(m_err/m**2)
-            m, m_err = lin_reg(t, lin_I, np.array(error_I), 'I / A', plotname=filename+'_linreg_I')
+            chi.append(chi_n)
+            m, m_err, chi_n = lin_reg(t, lin_I, np.array(error_I), 'I / A', plotname=filename+'_linreg_I')
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(m_err/m**2)
+            chi.append(chi_n)
 print('tau_einzeln = ', tau_einzeln)
 messdaten_tau = {'tau Spannung': tau_einzeln[::2], 'tau Spannung stat.': tau_einzeln_stat[::2], 'tau Strom': tau_einzeln[1::2], 'tau Strom stat.': tau_einzeln_stat[1::2]}
 print(pd.DataFrame(messdaten_tau))
+for i in range(len(tau_einzeln)//2):
+    print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i], 7)) + ' & ' + str(round(chi[2*i],1)) + ' \\\\')
+
+for i in range(len(tau_einzeln)//2):
+    print('Aufladen Kondensator 01 & ' + str(round(tau_einzeln[2*i+1], 4)) + ' & ' + str(round(tau_einzeln_stat[2*i+1], 7)) + ' & ' + str(round(chi[2*i+1],1)) + ' \\\\')
 
 tau_einzeln = np.array(tau_einzeln)
 tau_einzeln_stat = np.array(tau_einzeln_stat)
@@ -303,5 +311,5 @@ for filename in sorted(os.listdir(cassy_dir)):
                 for i in y:
                     u = sigma_lin_U(i, sigma_U)
                     error_U.append(u)
-            m, m_err = lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U_gross')
+            lin_reg(t, lin_U, np.array(error_U), 'U / V', plotname=filename+'_linreg_U_gross')
             break

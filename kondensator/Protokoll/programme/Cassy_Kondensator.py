@@ -228,7 +228,7 @@ def lin_reg(x, y, y_err, plotname=''):
 global start
 start = 510
 global end
-end = 650
+end = 710
  
  #beispiel welches abgescheichert werden soll.
 example = 'messung-aufladen-kondensator-01'
@@ -275,3 +275,11 @@ for filename in sorted(os.listdir(cassy_dir)):
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(-1/m_err)
 print('tau_einzeln = ', tau_einzeln)
+
+tau_einzeln = np.array(tau_einzeln)
+tau_einzeln_stat = np.array(tau_einzeln_stat)
+tau_mean = sum(tau_einzeln/tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
+tau_std = np.sqrt(1//tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
+print('tau_mean = ', tau_mean)
+print('tau_std = ', tau_std)
+C = tau_mean / (995)

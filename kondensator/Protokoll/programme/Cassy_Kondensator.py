@@ -287,13 +287,21 @@ print(pd.DataFrame(messdaten_tau))
 
 tau_einzeln = np.array(tau_einzeln)
 tau_einzeln_stat = np.array(tau_einzeln_stat)
-tau_mean = sum(tau_einzeln/tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
+tau= sum(tau_einzeln/tau_einzeln_stat**2)/sum(1/tau_einzeln_stat**2)
 tau_stat = np.sqrt(1/sum(1/tau_einzeln_stat**2))
 print('tau_mean Spannung = ', np.mean(tau_einzeln[::2]))
 print('tau_mean Stromstärke= ', np.mean(tau_einzeln[1::2]))
-print('tau_mean = ', tau_mean)
+print('tau_mean = ', tau)
 print('tau stat = ', tau_stat)
-print('C = ', tau_mean / 995.5)
+R = 995.5
+faktor = 1000000
+C = faktor * tau / R 
+C_stat = faktor * 1/R * tau_stat
+R_syst = 12.2
+C_syst = faktor * tau / R **2 * R_syst
+print('C = ', C, 'uF')
+print('C syst = ', C_syst, 'uF')
+print('C stat = ', C_stat, 'uF')
  
 ## systematischer Fehler
  

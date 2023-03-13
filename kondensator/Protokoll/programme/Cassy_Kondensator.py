@@ -86,8 +86,8 @@ def cassy_plot(datei: str, x: str, y: str, z_I: str, plotname: str, log=False, o
      
     fig = plt.figure()
      
-    start = 550
-    end = 1000
+    start = 510
+    end = 1010
      
     plt.figure()
     if 'aufladen' in datei:

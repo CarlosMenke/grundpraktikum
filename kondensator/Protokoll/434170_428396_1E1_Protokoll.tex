@@ -857,6 +857,7 @@ Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
 
  
+\subsection{Rohdaten}
 Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Kondensator generiert haben.
 Im folgenden Führen wir alle Rechnungen und Erstellungen von Graphen mit diesem Programm aus.\\
 
@@ -962,7 +963,7 @@ Aus diesen Errgeben sich mit der Transformation folgende Vorschriften für die F
 \end{equation}\\
  
 Für die Auswertung haben wir nicht das gesamte gemessene Intervall betrachtet, da man am Ende das Rauschen sehr deutlich sehen kann.
-Hier einmal eine Darstellung, für spannng und Stromstärke wo wir das gesamte Intervall betrachte.
+Hier einmal eine Darstellung, für Spannng und Stromstärke wo wir das gesamte Intervall betrachte.
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_A_log_complete.pdf}}
@@ -971,11 +972,25 @@ Hier einmal eine Darstellung, für spannng und Stromstärke wo wir das gesamte I
     \caption{Darstellung der Kompletten Messwerte}
     \centering
 \end{figure}
-Wie klar zu sehen ist, ist bei der Stromkärke am anfang noch ein kleiner knick.
-Darum haben wir dort die ersten 10 Messwerte nicht mit einbezogen.
-Zusem sieht man, wie man am ende nur noch Rauschen sieht, darum haben wir bis Messwert 1010 betrachtet.
+Um die Randeffekte vom Schaltereffekte zu vernachlässigen haben wir die ersten 10 Messwerte nicht berücksichtigt.
+Zudem sieht man, wie man am Ende nur noch Rauschen sieht, darum haben wir bis Messwert 1010 betrachtet.
 Somit ist dies noch ausreichend groß genug um eine linare Regression auszuführen.
+Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in dem Intervall, welches wir für alle daten verwendet haben.
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_A_log.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/aufladen-kondensator-01_U_log.pdf}}
+    \caption{Darstellung der Messwerte mit ausgewählten Intervall}
+    \centering
+\end{figure}
  
+\subsection{Auswertung}
+Dabei haben wir insgesamt 8 Messungen durchführt, 4 Auflade Vorgänge und 4 Entlade Vorgänge.
+Hier haben wir auf unserem Messprotokoll und bei der Benennung der Datein noch unterschieden ob die Messung zum bestimmen des Wertes am Wiederstand oder am Kondensator gedacht war.
+Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch am Wiederstand aufgezeichnet haben, haben wir uns dazu entschieden aus allen Messungen jeweils für die Spannung am Kondensator ein $\tau$
+zu bestimmen. Insgesamt werden wir dann 16 $\tau$ Werte haben.
+
 
 
 \end{aufgabe}

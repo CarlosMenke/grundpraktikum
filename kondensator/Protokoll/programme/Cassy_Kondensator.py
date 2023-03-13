@@ -195,7 +195,7 @@ def get_log_values(datei, x, y, z_I):
          
     lin_I = np.log(np.abs((z_I.werte - I_off)/I_0))[start:end]
      
-    return x.werte[start:end], lin_U, lin_I
+    return x.werte[start:end], y.werte[start:end], z_I.werte[start:end], lin_U, lin_I
  
 def lin_reg(x, y, x_err, y_err, plotname=''):
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
@@ -223,16 +223,50 @@ global start
 start = 510
 global end
 end = 710
-t_err = 0.00001 * np.ones(end-start)
+t_err = (50*10**(-6))/np.sqrt(12) * np.ones(end-start)
 U_err = 0.00001 * np.ones(end-start)
 I_err = 0.1 * np.ones(end-start)
 example = 'messung-aufladen-kondensator-01'
-  
+
+sigma_U = 0.0014
+sigma_I = 5.51*10**(-7)
+
+def sigma_lin_U(U_i, U_off, U_0, sigma_U):
+    lin_U_stat = 1/((U_i-U_off)/U_0)*sigma_U
+    return lin_U_stat
+
+def sigma_lin_I(I_i, I_off, I_0, sigma_I):
+    lin_I_stat = 1/((I_i-I_off)/I_0)*sigma_I
+    return lin_I_stat
+
+def sigma_lin_U_A(U_i, U_0, sigma_U):
+    lin_U_stat_A = 1/((U_0-U_i)/U_0)*sigma_U
+    return lin_U_stat_A
+
 for filename in sorted(os.listdir(cassy_dir)):
     if filename.endswith((".labx")):
         if "aufladen" in filename or "entladen" in filename:
-            t, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
+            t, y, z_I, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
+            error_U = []
+            if 'aufladen' in filename:
+                for i in y : 
+                    u = sigma_lin_U_A(i, U_0, sigma_U) 
+                    error_U.append(u)
+            else:
+                for i in y:
+                    u = sigma_lin_U(i, U_off, U_0, sigma_U)
+                    error_U.append(u)
+            error_I = []
+            for j in z_I:
+                i = sigma_lin_I(j, I_off, I_0, sigma_I)
+                error_I.append(i)
+            print(len(error_U))
+            error_I = []
             lin_reg(t, lin_U, t_err, U_err)
-        if example in filename:
-            t, lin_U, lin_I = get_log_values(cassy_dir + filename, "t", "U_B1", "I_A1")
-            lin_reg(t, lin_U, t_err, U_err, plotname=example+'_linreg_U')
+
+
+
+
+
+
+

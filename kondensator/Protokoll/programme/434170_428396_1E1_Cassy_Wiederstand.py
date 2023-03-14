@@ -172,6 +172,13 @@ print('statistischer Fehler: \n', pd.DataFrame(stat))
 
 
 def lin_reg(x, y, x_err, y_err, plotname):
+    plt.rcParams['font.size'] = 28.0
+    plt.rcParams['font.weight'] = 'normal'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.labelweight'] = 'normal'
+    plt.rcParams['axes.linewidth'] = 1.2
+    plt.rcParams['lines.linewidth'] = 2.0
+    plt.rcParams["savefig.pad_inches"] = 0.5
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression_xy(x, y, x_err, y_err)

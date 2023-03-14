@@ -4,6 +4,7 @@ from pylab import *
 import re
 import os
 import numpy as np
+import matplotlib.ticker as ticker
 
 global SHOW_PLOTS
 SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
@@ -277,6 +278,28 @@ for filename in sorted(os.listdir(cassy_dir)):
             tau_einzeln.append(-1/m)
             tau_einzeln_stat.append(m_err/m**2)
             chi.append(chi_n)
+            
+def plot_tau_errorbar(y, yerr, plotname):
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.linewidth'] = 0.75
+    plt.rcParams['lines.linewidth'] = 0.5
+    plt.rcParams['savefig.pad_inches'] = 1
+     
+    fig, ax = plt.subplots()
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
+    plt.ylabel("Tau in ms")
+    plt.autoscale()
+    formatter = ticker.ScalarFormatter(useOffset=False)
+    ax.yaxis.set_major_formatter(formatter)
+    plt.title("Errorbar Plot für alle tau")
+    ax.yaxis.set_label_coords(-0.2,0.50)
+    plt.grid()
+    plt.plot(range(1, len(y)+1), 0.01016*np.ones(16), linewidth = 1.5)
+    plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
+    
+plot_tau_errorbar(tau_einzeln, tau_einzeln_stat, 'Errorbar Plot für alle Tau')
 messdaten_tau = {'tau Spannung': tau_einzeln[::2], 'tau Spannung stat.': tau_einzeln_stat[::2], 'Chi Spannung':chi[::2], 'tau Strom': tau_einzeln[1::2], 'tau Strom stat.': tau_einzeln_stat[1::2], 'Chi Strom':chi[1::2]}
 print(pd.DataFrame(messdaten_tau))
 #for i in range(len(tau_einzeln)//2):

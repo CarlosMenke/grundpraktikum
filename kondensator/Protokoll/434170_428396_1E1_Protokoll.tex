@@ -786,7 +786,7 @@ Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgan
 
 \begin{figure}[H]
   \centering
-    \includegraphics[width=0.7\textwidth]{plots/434170_428396_1A3_tau_errorbar.pdf}
+    \includegraphics[width=0.9\textwidth]{plots/434170_428396_1A3_tau_errorbar.pdf}
     \caption{Tau von allen Messung mit Statistischem Fehler}
   \centering
 \end{figure}
@@ -1125,15 +1125,19 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
 Wie man den Tabellen entnehmen kann, stimmen die Werte die wir für $\tau$ erhalten bei Spannungs und Strommessung ungefähr überein.
 Jedoch ist wie zu erwarten der Fehler auf des Ergebnis der Strommessung signifikant größer. 
 
+
 In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen. Dabei sind die Werte für die Lineare Regression der Spannung relativ nahe an eins.
 Dies war aus dem Residuenplot bereits zu erwarten. Somit können wir schließen, dass unsere Messungen und auch Auswertung des Spannungsabfalls am Kondensator nahe an der Realität sind. 
 Auch der Fehler auf $\tau$ liegt hier bei 5 $\mu s$ was eine Abweichung von etwa 0.05\% entspricht.  
 Das Ergebnis auf $\tau$ ist also sehr genau wenn man nur den Statistischen Fehler betrachtet.\\
 
 Im Fall der Linearen Regression der Stromstärke kann man der Tabelle entnehmen, dass das $\frac{\chi^2}{ndof}$ etwa 15 ist.
-Die Anpassung also nicht gut ist. Dies konnten wir bereits dem Residuenplot entnehmen.
+
+
+Die Anpassung also nicht gut ist. Dies konnten wir bereits dem Residuenplot der Linearen Regression entnehmen.
 Dort haben wir auch bereits diskutiert, was mögliche Ursachen sind. 
 Die Warscheinlichste Fehlerquelle ist jedoch nach wie vor der Messbereich der Stromstärke.\\
+
 
 Im Folgenden verwenden wir das gewichtete Mittel aller $\tau$ zur berechnen der Kapazität. 
 Zwar ist der Fehler auf $\tau$ größer wenn wir das Ergebniss aus der Messung von Strom und Spannung verwenden. Der Beitrag dieses Statistischen fehlers ist jedoch im Vergleich zum Systematischen Fehler der aus der Bestimmung des Wiederstands kommt vergleichsweise klein.
@@ -1143,6 +1147,16 @@ Daraus ergibt sich das Gewichtete Mittel zu:
 \begin{equation}
  \tau = (10.16 \pm 0.0016) ms
 \end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plots/Errorbar_Tau_CASSY.pdf}
+    \caption{Darstellung der Tau in einem Residuenplot}
+    \centering
+\end{figure}
+
+In dem Residuenplot können Sie sehen, dass unsere $\tau$ um dem Mittelwert streuen (Orangene Linie). 
+Nur in wenigen Fällen liegt jedoch die Abweichung innerhalb des Fehlers den wir auf $\tau$ bestimmt haben. 
 
 
 Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 

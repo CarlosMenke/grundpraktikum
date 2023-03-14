@@ -23,9 +23,9 @@
 
 
 \begin{versuchsziele}
-Ziel des Versuchs ist die Kapazität eines Kondensators durch lade und entladevorgang
+Ziel des Versuchs ist die Kapazität eines Kondensators durch Lade und Entladevorgang
 zu bestimmen. 
-Dieser wird durch eine Schaltung mit Wiederstand und Schalter ermöglicht.
+Dies wird durch eine Schaltung mit Wiederstand und Schalter ermöglicht.
 Hierfür werden verschiedene Methoden verwendet. Mit dem Multimeter werden Kapazität
 und Wiederstand bestimmt.
 Mit dem Oszilloskop wird über die Zeitkonstante die Kapazität bestimmt. Mit Sensor CASSY 2 zunächst der Wiederstand und dann die Kapazit. 
@@ -41,22 +41,23 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
 
 
     Ziel des Versuchs ist es, die Kapazität eines Kondensators zu bestimmen.\\
-    Dies können wir messen, da die Spannungsverläufe von Kondensator und Wiederstand mit der Kapazität und dem Wiederstand zusammenhängen.
+    Dies können wir messen, da die Spannungsverläufe am Kondensator und Wiederstand mit der Kapazität und dem Wiederstand zusammenhängen.
     Allgemein gilt für einen Kondensator, der aufgeladen wird und mit einem Wiederstand in Reihe geschaltet wurde:
     \begin{equation}
         U_0 - U_C = U_R = I(t) R
         = C\frac{dQ}{dt} R
     \end{equation}
-    Dabei ist $U_0$ die an den Stromkreis angelegte Spannung. Der besteht in diesen Falle nur aus einem in Reihe geschalteten Kondensator und einem Wiederstand.
+    Dabei ist $U_0$ die an den Stromkreis angelegte Spannung. Der besteht in diesem Falle nur aus einem in Reihe geschalteten Kondensator und einem Wiederstand.
     $U_C$ ist die Spannung am Kondensator und $U_R$ die Spannung am Wiederstand. $I(t)$ ist der Strom durch den Wiederstand fließt und $R$ der Wiederstandswert.
     $\frac{dQ}{dt}$ ist die Ladung, die pro Zeiteinheit durch den Wiederstand fließt.
     Diese DGL lässt sich mit Hilfe der seperation der Variablen lösen.
     \begin{equation}
         U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) = U_0 (1 + e^{\frac{-t}{\tau}})
     \end{equation}
+    $\tau$ ist hierbei die Zeitkonstante.
     Für den Strom am Wiederstand ergibt sich damit:
     \begin{equation}
-        I(t) = \frac{dQ}{dt} = C * dU_0 = \frac{U_0}{R} * e^{-\frac{t}{RC}} = I_0 * e^{-\frac{t}{\tau}}
+        I(t) = \frac{dQ}{dt} = C dU_0 = \frac{U_0}{R} * e^{-\frac{t}{RC}} = I_0 * e^{-\frac{t}{\tau}}
     \end{equation}
     Für den Endladevorgan ergibt sich eine änliche DGL:
     \begin{equation}
@@ -69,20 +70,21 @@ Diese Ergebnisse sollen dann untereinander verglichen werden.
     \end{equation}
     Für den Strom am Wiederstand kann man jetzt auch leicht mithilfe der Spannung am Kondensator berechnen:
     \begin{equation}
-        I(t) = \frac{dQ}{dt} = C dU_0 = \frac{U_0}{R} e^{-\frac{t}{RC}} = I_0 e^{-\frac{t}{\tau}}
+        I(t) = \frac{dQ}{dt} = C \frac{dU_0}{dt} = \frac{U_0}{R} e^{-\frac{t}{RC}} = I_0 e^{-\frac{t}{\tau}}
     \end{equation}
-    Das bedeutet, das wenn man die Konstante $\tau$ bestimmt, z.B 2 Zeit Spannungs Wertepaare bestimmt, da man mit $C = \tau R$ die Kapazität berechnen kann.
-    Auch fällt auf, das immer $I(t)\propto e^{-t/\tau}$ gilt, und für den Auflade Vorgang auch $U_C(t) \propto e^{-t/\tau}$.
+    Das bedeutet, dass man die Konstante $\tau$ bestimmen kann wenn man Lade und Entlade Kurven betrachtet.
+    Dabei kann sowohl dier Stromstärke gemessen werden welche durch den Wiederstand fließt, wie auch die Spannung die über ihm abfällt, da diese proportional zur Spannung ist.
+    Auch fällt auf, das immer $I(t)\propto e^{-t/\tau}$ gilt, und für den Endladevorgang auch $U_C(t) \propto e^{-t/\tau}$.
     Beim Entladevorgan gilt: $U_C(t) - U_0 \propto e^{-t/\tau}$.
     Wenn man noch einen Offset, also ein Rauschen bei der Nullline, berücksichtigen möchte, kann man die Gleichungen verallgemeineren:
     \begin{equation}
-        U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) + U_{off} \ Aufladevorgang
+        U_C(t) = U_0 (1 - e^{-\frac{t}{RC}}) + U_{off} \qquad Aufladevorgang
     \end{equation}
     \begin{equation}
-        U_C(t) = U_0 e^{-\frac{t}{RC}} + U_{off} \ Entladevorgang
+        U_C(t) = U_0 e^{-\frac{t}{RC}} + U_{off} \qquad Entladevorgang
     \end{equation}
     \begin{equation}
-        I(t) = I_0 e^{-\frac{t}{RC}} + I_{off} \ Auf / Entladevorgang
+        I(t) = I_0 e^{-\frac{t}{RC}} + I_{off} \qquad Auf / Entladevorgang
     \end{equation}
 
 
@@ -177,9 +179,9 @@ In diesem Versuch soll sowohl Spannung als auch Strom am Wiederstand gemessen we
   \end{figure}
  
  Die Spannungsquelle ist hierbei das Sensor CASSY das Paralell zu dem Wiederstand angeschlossen wird. In Reihe dazu wird der Strom gemessen. 
- Ebenfalls parallel zum wiederstand wird die Spannung gemessen. Diese Schaltung kann mit dem Steckbrett und den Kabeln aufgebaut werden. 
+ Ebenfalls parallel zum Wiederstand wird die Spannung gemessen. Diese Schaltung kann mit dem Steckbrett und den Kabeln aufgebaut werden. 
  Die Spannung wird beim CASSY über Input B gemessen, und die Stromstärke über Input A. 
- Jeh nach wahl der Position der Masse der beiden Eingänge erhält man unterschiedliche Polung. Dies hat jedoch nur Einfluss auf das Vorzeichen der gemessenen Größen. 
+ Abhänging von der Wahl der Position der Masse der beiden Eingänge erhält man unterschiedliche Polungen. Dies hat jedoch nur Einfluss auf das Vorzeichen der gemessenen Größen. 
 
 \subsection{Durchführung des Versuchs zur Bestimmung des Wiederstands}
 Bei der Versuchsdurchführung haben wir wie bereits oben beschrieben die Schaltung aufgebaut.\\
@@ -203,7 +205,7 @@ Diese Messung konnten wir auch verwenden um unsere Messzeit sinnvoll ein zu stel
  
 
  Wir wollen sicherstellen, dass der statistische Fehler auf die Strom und Spannungsmessung kleiner ist als der Fehler aufgrund der Digitalisierung. 
- Da dieser durch mehr Messpunkte verkleinert werden k ann, wärend der Digitalisierungsfehler gleich bleibt.
+ Da dieser durch mehr Messpunkte verkleinert werden kann, wärend der Digitalisierungsfehler gleich bleibt.
  Dafür haben wir erst kurz überschlagen, wie groß der Digitalisierungsfehler ist. Daraus konnten wir bestimmen wieviele Messpunkte wir Mindestens brauchen um darunter zu liegen. 
  
  \begin{equation}
@@ -239,7 +241,7 @@ Da dies unseren Erwartungen entsprochen hat, haben wir unsere tatsächliche Mess
 Hierführ haben wir eine Spannung mit dem CASSY Eingestellt. Eine Messung durchgeführt, und die Daten gespeichert. Dies haben wir insgesamt für 10 verschiedene Spannungswerte gemacht. \\
 
 Im folgenden haben wir sämtliche Graphen, und Zahlenwerte mit hilfe des 
-programms "Cassy\_ Wiederstand.py"\ ermittelt und aus diesem übernommen. 
+programms "Cassy\_Wiederstand.py"\ ermittelt und aus diesem übernommen. 
  
 \subsection{Diskussion der Ergebnisse}
 Hier kann man die Häufigkeitsverteilung der einzelnen gemessenen Spannungen und Stromstärken sehen.
@@ -334,7 +336,7 @@ Mit der Methode der kleinsten Quadrate, kann aus den berechneten Mittelwerten un
 Im oberen Graphen sind die Mittelwerte von Spannung und Strom gegeneinander aufgetragen.
 Die grüne Gerade ist die Anpassung einer Geraden an die Wertepaare.
  
-Der untere Plot stellt dar, wie weit die Mittelwerte von der Linearen Regression abweichen. \\
+Der untere Plot stellt da, wie weit die Mittelwerte von der Linearen Regression abweichen. \\
 
 Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechnet:
 \begin{equation}
@@ -349,9 +351,9 @@ Den Fehler auf die Spannung im unteren Residualplot haben wir wie folgt berechne
   \end{figure}
 
 
-Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, die Fehler jedoch signifikanz zu groß sind. 
+Im Residualplot ist zu sehen, das unsere Messwerte um die linare Regression streuen, die Fehler jedoch signifikant zu groß sind. 
 Dies kommt wie bereits oben erwähnt von dem Digitalisierungsfehler auf die Stromstärke. 
-Da der Digitalisierungsfehler jedoch ein fester Wert ist, kann dieser nicht verkleinert werden. Die qualität der Anpassung kann also nicht verbessert werden durch selektierung der Daten.
+Da der Digitalisierungsfehler jedoch ein fester Wert ist, kann dieser nicht verkleinert werden. Die Qualität der Anpassung kann also nicht verbessert werden durch Sellektierung der Daten.
 
 Dem unteren Graphen kann man ebenfalls entnehmen, dass hier keine Systematiken vorliegen. 
 Zu bemerken ist, dass der im unteren Residuen Plot letzte Messwert, ausbricht (Die Anpassung liegt nicht mehr im Rahmen dessen Fehlers).
@@ -361,13 +363,13 @@ Der Außreißer ist die Messung bei 9V. Beim analysieren unserer Rohdaten fällt
 Dies könnte daran liegen, dass der Wiederstand sich bei dieser Spannung aufheizt, und somit größer wird, als sein eigentlicher Wert. 
 Da der Messvorgang jedoch nicht lange dauerte, und die 9V unsere erste Messung waren, also sich zu dem Zeitpunkt der Wiederstand am wenigsten aufgeheizt haben sollte ist es eher unwarscheinlich, dass die starke Abweichung daher kommt. \\
 
-Ein weiterer Maß für die qualität der Anpassung liefert das  $\frac{\chi^2}{ndof}$ Wobei hier "ndof"\ für die Anzahl der Freiheitzsgrade steht.
+Ein weiterer Maß für die Qualität der Anpassung liefert das  $\frac{\chi^2}{ndof}$ Wobei hier "ndof"\ für die Anzahl der Freiheitzsgrade steht.
 
 \begin{equation}
 ndof = N_{Werte} - N_{Parameter}
 \end{equation}
 
-in unserem Fall haben wir 10 Werte und 2 Parameter in der Linearen Regression.
+in unserem Fall haben wir 9 Werte und 2 Parameter in der Linearen Regression.
 
 Das $\chi^2$ ist dabei gegeben als:
 
@@ -382,7 +384,7 @@ Das b stammt ebenfalls aus der Linearen Regression, und bezeichnet den U-Achsen 
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{0.6\textwidth}{X X X}
+    \begin{tabularx}{0.7\textwidth}{X X X}
         \toprule
          \textbf{Freiheitsgrade}& $\pmb{\frac{\chi^2}{ndof}}$ & \textbf{b} \\
         \midrule
@@ -407,7 +409,7 @@ In dem oberen Plot sind ebenfalls Fehlerbalken, diese sind jedoch nicht zu sehen
 
 Bei einer guten Anpassung erwarten wir ein  $\frac{\chi^2}{ndof}$ von ungefähr 1. Unser Wert von 0.094 ist deutlich kleiner, was darauf schließen lässt, dass wir unsere Fehler überschätzt haben. 
 Dies liegt wie bereits oben erwähnt, an dem Digitalisierungsfehler auf I. Das lässt darauf schließen, dass unsere Annahme, dass es eine gute Wahl ist einen großen Wiederstand zu wählen falsch ist. 
-Zwar hat uns diese wahl ein größeres $\tau$ geliefert, was wie beim Oszilloskop Diskuttiert ebenfalls positive einflüsse auf die Messgenauigkeit hat. Da der kleinste Messbereich des CASSY jedoch -0.03A - 0.03A ist, überwiegt die daher stammende Ungenauigkeit jedoch.
+Zwar hat uns diese wahl ein größeres $\tau$ geliefert, was wie beim Oszilloskop diskutiert ebenfalls positive einflüsse auf die Messgenauigkeit hat. Da der kleinste Messbereich des CASSY jedoch -0.03A - 0.03A ist, überwiegt die daher stammende Ungenauigkeit jedoch.
 
 
 Aus der Steigung der Geraden, der Linearen Regression können wir nun den Wiederstand bestimmen. Aus der linearen Regression erhalten wir ebenfalls den statistischen Fehler auf R.
@@ -465,7 +467,7 @@ Damit ergibt sich:
   \begin{itemize}
   	\item TDS 200 4B Oszilloskop
   	\item Sensor CASSY 2
-  	\item Rastersteckplatte DINA A4
+  	\item Rastersteckplatte DIN A4
   	\item 10 $\mu$F Kondensator
   	\item 1 k$\Omega$ Wiederstand
   	\item Brückenstecker
@@ -480,7 +482,9 @@ Damit ergibt sich:
   der Messungen dies verringert den Messfehler. Allerdings führt dies auch dazu, dass nur wenig
   Strom durch den Wiederstand fließt. Ein großer Wiederstand erhöht also auch den Fehler auf 
   den Strom den wir später mit dem Sensor CASSY messen, da dieses nicht beliebig kleine 
-  Ströme messen kann. Hier ist ein größeres $\tau$ (Zeitkonstante) jedoch über eine größere
+  Ströme messen kann. 
+  Unsere Annahme ist hier, das ein größeres $\tau$ (Zeitkonstante) über eine größere Genauigkeit des Stroms zu wählen ist, da wir somit eine höhere Zeitauflösung haben.
+    Hier ist ein größeres $\tau$ (Zeitkonstante) jedoch über eine größere
   Genauigkeit des Stroms zu wählen. Noch größere Wiederstände hätten jedoch keinen Sinn ergeben, 
   da so der Strom nicht mehr gut messbar gewesen wäre.
   
@@ -520,7 +524,7 @@ Damit ergibt sich:
   Um auch kleine schwankungen nach oben noch aufzeichnen zu können, haben wir 7.1V gewählt. \\
   Zur Einstellung des Oszilloskops haben wir zunächst die Entladung des Kondensators betrachtet. 
   
-  \subsubsection{entladen des Kondensator}
+  \subsubsection{Entladen des Kondensator}
   
   Hierfür haben wir den Trigger auf CH2 auf 7.00V 
    steigende Flanke gestellt. Steigende Flanke ist hier sinnvoll, da auf Grund der Polung 
@@ -530,7 +534,7 @@ Damit ergibt sich:
   Einstellungen schließen. Ziel war es, möglichst viel vom Entladevorgang auf zu zeichnen, und 
   einen kurzen Zeitraum vor dem Entladen.
   wir haben die Zeiteinstellungen so gewählt, dass 5 $\tau$ auf unserem Bildschirm angezeigt
-  werden. So sind wir sicher gegangen, dass wir nur den relevanten teil der Entladung aufzeichnen, 
+  werden. So sind wir sicher gegangen, dass wir nur den relevanten Teil der Entladung aufzeichnen, 
   und nicht die Zeitspanne in welchem die Spannungen asymtotisch gegen null streben. 
 
 \begin{figure}[H]
@@ -562,7 +566,7 @@ Diese Einstellungen sind spezifisch für den Entladevorgang.
         \label{tab:mytable}
     \end{table}
 
-Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt. Um zu überprüfen ob diese passen und reproduzierbar sind.
+Wir haben die Messung der Entladung mit unseren neuen Einstellungen wiederholt, um zu überprüfen ob diese passen und reproduzierbar sind.
 
  
 
@@ -586,18 +590,7 @@ Und um sicher zu gehen, dass unsere Messung kein Ausreißer sind.
 
 Bei unseren Bildern vom Osziloskop haben wir diese mit der Osziloskop eigenen Funktion gemacht.
 Deshalb ist der Wert der Cursor auf den Bilder nicht mehr zu sehen, was uns erst im nachhinein aufgefallen ist.
-Wir haben aber alle Messwerte auf unsrem Messprotokoll notiert.
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.7\textwidth]{Bilder_Osziloskop/Entladen_Kondensator_02.pdf}
-    \caption{Endlade Vorgang vom Wiederstand und dem Kondensator}
-  \centering
-\end{figure}
-Oben Abgebildet ist der Spannungsverlauf am Kondensator (blau) und am Wiederstand (orange) während des Entladens.
-Hier ist zu beachten, das Channel 2 (der Kondensator) invertiert ist in der Darstellung.
-Diese Entladekurven ensprechen dabei unserer Erwartung, da die Spannung am Kondensator abnimmt und die Spannung am Wiederstand anfangs groß ist, und dann gegen 0 läuft.
-Nach Augenmaß verlaufen diese auch beide Exponentiellen, was den in den Grundlagen beschriebenen Entladevorgang entspricht.
+Wir haben aber alle Messwerte in unsrem Messprotokoll notiert.
 
 \subsubsection{Bestimmung des Ofset}
 Zum bestimmen des Offsets für die Entladung des Kondensator haben wir sowohl den Wert der Asymptote bestimmt, wie auch die Rauschspannung am Wiederstand.
@@ -653,7 +646,7 @@ In diesem Fall haben wir auch keins der Signale invertiert.
     
 Beim messen der Aufladung haben wir zunächst denn Schalter gedrückt und einige Sekunden gewartet, um sicher zu gehen, dass der Kondensator entladen war. 
 Dann haben wir den Schalter losgelassen un die Messung ist durch den Trigger automatisch gestartet. 
-Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim entladen jeh für Kondensator und Wiederstand 2 Messungen zur bestimmung von $\tau$ gemacht. 
+Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim entladen für Kondensator und Wiederstand 2 Messungen zur bestimmung von $\tau$ gemacht. 
 
 \begin{figure}[H]
   \centering
@@ -678,15 +671,15 @@ Diese erhalten wir indem wir den Quotienten von unserem Werte Paar nehmen und da
 	\tau = \frac{t_2 - t_1}{ln\left(\frac{U_1-U_{off}}{U_2-U_{off}}\right)}	
 \end{equation}
 
-Wobei wir hier noch den möglichen Ofset beachten müssen. \\
-Die obige Formel können wir jedoch nicht für den Aufladevorgang des Kondensators verwenden, wenn wir an diesem den Spannungsabfall messen, da die Funktion die diesen beschreibt von der Form $ y = 1 - e^x $ ist. 
+Wobei wir hier noch den möglichen Offset beachten müssen. \\
+Die obige Formel können wir jedoch nicht für den Aufladevorgang des Kondensators verwenden, da die Funktion die diesen beschreibt von der Form $ y = 1 - e^x $ ist. 
 In diesem Fall erhalten wir für die Zeitkonstante:
  
  \begin{equation}
  \tau = \frac{t_2 - t_1}{ln\left(\frac{U_0 - U_1}{U_0 - U_2}\right)}
 \end{equation}
 
-Somit können wir Die Zeitkonstante für unsere Messungen bestimmen. Auf Grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler.  \\
+Somit können wir die Zeitkonstante für unsere Messungen bestimmen. Auf Grund der ablesegenauigkeit kommt jedoch auf diesen noch ein Fehler.  \\
 
  
 \begin{figure}[H]
@@ -740,7 +733,7 @@ Hier haben wir beim ausrechnen vom Tau den Offset berücksichtigt.
 $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustand mit dem Oszilloskop gemessen haben.
 
 Am Anfang der Messung haben wir uns dafür entschieden, in einem möglichst großem Zeitintervall zu messen, da wir so weniger Unsicherheit auf die Zeit haben, und auch kleine Schwankungen beim Entladen ausgleichen können.
-Dabei haben wir darauf geachtet, das der erste Cursor mindestens $ \frac{1}{20} \tau $ nach dem Entlade beginn liegt.
+Dabei haben wir darauf geachtet, das der erste Cursor mindestens $ \frac{1}{20} \tau $ nach dem entlade beginn liegt.
 Da wir ein $\tau$ von $10ms$ haben, und unsere Analyse der Rohdaten auf dem Oszilloskop ergeben hat, dass wir dort keine Effekte des Schalters mehr haben, fanden wir dieses eine gute Annahme.
 Der Endpunkt der Messung haben wir dabei mindestens 120mV über der Grenzspannung gewählt, damit wir weit von Rauschen entfernt sind.\\
 Während der Messung haben wir gemerkt, das bei so kleinen Spannungen an der rechten Intervallsgrenze, die Ableseungenauigkeit der Spannung groß wird.
@@ -973,7 +966,7 @@ Für die Lineare Regression verwenden wir die Fehler wie oben beschrieben, diese
 
 $\sigma_U = 0.0014 V $
 
-$\sigma_I = 5.51 \quad 10^{-7} A $
+$\sigma_I = 4.24 \quad 10^{-6} A $
 
 Aus diesen Errgeben sich mit der Transformation folgende Vorschriften für die Fehler auf die Spannung und den Strom.
 
@@ -1200,4 +1193,5 @@ Mit dem Sensor Cassy hatten wir dafür die größte Genauigkeit auf $\tau$.
 %TODO : Verwendete Formelzeichen/ eingeführte größen benennen
 %TODO : Messprotokoll überarbeiten
 %TODO : Achsenbeschriftung und Grafiken Tabellen benennung überprüfen
+% systematischer fehler auf Verschiebemethode mit abblidung
 

@@ -205,6 +205,12 @@ def get_log_values(datei, x, y, z_I):
     return x.werte[start:end], y.werte[start:end], z_I.werte[start:end], lin_U, lin_I
  
 def lin_reg(x, y, y_err, y_label, plotname=''):
+    plt.rcParams['font.size'] = 28.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.linewidth'] = 0.75
+    plt.rcParams['lines.linewidth'] = 0.5
+    plt.rcParams['savefig.pad_inches'] = 1
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)

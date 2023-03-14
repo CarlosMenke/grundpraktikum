@@ -204,7 +204,7 @@ Bei unserer Ersten Testmessung hatten wir ein zu großes Stromintervall gewählt
 Diese Messung konnten wir auch verwenden um unsere Messzeit sinnvoll ein zu stellen. 
  
 
- Wir wollen sicherstellen, dass der statistische Fehler auf die Strom und Spannungsmessung kleiner ist als der Fehler aufgrund der Digitalisierung. 
+ Wir wollen sicherstellen, dass der statistische Fehler auf die Strom und Spannungsmessung kleiner ist als der Fehler Aufgrund der Digitalisierung. 
  Da dieser durch mehr Messpunkte verkleinert werden kann, wärend der Digitalisierungsfehler gleich bleibt.
  Dafür haben wir erst kurz überschlagen, wie groß der Digitalisierungsfehler ist. Daraus konnten wir bestimmen wieviele Messpunkte wir Mindestens brauchen um darunter zu liegen. 
  
@@ -667,7 +667,7 @@ Hier haben wir ebenfalls erst eine Testmessung durchgeführt, und dann wie beim 
 \end{figure}
 Die Abbildung zeigt den Spannungsverlauf von einem typischem Aufladevorgang.
 Hier haben wir nichts invertiert, da wir auch so die gleiche Nullline setzen konnten, und trotzdem das gesamte Display zum ablesen nutzen konnten.
-Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für die Auswerung allerdings Irrelevant ist.
+Dabei ist allerdings zu beachten das wir die Null ans obere Ende gesetzt haben, da Aufgrund von unserer Verkabelung die Spannung am Wiederstand sowie am Kondensator negativ waren, was für die Auswerung allerdings Irrelevant ist.
 Die Kondensatorspannung entfernt sich dabei immer weiter von der Nulllinie, und die Spannung am Wiederstand ist macht anfangs einen Sprung und fällt dann gegen Null ab.
 Nach augenmaß verlaufen beide Kurven exponentiell, was auch den exponentiellen Gleichungen für den Aufladevorgang entspricht.
 
@@ -713,7 +713,8 @@ Den untenstehenden Rechnungen können sie somit unsere Fehler auf U und t entneh
 \end{equation}
 
 
-Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ablesegenauigkeit statischtisch angenommen. Wobei wir eine Ungenauigkeit auf das ablesen der Zeit als auch auf die Amplitude haben. Die Fehlerfortplfanzung lautet somit: 
+Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf Grund der Ablesegenauigkeit statischtisch angenommen.
+Wobei wir eine Ungenauigkeit auf das ablesen der Zeit als auch auf die Amplitude haben. Die Fehlerfortplfanzung lautet somit: 
 
 \begin{equation}
 	\sigma_{\tau}^2 = \sum_{i,j=1}^n\left[\frac{\partial \tau}{\partial x_i}\frac{\partial \tau}{\partial x_j}\right]_{x=\mu}V_{ij}^2
@@ -721,7 +722,7 @@ Für die Bestimmung des Fehlers auf $\tau$ haben wir den Fehler auf grund der ab
 
 Wobei dies die Form für eine Größe mit zwei Variablen ist, diese kann jedoch problemlos auf n Variablen erweitert werden.
 Wir gehen davon aus, dass die Warscheinlichkeitsdichte zu unserem Fehler eine Gaußverteilung ist.
-Woraus wir schließen können, dass diese unkorreliert sind und sich somit der Fehler auf $\tau$ vereinfacht zu. 
+Des weiteren gehen wir davon aus, dass diese unkorreliert sind und sich somit der Fehler auf $\tau$ vereinfacht zu. 
 
 \begin{equation}
 	\sigma_{\tau}^2 = \sum_{i=1}^n\left[\frac{\partial \tau}{\partial x_i}\right]^2_{x=\mu}\sigma_{i}^2
@@ -743,15 +744,6 @@ Bei jeder Messreihe haben wir während der Messung $\tau$ überschlagen (ohne Fe
 Hier haben wir beim ausrechnen vom Tau den Offset berücksichtigt.
 $U_0$ ist hierbei die Spannung, welche wir am Kondensator im Aufgeladenen Zustand mit dem Oszilloskop gemessen haben.
 
-Am Anfang der Messung haben wir uns dafür entschieden, in einem möglichst großem Zeitintervall zu messen, da wir so weniger Unsicherheit auf die Zeit haben, und auch kleine Schwankungen beim Entladen ausgleichen können.
-Dabei haben wir darauf geachtet, das der erste Cursor mindestens $ \frac{1}{20} \tau $ nach dem entlade beginn liegt.
-Da wir ein $\tau$ von $10ms$ haben, und unsere Analyse der Rohdaten auf dem Oszilloskop ergeben hat, dass wir dort keine Effekte des Schalters mehr haben, fanden wir dieses eine gute Annahme.
-Der Endpunkt der Messung haben wir dabei mindestens 120mV über der Grenzspannung gewählt, damit wir weit von Rauschen entfernt sind.\\
-Während der Messung haben wir gemerkt, das bei so kleinen Spannungen an der rechten Intervallsgrenze, die Ableseungenauigkeit der Spannung groß wird.
-Wir werden also wengier Messfehler haben, wenn wir in einem kleineren Intervall messen.
-Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgang (Messung 5-8) den Startpunkt etwas weiter weg gewählt haben vom Anfangszeitpunkt.
-
- 
 \begin{table}[H]
         \centering
         \begin{tabularx}{1.00\textwidth}{l X X X X}
@@ -787,6 +779,15 @@ Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgan
         \label{tab:mytable}
     \end{table}
     
+Am Anfang der Messung haben wir uns dafür entschieden, in einem möglichst großem Zeitintervall zu messen, da wir so weniger Unsicherheit auf die Zeit haben, und auch kleine Schwankungen beim Entladen ausgleichen können.
+Dabei haben wir darauf geachtet, das der erste Cursor mindestens $ \frac{1}{20} \tau $ nach dem entlade beginn liegt.
+Da wir ein $\tau$ von $10ms$ haben, und unsere Analyse der Rohdaten auf dem Oszilloskop ergeben hat, dass wir dort keine Effekte des Schalters mehr haben, fanden wir dieses eine gute Annahme.
+Der Endpunkt der Messung haben wir dabei mindestens 120mV über der Grenzspannung gewählt, damit wir weit von Rauschen entfernt sind.\\
+Während der Messung haben wir gemerkt, das bei so kleinen Spannungen an der rechten Intervallsgrenze, die Ableseungenauigkeit der Spannung groß wird.
+Wir werden also wengier Messfehler haben, wenn wir in einem kleineren Intervall messen.
+Dieses haben wir ab Messung 3 umgesetzt, wobei ab Messung 5 wir beim Lade Vorgang (Messung 5-8) den Startpunkt etwas weiter weg gewählt haben vom Anfangszeitpunkt.
+
+ 
 
 \begin{figure}[H]
   \centering
@@ -800,7 +801,7 @@ Da dieser deutlich über dem von uns erwarteten Wert liegt, haben wir ihn in der
 Der gewichtete Mittelwert ist dann: $\tau = (9.98 \pm 0.044)ms$.\\
 
 Der von uns bestimmte Wiederstand geht hier nur mit einer Statistischen Unsicherheit ein, da egal wie oft man das Experiment am Osziloskop durchführt, sich die Unsicherheit auf ihn nicht ändert.
-Dieser ist die Addition von dem Statistischen und Systematischen Fehler vom Versuch der bestimmung des Wiederstandes.
+Dieser ist die Addition von dem Statistischen und Systematischen Fehler aus dem Versuch der Bestimmung des Wiederstandes.
 $ R = (995.5 \pm 12.2) \Omega$\\
 
 
@@ -814,9 +815,9 @@ Für den Statistischen Fehler verwenden wir die Gauss'sche Fehlerfortpflanzung u
     \sigma C_{Statistisch} = \sqrt{(\frac{1}{R})^2 \sigma_{\tau}^2} = 0.045 \mu F
 \end{equation}
 
-Für die Systematische Unsicherheit haben wir die linare Fehlerfortpflanzung verwendet.
+Für die Systematische Unsicherheit haben wir die ebenfalls die Gauss'sche Fehlerfortpflanzung verwendet.
 \begin{equation}
-    \sigma C_{Systematisch} = |\frac{\partial C}{\partial R} \sigma_R| = 0.123 \mu F
+    \sigma C_{Systematisch} = \sqrt{(\frac{\partial C}{\partial R} \sigma_R)^2} = 0.123 \mu F
 \end{equation}
 
 Damit ergibt sich für die Kapazität mit Unsicherheiten:
@@ -875,7 +876,7 @@ Wir messen außerdem am Wiederstand die Stromstärke, und nicht die Spannung.
         \label{tab:mytable}
     \end{table}
 
-Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll, um die möglichen Ofsets auf Strom und Spannung zu bestimmen.
+Wir haben auch einen Pritrigger verwendet von 500 Messpunkten. Dies ist sinnvoll, um die möglichen Offsets auf Strom und Spannung zu bestimmen.
 Für das Entladen des Kondensators haben wir diesen zunächst aufgeladen, und dann durch Drücken des Schalters die Entladung gestartet. 
 Die Messung ist durch die Triggereinstellungen automatisch gestartet.
 Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt gehalten, um sicher zu gehen, dass der Kondensator entladen ist, durch loslassen des Schalters startete die Messung.
@@ -885,8 +886,8 @@ Für den Aufladevorgang, haben wir den Schalter erst einige Sekunden gedrückt g
 Hier ist ein typischer Entladeverlauf des Kondensator zu sehen, welche wir mit dem Progrmam Cassy\_Kondensator generiert haben.
 Im folgenden Führen wir alle Rechnungen und Erstellungen von Graphen mit diesem Programm aus.\\
 
-    Dabei ist hierbei keiner der Graphen inertiert.
-    Diese ist dadurch charakterisiert, das der Strom anfangs sowie am Ende 0 ist, und nach einem anfänglichen Sprung nach Augenmaß exponentiell fällt.
+    Dabei ist hierbei keiner der Graphen invertiert.
+    Der Graph des  Stroms ist anfangs sowie am Ende 0, und nach einem anfänglichen Sprung nach Augenmaß exponentiell fällt.
     Die Spannung fällt dabei ebenfalls ca. exponentiell von der Anfangsspannung auf 0 ab.
     Auch ist in den Graphen der Pretrigger gut zu sehen.
 \begin{figure}[H]
@@ -896,7 +897,7 @@ Im folgenden Führen wir alle Rechnungen und Erstellungen von Graphen mit diesem
   \centering
 \end{figure}
  
-Unten ist ein Beispielhafter Spannungs und Stromverlauf vom aufladen zu sehen.
+Unten ist ein Beispielhafter Spannungs und Stromverlauf vom Aufladen zu sehen.
 Dabei ist darauf zu achten, das die Achse für die Stromstärke hier anders skaliert ist als beim entladen.
 Die Stromstärke fällt auch hier nach einem Anfänglichem starken anstieg ca. exponentiell ab.
 Die Spannung steigt dabei auf die Grenzspannung an.
@@ -910,10 +911,10 @@ Die Spannung steigt dabei auf die Grenzspannung an.
 \subsubsection{Bestimmung des Ofsets auf Strom und Spannung}
 
 Zum bestimmen der Offsets des Stroms und der Spannung, am dem Kondensator, haben wir den Mittelwert der Datenpunkte genommen, welche wir vor dem Aufladevorgang aufgenommen haben.
-wir gehen davon aus, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, somit ist das ein sinnvolles Vorgehen zur bestimmung des Ofsets.
+wir gehen davon aus, das alle Spannungswerte die angenommen werden gleich warscheinlich sind, somit ist das ein sinnvolles Vorgehen zur Bestimmung des Ofsets.
 Da wir einen Pretrigger von 500 Messpunkten eingestellt hatten, haben wir dort genügent Datenpunkte um zu bestimmen wie weit der Strom bzw. die Spannung von der Nullinie abweicht.
-Wir allerdings die letzten 10 Messpunkte nicht mit einbezogen, da dort der Aufladevorgang bereits startete.
-In der Graphik erkennt man gut, dass die 450 Messpunkte vor dem Aufladevorgang nur rauschen war.
+Wir haben allerdings die letzten 10 Messpunkte nicht mit einbezogen, da dort der Aufladevorgang bereits startete.
+In der Graphik erkennt man gut, dass die 490 Messpunkte vor dem Aufladevorgang nur rauschen waren.
 \begin{figure}[H]
   \centering
     \includegraphics[width=0.9\textwidth]{plots/messung-offset.pdf}
@@ -929,7 +930,7 @@ $U_{Offset} = 0.0098 V$
 
 Für den Aufladevorgang des Kondensators ist ebenfalls $U_0$ von Relevanz. Also die Spannung welche der Kondensator hat wenn er komplett aufgeladen ist. 
 Diese kann man den Daten bestimmen die wir vor dem Entladevorgang aufgezeichnet haben. 
-Für die spätere Linearisierumg der daten, brauchen wir ebenfalls $I_0$ Also der maximale Strom der fließt. Diesen kann man mithilfe eines Peakfinders aus unseren Messdaten bestimmen.
+Für die spätere Linearisierumg der Daten, brauchen wir ebenfalls $I_0$, der maximale Strom der fließt. Für diesen haben wir betragsmäßig das Maximum der Stromstärke genommen.
 Hier ist er irrelevant ob man den Lade oder entladevorgang betrachtet.\\
 
 $ I_0 = Platzhalter A$
@@ -941,12 +942,12 @@ $ U_0 = 9.01 V $
 
 Ziel unserer Messung ist es aus den Lade und Entladekurven die Zeitkonstante $\tau$ zu bestimmen. 
 Dies könnte man bestimmen, indem man eine Expondentialfunktion an die Datenpunkte  anpasst.
-Da dies jedoch ein aufwändiges Verfahren ist, ist es hier einfacher die Daten zu linearisieren und dann andiese eine lineare Regression an zu passen. 
+Da dies jedoch ein aufwändiges Verfahren ist, ist es hier einfacher die Daten zu linearisieren und dann an diese eine lineare Regression an zu passen. 
 Da in unserem Fall die Spannungs und Stromwerte einer Expondentialfunktion folgen, müssen wir unsere Messwerte Logarythmieren, so wie die Fehler auf diese.\\
 
 Da wir in unserer Messung der Ladevorgänge die gleichen Messwertserfassungseinstellungen verwendet haben wie bei der Bestimmung des Wiederstands, können wir den statistischen Fehler den wir bei diesem auf Strom und Spannung bestimmt haben verwenden. 
-In diesen fließen sowohl der Fehler aufgrund der Digitalisierung ein, als auch aufgrund der statistischen fluktuation der Spannungs und Stromwerte.
-Wie Sie tabelle  \ref{tab:Tabelle 3} und \ref{tab:Tabelle 4} sehen können, sind die Fehler auf diese bei allen Werten für V zimlich ähnlich. 
+In diesen fließen sowohl der Fehler Aufgrund der Digitalisierung ein, als auch Aufgrund der statistischen fluktuation der Spannungs und Stromwerte.
+Wie Sie  in Tabelle  \ref{tab:Tabelle 3} und \ref{tab:Tabelle 4} sehen können, sind die Fehler auf diese bei allen Werten für V zimlich ähnlich. 
 Also können wir für den Fehler auf die Spannungen und Ströme in den Ladevorgängen den Mittelwert dieser Fehler verwenden.
 
 Wir transformieren unsere Messungen und Fehler nach folgender Vorschrift:
@@ -1000,7 +1001,7 @@ Hier einmal eine Darstellung, für Spannng und Stromstärke wo das gesamte Inter
 \end{figure}
 
 Um die Randeffekte vom Schalter zu vernachlässigen haben wir die ersten 60 Messwerte nach dem Entlade/Aufladebeginn nicht berücksichtigt.
-Zudem sieht man, wie man am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 560 bis 610 betrachtet.
+Zudem sieht man, wie am Ende nur noch Rauschen ist. In der Linearen Regression haben wir die Messwerte 560 bis 610 betrachtet.
 In diesem Intervall sind 50 Messpunkte, und es ist $\frac{1}{4}\tau$ lang. Dies Intervall ist ausreichend groß für die Lineare Regression.  
 Hier einmal Beispielhaft die linarisierten Daten von einer Messreihe in diesem Intervall.
 Hier kann man sehr gut sehen, dass in diesem Bereich die Werte einer Linearen Funktion folgen.
@@ -1023,14 +1024,14 @@ Da wir aber in jeder Messreihe sowohl die Spannung am Kondensator als auch die S
 Insgesamt werden wir dann 16 Werte für $\tau$  haben.\\
 
 Die Statistischen Fehler auf $\tau$ können wir der Linearen Regression entnehmen. 
-Die Steigung der Geraden a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
+Die Steigung der Geraden a entspricht  $ a = -\frac{1}{\tau} \Rightarrow \quad \tau = - \frac{1}{a}$  Damit können wir den Fehler auf $\tau$ quadratisch fort zu pflanzen. Somit ist der statistische Fehler auf $\tau$:
 
 \begin{equation}
 	\sigma_{\tau}^2 = \left(\frac{1}{a^2}\right)^2 \sigma_a^2
  \end{equation}
  
-In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der Fehler auf die Zeit aufgrund des gewählten Messintervalls.
-Auch der Fehler auf U und I aufgrund der statistischen fluktuaton wird beachtet. 
+In diesen Fehler fließen sowohl der Digitalisierungsfehler auf die Spannung und die Stromstärke ein als auch der Fehler auf die Zeit Aufgrund des gewählten Messintervalls.
+Auch der Fehler auf U und I Aufgrund der statistischen fluktuaton wird beachtet. 
 Diese haben wir aus der Fehlerbestimmung die wir bei der Messung des Wiederstands gemacht haben genommen und wie vorher erkälrt fortgepflanzt und für die Linare Regression verwendet.\\
 
 Zur Unterstützung unserer Annahme, dass die Qualität der Anpassung sich verbessert, wenn wir nur 50 Werte verwenden hier exemplarisch dargestellt die Lineare Regression mit 200 Messpunkten.\\
@@ -1042,8 +1043,8 @@ Zur Unterstützung unserer Annahme, dass die Qualität der Anpassung sich verbes
     \centering
 \end{figure}
 
-An der unterne Grafik kann man sehen, dass die Messwerte gegen Ende der betrachteten Zeitspanne deutlich mehr streuen als am Anfang. 
-Die qualität der Linearen Regression nimmt also ab wenn wir diese inkludieren.
+An der oberen Grafik kann man sehen, dass die Messwerte gegen Ende der betrachteten Zeitspanne deutlich mehr streuen als am Anfang. 
+Die Qualität der Linearen Regression nimmt also ab wenn wir diese inkludieren.
 Im Folgenden verwenden wir für die Auswertung das oben diskutierte Intervall mit 50 Messpunkten.  \\ 
 
  
@@ -1064,7 +1065,7 @@ Hier ist der Fehlerbalken auf die Punkte gegeben als $\pm \sigma_{linU}$ bzw. $\
 Wie zu sehen ist für die Messung der Stromstärke, streuen die Messwerte gleichmäßig um die Anpassung und folgen keiner Systematik.
 Das bedeutet das wir die Offsets richtig bestimmt und verwenden haben.
 Allerdings ist der verwendete Fehler etwas zu klein abgeschätzt worden, weshabl die Linare Regression fast nirgendwo innerhalb des Fehlers liegt.
-Dies kann daran liegen, dass wir einen Fehler nicht betrachtet haben der noch mit einfluss nimmt auf unsere Messung. Jedoch ist uns keiner eingefallen. 
+Dies kann daran liegen, dass wir einen Fehler nicht betrachtet haben der noch mit Einfluss nimmt auf unsere Messung. Jedoch ist uns keiner eingefallen. 
 
  
 \begin{figure}[H]
@@ -1075,7 +1076,7 @@ Dies kann daran liegen, dass wir einen Fehler nicht betrachtet haben der noch mi
 \end{figure}
  
  Dies ist die Anpassung an die gemessenen Spannungswerte an dem Kondensator. Diese streuen ebenfalls um die Lineare regression, und es ist keine Systematik fest zu stellen. 
- Im vergleich zu der Stromstärke passt hier jedoch der Fehler besser zu der Anpassung. 
+ Im Vergleich zu der Stromstärke passt hier jedoch der Fehler besser zu der Anpassung. 
  Diese kann daran liegen, dass wir bei der Spannung das Messintervall besser ausgenutzt haben.
  Da wir für die Lineare Regression nur Datenpunkte vom Anfang des Lade/Entladevorgangs verwendet haben, liegen diese noch rellativ nahe an der Bereichsobergrenze.\\
  
@@ -1099,7 +1100,7 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
             Endladen & 0.0102 & 4.9 & 1.3 \\
             \bottomrule
         \end{tabularx}
-        \caption{$\tau$ aus der Linearen Regression}
+        \caption{$\tau$ aus der Linearen Regression der Spannungswerte}
         \label{tab:mytable}
     \end{table}
     
@@ -1121,7 +1122,7 @@ Aus der Linearen Regression erhalten wir folgende Werte für die Zeitkonstante u
              
             \bottomrule
         \end{tabularx}
-        \caption{$\tau$ aus der Linearen Regression}
+        \caption{$\tau$ aus der Linearen Regression der Stromwerte}
         \label{tab:mytable}
     \end{table}
     
@@ -1130,7 +1131,7 @@ Wie man den Tabellen entnehmen kann, stimmen die Werte die wir für $\tau$ erhal
 Jedoch ist wie zu erwarten der Fehler auf des Ergebnis der Strommessung signifikant größer. 
 
 
-In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen. Dabei sind die Werte für die Lineare Regression der Spannung relativ nahe an eins.
+In der letzten Spallte der Tabelle sind jewails die $\frac{\chi^2}{ndof}$ für die Anpassungen gegeben. Dabei sind die Werte für die Lineare Regression der Spannung relativ nahe an eins.
 Dies war aus dem Residuenplot bereits zu erwarten. Somit können wir schließen, dass unsere Messungen und auch Auswertung des Spannungsabfalls am Kondensator nahe an der Realität sind. 
 Auch der Fehler auf $\tau$ liegt hier bei 5 $\mu s$ was eine Abweichung von etwa 0.05\% entspricht.  
 Das Ergebnis auf $\tau$ ist also sehr genau wenn man nur den Statistischen Fehler betrachtet.\\
@@ -1161,9 +1162,11 @@ Daraus ergibt sich das Gewichtete Mittel zu:
 
 In dem Residuenplot können Sie sehen, dass unsere $\tau$ um dem Mittelwert streuen (Orangene Linie). 
 Nur in wenigen Fällen liegt jedoch die Abweichung innerhalb des Fehlers den wir auf $\tau$ bestimmt haben. 
+Die Punkte mit den größeren Fehlerbalken sind aus der Strom Messung.
 
 
-Zur bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein. 
+Zur Bestimmung der Kapazität müssen wir $\tau$ noch durch den Wiederstand teilen. Hier geht der Fehler auf den Wiederstand den wir bestimmt haben Systematisch ein.
+Dabei sind wir hier gleich vorgegangen, wie bei der Berechnung der Kapazität beim Osziloskop, wobei auch für die Fehlerfortpflanzung die gleichen Formeln verwerndet wurden.
 \begin{equation}
     C = (10.21 \pm 0.0017_{statistisch} \pm 0.125_{systematisch}) \mu F
 \end{equation}

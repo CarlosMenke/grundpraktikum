@@ -233,17 +233,18 @@ R_orig,eR,b_orig,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean,
 R_oben,eR,b_oben,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean + u_syst, stromstaerke_stat, spannung_stat)
 R_unten,eR,b_unten,eb,chiq,corr = analyse.lineare_regression_xy(stromstaerke_mean, spannung_mean - u_syst, stromstaerke_stat, spannung_stat)
  
-plt.rcParams['font.size'] = 14.0
+plt.rcParams['font.size'] = 20.0
 fig = plt.figure(figsize=(20,10))
 
 x = stromstaerke_mean
 plt.plot(x, R_oben*x+b_oben, color='blue')
-plt.plot(x, spannung_mean + u_syst, marker='o', markeredgecolor='red', linewidth=2)
+plt.plot(x, spannung_mean + u_syst, marker='o', markeredgecolor='red', linewidth=2, label = 'nach oben Verschoben')
 plt.plot(x, R_orig*x+b_orig, color='green')
 plt.plot(x, R_unten*x+b_unten, color='red')
-plt.plot(x, spannung_mean - u_syst, marker='o', markeredgecolor='red', linewidth=2)
+plt.plot(x, spannung_mean - u_syst, marker='o', markeredgecolor='red', linewidth=2, label = 'nach unten verschoben')
 plt.title('Verschiebemethode fuer den systematischen Fehler der Spannung')
 plt.xlabel('$I$ / A')
 plt.ylabel('$U$ / V')
+plt.legend()
 
 plt.savefig("../plots/" + 'verschiebemethode_spannung.pdf', bbox_inches = 'tight')

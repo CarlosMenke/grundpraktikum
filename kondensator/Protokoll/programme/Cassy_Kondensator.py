@@ -288,15 +288,16 @@ def plot_tau_errorbar(y, yerr, plotname):
     plt.rcParams['savefig.pad_inches'] = 1
      
     fig, ax = plt.subplots()
-    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
-    plt.ylabel("Tau in ms")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Tau mit Fehler")
+    plt.ylabel("Tau in s")
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Errorbar Plot für alle tau")
     ax.yaxis.set_label_coords(-0.2,0.50)
     plt.grid()
-    plt.plot(range(1, len(y)+1), 0.01016*np.ones(16), linewidth = 1.5)
+    plt.plot(range(1, len(y)+1), 0.01016*np.ones(16), linewidth = 1.5, label = "Mittelwert")
+    plt.legend()
     plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
     
 plot_tau_errorbar(tau_einzeln, tau_einzeln_stat, 'Errorbar Plot für alle Tau')

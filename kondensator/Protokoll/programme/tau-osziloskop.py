@@ -36,14 +36,16 @@ def plot_tau_errorbar(x, y, yerr, plotname):
     plt.rcParams['savefig.pad_inches'] = 1.1
      
     fig, ax = plt.subplots()
-    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5)
-    plt.ylabel("Tau in ms")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Tau mit Fehler")
+    plt.ylabel("Tau in s")
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Messung mit dem Oszilloskop")
     ax.yaxis.set_label_coords(-0.2,0.50)
     plt.grid()
+    plt.plot(range(1, len(y)+1), 0.009982*np.ones(8), linewidth = 1.5, label = "Mittelwert")
+    plt.legend()
     plt.savefig(PLOTS_DIR + plotname + ".pdf", bbox_inches='tight')
 
 

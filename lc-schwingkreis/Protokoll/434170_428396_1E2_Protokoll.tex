@@ -1,0 +1,115 @@
+\documentclass[twoside]{protokoll}
+\usepackage{graphicx}
+\usepackage{tabularx} % for better table formatting
+\usepackage{booktabs} % for better table formatting
+\usepackage{float} 
+\praktikum{I}
+\usepackage{subfig}
+\usepackage{amsmath}
+
+\versuchsgebiet{(Akustik)}
+
+
+\teilnehmer{Maximilian Carlos Menke, 434170}
+\teilnehmer{Andrea Roth, 428396}
+\gruppe{A3}
+
+\begin{document}
+ 
+\section{1E3 Gekoppelte LC-Schwingkreise}
+
+\begin{aufgabe}{Grundlagen}
+  Knappe Beschreibung der theoretischen Grundlagen, Angabe der
+  benötigten Formel(n), ohne Herleitung. Definition der verwendeten
+  Formelzeichen.
+\end{aufgabe}
+
+\begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
+  Beschreibung des Versuchsaufbaus einschließlich
+  Schaltbild. Beschreibung der Versuchsdurchführung: verwendete
+  Messwerterfassungseinstellungen, Messbereiche, Triggerbedingungen,
+  etc.
+\end{aufgabe}
+ 
+\subsection{Materialien}
+Zuerst haben zwei einfache Schwingkreise aufgebaut.
+Wir hatten uns bei der Kapazität des Kondensator zu beginn für den mit der größten Kapazität entschieden, da wir dann eine geringere Eigenfrequenz haben und dadurch bei der Messung eine besser Auflösung erreichen (da $ f \propto \frac{1}{\sqrt{C}} $ ).
+Bei der Induktivität der Spule mussten wir abwägen, da einerseits eine geringere Frequenz und der höheren Kopplungsrate bei einer höheren Induktivität vorliegen ( da $ f \propto \frac{1}{\sqrt{L}} $ ).
+Andererseits bedeutet eine höhere Induktivität bei unsren Spulen auch eine höhere Windungsanzahl, was mit einem erhöten Innenwiederstand verknüpft ist.
+Darum haben wir nicht die größte Spule genommen, sondern eine mittlere. \\
+
+ 
+\textbf{Material Liste}
+\begin{itemize}
+  \item 2x Spule $9mH$
+  \item 2x Kondensator $10 \mu F$
+  \item Spannungsqelle vom Cassy
+  \item Schalter
+  \item Kabel
+  \item Steckplatte DIN A4
+\end{itemize}
+
+\subsection{Aufbau}
+Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{schaltplan-einzelschwingkreis.pdf}
+    \caption{Aufbau der Schwingkreise}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{bilder/schwingkreis1.pdf}
+    \caption{Aufbau des 1. Schwingkreises}
+\end{figure}
+   
+Zudem haben wir mit der 2. Spule und dem 2. Kondensator einen zweiten Schwingkreis aufgebaut.
+Die Schaltskizze des 2. Schwingkreises ist gleich zu dem des 1.
+Insgesammt hatten wir 2 getrennte Schwingkreise, aber nur einen Schalter und eine Spannungsqelle (da wir die Schingkreise später koppeln werden).
+Des haben wir die Spannungsqelle und den Schalter dann jeweils umgesteckt, da wir den Kondensator und die Spule einzeln vermessen wollten.
+
+
+\subsection{Durchführung}
+Zuerst haben wir den 2. Schwingkreis vermessen.
+Dafür haben wir zuerst eine Spannung von $U_0 = 6.2V$ angelegt.
+Dabei startet die Schwingung im Schwingkreis in dem Moment, wo man den Taster drückt, da sich jetzt der Kondensator anfangen kann zu entladen.
+Damit der Schwingkreis sauber schwingen kann, muss der Taster auch während der gesamten Messung gedrückt bleiben.
+Entsprechend haben wir den Trigger vom Cassy auf 6.1V fallende Flanke gestellt. Wir haben wir 6.1V
+
+ 
+
+\begin{aufgabe}{Vorversuch: Charakterisierung der verwendeten Bauteile}
+  Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
+  bzw. Messbrücke.
+\end{aufgabe}
+
+
+\begin{aufgabe}{Ungekoppelte Schwingung}
+  Zeigen Sie den Verlauf der Kondensatorspannungen für den
+  ungekoppelten Fall und bestimmen Sie die Schwingungsfrequenz samt
+  Messunsicherheit. Vergleichen Sie sie mit Ihrer Erwartung.
+\end{aufgabe}
+
+
+\begin{aufgabe}{Gekoppelte Schwingung: Schwebung}
+  Stellen Sie für einen festen Kopplungsgrad $k$ eine Schwebung
+  dar. Zeigen Sie jeweils die Fourierspektren, bestimmen Sie die
+  Eigenfrequenzen und daraus den Kopplungsgrad sowie dessen
+  Messunsicherheit. Bestimmen Sie die zeitliche Verschiebung
+  $\Delta{}t$ zwischen den beiden Einhüllenden der Schwebungen der
+  beiden Kondensatoren und vergleichen Sie sie mit Ihrer
+  Erwartung. Stellen Sie dar, wie sich das Frequenzspektrum mit dem
+  Abstand der Spulen ändert. Untersuchen Sie die Verstärkung der
+  Kopplung durch Verwendung eines Eisenkerns in den beiden Spulen.
+\end{aufgabe}
+
+
+\begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
+  Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
+  beiden Fundamentalschwingungen dar. Zeigen Sie jeweils die
+  Fourierspektren und bestimmen Sie die zugängliche
+  Eigenfrequenz. Berechnen Sie den Kopplungsgrad sowie dessen
+  Messunsicherheit. Vergleichen Sie mit den Werten aus der Schwebung.
+\end{aufgabe}
+   
+   
+\end{document}

@@ -49,10 +49,29 @@ Als Einflussfaktoren auf den Kopplungsgrad wird das Variieren des Abstands der S
 Im letzten Teilversuch werden nun beide Kondensatoren mit der gleichen Spannungsquelle geladen. 
 So, dass der Strom ein mal gleichsinnig durch die Spulen läuft und ein mal gegensinnig. Die Schwingungen haben wir wieder an beiden Kondensatoren gemessen, und daraus die Frequenzen $f_+$ und $f_-$ bestimmt. 
  
+
+\begin{aufgabe}{Vorversuch: Charakterisierung der verwendeten Bauteile}
+  Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
+  bzw. Messbrücke.
+\end{aufgabe}
+
+Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mit unseren Erwartungen haben wir die Bauteile charakterisiert. 
+
+
+
+\begin{aufgabe}{Ungekoppelte Schwingung}
+  Zeigen Sie den Verlauf der Kondensatorspannungen für den
+  ungekoppelten Fall und bestimmen Sie die Schwingungsfrequenz samt
+  Messunsicherheit. Vergleichen Sie sie mit Ihrer Erwartung.
+\end{aufgabe}
+
+ 
 \subsection{Materialien}
+
 
 Vor Beginn des Versuchs haben wir unsere Bauteile gewählt. Wir hatten uns erst für einen $10\mu F$ Kondensator entschieden und eie Spule mit 500 Windungen.
 Dies erachteten wir als Sinnvoll da wir wissen, dass $ f \propto \frac{1}{LC}$ gilt. 
+
 So haben wir eine niedrigere Frequenz als bei kleineren Kondensatoren. 
 Diese Spule haben wir gewählt, da eine Spule mit weniger Windungen zwar geringeren Wiederstand hat aber auch eine geringere Kopplung. Eine Spule mit mehr Windungen würde zwar die Kopplung vergrößern, jedoch auch den Wiederstand. \\
 
@@ -91,27 +110,33 @@ Insgesammt hatten wir 2 getrennte Schwingkreise, aber nur einen Schalter und ein
 Des haben wir die Spannungsqelle und den Schalter dann jeweils umgesteckt, da wir den Kondensator und die Spule einzeln vermessen wollten.
 
 
+
 \subsection{Durchführung}
-Zuerst haben wir den 2. Schwingkreis vermessen.
-Dafür haben wir zuerst eine Spannung von $U_0 = 6.2V$ angelegt.
+Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei diser Spannung die Maximale Stromstärke der Spule ( $2.5A$ ) nicht überschritten wird.
+Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
+Diese Testmessungen haben wir aber noch mit unserer 'alten' Kapazität gemacht ( $C = 10 \mu F$ ), aber beim verbauen der neuen wiederholt.
+Beim einbauen der neuen haben wir die Messparameter aber wie unten beschieben angepasst.
+Dafür haben wir die Periodendauer als Näherung ohne Wiederstand (da dieser für eine grobe Abschätzung vernachlässigbar klein ist) überschlgen:
+\begin{equation}
+    T = 2 \pi \sqrt{LC} = 2 \pi \sqrt{9mH \cdot 2.2 \mu F} = 884 \mu s
+\end{equation}
+Nach dem Nequisst Theorem muss die Abtastrate mindestens doppelt so groß sein wie die Frequenz.
+Um noch etwas sicherheitspuffer zu haben, und da diese Messung nur eine abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das 10x ist.
+
+Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformation (FFT).
+ 
+ 
 Dabei startet die Schwingung im Schwingkreis in dem Moment, wo man den Taster drückt, da sich jetzt der Kondensator anfangen kann zu entladen.
 Damit der Schwingkreis sauber schwingen kann, muss der Taster auch während der gesamten Messung gedrückt bleiben.
-Entsprechend haben wir den Trigger vom Cassy auf 6.1V fallende Flanke gestellt. Wir haben wir 6.1V
+Entsprechend haben wir den Trigger vom Cassy auf 6.1V fallende Flanke gestellt um die Messung zu starten.
+Dabei haben wir 6.1V gewählt, da so noch der großteil der ersten Schwingungsperiode mit aufgezeichnet wird.
+0.1V Abstand (6.2V - 6.1V )war mehr als ausreichend, um nicht spontan gestartet zu werden, aber noch weit genug entfernt um eventuelle Störeffekte vom Schalter kurz nach dem Schalten zu unterbinden.
+Den 2. Schwingkreis haben wir dabei 10 mal vermessen, um die Statistische Unsicherheit auf die Frequenz zu bestimmen.
+Beim Cassy 
 
- 
 
-\begin{aufgabe}{Vorversuch: Charakterisierung der verwendeten Bauteile}
-  Charakterisieren Sie die verwendeten Bauteile mit Digitalvoltmeter
-  bzw. Messbrücke.
-\end{aufgabe}
 
-Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mit unseren Erwartungen haben wir die Bauteile charakterisiert. 
-
-\begin{aufgabe}{Ungekoppelte Schwingung}
-  Zeigen Sie den Verlauf der Kondensatorspannungen für den
-  ungekoppelten Fall und bestimmen Sie die Schwingungsfrequenz samt
-  Messunsicherheit. Vergleichen Sie sie mit Ihrer Erwartung.
-\end{aufgabe}
+Den 1. Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.
 
 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}

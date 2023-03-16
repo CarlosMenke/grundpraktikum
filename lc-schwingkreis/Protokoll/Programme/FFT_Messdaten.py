@@ -133,10 +133,11 @@ def cassy_hist(datei: str, x: str, y: str):
     
 
 peak = []
-plots = ['schwingkreis_2_01']
+plots = ['schwingkreis_2_01', 'alt-test-50us.labx']
 
 for filename in sorted(os.listdir(cassy_dir)):
-    if 'schwingkreis_2' in filename:
+    #if '.labx' in filename:
+    if 'test' in filename and '50'  in filename:
         if SHOW_PLOTS:
             cassy_plot(cassy_dir + filename, "t", "U_A1", filename[:-5], False)
         else:

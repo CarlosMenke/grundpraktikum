@@ -7,6 +7,7 @@ Created on Thu Mar 16 17:11:50 2023
 """
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 from praktikum import analyse
 from praktikum import cassy
 from pylab import *
@@ -177,19 +178,41 @@ def f_max(datei: str, x: str, y: str):
     a = np.where(amp_fft == f)[0][0]
     return a
  
+def plot_fpeak_errorbar(y, yerr, mean, plotname):
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.linewidth'] = 0.75
+    plt.rcParams['lines.linewidth'] = 0.5
+    plt.rcParams['savefig.pad_inches'] = 1
+     
+    fig, ax = plt.subplots()
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Tau mit Fehler")
+    plt.ylabel("Frequenzen / Hz")
+    plt.autoscale()
+    formatter = ticker.ScalarFormatter(useOffset=False)
+    ax.yaxis.set_major_formatter(formatter)
+    plt.title("Errorbar der Eigenfrequenz von Schwingkreis 2")
+    ax.yaxis.set_label_coords(-0.2,0.50)
+    plt.grid()
+    plt.plot(range(1, len(y)+1), mean*np.ones(len(y)), linewidth = 1.5, label = "Mittelwert")
+    plt.legend()
+    plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
  
 peak = []
-plots = ['schwingkreis_2_01', 'alt-test-50us.labx']
+plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'alt-test-50us']
 
 for filename in sorted(os.listdir(cassy_dir)):
     if '.labx' in filename:
         if SHOW_PLOTS:
             cassy_plot(cassy_dir + filename, "t", "U_A1", filename[:-5])
-        else:
-            for plot in plots:
-                if plot in filename:
-                    cassy_plot(cassy_dir + filename, "t", "U_A1", filename[:-5])
+ 
+cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0])
+cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1])
+cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2])
          
+cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
+cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01_zoom', 200)
 cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01', -1)
 cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01_zoom', 200)
  
@@ -202,6 +225,7 @@ freq_peak = np.array(peak)
 
 f_mean = np.mean(freq_peak)
 f_stad = np.std(freq_peak, ddof=1)
+plot_fpeak_errorbar(freq_peak, f_stad * np.ones(len(freq_peak)), f_mean, 'f_peak')
 
 print('Mittelwert der Frequenzen', f_mean)
 print('Standartabweichung der Einzelwerte', f_stad)

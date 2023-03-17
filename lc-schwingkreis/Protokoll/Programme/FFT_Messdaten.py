@@ -182,7 +182,7 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
         
      # Fourier-Transformation mit Gezoomtem Intervall
     delta_2 = 50
-    a = f_max(datei, x_str, y_str)
+    a = f_max(datei, x_str, y_str)[0]
     plt.figure()
     plt.title(plotname)
     plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='red')
@@ -225,7 +225,7 @@ def f_max(datei: str, x: str, y: str):
     freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
     f = np.max(amp_fft)
     a = np.where(amp_fft == f)[0][0]
-    return a
+    return a, freq_fft[a]
  
 def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.rcParams['font.size'] = 12.0
@@ -244,7 +244,7 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Errorbar der Eigenfrequenz von Schwingkreis 2")
     ax.yaxis.set_label_coords(-0.2,0.50)
-    plt.plot(range(1, len(y)+1), mean*np.ones(len(y)), linewidth = 1.5, label = "Mittelwert: " + mean.astype(str))
+    plt.plot(range(1, len(y)+1), mean*np.ones(len(y)), linewidth = 1.5, label = "Mittelwert: " + round(mean, 1).astype(str))
     plt.legend()
     plt.savefig("../plots/" + plotname + ".pdf", bbox_inches='tight')
  
@@ -271,21 +271,21 @@ peak_2 = []
 # read in data
 for filename in sorted(os.listdir(cassy_dir)):
     if 'schwingkreis_2' in filename and '.labx' in filename:
-        peak_2.append(f_max(cassy_dir + filename, "t", "U_A1"))
+        peak_2.append(f_max(cassy_dir + filename, "t", "U_A1")[1])
  
 peak_1 = []
 for filename in sorted(os.listdir(cassy_dir)):
     if 'schwingkreis_1' in filename and '.labx' in filename:
-        peak_1.append(f_max(cassy_dir + filename, "t", "U_B1"))
+        peak_1.append(f_max(cassy_dir + filename, "t", "U_B1")[1])
 
 freq_peak_2 = np.array(peak_2)
 f_mean_2 = np.mean(freq_peak_2)
 f_stad_2 = np.std(freq_peak_2, ddof=1) / np.sqrt(len(freq_peak_2))
 plot_fpeak_errorbar(freq_peak_2, f_stad_2 * np.ones(len(freq_peak_2)), f_mean_2, 'f_peak_errorbar')
 
-print('Mittelwert der Frequenzen Schwingkreis 1', peak_1)
-print(pd.DataFrame(freq_peak_2))
-print('Mittelwert der Frequenzen Schwingkreis 2', f_mean_2)
+print('Mittelwert der Frequenzen Schwingkreis 1', round(peak_1[0], 1))
+print(pd.DataFrame(freq_peak_2).round(0))
+print('Mittelwert der Frequenzen Schwingkreis 2', round(f_mean_2, 1))
 print('Fehler auf Erwarungswert Schwingkreis 2', round(f_stad_2,4))
 
  

@@ -61,11 +61,64 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
 
     # Ungeschnittenen Fouriert
     plt.figure()
-    plt.plot(x.werte[:end], y.werte[:end],color='blue', label="Messdaten")
+    plt.title(plotname)
+    plt.plot(x.werte[:end], y.werte[:end],color='blue')
     plt.xlabel(xstr)
     plt.ylabel(ystr)
-    plt.grid()
+     
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
+         
+def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2, y_2, plotname, end):
+    # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.weight'] = 'bold'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.labelweight'] = 'bold'
+    plt.rcParams['axes.linewidth'] = 1.2
+    plt.rcParams['lines.linewidth'] = 0.8
+    plt.rcParams["savefig.pad_inches"] = 0.5
+
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x)
+    y = messung.datenreihe(y)
+     
+    data = cassy.CassyDaten(datei_2)
+    messung = data.messung(1)
+    y_2 = messung.datenreihe(y_2)
+
+    xsymbol = x.symbol
+    xsymbol = xsymbol.replace('&D', '\Delta{}')
+    mx = re.match(r'([\\{}\w^_]+)_([\w^_]+)', xsymbol)
+    if mx:
+        xstr = '$%s_\mathrm{%s}$' % mx.groups()
+    else:
+        xstr = '$%s$' % xsymbol
+    if x.einheit:
+        xstr += ' / %s' % x.einheit
+
+    ysymbol = y.symbol
+    ysymbol = ysymbol.replace('&D', '\Delta{}')
+    my = re.match(r'([\\{}\w^_]+)_([\w^_]+)', ysymbol)
+    if my:
+        ystr = '$%s_\mathrm{%s}$' % my.groups()
+    else:
+        ystr = '$%s$' % ysymbol
+    if y.einheit:
+        ystr += ' / %s' % y.einheit
+
+    # Ungeschnittenen Fouriert
+    plt.figure()
+    plt.title(plotname)
+    plt.plot(x.werte[:end], y.werte[:end],color='blue', label='Schwingkreis 1')
+    plt.plot(x.werte[:end], y_2.werte[:end],color='magenta', label='Schwingkreis 2')
+    plt.xlabel(xstr)
     plt.legend()
+    plt.ylabel(ystr)
      
     if SHOW_PLOTS:
         plt.show()
@@ -73,7 +126,7 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
         
 
-def cassy_plot(datei: str, x: str, y: str, plotname):
+def cassy_plot(datei: str, x: str, y: str, plotname, show_peak):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 12.0
     plt.rcParams['font.family'] = 'sans-serif'
@@ -112,12 +165,11 @@ def cassy_plot(datei: str, x: str, y: str, plotname):
 
     # Ungeschnittenen Fouriert
     plt.figure()
+    plt.title(plotname)
     freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
-    plt.plot(freq_fft,amp_fft,'.',color='red',label="FFT")
+    plt.plot(freq_fft,amp_fft,'.',color='red')
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
-    plt.grid()
-    plt.legend()
      
     if SHOW_PLOTS:
         plt.show()
@@ -130,12 +182,13 @@ def cassy_plot(datei: str, x: str, y: str, plotname):
     f = np.max(amp_fft)
     a = np.where(amp_fft == f)[0][0]
     plt.figure()
-    plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='red',label="FFT")
-    plt.axvline(freq_fft[a],color='green')
+    plt.title(plotname)
+    plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='red')
+    if show_peak:
+        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
-    plt.grid()
-    plt.legend()
      
     if SHOW_PLOTS:
         plt.show()
@@ -144,13 +197,14 @@ def cassy_plot(datei: str, x: str, y: str, plotname):
         
     
     plt.figure()
+    plt.title(plotname)
     delta = 3
-    plt.plot(freq_fft[a-delta:a+delta],amp_fft[a-delta:a+delta],'.',color='red',label="FFT")
-    plt.axvline(freq_fft[a],color='green')
+    plt.plot(freq_fft[a-delta:a+delta],amp_fft[a-delta:a+delta],'.',color='red')
+    if show_peak:
+        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
-    plt.grid()
-    plt.legend()
     if SHOW_PLOTS:
         plt.show()
     else:
@@ -187,16 +241,14 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.rcParams['savefig.pad_inches'] = 1
      
     fig, ax = plt.subplots()
-    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Tau mit Fehler")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "f_peak mit Fehler")
     plt.ylabel("Frequenzen / Hz")
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Errorbar der Eigenfrequenz von Schwingkreis 2")
     ax.yaxis.set_label_coords(-0.2,0.50)
-    plt.grid()
     plt.plot(range(1, len(y)+1), mean*np.ones(len(y)), linewidth = 1.5, label = "Mittelwert")
-    plt.legend()
     plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
  
 peak = []
@@ -207,14 +259,13 @@ for filename in sorted(os.listdir(cassy_dir)):
         if SHOW_PLOTS:
             cassy_plot(cassy_dir + filename, "t", "U_A1", filename[:-5])
  
-cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0])
-cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1])
-cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2])
+cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0], False)
+cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1], True)
+cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2], False)
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01_zoom', 300)
+cassy_plot_clear_2(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', cassy_dir + 'schwingkreis_2_01.labx', 'U_A1', 'schwingkreise_zoom', 300)
 cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01_zoom', 300)
  
 # read in data
 for filename in sorted(os.listdir(cassy_dir)):
@@ -251,6 +302,7 @@ def cassy_hist(datei: str, x: str, y: str, plotname: str):
     y = messung.datenreihe(y)
 
     plt.figure()
+    plt.title(plotname)
     plt.subplot(2,1,1)
     plt.hist(y.werte, bins = 100)
     plt.xlabel("U / V")

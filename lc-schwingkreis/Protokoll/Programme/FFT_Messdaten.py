@@ -200,7 +200,7 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
  
 peak = []
-plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'alt-test-50us']
+plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s']
 
 for filename in sorted(os.listdir(cassy_dir)):
     if '.labx' in filename:

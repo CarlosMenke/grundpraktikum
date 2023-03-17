@@ -278,10 +278,40 @@ Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von 
     \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
 \end{figure}
-Wie in dem obrigen Residuen Plot zu sehen ist, haben wir keien Ausreißer.
-Zudem haben wir eine geringe Streuung der Messwerte und eine gut reproduzierbare Messung.
+Wie im Residueplot gut zu sehen ist, schwanken die Werte zwischen 
 
 
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} \\
+        \midrule
+        1 & 1 & 1105.9 Hz \\
+        1 & 2 & 1118.0 Hz \\
+        2 & 2 & 1116.0 Hz \\
+        3 & 2 & 1118.0 Hz \\
+        4 & 2 & 1118.0 Hz \\
+        5 & 2 & 1116.0 Hz \\
+        6 & 2 & 1118.0 Hz \\
+        7 & 2 & 1116.0 Hz \\
+        8 & 2 & 1118.0 Hz \\
+        9 & 2 & 1118.0 Hz \\
+        10& 2 & 1118.0 Hz \\
+        \bottomrule
+    \end{tabularx}
+    \caption{gemessene Frequenz der Schwingkreise}
+\end{table}
+
+Der Erwartungswert des 2. Schwingkreises ist:
+\begin{equation}
+    f_2 = 1117.3 Hz
+\end{equation}
+Dabei ist der Statistische Fehler auf die Frequenz, also die Unsicherheit auf den Erwartungswert, gegeben durch:
+\begin{equation}
+    \sigma_{f_2} = \frac{\sigma}{\sqrt{n}} = 0.3 Hz
+\end{equation}
+     
 
 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}

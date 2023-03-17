@@ -1,4 +1,5 @@
-
+Aufloesung der FFT ist ein fehler (breite der Punkte)
+- Rauschmessung nur fuer spannung
 # Andreas notizen
 - WICHTIG: Wie kann man den Fehler von der Digitalisierung bei der fourier Transformationn beachten?
 

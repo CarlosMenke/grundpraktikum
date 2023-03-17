@@ -67,18 +67,21 @@ In dem Bild zu sehen ist die Messbrücke, an die Stelle wo der Kondensator ist, 
 
 Für die Messung haben wir unseren Frequenzbereich von 1kHz eingestellt.
  (In dem Bild auf 100Hz weil wir da noch den 10 $\mu F$ messen, und wir mit diesem geringere Frequenzen hatten.) 
+ Die Spulle haben wir ebenfalls gemessen wenn diese einen Eisenkern hatten, um den Einfluss von diesem auf Widerstand und Induktivität zu bestimmen.
 So konnten wie sämtliche Bauteile Charakterisieren und sind für unseren zweiten Aufbau (mit kleinerem Kondensator) zu folgenden Ergebnissen gekommen:\\
     
-\begin{table}[h]
+\begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{X X c} % adjust width as needed
+        \begin{tabularx}{0.8\textwidth}{X l c} % adjust width as needed
             \toprule
             \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
             \midrule
-            Spule 1 & L = 9.023mH &  \\
-            & R = 2.344 $\Omega$ & \\
-            Spule 2 & L = 8.981mH &  \\
-            & R = 2.423 $\Omega$ \\
+            Spule 1 & R = 2.344 $\Omega$ \quad L = 9.023mH &  \\
+            mit Eisenkern & R = 2.70 $\Omega$ \quad L = 55.79mH & \\
+            \midrule
+            Spule 2 & R = 2.423 $\Omega$ \quad L = 8.981mH &  \\
+            mit Eisenkern & R = 2.65 $\Omega$ \quad L = 56.1mH&\\
+            \midrule
             Kondensator 1 & 2.301 $\mu$F &  \\
             Kondensator 2 & 2.262 $\mu$F &  \\
             \bottomrule
@@ -197,7 +200,7 @@ Hier eine übersicht der Messeinstellungen. Dabei haben wir den Kanal auf den ge
     \end{table}
      
 Anschließend haben wir noch zwei Rauschmessung gemacht: einmal mit geöffnetem und einmal mit geschlossenem Schalter nach dem Schwingvorgang.
-Diese haben wir gemacht, um daraus Offsets zu berechnen um unsere Messung des Wiederstandes zu prkäzisieren.
+Diese haben wir gemacht, um daraus Offsets zu berechnen um unsere Messung des Wiederstandes zu präzisieren.
 
 
 \subsubsection{Rohdaten}
@@ -223,7 +226,7 @@ Das obere Bild zeigt die Messung über die gesamte Messdauer.
 Sehr gut kann hier der Exponentielle Abfall der Amplitude erkennen werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
 Das Messen des großen Zeitintervalls ergibt sin, dass dies die Auflösung bei der FFT erhöht.
 
-Im zweiten Plot, kann ein Zoom-in der Schwingung gesehen werden.  Hier können wir sehr gut sehen, dass die Schwingung einem Kosinus förmigen verlauf entspricht.
+Im zweiten Plot, kann ein Zoom-in der Schwingung gesehen werden.  Hier können wir sehr gut sehen, dass die Schwingung einem Kosinus förmigen Verlauf entspricht.
 Die Amplitude fällt nach Augenmaß Exponentiell ab.
 
 Zu diesen Schwingungsverläufen haben wir, jeweils eine FFT gemacht, um zu überprüfen, ob die Frequenz des Schwingkreis aus der Messung gut bestimmbar ist.
@@ -292,6 +295,43 @@ In diesem Zoom-in können wir erkennen, dass die Peakfrequenz leicht von der des
   Kopplung durch Verwendung eines Eisenkerns in den beiden Spulen.
 \end{aufgabe}
 
+in diesem Versuchsteil wollen wir nun die gekoppelten Schwingkreise auf ihre Frequenz untersuchen. Wobei hier nur einer der beiden Kondensatoren aufgeladen wird.
+Hierfür haben wir zunächst die zwei Spulen ohne Abstand nebeneinander gestellt (jeweils mit dem Loch zueinander). 
+Außerdem haben wir die Spannung am zweiten Kondensator gemessen, indem wir das Sensor CASSY parallel zu diesem geschallten haben. 
+Die Schaltung kann dem Schaltbild unten entnommen werden. \\
+
+
+
+\subparagraph{Gekoppelte Schwingung: Schwebung}
+
+%TODO : Schaltbild einfügen
+
+Wenn nun Spannung angelegt wird, wird der Kondensator in Schwingkreis 1 aufgeladen. 
+Erst durch drücken des Tasters wird dieser Schwingkreis geschlossen und die Schwingung startet. 
+Durch die Kopplung über die Spulen wird so auch der zweite Schwingkreis zur Schwingung angeregt.
+Für den gekoppelten Schwingkreise haben wir die selben Messwerterfassungseinstellungen wie beim Messen der einzelnen Verwendet. 
+So ist unsere Messung wieder durch einen Triger 6.1V Fallende Flanke auf Schwingkreis 1 gestartet.
+
+Um eine Messung auf zu nehmen wird der Kondensator in Schwingkreis 1 zunächst geladen.
+Durch drücken des Tasters wird die Spannungsquelle kurzgeschlossen, und der Schwingkreis 1 geschlossen. In diesem beginnt der Schwingungsvorgang.
+Über die Kopplung der Spulen wird der zweite Schwingkreis ebenfalls zur Schwingung angeregt. An beiden Schwingkreisen messen wir den Spannungsverlauf am Kondensator. 
+Bei diesem konnten wir gut den Schwingungsverlauf des gekoppelten Schwingkreis sehen, als auch die Schwebung. 
+Von beiden haben wir eine FFT gemacht, um daraus die Fundamentalschwingungen des Schwingkreises zu bestimmen welche sich als zwei Peaks im Graph der FFT gezeigt haben.\\ 
+
+Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt. 
+Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
+Ab 3cm Abstand waren diese nicht mehr zu trennen.
+
+%TODO : Bild vom Abstand der Spulen einfügen
+
+Dabei ist uns aufgefallen, dass in Schwingkreis 1 die zwei Fundamentalfrequenzen länger trennbar sind als im zweiten. 
+
+Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt. 
+
+\subsubsection{Rohdaten}
+
+Insgesamt haben wir in diesem Versuchsteil also 9 Messungen durchgeführt, 8 Messungen mit verschiedenen Abständen und eine Messung mit dem Eisenkern. 
+
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
@@ -305,3 +345,4 @@ In diesem Zoom-in können wir erkennen, dass die Peakfrequenz leicht von der des
 \end{document}
 
 %TODO : Peak Linie aus Rohdaten raus nehmen
+%TODO : Peak beschriften

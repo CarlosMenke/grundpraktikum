@@ -70,6 +70,60 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
         plt.show()
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
+         
+def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2, y_2, plotname, end):
+    # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.weight'] = 'bold'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.labelweight'] = 'bold'
+    plt.rcParams['axes.linewidth'] = 1.2
+    plt.rcParams['lines.linewidth'] = 0.8
+    plt.rcParams["savefig.pad_inches"] = 0.5
+
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x)
+    y = messung.datenreihe(y)
+     
+    data = cassy.CassyDaten(datei_2)
+    messung = data.messung(1)
+    y_2 = messung.datenreihe(y_2)
+
+    xsymbol = x.symbol
+    xsymbol = xsymbol.replace('&D', '\Delta{}')
+    mx = re.match(r'([\\{}\w^_]+)_([\w^_]+)', xsymbol)
+    if mx:
+        xstr = '$%s_\mathrm{%s}$' % mx.groups()
+    else:
+        xstr = '$%s$' % xsymbol
+    if x.einheit:
+        xstr += ' / %s' % x.einheit
+
+    ysymbol = y.symbol
+    ysymbol = ysymbol.replace('&D', '\Delta{}')
+    my = re.match(r'([\\{}\w^_]+)_([\w^_]+)', ysymbol)
+    if my:
+        ystr = '$%s_\mathrm{%s}$' % my.groups()
+    else:
+        ystr = '$%s$' % ysymbol
+    if y.einheit:
+        ystr += ' / %s' % y.einheit
+
+    # Ungeschnittenen Fouriert
+    plt.figure()
+    plt.title(plotname)
+    plt.plot(x.werte[:end], y.werte[:end],color='blue', label='Schwingkreis 1')
+    plt.plot(x.werte[:end], y_2.werte[:end],color='magenta', label='Schwingkreis 2')
+    plt.xlabel(xstr)
+    plt.legend()
+    plt.ylabel(ystr)
+     
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
         
 
 def cassy_plot(datei: str, x: str, y: str, plotname, show_peak):
@@ -210,9 +264,8 @@ cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1], True)
 cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2], False)
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01_zoom', 300)
+cassy_plot_clear_2(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', cassy_dir + 'schwingkreis_2_01.labx', 'U_A1', 'schwingkreise_zoom', 300)
 cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01_zoom', 300)
  
 # read in data
 for filename in sorted(os.listdir(cassy_dir)):

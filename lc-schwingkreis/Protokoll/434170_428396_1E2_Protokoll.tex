@@ -214,16 +214,16 @@ So wie eine Rauschmessung bei 0V und bei ca. 6V.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_2_01_zoom.pdf}
-    \caption{Schwingungsverlauf im zweiten Schwingkreis zoom-in}
+    \includegraphics[width=1\textwidth]{plots/schwingkreise_zoom.pdf}
+    \caption{Schwingungsverlauf der beiden Schwingkreis zoom-in}
 \end{figure}
 
 Oben können sie Exemplarisch einen Schwingungsverlauf im zweiten Schwingkreis sehen. 
 Das obere Bild zeigt die Messung über die gesamte Messdauer. 
-Sehr gut kann hier der Exponentielle Abfall der Amplitude erkennen werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
+Sehr gut kann hier der Exponentielle Abfall der Amplitude erkannt werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
 Das Messen des großen Zeitintervalls ergibt sin, dass dies die Auflösung bei der FFT erhöht.
 
-Im zweiten Plot, kann ein Zoom-in der Schwingung gesehen werden.  Hier können wir sehr gut sehen, dass die Schwingung einem Kosinus förmigen verlauf entspricht.
+Im zweiten Plot, kann ein Zoom-in der Schwingung gesehen werden. Hier können wir sehr gut sehen, dass die Schwingung einem Kosinus erkannt verlauf entspricht.
 Die Amplitude fällt nach Augenmaß Exponentiell ab.
 
 Zu diesen Schwingungsverläufen haben wir, jeweils eine FFT gemacht, um zu überprüfen, ob die Frequenz des Schwingkreis aus der Messung gut bestimmbar ist.
@@ -257,10 +257,12 @@ Dies ist auch zu erwarten, da wir gleich Bauteil verwendet haben.
 \end{figure}
 
 
+\subsection{Auswertung}
+Da wir die Frequenz der Schwingkreise bestimmen sollten, haben wir uns die FFT im Bereich des Peaks genauer angesehen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_zoom.pdf}
-    \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_zoom.pdf}
+    \caption{FFT Zoom vom ersten Schwinkgreis um den Peak mit eingezeichnetem Peak}
 \end{figure}
 
 Auch zu dieser Messung haben wir eine FFT gemacht welche Augenscheinlich eine sehr ähnliche Peakfrequenz aufweist wie die des zweiten Schwingkreis.
@@ -278,6 +280,8 @@ In diesem Zoom-in können wir erkennen, dass die Peakfrequenz leicht von der des
     \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_small_zoom.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
 \end{figure}
+
+
 
 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}

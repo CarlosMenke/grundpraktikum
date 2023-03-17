@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 16 17:11:50 2023
-
-@author: andrea
-"""
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
@@ -187,7 +182,7 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
     plt.title(plotname)
     plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='red')
     if show_peak:
-        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.axvline(freq_fft[a],color='green', label="Maximum")
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
@@ -204,7 +199,7 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
     delta = 3
     plt.plot(freq_fft[a-delta:a+delta],amp_fft[a-delta:a+delta],'.',color='red')
     if show_peak:
-        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.axvline(freq_fft[a],color='green', label="Maximum")
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
@@ -236,7 +231,7 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.rcParams['savefig.pad_inches'] = 1
      
     fig, ax = plt.subplots()
-    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "f_peak mit Fehler")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Maximum mit Fehler")
     plt.ylabel("Frequenzen / Hz")
     plt.grid()
     plt.autoscale()
@@ -248,7 +243,6 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.legend()
     plt.savefig("../plots/" + plotname + ".pdf", bbox_inches='tight')
  
-plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s']
 
 for filename in sorted(os.listdir(cassy_dir)):
     if '.labx' in filename and 'schwingkreis' in filename:
@@ -259,9 +253,11 @@ for filename in sorted(os.listdir(cassy_dir)):
                 cassy_plot(cassy_dir + filename, "t", "U_B1", filename[:-5], True)
 
  
+plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s', 'schwingkreis_2_02']
 cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0], False)
 cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1], True)
 cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2], False)
+cassy_plot(cassy_dir + plots[3] + '.labx', "t", "U_A1", plots[3], True)
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
 cassy_plot_clear_2(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', cassy_dir + 'schwingkreis_2_01.labx', 'U_A1', 'schwingkreise_zoom', 300)
@@ -320,6 +316,43 @@ def cassy_hist(datei: str, x: str, y: str, plotname: str):
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')
  
-cassy_hist('../Messdaten/rauschen_6V_01.labx', 't', 'U_A1', 'rauschen_6V_01')
+cassy_hist('../Messdaten/rauschen_0V_01.labx', 't', 'U_A1', 'rauschen_0V_01')
 rauschen_6 = get_messdaten('../Messdaten/rauschen_6V_01.labx', 'U_A1')
 rauschen_0 = get_messdaten('../Messdaten/rauschen_0V_01.labx', 'U_A1')
+rauscen_6_mean = np.mean(rauschen_6)
+rauschen_0_mean = np.mean(rauschen_0)
+rauschen_6_std = np.std(rauschen_6, ddof=1)
+rauschen_0_std = np.std(rauschen_0, ddof=1)
+print('Mittelwert Rauschen 6V', round(rauscen_6_mean, 5))
+print('Mittelwert Rauschen 0V', round(rauschen_0_mean, 6))
+print('Fehler Rauschen 6V', round(rauschen_6_std, 5))
+print('Fehler Rauschen 0V', round(rauschen_0_std, 6))
+ 
+ 
+def einhuellende(datei, y, voltageError, offset, plotname):
+    end = 700
+     
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe('t').werte
+    y = messung.datenreihe(y).werte
+     
+    plt.figure()
+    plt.title(plotname)
+
+    plt.errorbar(x[:end], y[:end], yerr = voltageError * np.ones(len(y[:end])), label = 'Messwerte')
+    plt.grid()
+    plt.xlabel('t / s')
+    plt.ylabel('U / V')
+    einhuellende = analyse.exp_einhuellende(x, y - offset, voltageError * np.ones(len(y)))
+    print('Amplitude', einhuellende[0], 'Frequenz', einhuellende[2], 'Offset', round(einhuellende[1], 6))
+    L = 0.009
+    R = einhuellende[2] * 2 * L
+    print(f'Der Widerstand bei {plotname} beträgt', round(R, 3), 'Ohm')
+    plt.plot(x[:end], +einhuellende[0] * np.exp(-einhuellende[2] * x[:end]) + offset + einhuellende[1], label = 'Einhüllende')
+    plt.plot(x[:end], -einhuellende[0] * np.exp(-einhuellende[2] * x[:end]) - offset + einhuellende[1], label = 'Einhüllende invertiert')
+    plt.legend()
+    plt.savefig('../plots/' + plotname + '.pdf', bbox_inches = 'tight')
+
+einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_1')
+einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_2')

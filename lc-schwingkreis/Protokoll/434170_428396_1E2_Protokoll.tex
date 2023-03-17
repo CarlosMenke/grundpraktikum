@@ -269,6 +269,7 @@ Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilun
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_zoom.pdf}
     \caption{FFT Zoom vom ersten Schwinkgreis mit eingezeichnetem Peak}
+    \label{fig:peak}
 \end{figure}
 Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von $ \pm 1Hz$. Diesen Ablesefehler nehmen wir als systematisch an.
 %TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
@@ -278,7 +279,19 @@ Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von 
     \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
 \end{figure}
-Wie im Residueplot gut zu sehen ist, schwanken die Werte zwischen 
+Wie im Residueplot gut zu sehen ist, schwankt der Peak zwischen 2 Frequenzen.
+ 
+Der Grund dafür ist in dem untenstehenden Plot gut zu erkennen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_2_02_fft_zoom.pdf}
+    \caption{FFT Zoom von Schwingkreis 2 der 2. Messung}
+    \label{fig:peak}
+\end{figure}
+Hier sieht man, wie bei der 2. Messung die Amplituden der Frequenz 1116Hz und 1118Hz sehr ähnlich sind.
+Der Grund das die gefundene Amplitude um 2 Hz schwankt, liegt also in der Auflösung der FFT.
+Da wir aber eine Messreihe von 10 Messungen durchgeführt haben, ist es aber nicht schlimm, das wir immer nur das Maximum und nicht den Peakschwerpunkt nehmen,
+da wir durch das errechnen des Mittelwertes die Messungen entsprechend gewichten.
 
 
 \begin{table}[H]
@@ -287,20 +300,19 @@ Wie im Residueplot gut zu sehen ist, schwanken die Werte zwischen
         \toprule
         \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} \\
         \midrule
-        1 & 1 & 1105.9 Hz \\
-        1 & 2 & 1118.0 Hz \\
-        2 & 2 & 1116.0 Hz \\
-        3 & 2 & 1118.0 Hz \\
-        4 & 2 & 1118.0 Hz \\
-        5 & 2 & 1116.0 Hz \\
-        6 & 2 & 1118.0 Hz \\
-        7 & 2 & 1116.0 Hz \\
-        8 & 2 & 1118.0 Hz \\
-        9 & 2 & 1118.0 Hz \\
-        10& 2 & 1118.0 Hz \\
+        1 & 1 & 1106 Hz \\
+        1 & 2 & 1118 Hz \\
+        2 & 2 & 1116 Hz \\
+        3 & 2 & 1118 Hz \\
+        4 & 2 & 1118 Hz \\
+        5 & 2 & 1116 Hz \\
+        6 & 2 & 1118 Hz \\
+        7 & 2 & 1116 Hz \\
+        8 & 2 & 1118 Hz \\
+        9 & 2 & 1118 Hz \\
+        10& 2 & 1118 Hz \\
         \bottomrule
     \end{tabularx}
-    \caption{gemessene Frequenz der Schwingkreise}
 \end{table}
 
 Der Erwartungswert des 2. Schwingkreises ist:

@@ -248,7 +248,6 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.legend()
     plt.savefig("../plots/" + plotname + ".pdf", bbox_inches='tight')
  
-plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s']
 
 for filename in sorted(os.listdir(cassy_dir)):
     if '.labx' in filename and 'schwingkreis' in filename:
@@ -259,9 +258,11 @@ for filename in sorted(os.listdir(cassy_dir)):
                 cassy_plot(cassy_dir + filename, "t", "U_B1", filename[:-5], True)
 
  
+plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s', 'schwingkreis_2_02']
 cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0], False)
 cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1], True)
 cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2], False)
+cassy_plot(cassy_dir + plots[3] + '.labx', "t", "U_A1", plots[3], True)
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
 cassy_plot_clear_2(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', cassy_dir + 'schwingkreis_2_01.labx', 'U_A1', 'schwingkreise_zoom', 300)

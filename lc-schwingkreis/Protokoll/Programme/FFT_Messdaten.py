@@ -65,6 +65,7 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
     plt.plot(x.werte[:end], y.werte[:end],color='blue')
     plt.xlabel(xstr)
     plt.ylabel(ystr)
+    plt.grid()
      
     if SHOW_PLOTS:
         plt.show()
@@ -119,6 +120,7 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2, y_2, plotname, end):
     plt.xlabel(xstr)
     plt.legend()
     plt.ylabel(ystr)
+    plt.grid()
      
     if SHOW_PLOTS:
         plt.show()
@@ -170,6 +172,7 @@ def cassy_plot(datei: str, x: str, y: str, plotname, show_peak):
     plt.plot(freq_fft,amp_fft,'.',color='red')
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
+    plt.grid()
      
     if SHOW_PLOTS:
         plt.show()
@@ -189,6 +192,7 @@ def cassy_plot(datei: str, x: str, y: str, plotname, show_peak):
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
+    plt.grid()
      
     if SHOW_PLOTS:
         plt.show()
@@ -205,6 +209,7 @@ def cassy_plot(datei: str, x: str, y: str, plotname, show_peak):
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
+    plt.grid()
     if SHOW_PLOTS:
         plt.show()
     else:
@@ -243,13 +248,14 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     fig, ax = plt.subplots()
     plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "f_peak mit Fehler")
     plt.ylabel("Frequenzen / Hz")
+    plt.grid()
     plt.autoscale()
     formatter = ticker.ScalarFormatter(useOffset=False)
     ax.yaxis.set_major_formatter(formatter)
     plt.title("Errorbar der Eigenfrequenz von Schwingkreis 2")
     ax.yaxis.set_label_coords(-0.2,0.50)
     plt.plot(range(1, len(y)+1), mean*np.ones(len(y)), linewidth = 1.5, label = "Mittelwert")
-    plt.savefig("../plots/Errorbar_Tau_CASSY.pdf", bbox_inches='tight')
+    plt.savefig("../plots/" + plotname + ".pdf", bbox_inches='tight')
  
 peak = []
 plots = ['schwingkreis_2_01', 'schwingkreis_1_01', 'schwingkreis-alt-test-200us-0.01s']
@@ -276,7 +282,7 @@ freq_peak = np.array(peak)
 
 f_mean = np.mean(freq_peak)
 f_stad = np.std(freq_peak, ddof=1)
-plot_fpeak_errorbar(freq_peak, f_stad * np.ones(len(freq_peak)), f_mean, 'f_peak')
+plot_fpeak_errorbar(freq_peak, f_stad * np.ones(len(freq_peak)), f_mean, 'f_peak_errorbar')
 
 print('Mittelwert der Frequenzen', f_mean)
 print('Standartabweichung der Einzelwerte', f_stad)

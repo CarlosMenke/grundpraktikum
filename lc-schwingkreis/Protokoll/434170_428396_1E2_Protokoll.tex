@@ -153,17 +153,25 @@ Dafür haben wir die Periodendauer als Näherung ohne Widerstand (da dieser für
 Nach dem Nequisst Theorem muss die Abtastrate mindestens doppelt so groß sein wie die Frequenz.
 Um noch etwas Sicherheitspuffer zu haben, und da diese Messung nur eine Abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das 10x ist.
 
-Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformation (FFT).
  
- 
-Dabei startet die Schwingung im Schwingkreis in dem Moment, wo man den Taster drückt, da sich jetzt der Kondensator anfangen kann zu entladen.
+Die Schwingung im Schwingkreis startet in dem Moment, wo man den Taster drückt, und sich der Kondensator anfängt zu entladen.
 Damit der Schwingkreis sauber schwingen kann, muss der Taster auch während der gesamten Messung gedrückt bleiben.
 Entsprechend haben wir den Trigger vom Cassy auf 6.1V fallende Flanke gestellt um die Messung zu starten.
 Dabei haben wir 6.1V gewählt, da so noch der Großteil der ersten Schwingungsperiode mit aufgezeichnet wird.
-0.1V Abstand (6.2V - 6.1V )war mehr als ausreichend, um nicht spontan gestartet zu werden, aber noch weit genug entfernt um eventuelle Störeffekte vom Schalter kurz nach dem Schalten zu unterbinden.
+0.1V Abstand ( 6.2V - 6.1V )war mehr als ausreichend, um nicht spontan gestartet zu werden, aber noch weit genug entfernt um eventuelle Störeffekte vom Schalter kurz nach dem Schalten zu unterbinden.
 Den 2. Schwingkreis haben wir dabei 10 mal vermessen, um die Statistische Unsicherheit auf die Frequenz zu bestimmen.
-Beim Cassy 
 
+
+Nachdem die Messung beendet ist, wir das Frequenz Spektrum mit hilfe einer Fouriertransformation analysiert.
+Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformation.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{plots/schwingkreis-alt-test-200us-0.01s_fft_zoom.pdf}
+    \caption{Zoomin Plot der FFT der Testmessung mit Messdauer = 0.01s}
+\end{figure}
+Wie zu sehen ist, war z.B bei dieser Testmessung die Messdauer mit 0.01s Sekunden zu kurz.
+Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann eine zufridenstellende Auflösung hatten.
 
 
 Den 1. Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.

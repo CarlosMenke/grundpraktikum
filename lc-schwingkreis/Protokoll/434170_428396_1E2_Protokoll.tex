@@ -149,7 +149,7 @@ Deshalb haben wir die Spannungsquelle und den Schalter dann jeweils umgesteckt, 
 
 
 
-\subsection{Durchführung}
+\subsubsection{Durchführung}
 Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei dieser Spannung die Maximale Stromstärke der Spule ( $2.5A$ ) nicht überschritten wird.
 Also haben wir als Spannungsbereich des CASSY-10V bis 10V eingestellt.
 Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
@@ -214,24 +214,30 @@ So wie eine Rauschmessung bei 0V und bei ca. 6V.
     \caption{Schwingungsverlauf im zweiten Schwingkreis}
 \end{figure}
 
+Oben können sie Exemplarisch einen Schwingungsverlauf im zweiten Schwingkreis sehen. 
+Das obere Bild zeigt die Messung über die gesamte Messdauer. 
+Sehr gut kann hier der Exponentielle Abfall der Amplitude erkannt werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
+Das Messen des großen Zeitintervalls ergibt sin, dass dies die Auflösung bei der FFT erhöht.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01.pdf}
+    \caption{Schwingungsverlauf im ersten Schwingkreis}
+\end{figure}
+hier noch der Schwingungsverläufe von unserem Ersten Schwingkreis. Dieser sieht Augenscheinlich sehr ähnlich zu den des zweiten aus.
+Dies ist auch zu erwarten, da wir gleich Bauteil verwendet haben.
 
+Das die zwei Schwingungen sehr ähnlich sind, kann man sehr gut daran erkennen, wenn man in den noch schwingenden Bereich der Messung zoomt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreise_zoom.pdf}
     \caption{Schwingungsverlauf der beiden Schwingkreis zoom-in}
 \end{figure}
-
-Oben können sie Exemplarisch einen Schwingungsverlauf im zweiten Schwingkreis sehen. 
-Das obere Bild zeigt die Messung über die gesamte Messdauer. 
-Sehr gut kann hier der Exponentielle Abfall der Amplitude erkannt werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
-Das Messen des großen Zeitintervalls ergibt sin, dass dies die Auflösung bei der FFT erhöht.
-
-
-Im zweiten Plot, kann ein Zoom-in der Schwingung gesehen werden.  Hier können wir sehr gut sehen, dass die Schwingung einem Kosinus förmigen Verlauf entspricht.
-
-Die Amplitude fällt nach Augenmaß Exponentiell ab.
+Hier können wir sehen, dass die Schingungen dem gleichen Kosinus Förmigen Verlauf folgen, Außerdem kann man hier bereits erkennen, dass Schwingkreis 2 eine höhere Frequenz hat.
+Da die Bauteile nicht vollkommen identisch sein werden, ist dies nicht überraschend.\\
+Die Amplituden fallen nach Augenmaß Exponentiell ab.
 
 Zu diesen Schwingungsverläufen haben wir, jeweils eine FFT gemacht, um zu überprüfen, ob die Frequenz des Schwingkreis aus der Messung gut bestimmbar ist.
+Oben ist der des zweiten Schwingkreis unten der des Ersten.
 
 
 \begin{figure}[H]
@@ -240,29 +246,22 @@ Zu diesen Schwingungsverläufen haben wir, jeweils eine FFT gemacht, um zu über
     \caption{Schwingungsverlauf im ersten Schwingkreis}
 \end{figure}
 
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_2_01_fft_small_zoom.pdf}
-    \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
-\end{figure}
-
-Zu sehen ist, dass wir einen klaren peak bei einer bestimmten Frequenz haben, es sind keine Frequenzen von anderen Schwingungen zu sehen. 
-Dies war aus den Kosinus förmigen Verlauf der Messung zu erwarten.
-Im unteren Graphen ist ein Zoom-in der FFT zu sehen, hier kann man gut erkennen, dass wir eine klare Spitze haben. 
-Die Frequenz des Schwingkreis kann später durch weiteres zoomen festgestellt werden.
-
-hier noch die Schwingungsverläufe von unserem Ersten Schwingkreis. Diese sind Augenscheinlich sehr ähnlich zu den des zweiten.
-Dies ist auch zu erwarten, da wir gleich Bauteil verwendet haben.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01.pdf}
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_complete.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis}
 \end{figure}
 
+Zu sehen ist, dass wir einen klaren peak bei einer bestimmten Frequenz haben, es sind keine Frequenzen von anderen Schwingungen zu sehen. 
+Dies war aus den Kosinus förmigen Verlauf der Messung zu erwarten. In diesem Zoom lässt sich jedoch noch keine Aussage über die genaue Frequenz der Schwingkreise treffen.
 
-\subsection{Auswertung}
+%TODO : Einfügen des Plots für die Nahaufnahme des FFT mit beiden Schwingkreisen
+
+Im diesem Graphen ist ein Zoom-in der FFT zu sehen bei beiden Schwingungen, hier kann man gut erkennen, dass wir eine klare Spitze haben.Des weiteren kann man sehen, dass der Peak bei den beiden Schwingkreisen leicht gegeneinander verschoben sind 
+Die Frequenz des Schwingkreis kann später durch weiteres zoomen festgestellt werden.
+
+
+\subsubsection{Auswertung}
 Da wir die Frequenz der Schwingkreise bestimmen sollten, haben wir uns die FFT im Bereich des Peaks genauer angesehen.
 Zum bestimmen des Maximums haben wir immer den x-Wert genommen, welcher die größte Amplitude hat.
 Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilung aber unsymetrisch ist, haben wir uns dagegen entschieden.
@@ -272,7 +271,7 @@ Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilun
     \caption{FFT Zoom vom ersten Schwinkgreis mit eingezeichnetem Peak}
 \end{figure}
 Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von $ \pm 1Hz$. Diesen Ablesefehler nehmen wir als systematisch an.
-% TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
+%TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
 
 \begin{figure}[H]
     \centering

@@ -212,9 +212,9 @@ cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1])
 cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2])
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01_zoom', 200)
+cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01_zoom', 300)
 cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01', -1)
-cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01_zoom', 200)
+cassy_plot_clear(cassy_dir + 'schwingkreis_2_01.labx', 't', 'U_A1', 'schwingkreis_2_01_zoom', 300)
  
 # read in data
 for filename in sorted(os.listdir(cassy_dir)):

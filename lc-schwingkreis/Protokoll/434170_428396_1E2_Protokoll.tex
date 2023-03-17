@@ -264,27 +264,23 @@ Dies ist auch zu erwarten, da wir gleich Bauteil verwendet haben.
 
 \subsection{Auswertung}
 Da wir die Frequenz der Schwingkreise bestimmen sollten, haben wir uns die FFT im Bereich des Peaks genauer angesehen.
+Zum bestimmen des Maximums haben wir immer den x-Wert genommen, welcher die größte Amplitude hat.
+Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilung aber unsymetrisch ist, haben wir uns dagegen entschieden.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_zoom.pdf}
-    \caption{FFT Zoom vom ersten Schwinkgreis um den Peak mit eingezeichnetem Peak}
+    \caption{FFT Zoom vom ersten Schwinkgreis mit eingezeichnetem Peak}
 \end{figure}
-
-Auch zu dieser Messung haben wir eine FFT gemacht welche Augenscheinlich eine sehr ähnliche Peakfrequenz aufweist wie die des zweiten Schwingkreis.
+Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von $ \pm 1Hz$. Diesen Ablesefehler nehmen wir als systematisch an.
+% TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_complete.pdf}
-    \caption{Schwingungsverlauf im ersten Schwingkreis}
-\end{figure}
-
-In diesem Zoom-in können wir erkennen, dass die Peakfrequenz leicht von der des Zweiten Schwingkreises abweichen wird.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_small_zoom.pdf}
+    \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
 \end{figure}
+Wie in dem obrigen Residuen Plot zu sehen ist, haben wir keien Ausreißer.
+Zudem haben wir eine geringe Streuung der Messwerte und eine gut reproduzierbare Messung.
 
 
 

@@ -337,15 +337,15 @@ Die Schaltung kann dem Schaltbild unten entnommen werden. \\
 
 %TODO : Schaltbild einfügen
 
-Wenn nun Spannung angelegt wird, wird der Kondensator in Schwingkreis 1 aufgeladen. 
+Wenn nun Spannung angelegt wird, wird der Kondensator in einem Schwingkreis aufgeladen. 
 Erst durch drücken des Tasters wird dieser Schwingkreis geschlossen und die Schwingung startet. 
-Durch die Kopplung über die Spulen wird so auch der zweite Schwingkreis zur Schwingung angeregt.
+Durch die Kopplung über die Spulen wird so auch der andere Schwingkreis zur Schwingung angeregt.
 Für den gekoppelten Schwingkreise haben wir die selben Messwerterfassungseinstellungen wie beim Messen der einzelnen Verwendet. 
-So ist unsere Messung wieder durch einen Triger 6.1V Fallende Flanke auf Schwingkreis 1 gestartet.
+So ist unsere Messung wieder durch einen Triger 6.1V Fallende Flanke auf Schwingkreis 2 gestartet.
 
-Um eine Messung auf zu nehmen wird der Kondensator in Schwingkreis 1 zunächst geladen.
-Durch drücken des Tasters wird die Spannungsquelle kurzgeschlossen, und der Schwingkreis 1 geschlossen. In diesem beginnt der Schwingungsvorgang.
-Über die Kopplung der Spulen wird der zweite Schwingkreis ebenfalls zur Schwingung angeregt. An beiden Schwingkreisen messen wir den Spannungsverlauf am Kondensator. 
+Um eine Messung auf zu nehmen wird der Kondensator in Schwingkreis 2 zunächst geladen.
+Durch drücken des Tasters wird die Spannungsquelle kurzgeschlossen, und der Schwingkreis 2 geschlossen. In diesem beginnt der Schwingungsvorgang.
+Über die Kopplung der Spulen wird der erste Schwingkreis ebenfalls zur Schwingung angeregt. An beiden Schwingkreisen messen wir den Spannungsverlauf am Kondensator. 
 Bei diesem konnten wir gut den Schwingungsverlauf des gekoppelten Schwingkreis sehen, als auch die Schwebung. 
 Von beiden haben wir eine FFT gemacht, um daraus die Fundamentalschwingungen des Schwingkreises zu bestimmen welche sich als zwei Peaks im Graph der FFT gezeigt haben.\\ 
 
@@ -353,16 +353,90 @@ Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spu
 Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
 Ab 3cm Abstand waren diese nicht mehr zu trennen.
 
-%TODO : Bild vom Abstand der Spulen einfügen
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bilder/Abstand_Spulen.pdf}
+    \caption{Spulen im Abstand von 1cm}
+\end{figure}
 
-Dabei ist uns aufgefallen, dass in Schwingkreis 1 die zwei Fundamentalfrequenzen länger trennbar sind als im zweiten. 
+
+
+Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen länger trennbar sind als im ersten. 
 
 Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt. 
 
 \subsubsection{Rohdaten}
 
 Insgesamt haben wir in diesem Versuchsteil also 9 Messungen durchgeführt, 8 Messungen mit verschiedenen Abständen und eine Messung mit dem Eisenkern. 
+Im Folgenden werden zu erst sämtliche Daten zu 0cm Abstand angeführt. Die Diskussion der anderen Messungen wird später durchgeführt.\\
 
+
+In den unteren Grafiken, können sie den Spannungsverlauf an beiden Kondensatoren in unserem gesamten Messintervall sehen und darunter ein Ausschnitt der Schwingung. 
+Hier kann man sehen, dass in dem Schwingkreis in welchem der Kondensator nicht geladen war (Schwingkreis 1) die Schwingung mit einer kleineren Amplitude startet. 
+In beiden Schwingkreisen fällt die Amplitude in ca. 0.03 Sekunden auf Null ab.
+Über den Genauen Verlauf der Schwingung kann diesem Graphen jedoch keine Informationen entnommen werden. 
+In den Graphen in welchen wir die ersten 0.05s der Schwingung sehen, können wir sehr gut die Schwebung erkennen. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_1_complete.pdf}
+    \caption{Spannungsverlauf an Kondensator 1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_1_zoom.pdf}
+    \caption{Spannungsverlauf an Kondensator 1 zoom}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_2_complete.pdf}
+    \caption{Spannungsverlauf an Kondensator 2}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_2_zoom.pdf}
+    \caption{Spannungsverlauf an Kondensator 2 zoom}
+\end{figure}
+
+
+Der Folgende Graph zeigt ein Zoom in des Schwingungsverlaufs von beiden Kondensatoren. Diese sind hier in einem Gemeinsamen Graphen dargestellt, dass man so die Phasenverschiebung der beiden Schwingungen gut sehen kann. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01.pdf}
+    \caption{Spannungsverlauf an Kondensator 1}
+\end{figure}
+
+Hier kann man sehr gut die Phasenverschiebung zwischen den zwei Spannungen erkennen, die nach theoretischer vorhersage $\frac{\pi}{2}$ entsprechen sollte. 
+Dies trifft jedoch nicht exakt zu, da wir noch einen Einfluss des Innenwiederstands der Schaltung haben.
+Des weiteren ist die Periodische Modellierung der Amplitude der beiden Signale, also die Einhüllende gut zu erkennen. 
+Diese hat augenscheinlich für beide Schwingkreise eine ähnliche Frequenz.
+Wir können hier auch die Auswirkung des Widerstands sehen, da die Amplitude auch im Verlauf der Zeit kleiner wird. 
+Dies folgt einer Exponentiellen Abnahme.
+
+Aus der Fouriertransformation können wir die zwei Fundamentalfrequenzen des Schwingkreis bestimmen. \\
+
+Hier ist die Komplette FFT für die Spannungsverläufe an den beiden Schwingkreisen zu sehen. Selbst ohne Zoom kann man erkennen, dass diese zwei peaks haben, hier sieht es noch so aus als würden die Peaks der zwei Schwingkreise übereinander liegen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_complete.pdf}
+    \caption{FFT der Schwingungen in Schwingkreis 1 und 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_zoom.pdf}
+    \caption{FFT-zoom der Schwingungen in Schwingkreis 1 und 2}
+\end{figure}
+
+Um die Peaks der zwei Fundamentalschwingungen zu sehen, haben wir auch einen Zoom-in der FFT betrachtet. 
+Hier kann man sehr gut sehen, dass in beiden Schwingkreisen zwei Peaks vorliegen, wobei die Peaks in Schwingkreis 2 deutlich schärfer sind. 
+Des weiteren kann man hier sehen, dass die Peaks leicht gegeneinander verschoben sind. Also die Fundamentalschwingungen der beiden Schwingkreise leicht voneinander abweichen werden.
+Der Tiefpunkt zwischen den beiden Peaks sollte ungefähr bei der Grundfrequenz des Schwingkreises liegen.
+Die genaue Lage der Peaks haben wir wie bereits beim Einzelschwingkreis bestimmt, indem wir die Maxima in den entsprechenden Intervallen gesucht haben.
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die

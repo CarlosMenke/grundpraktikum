@@ -7,7 +7,7 @@
 \usepackage{subfig}
 \usepackage{amsmath}
 
-\versuchsgebiet{(Akustik)}
+\versuchsgebiet{(E-Lehre)}
 
 
 \teilnehmer{Maximilian Carlos Menke, 434170}
@@ -55,9 +55,37 @@ So, dass der Strom ein mal gleichsinnig durch die Spulen läuft und ein mal gege
   bzw. Messbrücke.
 \end{aufgabe}
 
-Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mit unseren Erwartungen haben wir die Bauteile charakterisiert. 
+Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mit unseren Erwartungen haben wir die Bauteile charakterisiert. Dies haben wir mit einer Messbrücke getan. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bilder/Messbrücke_10Ohm.pdf}
+    \caption{Charakterisierung des 10 $\mu F$ Kondensator}
+\end{figure}
 
+In dem Bild zu sehen ist die Messbrücke, an die Stelle wo der Kondensator ist, wir das Bauteil angeschlossen. Das Bild ist noch mit unserem ersten Kondensator, diesen haben wir im Verlauf des Experiments gegen einen kleineren ausgetauscht, und alle Messungen mit dem kleineren wiederholt.\\
+
+Für die Messung haben wir unseren Frequenzbereich von 1kHz eingestellt.
+ (In dem Bild auf 100Hz weil wir da noch den 10 $\mu F$ messen, und wir mit diesem geringere frequenzen hatten.) 
+So konnten wie sämtliche Bauteile Charakterisieren und sind für unseren zweiten Aufbau (mit kleinerem Kondensator) zu folgenden Ergebnissen gekommen:\\
+    
+\begin{table}[h]
+        \centering
+        \begin{tabularx}{0.8\textwidth}{X X c} % adjust width as needed
+            \toprule
+            \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
+            \midrule
+            Spule 1 & L = 9.023mH &  \\
+            & R = 2.344 $\Omega$ & \\
+            Spule 2 & L = 8.981mH &  \\
+            & R = 2.423 $\Omega$ \\
+            Kondensator 1 & 2.301 $\mu$F &  \\
+            Kondensator 2 & 2.262 $\mu$F &  \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Ergebnisse der Messung mit dem Multimeter}
+        \label{tab:mytable}
+    \end{table}
 
 \begin{aufgabe}{Ungekoppelte Schwingung}
   Zeigen Sie den Verlauf der Kondensatorspannungen für den
@@ -65,8 +93,9 @@ Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mi
   Messunsicherheit. Vergleichen Sie sie mit Ihrer Erwartung.
 \end{aufgabe}
 
- 
-\subsection{Materialien}
+\subsection{Ungekoppelter Schwingkreis}
+
+\subsubsection{Materialien}
 
 
 Vor Beginn des Versuchs haben wir unsere Bauteile gewählt. Wir hatten uns erst für einen $10\mu F$ Kondensator entschieden und eie Spule mit 500 Windungen.
@@ -91,7 +120,7 @@ Zuerst haben zwei ungekoppelte Schwingkreise aufgebaut mit gleichen Bauteilen.
   \item Steckplatte DIN A4
 \end{itemize}
 
-\subsection{Aufbau}
+\subsubsection{Aufbau}
 Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
 \begin{figure}[H]
     \centering
@@ -111,7 +140,7 @@ Des haben wir die Spannungsqelle und den Schalter dann jeweils umgesteckt, da wi
 
 
 
-\subsection{Durchführung}
+\subsubsection{Durchführung}
 Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei diser Spannung die Maximale Stromstärke der Spule ( $2.5A$ ) nicht überschritten wird.
 Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
 Diese Testmessungen haben wir aber noch mit unserer 'alten' Kapazität gemacht ( $C = 10 \mu F$ ), aber beim verbauen der neuen wiederholt.
@@ -137,6 +166,11 @@ Beim Cassy
 
 
 Den 1. Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.
+
+\subsubsection{Rohdaten}
+
+Insgesamt hatten wir also die Kondensatorspannung beim Schwingungsvorgang in zweiten Schwingkreis 10x gemsessen. Und im ersten Schwingkreis ein mal. 
+So wie eine Rauschmessung bei 0V und bei ca. 6V. 
 
 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}

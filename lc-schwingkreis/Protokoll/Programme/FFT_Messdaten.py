@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 16 17:11:50 2023
-
-@author: andrea
-"""
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
@@ -187,7 +182,7 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
     plt.title(plotname)
     plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='red')
     if show_peak:
-        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.axvline(freq_fft[a],color='green', label="Maximum")
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
@@ -204,7 +199,7 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
     delta = 3
     plt.plot(freq_fft[a-delta:a+delta],amp_fft[a-delta:a+delta],'.',color='red')
     if show_peak:
-        plt.axvline(freq_fft[a],color='green', label="peak")
+        plt.axvline(freq_fft[a],color='green', label="Maximum")
         plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
@@ -236,7 +231,7 @@ def plot_fpeak_errorbar(y, yerr, mean, plotname):
     plt.rcParams['savefig.pad_inches'] = 1
      
     fig, ax = plt.subplots()
-    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "f_peak mit Fehler")
+    plt.errorbar(range(1, len(y)+1), y, yerr=yerr, fmt='.', markersize=8, capsize=2, capthick=0.8, elinewidth=1.5, label = "Maximum mit Fehler")
     plt.ylabel("Frequenzen / Hz")
     plt.grid()
     plt.autoscale()
@@ -321,6 +316,14 @@ def cassy_hist(datei: str, x: str, y: str, plotname: str):
     if SHOW_PLOTS: plt.show()
     else: plt.savefig("../plots/" + plotname + '.pdf', bbox_inches = 'tight')
  
-cassy_hist('../Messdaten/rauschen_6V_01.labx', 't', 'U_A1', 'rauschen_6V_01')
+cassy_hist('../Messdaten/rauschen_0V_01.labx', 't', 'U_A1', 'rauschen_0V_01')
 rauschen_6 = get_messdaten('../Messdaten/rauschen_6V_01.labx', 'U_A1')
 rauschen_0 = get_messdaten('../Messdaten/rauschen_0V_01.labx', 'U_A1')
+rauscen_6_mean = np.mean(rauschen_6)
+rauschen_0_mean = np.mean(rauschen_0)
+rauschen_6_std = np.std(rauschen_6, ddof=1)
+rauschen_0_std = np.std(rauschen_0, ddof=1)
+print('Mittelwert Rauschen 6V', round(rauscen_6_mean, 5))
+print('Mittelwert Rauschen 0V', round(rauschen_0_mean, 6))
+print('Fehler Rauschen 6V', round(rauschen_6_std, 5))
+print('Fehler Rauschen 0V', round(rauschen_0_std, 6))

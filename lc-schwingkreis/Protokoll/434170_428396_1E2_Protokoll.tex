@@ -179,9 +179,25 @@ Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformatio
     \includegraphics[width=0.8\textwidth]{plots/schwingkreis-alt-test-200us-0.01s_fft_zoom.pdf}
     \caption{Zoomin Plot der FFT der Testmessung mit Messdauer = 0.01s}
 \end{figure}
-Wie zu sehen ist, war z.B bei dieser Testmessung die Messdauer mit 0.01s Sekunden zu kurz.
-Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann eine zufridenstellende Auflösung hatten.
+Wie zu sehen ist bei diese Testmessung, ist das Fourierspektrum nur auf $ \pm 10Hz $ genau. Das bedeutet das die Messdauer von 0.01s zu kurz ist.
+Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann eine zufridenstellende (Weniger als 1\%) Auflösung hatten.
 
+Hier eine übersicht der Messeinstellungen. Dabei haben wir den Kanal auf den getriggert wird immer auf den gestellt, an welchem der zu messende Schwingkreis angeschlossen war.
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich (für beide Eingäge)} \\
+            \midrule
+            200$\mu$s  & 0.5s & 6.1V fallend & -10V - 10V \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Messwertserfassungseinstellungen des CASSY}
+        \label{tab:mytable}
+    \end{table}
+     
+Anschließend haben wir noch zwei Rauschmessung gemacht: einmal mit geöffnetem und einmal mit geschlossenem Schalter nach dem Schwingvorgang.
+Diese haben wir gemacht, um daraus Offsets zu berechnen um unsere Messung des Wiederstandes zu prkäzisieren.
 
 
 \subsubsection{Rohdaten}

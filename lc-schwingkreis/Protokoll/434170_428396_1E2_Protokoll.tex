@@ -113,7 +113,7 @@ Zuerst haben zwei ungekoppelte Schwingkreise aufgebaut mit gleichen Bauteilen.
 \textbf{Material Liste}
 \begin{itemize}
   \item 2x Spule $9mH$
-  \item 2x Kondensator $10 \mu F$
+  \item 2x Kondensator $2.2 \mu F$
   \item Spannungsqelle vom Cassy
   \item Schalter
   \item Kabel
@@ -121,7 +121,9 @@ Zuerst haben zwei ungekoppelte Schwingkreise aufgebaut mit gleichen Bauteilen.
 \end{itemize}
 
 \subsubsection{Aufbau}
+
 Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
+Darauf zu achten ist, dass die Spannung parallel am Kondensator zu messen ist, mit dem Sensor CASSY. Der Schalter Schließt die Spannungsquelle kurz, und schließt somit den Schwingkreis.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{schaltplan-einzelschwingkreis.pdf}
@@ -132,34 +134,38 @@ Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
     \includegraphics[width=0.4\textwidth]{bilder/schwingkreis1.pdf}
     \caption{Aufbau des 1. Schwingkreises}
 \end{figure}
-   
-Zudem haben wir mit der 2. Spule und dem 2. Kondensator einen zweiten Schwingkreis aufgebaut.
-Die Schaltskizze des 2. Schwingkreises ist gleich zu dem des 1.
+
+Zudem haben wir mit Spule zwei und Kondensator zwei einen zweiten Schwingkreis aufgebaut.
+Der Aufbau und die Schaltskizze des zweiten Schwingkreises ist gleich zu dem des ersten.
 Insgesamt hatten wir 2 getrennte Schwingkreise, aber nur einen Schalter und eine Spannungsquelle (da wir die Schwingkreise später koppeln werden).
-Des haben wir die Spannungsquelle und den Schalter dann jeweils umgesteckt, da wir den Kondensator und die Spule einzeln vermessen wollten.
+Deshalb haben wir die Spannungsquelle und den Schalter dann jeweils umgesteckt, um die zwei Schwingkreise getrennt zu messen.
 
 
 
 
 \subsection{Durchführung}
 Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei dieser Spannung die Maximale Stromstärke der Spule ( $2.5A$ ) nicht überschritten wird.
+Also haben wir als Spannungsbereich des CASSY-10V bis 10V eingestellt.
 Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
-Diese Testmessungen haben wir aber noch mit unserer 'alten' Kapazität gemacht ( $C = 10 \mu F$ ), aber beim verbauen der neuen wiederholt.
-Beim einbauen der neuen haben wir die Messparameter aber wie unten beschrieben angepasst.
-Dafür haben wir die Periodendauer als Näherung ohne Widerstand (da dieser für eine grobe Abschätzung vernachlässigbar klein ist) überschlagen:
+Diese Testmessungen haben wir jedoch noch mit unserer 'alten' Kapazität gemacht ( $C = 10 \mu F$ ).
+Beim einbauen der neuen haben wir die Messparameter aber angepasst.\\
+Dafür haben wir die Periodendauer ohne Widerstand genähert (da dieser für eine grobe Abschätzung vernachlässigbar klein ist).
 \begin{equation}
     T = 2 \pi \sqrt{LC} = 2 \pi \sqrt{9mH \cdot 2.2 \mu F} = 884 \mu s
 \end{equation}
 Nach dem Nequisst Theorem muss die Abtastrate mindestens doppelt so groß sein wie die Frequenz.
-Um noch etwas Sicherheitspuffer zu haben, und da diese Messung nur eine Abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das 10x ist.
+Um eine ausreichende Auflösung des Fourier Peaks zu haben, und da diese Messung nur eine Abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das 10x ist.
 
  
-Die Schwingung im Schwingkreis startet in dem Moment, wo man den Taster drückt, und sich der Kondensator anfängt zu entladen.
-Damit der Schwingkreis sauber schwingen kann, muss der Taster auch während der gesamten Messung gedrückt bleiben.
+Die Schwingung im Schwingkreis startet in dem Moment, in dem man den Taster drückt, und sich der Kondensator anfängt zu entladen, da soll auch die Messung starten.
+Damit der Schwingkreis ungestört schwingen kann, muss der Taster auch während der gesamten Messung gedrückt bleiben.
 Entsprechend haben wir den Trigger vom Cassy auf 6.1V fallende Flanke gestellt um die Messung zu starten.
 Dabei haben wir 6.1V gewählt, da so noch der Großteil der ersten Schwingungsperiode mit aufgezeichnet wird.
-0.1V Abstand ( 6.2V - 6.1V )war mehr als ausreichend, um nicht spontan gestartet zu werden, aber noch weit genug entfernt um eventuelle Störeffekte vom Schalter kurz nach dem Schalten zu unterbinden.
-Den 2. Schwingkreis haben wir dabei 10 mal vermessen, um die Statistische Unsicherheit auf die Frequenz zu bestimmen.
+0.1V Abstand sind genug um Störeffekte vom schließen des Schalters nicht auf zu zeichnen.
+Den zweiten Schwingkreis haben wir dabei 10 mal vermessen, um die Statistische Unsicherheit auf die Frequenz zu bestimmen.
+
+Den ersten Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.
+
 
 
 Nachdem die Messung beendet ist, wir das Frequenz Spektrum mit hilfe einer Fouriertransformation analysiert.
@@ -167,14 +173,13 @@ Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformatio
  
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{plots/schwingkreis-alt-test-200us-0.01s_fft_zoom.pdf}
+    \includegraphics[width=0.8\textwidth]{plots/schwingkreis-alt-test-200us-0.01s_fft_zoom.pdf}
     \caption{Zoomin Plot der FFT der Testmessung mit Messdauer = 0.01s}
 \end{figure}
 Wie zu sehen ist, war z.B bei dieser Testmessung die Messdauer mit 0.01s Sekunden zu kurz.
 Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann eine zufridenstellende Auflösung hatten.
 
 
-Den 1. Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.
 
 \subsubsection{Rohdaten}
 

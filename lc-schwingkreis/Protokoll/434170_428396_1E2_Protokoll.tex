@@ -274,15 +274,31 @@ Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilun
 Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von $ \pm 1Hz$. Diesen Ablesefehler nehmen wir als systematisch an.
 % TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
 
+Unsere Messergebnisse sind in der Tabelle \ref{tab:freq} zusammengefasst:
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis zoom-in}
 \end{figure}
 Wie in dem obrigen Residuen Plot zu sehen ist, haben wir keien Ausreißer.
+Bei 3 Messungen liegt der Erwartungswert zwar nicht innerhalb einer Standartabweichung, aber innerhalb von 3, weshalb wir ihn nicht als Ausreißer exkludiert haben.
 Zudem haben wir eine geringe Streuung der Messwerte und eine gut reproduzierbare Messung.
 
 
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} \\
+            \midrule
+            1 & 1 & 100.0 Hz \\
+            2 & 1 & 100.0 Hz \\
+            \bottomrule
+        \end{tabularx}
+        \caption{gemessene Frequenz der Schwingkreise}
+    \end{table}
+     
 
 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}

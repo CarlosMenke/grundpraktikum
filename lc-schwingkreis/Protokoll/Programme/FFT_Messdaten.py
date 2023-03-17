@@ -327,3 +327,32 @@ print('Mittelwert Rauschen 6V', round(rauscen_6_mean, 5))
 print('Mittelwert Rauschen 0V', round(rauschen_0_mean, 6))
 print('Fehler Rauschen 6V', round(rauschen_6_std, 5))
 print('Fehler Rauschen 0V', round(rauschen_0_std, 6))
+ 
+ 
+def einhuellende(datei, y, voltageError, offset, plotname):
+    end = 700
+     
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe('t').werte
+    y = messung.datenreihe(y).werte
+     
+    plt.figure()
+    plt.title(plotname)
+
+    plt.errorbar(x[:end], y[:end], yerr = voltageError * np.ones(len(y[:end])), label = 'Messwerte')
+    plt.grid()
+    plt.xlabel('t / s')
+    plt.ylabel('U / V')
+    einhuellende = analyse.exp_einhuellende(x, y - offset, voltageError * np.ones(len(y)))
+    print('Amplitude', einhuellende[0], 'Frequenz', einhuellende[2], 'Offset', round(einhuellende[1], 6))
+    L = 0.009
+    R = einhuellende[2] * 2 * L
+    print(f'Der Widerstand bei {plotname} beträgt', round(R, 3), 'Ohm')
+    plt.plot(x[:end], +einhuellende[0] * np.exp(-einhuellende[2] * x[:end]) + offset + einhuellende[1], label = 'Einhüllende')
+    plt.plot(x[:end], -einhuellende[0] * np.exp(-einhuellende[2] * x[:end]) - offset + einhuellende[1], label = 'Einhüllende invertiert')
+    plt.legend()
+    plt.savefig('../plots/' + plotname + '.pdf', bbox_inches = 'tight')
+
+einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_1')
+einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_2')

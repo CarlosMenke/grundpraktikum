@@ -336,9 +336,34 @@ Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der
 Beim auswerten der Daten, haben wir für den Erwartungswert $ U_{off} = 4.882 mV$ erhalten, mit einer Standardabweichung von $\sigma = 0.761 mV$.
 Dabei ist der Erwartungswert der Offset welchen wir später für die berechnung des Wiederstandes brauchen, und sigma die Statistische Unsicherheit auf die Messwerte.
 
+Als letztes haben wir, um den Wiederstand der beiden Schwingkreise zu bestimmen, die Einhüllende der beiden Schwingkreise bestimmt.
+Dafür haben wir von den Spannungswerten der Messdaten den durch die Rauschmessung bestimmten Offset abgezogen.
+Die Anpassung wurde mithilfe der Praktikums Libary durchgeführt.
+ 
+Hier die Graphische Darstellung der Einhüllenden.
+Die untere Einhüllende ist dabei die obere mal minus 1.
+Diese haben wir noch zusätzlich dargestellt um die Genauigkeit der Anpassung besser zu beurteilen.
+Für den Fit wurde das gesamte Messintervall verwendet, in dem Plot haben wir lediglich den Anfang dargestellt, da man dort die abweichung der Messwerte vom Fit besser beurteilen kann.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_einhüllende_1.pdf}
+    \caption{Einhüllende des ersten Schwingkreises}
+\end{figure}
+ 
+Gleiches haben wir beim 2. Schwingkreis gemacht.
+Der Wiederstand konnte wie in den Grundlagen diskutiert, bestimmt werden (mit $ U(t) = A \cdot e^{-t \cdot B})$:
+\begin{equation}
+    R_1 = 2 B \cdot L =  2.690 \Omega \\
+\end{equation}
+\begin{equation}
+    R_2 = 2 B \cdot L =  2.880 \Omega
+\end{equation}
 
-
-
+Da die erste Spule laut Messbrücke einen Wiederstand von $ 2.344  \Omega$ hat und die zweite von $2.423 \Omega$, und wir den Wiederstand des restlichen Stromkreises auf $0.3 \Omega$ geschätzt haben, schätzen wir einen Gesamtwiederstand von $ 2.644 \Omega$ für den ersten und $ 2.723 \Omega$ für den 2. Schwingkreis.
+Damit übertreffen die gemessenen Werte unsere Erwartungen um ca $0.1 \Omega$.
+Allgemein sind damit die gemessenen Werte aber sehr realistisch.
+ 
+ 
 \begin{aufgabe}{Gekoppelte Schwingung: Schwebung}
   Stellen Sie für einen festen Kopplungsgrad $k$ eine Schwebung
   dar. Zeigen Sie jeweils die Fourierspektren, bestimmen Sie die

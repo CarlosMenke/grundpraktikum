@@ -70,13 +70,13 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
   
 
-'''for filename in sorted(os.listdir(cassy_dir)):
+for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 300)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 500)
-'''
+
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 12.0

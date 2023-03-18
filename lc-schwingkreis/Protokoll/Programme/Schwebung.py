@@ -186,6 +186,7 @@ def Schwebung_FFT(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, 
     return freq_fft[q], freq_fft[p], freq_fft_2[r], freq_fft_2[s]
 
 f_plus_1, f_minus_1, f_plus_2, f_minus_2 = Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_complete', 550, 5000) 
+f_minus_2 = 1177 # da per hand abgelesen und korrigiert
 print('Fplus_1', f_plus_1)   
 print('Fminus_1', f_minus_1)    
 print('fplus_2', f_plus_2)
@@ -230,7 +231,7 @@ def sigma_f(f_plus, f_minus):
 
 print('fehler auf k' ,sigma_f(f_plus_1, f_minus_1))
 
-def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
+def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2, right=False):
     
     x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
     
@@ -242,6 +243,8 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
     q = np.where(amp_fft == i)[0][0]
     j = max(amp_fft[550:700])
     p = np.where(amp_fft == j)[0][0]
+    if right:
+        q = p
     
     plt.figure()
     plt.title(plotname)
@@ -259,6 +262,7 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
 
 
 Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_Maximum', 3, 3)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_FFT_Maximum', 3, 3, right=True)        
 
         
 def Schwebung_FFT_maxi_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):

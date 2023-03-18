@@ -24,6 +24,7 @@
   Formelzeichen.
 \end{aufgabe}
 \section{Gurndlagen}
+%TODO add stroemungs DGL
 Ein einfacher Schwingkreis besteht aus einer in Reihe geschlateten Spule und einem Kondensator.
 Angenommen der Kondensator ist am anfang aufgeladen (1),
 dann entlädt sich der Kondensator(2), der durch die Spule fließende Strom induziert ein Magnetfeld (3), und das Magnetfeld induziert einen Gegenstrom sodass der Kondensator entgegengesetzt aufgeladen wird.
@@ -647,6 +648,13 @@ Die Bestimmung der Maxima kann den zwei Graphen entnommen werden. Hier wurde das
     \caption{Bestimmung des Maximums von $f_+$ in SK 1}
     \label{Schwebung_Maxima}
 \end{figure}
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_FFT_Maximum.pdf}
+    \caption{Bestimmung des Maximums von $f_-$ in SK 2}
+    \label{Schwebung_Maxima}
+\end{figure}
 
 
 \begin{figure}[H]
@@ -698,7 +706,7 @@ Für diese ergibt sich:
     f_{schw} = \frac{f_- - f_+}{2}
 \end{equation}
 
-Für den Fehler auf diese Frequenzen müssen wir den Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen. Aus der Gauß'schen Fehlerfortpflanzung ergibt sich:
+Für den Fehler auf diese Frequenzen müssen wir den Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Aus der Gauß'schen Fehlerfortpflanzung ergibt sich:
 \begin{equation}
 	\sigma_y^2 = \sum_{i=1}^n\left[\frac{\partial y}{\partial x_i}\right]_{x=\mu}\sigma_{i}^2
 \label{Fehlerfortpflanzung}
@@ -746,18 +754,19 @@ Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bes
     \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
 \end{equation}
 
-Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
+Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
 \begin{equation}
-\sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
+    \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
+    label{Fehlerfortpflanzung_kopplung}
 \end{equation}
 
 Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
 \begin{center}
-$k_1$ = 0.109 $\pm$ 0.0015
+$k_1$ = 0.109 $\pm$ 0.002
 \end{center}
 und für den zweiten:
 \begin{center}
-$k_2$ = 0.127 $\pm$ 0.0015
+$k_2$ = 0.127 $\pm$ 0.002
 \end{center}
 
 Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt haben deutlich kleiner ist als der von Schwingkreis 2. 
@@ -895,7 +904,27 @@ Dabei haben wir die Maximale Frequenz auf $f_-=1184.5Hz$ geschätzt.
 Wir haben sie leicht nach rechts verschoben, da 1186Hz etwas häufiger vorkommt als 1182Hz.
 
 \subsection{Kopplungsgrad}
-Der 
+Der Kopplungsgrad ist definiert als:
+\begin{equation}
+    k_g = \frac{f_-^2-f_+^2}{f_-^2+f_+^2} = \frac{1184.5^2-1050^2}{1184.5^2+1050^2} = 0.120
+\end{equation}
+
+Als Fehler auf k gehen dabei nur die statistischen Fehler von $f_+$ und $f_-$ ein.
+Da diese wieder aus der FFT bestimmt wurden, gibt es hier einmal den statistischen Ablesefehler und den statistischen Messfehler (welchen wir im Versuch mit der 10 fachen Messung des gleichen Schwingkreises bestimmt haben ).
+Diese beiden Fehler haben wir bei der Feherberechnung der Schwebung (\ref{Fehlerfortpflanzung_kopplung}) schon auf die Fromel des Kopplungsgrades fortpflanzt.
+Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da diese nicht von dem Wert der Frequenz abhängen sondern von der Methode wie wir diese bestimmt haben.
+ 
+\begin{equation}
+    \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
+    = 0.002 Hz
+\end{equation}
+\begin{equation}
+    k_g = (0.120 \pm 0.002) Hz
+\end{equation}
+
+Verglichen mit $k_1 = (0.109 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ innerhalb der statistichen Abweichungen.
+Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ außerhalb der statistischen Abweichungen.
+
 \end{document}
 
 %TODO : Peaks neu bestimmen

@@ -83,8 +83,8 @@ Dabei gilt für die innere Frequenzen $f_k$ und die Schwebungsfrequenz $f_{schw}
 
 Wenn beide Schwingkreise angeregt werden, dann kann man zwischen gleichsinniger und gegensinniger Aufladung unterscheiden.
 Bei gleichsinniger Aufladung fließen die Ströme in die gleiche Richtung durch die Spulen.
-Hier kann man im Fourierspektrum $f_-$ als Maximum messen.
-Bei gegensinniger Aufladung kann man $f_+$ als Maximum des Fourierspektrums messen.
+Hier kann man im Fourierspektrum $f_+$ als Maximum messen.
+Bei gegensinniger Aufladung kann man $f_-$ als Maximum des Fourierspektrums messen.
 
 So kann man sowohl mit der Schwebung, wie auch mit gleich und gegensinniger Anregung den Kopplungsgrad mithilfe der oben angegeben Formel bestimmen.:
 
@@ -807,12 +807,16 @@ Dabei ist in beiden Schaltbildern links der 2. Schwingkreis und rechts der 1.
 Vor der Messung haben wir erst beide Kondensatoren mit offenem Schalter aufgeladen.
 Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und sommit auch die Schwinngung beginnt.
 Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veräbnder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
+Dabei haben wir die Spulen der beiden Schwingkreise direkt nebeneinander gestellt, um die Kopplung zu maximieren.
+Die Kopplung haben wir während der gesamten Messung konstant gehalten.
 
 \subsection{Durchführung}
 Alle Messeinstellungen haben wir so gelassen wie vorher, da sich hier nichts wesentliches verändert hat.
 Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkreis umgedreht, da dann der Strom andersherum durch sie hindurch fließt.
+Sowohl die gleich wie die gegensinnige schwingung haben wir einmal vermessen.
 
-\subsection{Rohdaten}
+\subsection{Gleichsinnige Schwingung}
+Bei der Gleichsinnigen Schwingung ist die Maximale Frequenz wie in den Grundlagen diskutiert $f_+$.
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule.pdf}}
@@ -823,6 +827,20 @@ Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkr
     \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule_fft_zoom.pdf}}
     \caption{Gleichsinnige Schwingung FFT mit ausschnitt um den Peak}
 \end{figure}
+Zum Auswerten haben wir uns die Fouriertransformation angeschaut, und die Maxima selber bestimmt, da wir so das Maximum genauer bestimmen konnten.
+Dies liegt daran, dass wenn wir nur die Frequenz mit dem größten Wert nehmen, man anhand der Verteilung der Werte daneben sehr gut abschätzen kann ob das einetliche Maximum etwas links oder rechts davon liegt.
+
+Für die Gleichsinnige Schwingung haben wir folgenden Wert als Maximale Frequenz ermittelt:
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule_fft_zoom_peak.pdf}}
+    \caption{Gleichsinnige Schwingung FFT Zoom in}
+\end{figure}
+Da das Intervall um das Maximum herum nachezu symetrisch aussieht, haben wir hier $f_+=1050Hz$ als maximale Frequenz genommen.
+
+ 
+\subsection{Gegensinnige Schwingung}
+Mit der Gegensinnigen Schwingung kann man $f_-$ bestimmen. Diese ist die Maximale Frequenz der Schwingung, und kann so mitterls FFT leicht gefunden werden.
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01.pdf}}
@@ -833,8 +851,18 @@ Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkr
     \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01_fft_zoom.pdf}}
     \caption{Gegensinnige Schwingung FFT mit ausschnitt um den Peak}
 \end{figure}
+Für die Gegensinnige Schwingung haben wir die Werte wiefolgt ausgewertet:
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01_fft_zoom_peak.pdf}}
+    \caption{Gegensinnige Schwingung FFT Zoom in}
+\end{figure}
+Der grüne Strich makiert hier die Frequenz, welche die größte Amplitude hat in der FFT hat.
+Dabei haben wir die Maximale Frequenz auf $f_-=1184.5Hz$ geschätzt.
+Wir haben sie leicht nach rechts verschoben, da 1186Hz etwas häufiger vorkommt als 1182Hz.
 
-   
+\subsection{Kopplungsgrad}
+Der 
 \end{document}
 
 

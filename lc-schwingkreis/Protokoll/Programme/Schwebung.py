@@ -189,7 +189,19 @@ print('Fminus_1', f_minus_1)
 print('fplus_2', f_plus_2)
 print('fminus_2', f_minus_2)
 Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_zoom', 100, 100) 
-              
+
+def f_s(f_plus, f_minus):
+    f_s = (f_minus-f_plus)/2
+    return f_s
+def f_k(f_plus, f_minus):
+    f_k = (f_minus+f_plus)/2
+    return f_k
+print('Schwebungsfrequenz SK 1:', f_s(f_plus_1, f_minus_1))  
+print('Grundfrequenz SK 1', f_k(f_plus_1, f_minus_1))        
+
+print('Schwebungsfrequenz SK 2:', f_s(f_plus_2, f_minus_2))
+print('Grundfrequenz SK 2', f_k(f_plus_2, f_minus_2))
+
 def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
     
     x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)

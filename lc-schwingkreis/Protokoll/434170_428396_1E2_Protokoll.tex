@@ -295,6 +295,7 @@ Unten die Ergebnisse der einzelnen Messungen:
         10& 2 & 1118 Hz \\
         \bottomrule
     \end{tabularx}
+    \caption{Frequenzen von Schwingkreis 1 und 2}
 \end{table}
 
 Der Erwartungswert des 2. Schwingkreises ist:
@@ -476,6 +477,8 @@ Hier ist die Komplette FFT für die Spannungsverläufe an den beiden Schwingkrei
     \caption{FFT der Schwingungen in Schwingkreis 1 und 2}
 \end{figure}
 
+\subsubsection{Bestimmen der Fundamentalfrequenzen}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_zoom.pdf}
@@ -484,9 +487,52 @@ Hier ist die Komplette FFT für die Spannungsverläufe an den beiden Schwingkrei
 
 Um die Peaks der zwei Fundamentalschwingungen zu sehen, haben wir auch einen Zoom-in der FFT betrachtet. 
 Hier kann man sehr gut sehen, dass in beiden Schwingkreisen zwei Peaks vorliegen, wobei die Peaks in Schwingkreis 2 deutlich schärfer sind. 
-Des weiteren kann man hier sehen, dass die Peaks leicht gegeneinander verschoben sind. Also die Fundamentalschwingungen der beiden Schwingkreise leicht voneinander abweichen werden.
-Der Tiefpunkt zwischen den beiden Peaks sollte ungefähr bei der Grundfrequenz des Schwingkreises liegen.
-Die genaue Lage der Peaks haben wir wie bereits beim Einzelschwingkreis bestimmt, indem wir die Maxima in den entsprechenden Intervallen gesucht haben.
+Des weiteren kann man hier sehen, dass die Peaks leicht gegeneinander verschoben sind. Also die Fundamentalschwingungen der beiden Schwingkreise (SK) leicht voneinander abweichen werden.
+Der Tiefpunkt zwischen den beiden Peaks sollte ungefähr bei der Grundfrequenz des Schwingkreises liegen.\\
+
+
+Die genaue Lage der Peaks haben wir wie beim Einzelschwingkreis bestimmt, indem wir die Maxima in den entsprechenden Intervallen gesucht haben.
+Hierfür haben wir aus dem Oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss. So konnten wir mit einem Python Programm, jeweils die Maxima bestimmen.
+Die Bestimmung der Maxima kann den zwei Graphen entnommen werden. Hier wurde das Exemplarisch für die Schwingung im SK 1 Dargestellt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_Maximum.pdf}
+    \caption{Bestimmung des Maximums von $f_+$ in SK 1}
+    \label{Schwebung_Maxima}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_zwei_Maximum.pdf}
+    \caption{Beide Maxima in SK 1}
+\end{figure}
+
+So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreisen:
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Schwingkreis} & \textbf{$f_+$ in Hz} & \textbf{$f_-$ in Hz} & \textbf{Fehler}\\
+        \midrule
+        1 & 1053.9 & 1157.9 & $\pm$ 1\\
+        2 & 1045.9 & 1187.9 & $\pm$ 1\\
+        \bottomrule
+    \end{tabularx}
+    \caption{Fundamentalschwingungen der zwei Schwingkreise}
+    \label{•}
+\end{table}
+
+Hier ist so wie bei den Einzelschwingkreisen der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden.
+
+\subsubsection{Bestimmen der Eigenfrequenzen}
+
+%TODO : Messunsicherheiten auf f+ und f- 
+Als weitere interessante Frequenzen, haben wir in dem gekoppelten Schwingkreis, die Frequenz der Schwebung und die Grundfrequenzen der beiden Schwingkreise. 
+In den Grundlagen wurde bereits eingeführt wie diese mit den Fundamentalfrequenzen zusammen hängen.
+
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die

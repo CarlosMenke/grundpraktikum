@@ -334,8 +334,11 @@ Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilun
     \caption{FFT Zoom vom ersten Schwinkgreis mit eingezeichnetem Peak}
     \label{fig:peak}
 \end{figure}
-Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von $ \pm 1Hz$. Diesen Ablesefehler nehmen wir als systematisch an.
-%TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
+Dabei kann dem zoom-in plot entnommen werden, das wir Messpunkte in 2Hz schritten haben.
+Daraus ergibt sich für den Fehler auf Grund der Ablesegenauigkeit $ \frac{2Hz}{\sqrt{12}} = 0.6Hz $ 
+ Diesen Ablesefehler nehmen wir als statistisch an.
+
+
 Unten die Ergebnisse der einzelnen Messungen:
 
 %TODO stat fehler quad. addireren
@@ -366,11 +369,16 @@ Der Erwartungswert des 2. Schwingkreises ist:
 \begin{equation}
     f_2 = 1117.3 Hz
 \end{equation}
-Dabei ist der Statistische Fehler auf die Frequenz, also die Unsicherheit auf den Erwartungswert, gegeben durch:
+Dabei ist der Statistische Fehler auf den Einzelwert also die Frequenz, also die Unsicherheit auf den Erwartungswert, gegeben durch:
 \begin{equation}
-    \sigma_{f_2 stat} = \sigma = 1.0 Hz
+    \sigma_{f_2 stat} = 1.0 Hz
 \end{equation}
-     
+Hier ist noch an zu merken, dass der Ablesefehler größer ist wenn wir die Auswertung mit Python machen, jedoch ist der statistische Fehler ( $\sigma_{f_{2stat}}$) größer als der Fehler aufgrund des Ablesens, weswegen wir hier keine Genauigkeit gewinnen, wenn wir die Auswertungsmethode gewinnen.
+
+Somit ergibt sich der Fehler insgesamt aus der quadratischen Addition der beiden Fehlerbeiträge. Für den Fehler auf $f$ erhlaten wir.
+\begin{equation}
+\sigma_f = 1.2Hz
+\end{equation}
 
 \begin{figure}[H]
     \centering
@@ -470,7 +478,8 @@ Die Schaltung kann dem Schaltbild unten entnommen werden. \\
 
 
 
-\subparagraph{Gekoppelte Schwingung: Schwebung}
+\subsubsection{Gekoppelte Schwingung: Schwebung}
+
 
 %TODO : Schaltbild einfügen
 
@@ -594,42 +603,97 @@ Die Bestimmung der Maxima kann den zwei Graphen entnommen werden. Hier wurde das
     \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_zwei_Maximum.pdf}
     \caption{Beide Maxima in SK 1}
 \end{figure}
+%TODO : Messunsicherheiten auf f+ und f- 
 
+Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
+Des weiteren haben wir einen Fehler der auf Grund der statistischen Schwankung der Ergebnisse, wenn man die Messung mehrfach wiederholt. 
+Diesen haben wir ebenfalls bereits bei den Einzelschwingkreisen bestimmt, indem wir SK 2 zehn mal gemessen haben. 
+Hier hat sich der Statistische Fehler von $\pm 1Hz$ Ergeben.\\
+
+Bein Sensor CASSY können wir davon ausgehen, dass wir keinen Fehler auf die Zeit haben, weswegen dies kein Einfluss auf den Fehler auf die Fundamentalfrequenzen hat.
+Diese Fehler müssen quadratisch addiert werden, da wir davon ausgehen können, dass beide statistischer Natur sind.
 So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreisen:
 
 \begin{table}[H]
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
-        \textbf{Schwingkreis} & \textbf{$f_+$ in Hz} & \textbf{$f_-$ in Hz} & \textbf{Fehler}\\
+        \textbf{Schwingkreis} & \textbf{$f_+$ } & \textbf{$f_-$ } & \textbf{Fehler $(\sigma)$}\\
         \midrule
-        1 & 1053.9 & 1157.9 & $\pm$ 1\\
-        2 & 1045.9 & 1187.9 & $\pm$ 1\\
+        1 & 1054Hz & 1158Hz & 1.2Hz\\
+        2 & 1046Hz & 1188Hz & 1.2Hz\\
         \bottomrule
     \end{tabularx}
     \caption{Fundamentalschwingungen der zwei Schwingkreise}
     \label{•}
 \end{table}
 
-Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
-Des weiteren haben wir einen Fehler der auf Grund der statistischen Schwankung der Ergebnisse, wenn man die Messung mehrfach wiederholt. 
-Diesen haben wir ebenfalls bereits bei den Einzelschwingkreisen bestimmt, indem wir SK 2 zehn mal gemessen haben. 
-Hier hat sich der Statistische Fehler von $\pm 1Hz$ Ergeben.
-Bein Sensor CASSY können wir davon ausgehen, dass wir keinen Fehler auf die Zeit haben, weswegen dies kein Einfluss auf den Fehler auf die Fundamentalfrequenzen hat.
-%TODO : Messunsicherheiten auf f+ und f- 
-
-\subsubsection{Bestimmen der Eigenfrequenzen}
+\subsubsection{Bestimmen der Eigenfrequenz und Schwebungsfrequenz}
 
 
 Als weitere interessante Frequenzen, haben wir in dem gekoppelten Schwingkreis, die Frequenz der Schwebung und die Grundfrequenz des gekoppelten Schwingkreises. 
 In den Grundlagen wurde bereits eingeführt wie diese mit den Fundamentalfrequenzen zusammen hängen.
-Als näherung für diese ergibt sich:
+Für diese ergibt sich:
 
-%TODO : Formel Grundschwingung und Schwebung
+\begin{equation}
+    f_k = \frac{f_- + f_+}{2}
+\end{equation}
+\begin{equation}
+    f_{schw} = \frac{f_- - f_+}{2}
+\end{equation}
 
+Für den Fehler auf diese Frequenzen müssen wir den Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen. Aus der Gauß'schen Fehlerfortpflanzung ergibt sich:
 
+\begin{equation}
+\sigma_f =\sqrt{ \left(\frac{\partial f}{\partial f_+}\right)^2\sigma_{f_+}^2 + \left(\frac{\partial f}{\partial f_-}\right)^2\sigma_{f_-}^2}
+\end{equation}
 
+Hier steht $f$ stellvertretend für $f_k$ und $f_{schw}$. $\sigma_f$ bezeichnet die Standardabweichung auf diese Frequenzen. 
+$ \sigma_{f_+} $ und $ \sigma_{f_-}$ für die Fehler auf diese Größen.
 
+Da Jedoch der Fehler auf $f_+$ und $f_-$ gleich ist, und für die beiden Funktionen durch das quadrieren der Ableitungen das Vorzeichen keinen einfluss auf den Fehler hat ergibt sich für beide:
+
+\begin{equation}
+\sigma_f = \frac{1}{2}\sigma_{f_+}^2
+\end{equation}
+
+Mit den Fundamentalfrequenzen aus beiden Schwingkreisen ergibt sich somit:
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Schwingkreis} & \textbf{$f_k$} & \textbf{$f_{schw}$} & \textbf{$\sigma_f$} \\
+        \midrule
+        1 & 1115Hz & 61Hz & 0.72Hz\\
+        2 & 1117Hz & 71Hz & 0.72Hz \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Fundamentalschwingungen der zwei Schwingkreise}
+    \label{•}
+\end{table} 
+
+\subsubsection{Bestimmung des Kopplungsgrads}
+
+Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bestimmen wie in den Grundlagen eingeführt.
+
+\begin{equation}
+    \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
+\end{equation}
+
+Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen.
+\begin{equation}
+\sigma_f =2\frac{f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}
+\end{equation}
+
+Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
+\begin{center}
+$k_1$ = 
+\end{center}
+und für den zweiten:
+\begin{center}
+$k_2$ =
+\end{center}
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
   beiden Fundamentalschwingungen dar. Zeigen Sie jeweils die

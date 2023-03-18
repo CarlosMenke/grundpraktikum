@@ -78,13 +78,12 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
  
 cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
 
-'''for filename in sorted(os.listdir(cassy_dir)):
+for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
-        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 500)
+        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
-        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 500)
-'''
+        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
 
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
@@ -237,7 +236,6 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
     
     
     freq_fft,amp_fft = analyse.fourier_fft(x,y)
-    freq_fft_2,amp_fft_2 = analyse.fourier_fft(x,y_2)
     
     i = max(amp_fft[200:550])
     q = np.where(amp_fft == i)[0][0]
@@ -261,8 +259,10 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
         plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
 
 
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_Maximum', 3, 3)        
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_FFT_Maximum', 3, 3, right=True)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_1_FFT_Maximum', 3, 3) 
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_2_FFT_Maximum', 3, 3, right=True)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_1_FFT_Maximum', 3, 3) 
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_2_FFT_Maximum', 3, 3, right=True)        
 
         
 def Schwebung_FFT_maxi_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):

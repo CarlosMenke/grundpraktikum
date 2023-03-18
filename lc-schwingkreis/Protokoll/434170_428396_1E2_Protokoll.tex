@@ -639,29 +639,38 @@ Der Tiefpunkt zwischen den beiden Peaks sollte ungefähr bei der Grundfrequenz d
 
 
 Die genaue Lage der Peaks haben wir wie beim Einzelschwingkreis bestimmt, indem wir die Maxima in den entsprechenden Intervallen gesucht haben.
-Hierfür haben wir aus dem Oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss. So konnten wir mit einem Python Programm, jeweils die Maxima bestimmen.
-Die Bestimmung der Maxima kann den zwei Graphen entnommen werden. Hier wurde das Exemplarisch für die Schwingung im SK 1 Dargestellt.
+Hierfür haben wir aus dem oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss.
+Dabei ist in grün immer die Frequenz mit der Maximalen Amplitude zu sehen. Diese  haben wir aber nicht zwangsweise auch in der Auswertung verwendent, sonder teilweise noch angepasst, wenn die umliegenden Werte nicht gleichstark gesunken sind.\\
 
+In diesem fallen die umliegenden Punkte gleichstark ab, sodass wir hier $f_{1+} = 1054 Hz$ genommen haben.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_Maximum.pdf}
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_1_FFT_Maximum.pdf}
     \caption{Bestimmung des Maximums von $f_+$ in SK 1}
     \label{Schwebung_Maxima}
 \end{figure}
  
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_FFT_Maximum.pdf}
-    \caption{Bestimmung des Maximums von $f_-$ in SK 2}
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_2_FFT_Maximum.pdf}
+    \caption{Bestimmung des Maximums von $f_-$ in SK 1}
     \label{Schwebung_Maxima}
 \end{figure}
 
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_zwei_Maximum.pdf}
-    \caption{Beide Maxima in SK 1}
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_1_FFT_Maximum.pdf}
+    \caption{Bestimmung des Maximums von $f_+$ in SK 2}
 \end{figure}
+
+Hier fallen die Frequenzen im höheren Bereich deutlich langsamer ab, sodass wir hier $f_{2-} = 1177 Hz$ genommen haben.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_2_FFT_Maximum.pdf}
+    \caption{Bestimmung des Maximums von $f_-$ in SK 2}
+    \label{Schwebung_Maxima}
+\end{figure}
+ 
 %TODO : Messunsicherheiten auf f+ und f- 
 
 Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
@@ -691,7 +700,6 @@ So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreise
 Die bestimmten Frequenzen unterscheiden sich leicht, obwohl nach theoretischer Erwartung diese gleich sein sollten, ob man von die Spannung an Kondensator 1 oder 2 misst.
 Jedoch sind unsere Schwingkreise nicht komplett gleich, so variiert z.b. der Widerstand in diesen leicht. Dies führt dazu, dass wir bei den Messungen leicht unterschiedliche Ergebnisse haben. 
 Dies wird natürlich auch Einfluss auf die Größen die aus $f_+$ und $f_-$ bestimmt werden haben. So werden wir für die zwei Messungen unterschiedliche Kopplungsgrade erhalten.
-
 \subsubsection{Bestimmen der Eigenfrequenz und Schwebungsfrequenz}
 
 

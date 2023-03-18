@@ -91,7 +91,7 @@ So kann man sowohl mit der Schwebung, wie auch mit gleich und gegensinniger Anre
 Zudem kann man aufgrund der Dämpfung von dem internen Wiederstand unseres Schwingkreises eine leichte zeitliche Verschiebung zwischen Maximaler Spannung am einen Kondensator und Nulldurchgang der Spannung am anderen Kondensator.
 Diese ist für $ k < 0.2$ (was bei uns der Fall sein wird):
 \begin{equation}
-    \Delta t \approx \frac{2 \pi}{f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
+    \Delta t \approx \frac{1}{2 \pi \cdot f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
 \end{equation}
 
 
@@ -790,6 +790,8 @@ Hier können wir sehen, dass wir wie zu erwarten unterschiedliche Werte für die
   Messunsicherheit. Vergleichen Sie mit den Werten aus der Schwebung.
 \end{aufgabe}
    
+%TODO plot von beiden schwingungen einzeln
+%TODO plot von beiden FFT Spektren einzeln
    
 \end{document}
 

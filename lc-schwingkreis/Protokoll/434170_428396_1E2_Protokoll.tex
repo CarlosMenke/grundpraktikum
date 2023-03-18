@@ -23,7 +23,45 @@
   benötigten Formel(n), ohne Herleitung. Definition der verwendeten
   Formelzeichen.
 \end{aufgabe}
+\section{Gurndlagen}
+Aus der DGL kann man folgende beziehungen ableiten. $\omega_0$ ist dabei die Eigenfrequenz ohne dämpfung, $\omega$ die Eigenfrequenz mit dämpfung.
+$\delta$ ist die Dämpfungskonstante.
+\begin{equation}
+    \delta = \frac{R}{2L}
+\end{equation}
+\begin{equation}
+    \Rightarrow R = 2 L \cdot \delta
+\end{equation}
+\begin{equation}
+    \omega_0 = \frac{1}{\sqrt{L \cdot C}}
+\end{equation}
+\begin{equation}
+    \omega = \sqrt{\omega_0^2 - \delta^2}
+\end{equation}
+Dabei sieht die allgemeine Schwingungsgleichung wie folgt aus:
+\begin{equation}
+    U(t) = U_0 \cdot e ^ {-\delta t} + U_{off}
+\end{equation}
 
+Man kann zwei Schwingkreise aber auch koppeln, da mit einer Spule eine Spannung in der Spule des anderen Schwingkreises induziert werden kann.
+Dafür müssen die Schwingkreise in ca die gleiche Eigenfrequenz haben, was bei uns der Fall ist, da sie baugleich sind.
+Wenn zwei Schwingkreise gekoppelt sind, und nur in einem Schwingkreis eine Schwingung erzwungen wird, kommt es anschließend zu Schwebung.
+Die Fundamentalschwingungen sind dabei die Schwingungen welche man in diesem Falle im Fourierspektrum als Maxima erkennen kann.
+Dabei ist $f_-$ das rechte Maximum und $f_+$ das linke.
+Dabei gilt für die Fundamentalschwingungen:
+\begin{equation}
+    \omega_+ = \frac{\omega_0}{\sqrt{1 + k}}
+\end{equation}
+\begin{equation}
+    \omega_- = \frac{\omega_0}{\sqrt{1 - k}}
+\end{equation}
+\begin{equation}
+    \Rightarrow k = \frac{\omega_0^2}{\omega_+^2} - 1 = - \frac{\omega_0^2}{\omega_-^2} + 1
+\end{equation}
+Wenn beide Schwingkreise angeregt werden, dann kann man zwischen gleichsinniger und gegensinniger Aufladung 
+
+
+ 
 \begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
   Beschreibung des Versuchsaufbaus einschließlich
   Schaltbild. Beschreibung der Versuchsdurchführung: verwendete
@@ -279,7 +317,7 @@ Unten die Ergebnisse der einzelnen Messungen:
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
-        \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} \\
+        \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} & \textbf{stat. Fehler}\\
         \midrule
         1 & 1 & 1106 Hz \\
         \midrule
@@ -304,7 +342,7 @@ Der Erwartungswert des 2. Schwingkreises ist:
 \end{equation}
 Dabei ist der Statistische Fehler auf die Frequenz, also die Unsicherheit auf den Erwartungswert, gegeben durch:
 \begin{equation}
-    \sigma_{f_2} = \frac{\sigma}{\sqrt{n}} = 0.3 Hz
+    \sigma_{f_2 stat} = \sigma = 1.0 Hz
 \end{equation}
      
 
@@ -326,7 +364,7 @@ Hier sieht man, wie bei der 2. Messung die Amplituden der Frequenz 1116Hz und 11
 Der Grund das die gefundene Amplitude um 2 Hz schwankt, liegt also in der Auflösung der FFT.
 Da wir aber eine Messreihe von 10 Messungen durchgeführt haben, ist es aber nicht schlimm, das wir immer nur das Maximum und nicht den Peakschwerpunkt nehmen,
 da wir durch das errechnen des Mittelwertes die Messungen entsprechend gewichten. \\
-
+%TODO mit erwarungen vergleichen
 
 Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der Rauschmessung bei nicht gedrücktem Schalter als Histogramm:
 \begin{figure}[H]
@@ -334,8 +372,9 @@ Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der
     \includegraphics[width=1\textwidth]{plots/rauschen_0V_01.pdf}
     \caption{Rauschmessung bei 0V}
 \end{figure}
-Beim auswerten der Daten, haben wir für den Erwartungswert $ U_{off} = 4.882 mV$ erhalten, mit einer Standardabweichung von $\sigma = 0.761 mV$.
+Beim auswerten der Daten, haben wir für den Erwartungswert $ U_{off} = 4.882 mV$ erhalten, mit einer Standardabweichung von $\sigma_{off} = 0.761 mV$.
 Dabei ist der Erwartungswert der Offset welchen wir später für die berechnung des Wiederstandes brauchen, und sigma die Statistische Unsicherheit auf die Messwerte.
+Hierbei gehen wir davon aus, das beide Schwingkreise den gleichen Offset haben.
 
 Als letztes haben wir, um den Wiederstand der beiden Schwingkreise zu bestimmen, die Einhüllende der beiden Schwingkreise bestimmt.
 Dafür haben wir von den Spannungswerten der Messdaten den durch die Rauschmessung bestimmten Offset abgezogen.
@@ -345,21 +384,42 @@ Hier die Graphische Darstellung der Einhüllenden.
 Die untere Einhüllende ist dabei die obere mal minus 1.
 Diese haben wir noch zusätzlich dargestellt um die Genauigkeit der Anpassung besser zu beurteilen.
 Für den Fit wurde das gesamte Messintervall verwendet, in dem Plot haben wir lediglich den Anfang dargestellt, da man dort die abweichung der Messwerte vom Fit besser beurteilen kann.
+Als statistische Unsicherheit auf die Spannungsmesswerte haben dabei den Fehler von der Rauschmessung und den digitalisierungs Fehler genommen.
+Den digitalisieruns Fehler haben wir mit der Formel $ \sigma_{digital} = \frac{V_{max} - V_{min}}{2^{12} \sqrt{12}}$ bestimmt.
+Diesen nehmen wir als statistischen Fehler an, da wir davon ausgehen können das die Messwerte gleichverteilt im Intervall sind.
+\begin{equation}
+    \sigma_{U Stat} = \sqrt{ \sigma_{digital}^2 +  \sigma_{off}^2} = 2mV
+\end{equation}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreis_einhüllende_1.pdf}
     \caption{Einhüllende des ersten Schwingkreises}
 \end{figure}
  
+%TODO systematischer Fehler beachten
+%TODO digitalisierungs fehler beachten
 Gleiches haben wir beim 2. Schwingkreis gemacht.
-Der Wiederstand konnte wie in den Grundlagen diskutiert, bestimmt werden (mit $ U(t) = A \cdot e^{-t \cdot B})$:
+Der Wiederstand konnte wie in den Grundlagen diskutiert, bestimmt werden mit $ U(t) = A \cdot e^{-t \cdot B} - U_{off}$:
+Für den ersten Schwingkreis haben wir folgende Werte erhalten:
 \begin{equation}
-    R_1 = 2 B \cdot L =  2.690 \Omega \\
+    U_1(t) = (5.98 \pm 0.001)V \cdot e^{-t \cdot (149.43 \pm 0.05) \frac{1}{s} } - 0.0049 V
+    %R_1 = 2 B \cdot L =  2.690 \Omega \\
 \end{equation}
 \begin{equation}
-    R_2 = 2 B \cdot L =  2.880 \Omega
+    %R_2 = 2 B \cdot L =  2.880 \Omega
+    U_2(t) = (5.8863 \pm 0.001)V \cdot e^{-t \cdot (160.03 \pm 0.05) \frac{1}{s} } - 0.0049 V
 \end{equation}
 
+Die in den Gleichungen angegeben Fehler sind dabei die statistischen Fehler.
+Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiederstand die Statistische Fehler von $B$ und $L$ mithilfe Gauss'schen Fehlerfortpflanzung verrechnet werden.
+\begin{equation}
+    \sigma_{R_1 Stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 \cdot \sigma_{B}^2 + \left( \frac{\partial R_1}{\partial L} \right)^2 \cdot \sigma_{L}^2}
+\end{equation}
+\begin{equation}
+    \sigma_{R_1 Stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 }
+\end{equation}
+
+.\\ 
 Da die erste Spule laut Messbrücke einen Wiederstand von $ 2.344  \Omega$ hat und die zweite von $2.423 \Omega$, und wir den Wiederstand des restlichen Stromkreises auf $0.3 \Omega$ geschätzt haben, schätzen wir einen Gesamtwiederstand von $ 2.644 \Omega$ für den ersten und $ 2.723 \Omega$ für den 2. Schwingkreis.
 Damit übertreffen die gemessenen Werte unsere Erwartungen um ca $0.1 \Omega$.
 Allgemein sind damit die gemessenen Werte aber sehr realistisch.

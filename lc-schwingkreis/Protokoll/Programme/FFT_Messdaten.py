@@ -276,7 +276,7 @@ for filename in sorted(os.listdir(cassy_dir)):
 
 freq_peak_2 = np.array(peak_2)
 f_mean_2 = np.mean(freq_peak_2)
-f_stad_2 = np.std(freq_peak_2, ddof=1) / np.sqrt(len(freq_peak_2))
+f_stad_2 = np.std(freq_peak_2, ddof=1)
 plot_fpeak_errorbar(freq_peak_2, f_stad_2 * np.ones(len(freq_peak_2)), f_mean_2, 'f_peak_errorbar')
 
 print('Mittelwert der Frequenzen Schwingkreis 1', round(peak_1[0], 1))
@@ -330,7 +330,7 @@ print('Fehler Rauschen 0V', round(rauschen_0_std, 6))
  
  
 def einhuellende(datei, y, voltageError, offset, plotname):
-    end = 700
+    end = 1000
      
     data = cassy.CassyDaten(datei)
     messung = data.messung(1)
@@ -345,7 +345,7 @@ def einhuellende(datei, y, voltageError, offset, plotname):
     plt.xlabel('t / s')
     plt.ylabel('U / V')
     einhuellende = analyse.exp_einhuellende(x, y - offset, voltageError * np.ones(len(y)))
-    print('Amplitude', einhuellende[0], 'Frequenz', einhuellende[2], 'Offset', round(einhuellende[1], 6))
+    print('A', round(einhuellende[0], 3), 'B', round(einhuellende[2], 2), ' err A', round(einhuellende[1], 3), ' err B', round(einhuellende[3], 2))
     L = 0.009
     R = einhuellende[2] * 2 * L
     print(f'Der Widerstand bei {plotname} beträgt', round(R, 3), 'Ohm')
@@ -354,5 +354,9 @@ def einhuellende(datei, y, voltageError, offset, plotname):
     plt.legend()
     plt.savefig('../plots/' + plotname + '.pdf', bbox_inches = 'tight')
 
-einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_1')
-einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', rauschen_0_std, rauschen_0_mean, 'schwingkreis_einhüllende_2')
+digitalisierungs_fehler = 20 / 2**12 / np.sqrt(12)
+fehler_spannung = np.sqrt(rauschen_0_std**2 + digitalisierungs_fehler**2)
+print('Fehler auf Spannung in V: ', round(fehler_spannung, 3))
+     
+einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_1')
+einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_2')

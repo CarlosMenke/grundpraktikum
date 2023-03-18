@@ -201,6 +201,19 @@ def f_k(f_plus, f_minus):
 def k(f_plus, f_minus):
     k = (f_minus**2-f_plus**2)/(f_minus**2+f_plus**2)
     return k
+
+
+R1 = 2.690
+L1 = (9.02*10**(-3))
+C1 = (2.301*10**(-6))
+R2 = 2.880
+L2 = 8.98*10**(-3)
+C2 = 2.262*10**(-6)
+def Delt_t(f, k, R, L, C):
+    delt_t = 1/(2*np.pi*f)*(1/np.pi-np.arctan(k/R*np.sqrt(L/C)))
+    return delt_t
+print('Delta_T_1:', Delt_t(f_s(f_plus_1, f_minus_1), k(f_plus_1, f_minus_1), R1, L1, C1 ))
+print('Delta_T_2:', Delt_t(f_s(f_plus_2, f_minus_2), k(f_plus_2, f_minus_2), R2, L2, C2 ))
 print('k1:',k(f_plus_1, f_minus_1))
 print('k2', k(f_plus_2, f_minus_2))
 print('Schwebungsfrequenz SK 1:', f_s(f_plus_1, f_minus_1))  

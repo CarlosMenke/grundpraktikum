@@ -778,13 +778,46 @@ Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen 
 Sämtliche Fehler die Hier eingehen sind statistischer Natur, wir können also den Gesamtfehler auf $\Delta t$ direkt aus der quadratischen Fehlerfortpflanzung schließen.
 Hierfür muss Gleichung \ref{Fehlerfortpflanzung} nach sämtlichen Größen auf welche wir Fehler haben abgeleitet werden. Daraus ergibt sich für die Verschiebung:
 \begin{center}
-$\Delta t_1$ = $-2.1493 \quad 10^{-3} \quad \pm $
+$\Delta t_1$ = $-2.289 \quad 10^{-3}s \quad \pm $
 \end{center}
 \begin{center}
-$\Delta t_2$ = $-2.0497 \quad 10^{-3} \quad \pm $
+$\Delta t_2$ = $-2.031 \quad 10^{-3}s \quad \pm $
 \end{center}
 
-Hier können wir sehen, dass wir wie zu erwarten unterschiedliche Werte für die Verschiebung abhängig davon ob wir 
+Diese Verschiebung können wir auch aus dem Graphen in welchem wir die Schwebung beobachten können Ablesen. 
+Hierzu muss die Position von dem Minimum der Schwebung des einen Schwingkreises mit der Position des Schwebung des anderen Schwingkreis verglichen werden.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_Delta_T.pdf}
+    \caption{Schwingungen mit eingezeichneten Schwebungen}
+\end{figure}
+
+Hier kann man die Schwingung an den Beiden Kondensatoren erneut sehen. 
+In orange und grün sind die Einhüllenden die auf Grund der Schwebung und der Dämpfung zustande kommen dargestellt. 
+Da die Einhüllende einer Funktion der Form $ f(x) = sin(\frac{x}{\omega})Ae^{-x\delta}$ folgt, kann mit unseren Ergebnissen für die Schwebungsfrequenzen und den Parametern aus der Anpassung der Exponentialfunktion der genaue Verlauf dieser ermittelt werden.
+Wenn wir nun die Verschiebung bestimmen wollen, brauchen wir einen Ausschnitt, ich welchem wir die Position das Minimum bzw. das Maximum der Schwebung sehen können. 
+
+Da die zwei Schwebungen unterschiedliche Frequenzen haben, laufen diese auseinander, weswegen möglichst ein Vergleich am Anfang der Messzeit betrachtet werden sollte.
+Hier sind die Amplituden auch noch größer und die Maxima schärfer.
+
+Zur Bestimmung betrachte ich den ersten Nulldurchgang der in grün eingezeichneten Schwebung. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_Delta_T_zoom.pdf}
+    \caption{Zoom des ersten Nulldurchgangs der Schwebung des Schwingkreis 2}
+\end{figure}
+
+Hier zu sehen ist der Zoom in den Relevanten Bereich. Die linke Linie ist dort eingezeichnet, wo man durch Ablesen in etwa das Maximum bestimmen kann. Die rechte Linie ist an der Stelle des Minimums. Das erste Maximum der Schwebung des Ersten Schwingkreises liegt bei $ t_1 = 287 \quad 10^{-5}s$.\\
+Das erste Minimum der Schwebung des zweiten Schwingkreis liegt bei $ t_2 = 376 \quad 10^{-5}s$\\
+Hierbei ist die Ablesegenauigkeit der relevante Fehler auf diese größe, da wir bei CASSY davon ausgehen können, dass wir kein Digitalisierungsfehler auf die Zeit haben. Dieser ist: $\sigma_t = \frac{0.0002}{\sqrt{12}} = 6\cdot 10^{-5}s$  und für $t_1$ und $t_2$ gleich groß.
+Somit ergibt sich für $\Delta t$
+\begin{equation}
+\Delta t = t_2 - t_1 =  (89\cdot 10^{-5} \pm 8\cdot10^{-5})s
+\end{equation}
+
+Die Fehler wurden hier quadratisch addiert. 
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
@@ -805,7 +838,7 @@ Hier können wir sehen, dass wir wie zu erwarten unterschiedliche Werte für die
 \end{figure}
 Dabei ist in beiden Schaltbildern links der 2. Schwingkreis und rechts der 1.
 Vor der Messung haben wir erst beide Kondensatoren mit offenem Schalter aufgeladen.
-Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und sommit auch die Schwinngung beginnt.
+Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und somit auch die Schwinngung beginnt.
 Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veräbnder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
 
 \subsection{Durchführung}
@@ -837,5 +870,6 @@ Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkr
    
 \end{document}
 
-
+%TODO : Peaks neu bestimmen
+%TODO : Delta t fertig berechnen und Vergleichen, Dinge besser begründen.
 %TODO : Peak beschriften

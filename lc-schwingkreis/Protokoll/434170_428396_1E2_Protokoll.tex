@@ -351,7 +351,7 @@ Daraus ergibt sich für den Fehler auf Grund der Ablesegenauigkeit $ \frac{2Hz}{
 
 Unten die Ergebnisse der einzelnen Messungen:
 
-%TODO stat fehler quad. addireren
+
 \begin{table}[H]
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
@@ -634,6 +634,7 @@ Diesen haben wir ebenfalls bereits bei den Einzelschwingkreisen bestimmt, indem 
 Hier hat sich der Statistische Fehler von $\pm 1Hz$ Ergeben.\\
 
 Bein Sensor CASSY können wir davon ausgehen, dass wir keinen Fehler auf die Zeit haben, weswegen dies kein Einfluss auf den Fehler auf die Fundamentalfrequenzen hat.
+Auf die Fundamentalfrequenzen haben wir keinen Systematischen Fehler.
 Diese Fehler müssen quadratisch addiert werden, da wir davon ausgehen können, dass beide statistischer Natur sind.
 So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreisen:
 
@@ -704,19 +705,34 @@ Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bes
     \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
 \end{equation}
 
-Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen.
+Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
 \begin{equation}
-\sigma_f =2\frac{f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}
+\sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
 \end{equation}
 
 Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
 \begin{center}
-$k_1$ = 
+$k_1$ = 0.094 $\pm$ 0.0015
 \end{center}
 und für den zweiten:
 \begin{center}
-$k_2$ =
+$k_2$ = 0.13 $\pm$ 0.0015
 \end{center}
+
+Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt haben deutlich kleiner ist als der von Schwingkreis 2. 
+Dies war bereits zu erwarten, da in Schwingkreis 1 die bestimmten Frequenzen deutlich enger beieinander lagen. 
+%TODO : Warum ist Kopplung hier kleiner?
+\subsubsection{Zeitliche Verschiebung}
+
+Da unser Kopplungsgrad kleiner als 0.2 ist können wir als Näherung für die zeitliche Verschiebung die Formel verwenden die in den Grundlagen angegeben ist. 
+Diese Zeitliche Verschiebung beschreibt, den unterschied zu unserer Erwartung von einer Phasenverschiebung von $\frac{\pi}{2}$ (zwischen Nulldurchgang der Schwebung bei Kondensator 1 und Maximum bei Kondensator 2).
+  
+\begin{equation}
+    \Delta t \approx \frac{2 \pi}{f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
+\end{equation}
+
+Für diese Rechnung verwenden wir den Mittelwert von $k_1$ und $k_2$ also $k = 0.112 \pm 1.06 \quad 10^{-3}$. Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen haben und für R den Widerstand den wir aus den Einzelschwingkreisen bestimmt haben. Hier Verwende ich den Mittelwert von beiden also $ (R = \pm )\Omega $ .
+
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
   beiden Fundamentalschwingungen dar. Zeigen Sie jeweils die

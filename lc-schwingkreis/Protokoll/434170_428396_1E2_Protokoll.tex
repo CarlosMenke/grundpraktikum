@@ -328,7 +328,6 @@ Oben ist der des zweiten Schwingkreis unten der des Ersten.
 Zu sehen ist, dass wir einen klaren peak bei einer bestimmten Frequenz haben, es sind keine Frequenzen von anderen Schwingungen zu sehen. 
 Dies war aus den Kosinus förmigen Verlauf der Messung zu erwarten. In diesem Zoom lässt sich jedoch noch keine Aussage über die genaue Frequenz der Schwingkreise treffen.
 
-%TODO : Einfügen des Plots für die Nahaufnahme des FFT mit beiden Schwingkreisen
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreis_1_2_fft_small_zoom_2.pdf}
@@ -458,9 +457,7 @@ Diesen nehmen wir als statistischen Fehler an, da wir davon ausgehen können das
     \includegraphics[width=1\textwidth]{plots/schwingkreis_einhüllende_1.pdf}
     \caption{Einhüllende des ersten Schwingkreises}
 \end{figure}
- 
-%TODO systematischer Fehler beachten
-%TODO digitalisierungs fehler beachten
+
 Gleiches haben wir beim 2. Schwingkreis gemacht.
 Der Wiederstand konnte wie in den Grundlagen diskutiert, bestimmt werden mit $ U(t) = A \cdot e^{-t \cdot B} - U_{off}$:
 Für den ersten Schwingkreis haben wir folgende Werte erhalten:
@@ -525,8 +522,11 @@ Die Schaltung kann dem Schaltbild unten entnommen werden. \\
 
 \subsubsection{Gekoppelte Schwingung: Schwebung}
 
-
-%TODO : Schaltbild einfügen
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{schaltplan-schwebung.pdf}
+    \caption{Schaltbild der Gekoppelten Schwingkreise}
+\end{figure}
 
 Wenn nun Spannung angelegt wird, wird der Kondensator in einem Schwingkreis aufgeladen. 
 Erst durch drücken des Tasters wird dieser Schwingkreis geschlossen und die Schwingung startet. 
@@ -598,12 +598,14 @@ Der Folgende Graph zeigt ein Zoom in des Schwingungsverlaufs von beiden Kondensa
     \centering
     \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01.pdf}
     \caption{Spannungsverlauf an Kondensator 1}
+    \label{Schwebung}
 \end{figure}
 
 Hier kann man sehr gut die Phasenverschiebung zwischen den zwei Spannungen erkennen, die nach theoretischer vorhersage $\frac{\pi}{2}$ entsprechen sollte. 
 Dies trifft jedoch nicht exakt zu, da wir noch einen Einfluss des Innenwiederstands der Schaltung haben.
 Des weiteren ist die Periodische Modellierung der Amplitude der beiden Signale, also die Einhüllende gut zu erkennen. 
 Diese hat augenscheinlich für beide Schwingkreise eine ähnliche Frequenz.
+Am ersten Minimum der Schwebung des zweiten Schwingkreises können wir sehr gut den Phasensprung der Grundschwingung erkennen.
 Wir können hier auch die Auswirkung des Widerstands sehen, da die Amplitude auch im Verlauf der Zeit kleiner wird. 
 Dies folgt einer Exponentiellen Abnahme.
 
@@ -666,13 +668,17 @@ So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreise
         \toprule
         \textbf{Schwingkreis} & \textbf{$f_+$ } & \textbf{$f_-$ } & \textbf{Fehler $(\sigma)$}\\
         \midrule
-        1 & 1054Hz & 1158Hz & 1.2Hz\\
+        1 & 1054Hz & 1176Hz & 1.2Hz\\
         2 & 1046Hz & 1188Hz & 1.2Hz\\
         \bottomrule
     \end{tabularx}
     \caption{Fundamentalschwingungen der zwei Schwingkreise}
     \label{•}
 \end{table}
+
+Die bestimmten Frequenzen unterscheiden sich leicht, obwohl nach theoretischer Erwartung diese gleich sein sollten, ob man von die Spannung an Kondensator 1 oder 2 misst.
+Jedoch sind unsere Schwingkreise nicht komplett gleich, so variiert z.b. der Widerstand in diesen leicht. Dies führt dazu, dass wir bei den Messungen leicht unterschiedliche Ergebnisse haben. 
+Dies wird natürlich auch Einfluss auf die Größen die aus $f_+$ und $f_-$ bestimmt werden haben. So werden wir für die zwei Messungen unterschiedliche Kopplungsgrade erhalten.
 
 \subsubsection{Bestimmen der Eigenfrequenz und Schwebungsfrequenz}
 
@@ -689,7 +695,12 @@ Für diese ergibt sich:
 \end{equation}
 
 Für den Fehler auf diese Frequenzen müssen wir den Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanzen. Aus der Gauß'schen Fehlerfortpflanzung ergibt sich:
-
+\begin{equation}
+	\sigma_y^2 = \sum_{i=1}^n\left[\frac{\partial y}{\partial x_i}\right]_{x=\mu}\sigma_{i}^2
+\label{Fehlerfortpflanzung}
+\end{equation}
+Dies ist die Allgemeine Form für die Fehlerfortpflanzung mit n Variablen wenn die Größen unkoreliert sind was in unserem Fall zutrifft.\\
+Daraus folgt für unser spezifisches Problem:
 \begin{equation}
 \sigma_f =\sqrt{ \left(\frac{\partial f}{\partial f_+}\right)^2\sigma_{f_+}^2 + \left(\frac{\partial f}{\partial f_-}\right)^2\sigma_{f_-}^2}
 \end{equation}
@@ -719,6 +730,10 @@ Mit den Fundamentalfrequenzen aus beiden Schwingkreisen ergibt sich somit:
     \label{•}
 \end{table} 
 
+Diese Schwebungsfrequenzen passen auch mit der Frequenz die wir in Graph \ref{Schwebung} sehen können überein. 
+Bei einer Frequenz von 61Hz haben wir eine Periodendauer von ca. 0.016s. 
+In dem Graph können wir sehen, dass die Schwebung von Schwingkreis 1 nach ca. 0.016s eine gesamte Schwingungsperiode durchlaufen hat.
+
 \subsubsection{Bestimmung des Kopplungsgrads}
 
 Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bestimmen wie in den Grundlagen eingeführt.
@@ -734,11 +749,11 @@ Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ Quadratisch fortpflanz
 
 Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
 \begin{center}
-$k_1$ = 0.094 $\pm$ 0.0015
+$k_1$ = 0.109 $\pm$ 0.0015
 \end{center}
 und für den zweiten:
 \begin{center}
-$k_2$ = 0.13 $\pm$ 0.0015
+$k_2$ = 0.127 $\pm$ 0.0015
 \end{center}
 
 Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt haben deutlich kleiner ist als der von Schwingkreis 2. 
@@ -750,10 +765,22 @@ Da unser Kopplungsgrad kleiner als 0.2 ist können wir als Näherung für die ze
 Diese Zeitliche Verschiebung beschreibt, den unterschied zu unserer Erwartung von einer Phasenverschiebung von $\frac{\pi}{2}$ (zwischen Nulldurchgang der Schwebung bei Kondensator 1 und Maximum bei Kondensator 2).
   
 \begin{equation}
-    \Delta t \approx \frac{2 \pi}{f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
+    \Delta t \approx \frac{1}{2 \pi f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
 \end{equation}
 
-Für diese Rechnung verwenden wir den Mittelwert von $k_1$ und $k_2$ also $k = 0.112 \pm 1.06 \quad 10^{-3}$. Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen haben und für R den Widerstand den wir aus den Einzelschwingkreisen bestimmt haben. Hier Verwende ich den Mittelwert von beiden also $ (R = \pm )\Omega $ .
+$\Delta t$ berechnen wir sowohl mit den Ergebnissen aus SK1 als auch aus SK2 hier werden leicht unterschiedliche Ergebnisse heraus kommen. 
+Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen haben und für R den Widerstand den wir aus den Einzelschwingkreisen bestimmt haben. \\
+
+Sämtliche Fehler die Hier eingehen sind statistischer Natur, wir können also den Gesamtfehler auf $\Delta t$ direkt aus der quadratischen Fehlerfortpflanzung schließen.
+Hierfür muss Gleichung \ref{Fehlerfortpflanzung} nach sämtlichen Größen auf welche wir Fehler haben abgeleitet werden. Daraus ergibt sich für die Verschiebung:
+\begin{center}
+$\Delta t_1$ = $-2.1493 \quad 10^{-3} \quad \pm $
+\end{center}
+\begin{center}
+$\Delta t_2$ = $-2.0497 \quad 10^{-3} \quad \pm $
+\end{center}
+
+Hier können wir sehen, dass wir wie zu erwarten unterschiedliche Werte für die Verschiebung abhängig davon ob wir 
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
@@ -766,5 +793,5 @@ Für diese Rechnung verwenden wir den Mittelwert von $k_1$ und $k_2$ also $k = 0
    
 \end{document}
 
-%TODO : Peak Linie aus Rohdaten raus nehmen
+
 %TODO : Peak beschriften

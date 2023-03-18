@@ -57,15 +57,15 @@ def Plot_begin_2(datei: str, x: str, y: str, datei_2: str, y_2: str):
     
 
 # Dieser Teil des Programms Erstellt aus den Gemessenen Spannungen an Kondensator 1 und Kondensator 2 einen Plot in welchem diese gemeinsam sind
-def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, end):
+def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, start, end):
     
     x, y, y_2, xstr, ystr = Plot_begin_2(datei, x, y, datei_2, y_2)
 
     # Ungeschnittenen Fouriert
     plt.figure()
     plt.title(plotname)
-    plt.plot(x[:end], y[:end],color='blue', label='Schwingkreis 1')
-    plt.plot(x[:end], y_2[:end],color='magenta', label='Schwingkreis 2')
+    plt.plot(x[start:end], y[start:end],color='blue', label='Schwingkreis 1')
+    plt.plot(x[start:end], y_2[start:end],color='magenta', label='Schwingkreis 2')
     plt.xlabel(xstr)
     plt.legend()
     plt.ylabel(ystr)
@@ -75,15 +75,17 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
         plt.show()
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
-  
+ 
+cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
 
 '''for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
-        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 300)
+        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 500)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 500)
 '''
+
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 12.0
@@ -135,7 +137,7 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
         
-'''for filename in sorted(os.listdir(cassy_dir)):
+for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung_0cm' in filename:
         cassy_plot_clear(cassy_dir + filename, "t", "U_B1",  filename[:-5] + '_1_complete', -1, 'Schwingkreise 1') 
 for filename in sorted(os.listdir(cassy_dir)):
@@ -146,7 +148,7 @@ cassy_plot_clear('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', 'Schwebung_0c
 cassy_plot_clear('../Messdaten/Schwebung_0cm_01.labx','t', 'U_A1', 'Schwebung_0cm_01_2_zoom', 1000, 'Schwingkreis 2')       
 cassy_plot_clear('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1', 'Schwebung_Eisen_01_1_complete', -1, 'Schwingkreis 1')
 cassy_plot_clear('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1', 'Schwebung_Eisen_01_1_small_zoom', 2000, 'Schwingkreis 1')
-'''
+
 def Schwebung_FFT(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
     
     x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
@@ -196,11 +198,24 @@ def f_s(f_plus, f_minus):
 def f_k(f_plus, f_minus):
     f_k = (f_minus+f_plus)/2
     return f_k
+def k(f_plus, f_minus):
+    k = (f_minus**2-f_plus**2)/(f_minus**2+f_plus**2)
+    return k
+print('k1:',k(f_plus_1, f_minus_1))
+print('k2', k(f_plus_2, f_minus_2))
 print('Schwebungsfrequenz SK 1:', f_s(f_plus_1, f_minus_1))  
 print('Grundfrequenz SK 1', f_k(f_plus_1, f_minus_1))        
 
 print('Schwebungsfrequenz SK 2:', f_s(f_plus_2, f_minus_2))
 print('Grundfrequenz SK 2', f_k(f_plus_2, f_minus_2))
+
+sigma_f_plus = 4 
+sigma_f_minu = 3
+def sigma_f(f_plus, f_minus):
+    s = 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)
+    return s
+
+print('fehler auf k' ,sigma_f(f_plus_1, f_minus_1))
 
 def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
     
@@ -263,3 +278,4 @@ def Schwebung_FFT_maxi_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plo
         plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
 
 Schwebung_FFT_maxi_2('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_zwei_Maximum', 7, 7)
+

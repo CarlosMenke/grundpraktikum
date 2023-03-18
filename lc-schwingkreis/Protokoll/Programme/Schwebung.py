@@ -279,3 +279,51 @@ def Schwebung_FFT_maxi_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plo
 
 Schwebung_FFT_maxi_2('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_zwei_Maximum', 7, 7)
 
+from uncertainties import ufloat
+from uncertainties.umath import *
+
+ 
+L1 =  0.009023
+L1err = L1 * 0.0025
+L2 = 0.008981
+L2err = L2 * 0.0025
+
+R1 = 2.69
+R2 = 2.88
+Rerr = 0.007
+
+C1 = 2.301 * 10**(-6)
+C2 = 2.262 * 10**(-6)
+Cerr = C1 * 0.0025
+ 
+k1 = 0.094
+k2 = 0.13
+kerr = 0.0015
+
+fs1 = f_s(f_plus_1, f_minus_1) 
+fs2 = f_s(f_plus_2, f_minus_2)
+fs_err = 0.72
+ 
+L1 = ufloat(L1, L1err)
+L2 = ufloat(L2, L2err)
+R1 = ufloat(R1, Rerr)
+R2 = ufloat(R2, Rerr)
+C1 = ufloat(C1, Cerr)
+C2 = ufloat(C2, Cerr)
+k1 = ufloat(k1, kerr)
+k2 = ufloat(k2, kerr)
+fs1 = ufloat(fs1, fs_err)
+fs2 = ufloat(fs2, fs_err)
+
+#t1_stat = np.arctan(2 * np.pi / fs1 * sqrt(L1/C1) * k1 / R1)
+#t2_stat = np.arctan(2 * np.pi / fs2 * sqrt(L2/C2) * k2 / R2)
+
+def t_stat(R, L, C, k, fs, Rerr, Lerr, Cerr, Kerr, fserr):
+    nenner = k**2/R**2*L/C/fs**2 + 1
+     #= k**2/R**2*L/C/fs**2 + 1
+    #return 2 * np.pi * np.sqrt( (1 / fs * np.sqrt(L/C) * Kerr / nenner)**2 + (k / R**2 / fs * np.sqrt(L/C) * Rerr / nenner)**2 + (k / R /fs * np.sqrt(L)/C**2 / 2 * Cerr / nenner)**2 + (k / R / fs * np.sqrt(1/(C*L)) / 2 * Lerr / nenner)**2 + (k / R / fs**2 * np.sqrt(L/C) * fserr / nenner)**2)
+
+#t1_stat = t_stat(R1, L1, C1, k1, fs1, Rerr, L1err, Cerr, kerr, fs_err)
+#t2_stat = t_stat(R2, L2, C2, k2, fs2, Rerr, L2err, Cerr, kerr, fs_err)
+#print('t1_stat ', round(t1_stat, 3), ' s')
+#print('t2_stat ', round(t2_stat, 3), ' s')

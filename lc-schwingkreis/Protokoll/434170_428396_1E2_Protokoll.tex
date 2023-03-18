@@ -137,6 +137,7 @@ Vor der Durchführung der Versuche, und zum späteren Vergleich der Messungen mi
 
 In dem Bild zu sehen ist die Messbrücke, an die Stelle wo der Kondensator ist, wir das Bauteil angeschlossen. Das Bild ist noch mit unserem ersten Kondensator, diesen haben wir im Verlauf des Experiments gegen einen kleineren ausgetauscht, und alle Messungen mit dem kleineren wiederholt.\\
 
+Die Messungen mit der Messbrücke haben einen statistischen Messfehler von 0.25\%.\\
 Für die Messung haben wir unseren Frequenzbereich von 1kHz eingestellt.
  (In dem Bild auf 100Hz weil wir da noch den 10 $\mu F$ messen, und wir mit diesem geringere Frequenzen hatten.) 
  Die Spulle haben wir ebenfalls gemessen wenn diese einen Eisenkern hatten, um den Einfluss von diesem auf Widerstand und Induktivität zu bestimmen.
@@ -144,18 +145,18 @@ So konnten wie sämtliche Bauteile Charakterisieren und sind für unseren zweite
     
 \begin{table}[H]
         \centering
-        \begin{tabularx}{0.8\textwidth}{X l c} % adjust width as needed
+        \begin{tabularx}{1.0\textwidth}{X l} % adjust width as needed
             \toprule
-            \textbf{Bauteil} & \textbf{Messung} & \textbf{Fehler} \\
+            \textbf{Bauteil} & \textbf{Messung} \\
             \midrule
-            Spule 1 & R = 2.344 $\Omega$ \quad L = 9.023mH &  \\
-            mit Eisenkern & R = 2.70 $\Omega$ \quad L = 55.79mH & \\
+            Spule 1 & R = (2.344 $\pm$ 0.006) $\Omega$ \quad L = (9.02 $\pm$ 0.02)mH \\
+            mit Eisenkern & R = (2.700 $\pm$ 0.007) $\Omega$ \quad L = (55.79 $\pm$ 0.14)mH \\
             \midrule
-            Spule 2 & R = 2.423 $\Omega$ \quad L = 8.981mH &  \\
-            mit Eisenkern & R = 2.65 $\Omega$ \quad L = 56.1mH&\\
+            Spule 2 & R = (2.423 $\pm$ 0.006) $\Omega$ \quad L = (8.98 $\pm$ 0.02)mH \\
+            mit Eisenkern & R = (2.650 $\pm$ 0.007) $\Omega$ \quad L = (56.10 $\pm$ 0.14) mH \\
             \midrule
-            Kondensator 1 & 2.301 $\mu$F &  \\
-            Kondensator 2 & 2.262 $\mu$F &  \\
+            Kondensator 1 & (2.301 $\pm$ 0.006) $\mu$F \\
+            Kondensator 2 & (2.262 $\pm$ 0.006) $\mu$F \\
             \bottomrule
         \end{tabularx}
         \caption{Ergebnisse der Messung mit dem Multimeter}
@@ -254,22 +255,22 @@ Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformatio
     \includegraphics[width=0.8\textwidth]{plots/schwingkreis-alt-test-200us-0.01s_fft_zoom.pdf}
     \caption{Zoomin Plot der FFT der Testmessung mit Messdauer = 0.01s}
 \end{figure}
-Wie zu sehen ist bei diese Testmessung, ist das Fourierspektrum nur auf $ \pm 10Hz $ genau. Das bedeutet das die Messdauer von 0.01s zu kurz ist.
-Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann eine zufridenstellende (Weniger als 1\%) Auflösung hatten.
+Wie zu sehen ist bei diese Testmessung, ist das Fourierspektrum nur auf $ \pm 100Hz $ genau. Das bedeutet das die Messdauer von 0.01s zu kurz ist.
+Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann einen zufridenstellenden (weniger als 0.1\%) Abeshe Fehler hatten.
 
 Hier eine übersicht der Messeinstellungen. Dabei haben wir den Kanal auf den getriggert wird immer auf den gestellt, an welchem der zu messende Schwingkreis angeschlossen war.
 \begin{table}[H]
-        \centering
-        \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
-            \toprule
-            \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich (für beide Eingäge)} \\
-            \midrule
-            200$\mu$s  & 0.5s & 6.1V fallend & -10V - 10V \\
-            \bottomrule
-        \end{tabularx}
-        \caption{Messwertserfassungseinstellungen des CASSY}
-        \label{tab:mytable}
-    \end{table}
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich (für beide Eingäge)} \\
+        \midrule
+        200$\mu$s  & 0.5s & 6.1V fallend & -10V - 10V \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Messwertserfassungseinstellungen des CASSY}
+    \label{tab:mytable}
+\end{table}
      
 Anschließend haben wir noch zwei Rauschmessung gemacht: einmal mit geöffnetem und einmal mit geschlossenem Schalter nach dem Schwingvorgang.
 Diese haben wir gemacht, um daraus Offsets zu berechnen um unsere Messung des Wiederstandes zu präzisieren.
@@ -389,6 +390,7 @@ Somit ergibt sich der Fehler insgesamt aus der quadratischen Addition der beiden
 \sigma_f = 1.2Hz
 \end{equation}
 
+%TODO frage nach ob man die frequenz mit dem maximum bestimmen kann.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
@@ -405,9 +407,22 @@ Der Grund dafür ist in dem untenstehenden Plot gut zu erkennen.
 \end{figure}
 Hier sieht man, wie bei der 2. Messung die Amplituden der Frequenz 1116Hz und 1118Hz sehr ähnlich sind.
 Der Grund das die gefundene Amplitude um 2 Hz schwankt, liegt also in der Auflösung der FFT.
-Da wir aber eine Messreihe von 10 Messungen durchgeführt haben, ist es aber nicht schlimm, das wir immer nur das Maximum und nicht den Peakschwerpunkt nehmen,
-da wir durch das errechnen des Mittelwertes die Messungen entsprechend gewichten. \\
-%TODO mit erwarungen vergleichen
+Da wir aber eine Messreihe von 10 Messungen durchgeführt haben, ist es aber nicht schlimm, das wir immer die Frequenz mit der Maximalen Amplitude genommen haben und nicht das Maximum abgeschätzt haben,
+da wir durch das errechnen des Mittelwertes die Messungen entsprechend gewichten und mitteln. \\
+
+Unsere theoretische überlegung bezüglich der erwarteten Frequenz, haben wir mithilfe folgender Formel gemacht:
+\begin{equation}
+    f_1 = \sqrt{\omega_0^2 - \delta^2} = \sqrt{ \frac{1}{LC} - \left( \frac{R}{2L} \right)^2}
+\end{equation}
+Da die erste Spule laut Messbrücke einen Wiederstand von $ 2.344  \Omega$ hat und die zweite von $2.423 \Omega$, und wir den Wiederstand des restlichen Stromkreises auf $0.3 \Omega$ geschätzt haben, schätzen wir einen Gesamtwiederstand von $ 2.644 \Omega$ für den ersten und $ 2.723 \Omega$ für den 2. Schwingkreis.
+Mit den in der Messbrücke gemessen Werten für die Induktivität und Kapazität, haben wir folgende Frequenzen ausgerechnet und erwartet:
+\begin{equation}
+    f_1 = 1104.6 Hz
+\end{equation}
+\begin{equation}
+    f_2 = 1116.4 Hz
+\end{equation}
+Damit liegen unsere Erwartungen innerhalb des statistischen Messfehlers von einem Hz. \\
 
 Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der Rauschmessung bei nicht gedrücktem Schalter als Histogramm:
 \begin{figure}[H]
@@ -463,7 +478,6 @@ Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiede
 \end{equation}
 
 .\\ 
-Da die erste Spule laut Messbrücke einen Wiederstand von $ 2.344  \Omega$ hat und die zweite von $2.423 \Omega$, und wir den Wiederstand des restlichen Stromkreises auf $0.3 \Omega$ geschätzt haben, schätzen wir einen Gesamtwiederstand von $ 2.644 \Omega$ für den ersten und $ 2.723 \Omega$ für den 2. Schwingkreis.
 Damit übertreffen die gemessenen Werte unsere Erwartungen um ca $0.1 \Omega$.
 Allgemein sind damit die gemessenen Werte aber sehr realistisch.
  

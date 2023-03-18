@@ -447,7 +447,7 @@ Die untere Einhüllende ist dabei die obere mal minus 1.
 Diese haben wir noch zusätzlich dargestellt um die Genauigkeit der Anpassung besser zu beurteilen.
 Für den Fit wurde das gesamte Messintervall verwendet, in dem Plot haben wir lediglich den Anfang dargestellt, da man dort die abweichung der Messwerte vom Fit besser beurteilen kann.
 Als statistische Unsicherheit auf die Spannungsmesswerte haben dabei den Fehler von der Rauschmessung und den digitalisierungs Fehler genommen.
-Den digitalisieruns Fehler haben wir mit der Formel $ \sigma_{digital} = \frac{V_{max} - V_{min}}{2^{12} \sqrt{12}}$ bestimmt.
+Den digitalisieruns Fehler haben wir mit der Formel $ \sigma_{digital} = \frac{V_{max} - V_{min}}{2^{12} \sqrt{12}} = 1.4 \cdot 10^{-3}$ bestimmt.
 Diesen nehmen wir als statistischen Fehler an, da wir davon ausgehen können das die Messwerte gleichverteilt im Intervall sind.
 \begin{equation}
     \sigma_{U Stat} = \sqrt{ \sigma_{digital}^2 +  \sigma_{off}^2} = 2mV
@@ -474,6 +474,10 @@ Die in den Gleichungen angegeben Fehler sind dabei die statistischen Fehler.
 Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiederstand die Statistische Fehler von $B$ und $L$ mithilfe Gauss'schen Fehlerfortpflanzung verrechnet werden.
 \begin{equation}
     \sigma_{R_1 stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 \cdot \sigma_{B}^2 + \left( \frac{\partial R_1}{\partial L} \right)^2 \cdot \sigma_{L}^2} 
+    = 0.007
+\end{equation}
+\begin{equation}
+    \sigma_{R_1 stat} = \sqrt{ \left( 2L \right)^2 \cdot \sigma_{B}^2 + \left( 2 B \right)^2 \cdot \sigma_{L}^2} 
     = 0.007
 \end{equation}
 \begin{equation}
@@ -791,10 +795,45 @@ Hier können wir sehen, dass wir wie zu erwarten unterschiedliche Werte für die
 \end{aufgabe}
 
 \section{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
-\subsection{Material}
-   
-%TODO plot von beiden schwingungen einzeln
-%TODO plot von beiden FFT Spektren einzeln
+\subsection{Aufbau}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.49\textwidth]{schaltplan-gleichsinnig.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.49\textwidth]{schaltplan-gegensinnig.pdf}}
+    \caption{links gleichsinnig rechts gegensinnig gekoppelt}
+\end{figure}
+Dabei ist in beiden Schaltbildern links der 2. Schwingkreis und rechts der 1.
+Vor der Messung haben wir erst beide Kondensatoren mit offenem Schalter aufgeladen.
+Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und sommit auch die Schwinngung beginnt.
+Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veräbnder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
+
+\subsection{Durchführung}
+Alle Messeinstellungen haben wir so gelassen wie vorher, da sich hier nichts wesentliches verändert hat.
+Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkreis umgedreht, da dann der Strom andersherum durch sie hindurch fließt.
+
+\subsection{Rohdaten}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule.pdf}}
+    \caption{Gleichsinnige Schwingung}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule_fft_zoom.pdf}}
+    \caption{Gleichsinnige Schwingung FFT mit ausschnitt um den Peak}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01.pdf}}
+    \caption{Gegensinnige Schwingung}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01_fft_zoom.pdf}}
+    \caption{Gegensinnige Schwingung FFT mit ausschnitt um den Peak}
+\end{figure}
+
    
 \end{document}
 

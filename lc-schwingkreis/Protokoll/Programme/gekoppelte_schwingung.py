@@ -34,9 +34,10 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
          
-def cassy_plot_fft(datei: str, x_str: str, y_str: str, plotname, delta):
+def cassy_plot_fft(datei: str, x_str: str, y_str: str, plotname, delta, peak):
     x, y, _, _ = ch.cassy_begin(datei, x_str, y_str)
     # Ungeschnittenen Fouriert
+    extension = ""
      
     a = ch.f_max(datei, x_str, y_str)[0]
     freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
@@ -44,8 +45,10 @@ def cassy_plot_fft(datei: str, x_str: str, y_str: str, plotname, delta):
     plt.figure()
     plt.title(plotname)
     plt.plot(freq_fft[a-delta:a+delta],amp_fft[a-delta:a+delta],'.',color='blue')
-    plt.axvline(freq_fft[a],color='green', label="Maximum")
-    plt.legend()
+    if peak: 
+        plt.axvline(freq_fft[a],color='green', label="Maximum")
+        plt.legend()
+        extension = "_peak"
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
     plt.grid()
@@ -53,7 +56,7 @@ def cassy_plot_fft(datei: str, x_str: str, y_str: str, plotname, delta):
     if SHOW_PLOTS:
         plt.show()
     else:
-        plt.savefig('../plots/' +plotname +'_fft_zoom.pdf', bbox_inches='tight')
+        plt.savefig('../plots/' +plotname +'_fft_zoom' + extension + '.pdf', bbox_inches='tight')
          
 
 for filename in sorted(os.listdir(cassy_dir)):
@@ -68,5 +71,7 @@ cassy_plot_clear(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinn
 cassy_plot_clear(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 500)
 cassy_plot_clear(cassy_dir + "gleichsinnig_01_spannung_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spannung", 500)
 
-cassy_plot_fft(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinnig_01", 3)
-cassy_plot_fft(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 3)
+cassy_plot_fft(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinnig_01", 3, True)
+cassy_plot_fft(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 3, True)
+cassy_plot_fft(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinnig_01", 50, False)
+cassy_plot_fft(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 50, False)

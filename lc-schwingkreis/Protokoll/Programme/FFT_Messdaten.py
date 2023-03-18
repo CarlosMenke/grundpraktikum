@@ -208,8 +208,71 @@ def cassy_plot(datei: str, x_str: str, y_str: str, plotname, show_peak):
         plt.show()
     else:
         plt.savefig('../plots/' +plotname +'_fft_zoom.pdf', bbox_inches='tight')
-    return freq_fft[a]
 
+def cassy_plot_2(datei: str, x_str: str, y_str: str, datei2, y2_str, plotname):
+    # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
+    plt.rcParams['font.size'] = 12.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.weight'] = 'bold'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.labelweight'] = 'bold'
+    plt.rcParams['axes.linewidth'] = 1.2
+    plt.rcParams['lines.linewidth'] = 2.0
+    plt.rcParams["savefig.pad_inches"] = 0.5
+
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x_str)
+    y = messung.datenreihe(y_str)
+     
+    data = cassy.CassyDaten(datei2)
+    messung = data.messung(1)
+    x = messung.datenreihe(x_str)
+    y2 = messung.datenreihe(y2_str)
+
+
+    xsymbol = x.symbol
+    xsymbol = xsymbol.replace('&D', '\Delta{}')
+    mx = re.match(r'([\\{}\w^_]+)_([\w^_]+)', xsymbol)
+    if mx:
+        xstr = '$%s_\mathrm{%s}$' % mx.groups()
+    else:
+        xstr = '$%s$' % xsymbol
+    if x.einheit:
+        xstr += ' / %s' % x.einheit
+
+    ysymbol = y.symbol
+    ysymbol = ysymbol.replace('&D', '\Delta{}')
+    my = re.match(r'([\\{}\w^_]+)_([\w^_]+)', ysymbol)
+    if my:
+        ystr = '$%s_\mathrm{%s}$' % my.groups()
+    else:
+        ystr = '$%s$' % ysymbol
+    if y.einheit:
+        ystr += ' / %s' % y.einheit
+
+    # Ungeschnittenen Fouriert
+    freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
+    freq_fft2,amp_fft2 = analyse.fourier_fft(x.werte,y2.werte)
+     # Fourier-Transformation mit Gezoomtem Intervall
+    delta_2 = 100
+    a = f_max(datei, x_str, y_str)[0]
+    a_2 = f_max(datei2, x_str, y2_str)[0]
+    plt.figure()
+    plt.title("Verlgeich der FFT von Schwingkreis 1 und 2")
+    plt.plot(freq_fft2[a_2-delta_2:a_2+delta_2],amp_fft2[a_2-delta_2:a_2+delta_2],'.',color='blue', label="Schwingkreis 1")
+    plt.plot(freq_fft[a-delta_2:a+delta_2],amp_fft[a-delta_2:a+delta_2],'.',color='magenta', label="Schwingkreis 2")
+    plt.xlabel('$f$ / Hz')
+    plt.ylabel('amp')
+    plt.legend()
+    plt.grid()
+     
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname +'_fft_small_zoom_2.pdf', bbox_inches='tight')
+        
+    
 def f_max(datei: str, x: str, y: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     data = cassy.CassyDaten(datei)
@@ -258,6 +321,7 @@ cassy_plot(cassy_dir + plots[0] + '.labx', "t", "U_A1", plots[0], False)
 cassy_plot(cassy_dir + plots[1] + '.labx', "t", "U_B1", plots[1], True)
 cassy_plot(cassy_dir + plots[2] + '.labx', "t", "U_A1", plots[2], False)
 cassy_plot(cassy_dir + plots[3] + '.labx', "t", "U_A1", plots[3], True)
+cassy_plot_2(cassy_dir + plots[0] + '.labx', "t", "U_A1",cassy_dir + plots[1] + '.labx', "U_B1", 'schwingkreis_1_2')
          
 cassy_plot_clear(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', 'schwingkreis_1_01', -1)
 cassy_plot_clear_2(cassy_dir + 'schwingkreis_1_01.labx', 't', 'U_B1', cassy_dir + 'schwingkreis_2_01.labx', 'U_A1', 'schwingkreise_zoom', 300)
@@ -353,10 +417,17 @@ def einhuellende(datei, y, voltageError, offset, plotname):
     plt.plot(x[:end], -einhuellende[0] * np.exp(-einhuellende[2] * x[:end]) - offset + einhuellende[1], label = 'Einhüllende invertiert')
     plt.legend()
     plt.savefig('../plots/' + plotname + '.pdf', bbox_inches = 'tight')
+    return R, einhuellende[2], einhuellende[3]
 
 digitalisierungs_fehler = 20 / 2**12 / np.sqrt(12)
 fehler_spannung = np.sqrt(rauschen_0_std**2 + digitalisierungs_fehler**2)
 print('Fehler auf Spannung in V: ', round(fehler_spannung, 3))
      
-einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_1')
-einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_2')
+R1, B1, eB1 = einhuellende('../Messdaten/schwingkreis_1_01.labx', 'U_B1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_1')
+R2, B2, eB2 = einhuellende('../Messdaten/schwingkreis_2_01.labx', 'U_A1', fehler_spannung, rauschen_0_mean, 'schwingkreis_einhüllende_2')
+L1 =  0.009023
+L2 = 0.008981
+R1_stat = np.sqrt((2*L1*eB1)**2 + (B1*2*L1*0.0025)**2)
+R2_stat = np.sqrt((2*L2*eB2)**2 + (B2*2*L2*0.0025)**2)
+wiederstands_daten = {'R1': [R1, R1_stat], 'R2': [R2, R2_stat]}
+print(pd.DataFrame(wiederstands_daten, index = ['Messwert', 'stat Fehler']).round(3))

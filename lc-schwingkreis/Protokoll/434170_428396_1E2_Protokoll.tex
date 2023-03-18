@@ -329,6 +329,11 @@ Zu sehen ist, dass wir einen klaren peak bei einer bestimmten Frequenz haben, es
 Dies war aus den Kosinus förmigen Verlauf der Messung zu erwarten. In diesem Zoom lässt sich jedoch noch keine Aussage über die genaue Frequenz der Schwingkreise treffen.
 
 %TODO : Einfügen des Plots für die Nahaufnahme des FFT mit beiden Schwingkreisen
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_2_fft_small_zoom_2.pdf}
+    \caption{Schwingkreis 1 und 2 FFT Zoom-in}
+\end{figure}
 
 Im diesem Graphen ist ein Zoom-in der FFT zu sehen bei beiden Schwingungen, hier kann man gut erkennen, dass wir eine klare Spitze haben.Des weiteren kann man sehen, dass der Peak bei den beiden Schwingkreisen leicht gegeneinander verschoben sind 
 Die Frequenz des Schwingkreis kann später durch weiteres zoomen festgestellt werden.
@@ -383,7 +388,7 @@ Dabei ist der Statistische Fehler auf den Einzelwert also die Frequenz, also die
 \begin{equation}
     \sigma_{f_2 stat} = 1.0 Hz
 \end{equation}
-Hier ist noch an zu merken, dass der Ablesefehler größer ist wenn wir die Auswertung mit Python machen, jedoch ist der statistische Fehler ( $\sigma_{f_{2stat}}$) größer als der Fehler aufgrund des Ablesens, weswegen wir hier keine Genauigkeit gewinnen, wenn wir die Auswertungsmethode gewinnen.
+Hier ist noch an zu merken, dass der Ablesefehler größer ist wenn wir die Auswertung mit Python machen, jedoch ist der statistische Fehler ( $\sigma_{f_{2stat}}$) größer als der Fehler aufgrund des ablesens, weswegen wir hier keine Genauigkeit gewinnen, wenn wir die Auswertungsmethode gewinnen.
 
 Somit ergibt sich der Fehler insgesamt aus der quadratischen Addition der beiden Fehlerbeiträge. Für den Fehler auf $f$ erhlaten wir.
 \begin{equation}
@@ -471,14 +476,31 @@ Für den ersten Schwingkreis haben wir folgende Werte erhalten:
 Die in den Gleichungen angegeben Fehler sind dabei die statistischen Fehler.
 Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiederstand die Statistische Fehler von $B$ und $L$ mithilfe Gauss'schen Fehlerfortpflanzung verrechnet werden.
 \begin{equation}
-    \sigma_{R_1 Stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 \cdot \sigma_{B}^2 + \left( \frac{\partial R_1}{\partial L} \right)^2 \cdot \sigma_{L}^2}
+    \sigma_{R_1 stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 \cdot \sigma_{B}^2 + \left( \frac{\partial R_1}{\partial L} \right)^2 \cdot \sigma_{L}^2} 
+    = 0.007
 \end{equation}
 \begin{equation}
-    \sigma_{R_1 Stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 }
+    \sigma_{R_2 stat} = 0.007
 \end{equation}
 
-.\\ 
-Damit übertreffen die gemessenen Werte unsere Erwartungen um ca $0.1 \Omega$.
+Dabei gibt es keinen Systematischen Fehler auf R. Es gibt zwar einen Systematischen Fehler auf die Spannung vom Cassy, aber dieser verschiebt alle Spannungen nur um ein Wert.
+Da wir bei der bestimmung der Einhüllenden immer nur Spannungsunterschiede betrachten, fällt der Fehler weg.
+ 
+ 
+Wie wir den Gesamtwiederstand der Schaltung abgeschätzt haben, haben wir bereits beim unsere Erwartung für die Frequenz der beiden Schwingkreise erläutert.
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Wiederstand} & \textbf{Errechnet} & \textbf{Erwartet} \\
+        \midrule
+        $R_1$ & $(2.690 \pm 0.007) \Omega$ & $2.644 \Omega$ \\
+        $R_2$ & $(2.880 \pm 0.007) \Omega$ & $2.723 \Omega$ \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Errechnete und erwartete Werte für die Wiederstände}
+\end{table}
+Damit übertreffen die gemessenen Werte unsere Erwartungen um ca $0.05 \Omega$.
 Allgemein sind damit die gemessenen Werte aber sehr realistisch.
  
  

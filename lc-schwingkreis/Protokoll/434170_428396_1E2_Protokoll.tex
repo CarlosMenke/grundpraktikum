@@ -24,6 +24,7 @@
   Formelzeichen.
 \end{aufgabe}
 \section{Gurndlagen}
+Für einen Schwingkreis 
 Aus der DGL kann man folgende beziehungen ableiten. $\omega_0$ ist dabei die Eigenfrequenz ohne dämpfung, $\omega$ die Eigenfrequenz mit dämpfung.
 $\delta$ ist die Dämpfungskonstante.
 \begin{equation}
@@ -58,7 +59,31 @@ Dabei gilt für die Fundamentalschwingungen:
 \begin{equation}
     \Rightarrow k = \frac{\omega_0^2}{\omega_+^2} - 1 = - \frac{\omega_0^2}{\omega_-^2} + 1
 \end{equation}
-Wenn beide Schwingkreise angeregt werden, dann kann man zwischen gleichsinniger und gegensinniger Aufladung 
+\begin{equation}
+    \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
+\end{equation}
+Im Falle der Schwebung kann man beim verlauf der Spannung am Kondensator sehen, das es eine innere Schwingung und eine Einüllende gibt. \\
+Dabei gilt für die innere Frequenzen $f_k$ und die Schwebungsfrequenz $f_{schw}$:
+\begin{equation}
+    f_k = \frac{f_- + f_+}{2}
+\end{equation}
+\begin{equation}
+    f_{schw} = \frac{f_- - f_+}{2}
+\end{equation}
+    
+
+Wenn beide Schwingkreise angeregt werden, dann kann man zwischen gleichsinniger und gegensinniger Aufladung unterscheiden.
+Bei gleichsinniger Aufladung fließen die Ströme in die gleiche Richtung durch die Spulen.
+Hier kann man im Fourierspektrum $f_-$ als Maximum messen.
+Bei gegensinniger Aufladung kann man $f_+$ als Maximum des Fourierspektrums messen.
+
+So kann man sowohl mit der Schwebung, wie auch mit gleich und gegensinniger Anregung den Kopplungsgrad mithilfe der oben angegeben Formel bestimmen.:
+
+Zudem kann man aufgrund der Dämpfung von dem internen Wiederstand unseres Schwingkreises eine leichte zeitliche Verschiebung zwischen Maximaler Spannung am einen Kondensator und Nulldurchgang der Spannung am anderen Kondensator.
+Diese ist für $ k < 0.2$ (was bei uns der Fall sein wird):
+\begin{equation}
+    \Delta t \approx \frac{1}{\omega_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
+\end{equation}
 
 
  
@@ -313,11 +338,12 @@ Dabei haben wir dem zoom-in plot abgelesen, dass unsere FFT eine Auflösung von 
 %TODO QUESTION: ist der Ablesefehler systematisch oder zufällig?
 Unten die Ergebnisse der einzelnen Messungen:
 
+%TODO stat fehler quad. addireren
 \begin{table}[H]
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
-        \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} & \textbf{stat. Fehler}\\
+        \textbf{Messung} & \textbf{Schwingkreis} & \textbf{Frequenz} \\
         \midrule
         1 & 1 & 1106 Hz \\
         \midrule

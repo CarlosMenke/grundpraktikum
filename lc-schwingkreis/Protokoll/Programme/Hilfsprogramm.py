@@ -126,9 +126,28 @@ C = (2.301*10**(-6))
 delt_t = 1/(2*np.pi*f)*(1/np.pi-np.arctan(k/R*np.sqrt(L/C)))
 print(delt_t+0.004)
  
+def cassy_plot_clear_2_max(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, start, end):
+    
+    x, y, y_2, xstr, ystr = Plot_begin_2(datei, x, y, datei_2, y_2)
+    plt.rcParams['font.weight'] = 'normal'
+    plt.figure()
+    plt.title(plotname)
+    
+    plt.plot(x[start:end], y[start:end],'.', color='blue',  label='Schwingkreis 1')
+    plt.plot(x[start:end], y_2[start:end],'.', color='magenta', label='Schwingkreis 2')
+    plt.axvline(x[57]+0.00003, color ='cyan')
+    #plt.axvline(x[75]+0.00001, color = 'cyan')
+    plt.xlabel(xstr)
+    plt.legend()
+    plt.ylabel(ystr)
+    plt.grid()
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
 
 cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Delta_T', 0, 250 )
 cassy_plot_clear_2_c('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Delta_T_zoom', 55, 79 )
-
+cassy_plot_clear_2_max('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Delta_T_Max', 55, 61 )
 
 

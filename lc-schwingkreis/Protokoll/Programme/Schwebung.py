@@ -344,3 +344,17 @@ def t_stat(R, L, C, k, fs, Rerr, Lerr, Cerr, Kerr, fserr):
 #t2_stat = t_stat(R2, L2, C2, k2, fs2, Rerr, L2err, Cerr, kerr, fs_err)
 #print('t1_stat ', round(t1_stat, 3), ' s')
 #print('t2_stat ', round(t2_stat, 3), ' s')
+
+L1_1 = 9.05
+L2_1 = 55.79
+L1_2 = 8.98
+L2_2 = 56.10
+u = 0.025
+def err_mu(L1, L2, u):
+    sigma_mu = np.sqrt((1/L1)**2*(L2*u)**2+(L2/L1**2)**2*(L1*u)**2)
+    return sigma_mu
+sig_mu_1 = err_mu(L1_1, L2_1, u)
+sig_mu_2 = err_mu(L1_2, L2_2, u)
+
+print('fehler auf mu 1:', sig_mu_1)
+print('Fehler auf mu 2:', sig_mu_2)

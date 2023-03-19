@@ -545,21 +545,6 @@ Durch drücken des Tasters wird die Spannungsquelle kurzgeschlossen, und der Sch
 Bei diesem konnten wir gut den Schwingungsverlauf des gekoppelten Schwingkreis sehen, als auch die Schwebung. 
 Von beiden haben wir eine FFT gemacht, um daraus die Fundamentalschwingungen des Schwingkreises zu bestimmen welche sich als zwei Peaks im Graph der FFT gezeigt haben.\\ 
 
-Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt. 
-Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
-Ab 3cm Abstand waren diese nicht mehr zu trennen.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{bilder/Abstand_Spulen.pdf}
-    \caption{Spulen im Abstand von 1cm}
-\end{figure}
-
-
-
-Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen länger trennbar sind als im ersten. 
-
-Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt. 
 
 \subsubsection{Rohdaten}
 
@@ -671,7 +656,6 @@ Hier fallen die Frequenzen im höheren Bereich deutlich langsamer ab, sodass wir
     \label{Schwebung_Maxima}
 \end{figure}
  
-%TODO : Messunsicherheiten auf f+ und f- 
 
 Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
 Des weiteren haben wir einen Fehler der auf Grund der statistischen Schwankung der Ergebnisse, wenn man die Messung mehrfach wiederholt. 
@@ -765,7 +749,7 @@ Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bes
 Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
 \begin{equation}
     \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
-    label{Fehlerfortpflanzung_kopplung}
+    \label{Fehlerfortpflanzung_kopplung}
 \end{equation}
 
 Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
@@ -828,13 +812,56 @@ Zur Bestimmung betrachte ich den ersten Nulldurchgang der in grün eingezeichnet
 
 Hier zu sehen ist der Zoom in den Relevanten Bereich. Die linke Linie ist dort eingezeichnet, wo man durch Ablesen in etwa das Maximum bestimmen kann. Die rechte Linie ist an der Stelle des Minimums. Das erste Maximum der Schwebung des Ersten Schwingkreises liegt bei $ t_1 = 287 \quad 10^{-5}s$.\\
 Das erste Minimum der Schwebung des zweiten Schwingkreis liegt bei $ t_2 = 376 \quad 10^{-5}s$\\
-Hierbei ist die Ablesegenauigkeit der relevante Fehler auf diese größe, da wir bei CASSY davon ausgehen können, dass wir kein Digitalisierungsfehler auf die Zeit haben. Dieser ist: $\sigma_t = \frac{0.0002}{\sqrt{12}} = 6\cdot 10^{-5}s$  und für $t_1$ und $t_2$ gleich groß.
+Diese Werte haben wir aus einem weiteren Zoom in bestimmt, hier exemplarisch für das Maximum dargestell.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_Delta_T_Max.pdf}
+    \caption{Zoom des ersten Nulldurchgangs der Schwebung des Schwingkreis 2}
+\end{figure}
+
+Hierbei ist die Ablesegenauigkeit der relevante Fehler auf diese Größe, da wir bei CASSY davon ausgehen können, dass wir kein Digitalisierungsfehler auf die Zeit haben. 
+Dieser ist: $\sigma_t = \frac{0.00005}{\sqrt{12}} = 1.4\cdot 10^{-5}s$  und für $t_1$ und $t_2$ gleich groß.
 Somit ergibt sich für $\Delta t$
 \begin{equation}
-\Delta t = t_2 - t_1 =  (89\cdot 10^{-5} \pm 8\cdot10^{-5})s
+\Delta t = t_2 - t_1 =  (89\cdot 10^{-5} \pm 2\cdot10^{-5})s
 \end{equation}
 
-Die Fehler wurden hier quadratisch addiert. 
+Die Fehler wurden hier quadratisch addiert. \\
+Was auffällt ist, dass dieser Graphisch bestimmte Wert in etwa der der Hälfte des rechnerisch bestimmten Wert entspricht. 
+
+\subsubsection{Einfluss des Abstands auf die Kopplung}
+ 
+ 
+Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt. 
+Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
+Ab 3cm Abstand waren diese nicht mehr zu trennen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bilder/Abstand_Spulen.pdf}
+    \caption{Spulen im Abstand von 1cm}
+\end{figure}
+
+Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen länger trennbar sind als im ersten.  
+
+\subsubsection{Kopplung mit Eisenkern}
+
+
+Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt.
+
+Der Eisenkern hat einen Einfluss auf die Kopplung da diese über die Induktivität mit der magnetischen Permeabilität zusammen hängt.
+Die Induktivität einer Spule ist gegeben als:
+\begin{equation}
+L = \mu_0 \mu_r \frac{N^2A}{L}
+\end{equation}
+Hier bezeichnet N die Windungszahl, A den Querschnitt der Spule und L die Länge.
+Wenn wir nun ein Eisenkern in die Spule stecken, verändert sich also nur das $\mu_r$ das in Luft vorher 1 war.
+Aus unseren Messungen der Induktivität der Spule mit und ohne Eisenkern können wir also die magnetische Permeabilität bestimmen, da gilt: $\frac{L_1}{L_2} = \frac{1}{\mu_r}$ ($L_1$ Messung ohne Eisenkern $L_2$ Messung mit Eisenkern).
+\begin{center}
+$\mu_{r_1} = (6.19 \pm 0.22)\frac{H}{m} \qquad \mu_{r_2} = (6.25 \pm 0.22)\frac{H}{m} $
+\end{center}
+
+Da wir jedoch den gleichen Eisenkern für beide Spulen verwendet haben, und der Unterschied der beiden Werte im Rahmen der Messunsicherheit auf diese liegt, verwenden wir im weiteren den Mittelwert der zwei Werte ($\mu_r = (6.22 \pm 0.16)\frac{H}{m}$).
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die

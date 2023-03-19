@@ -11,7 +11,7 @@ import os
 import cassy_helper as ch
 
 global SHOW_PLOTS
-SHOW_PLOTS = True #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
+SHOW_PLOTS = False #for debugging, zeige alle Messdaten und die Fouriertrasformierte mit peak an.
  
 global PLOTS_DIR #Ordner, in dem die Plots gespeichert werden sollen, mit passender Martrikelnummer und Versuchnummer
 PLOTS_DIR = '../plots/434170_428396_1A3_'

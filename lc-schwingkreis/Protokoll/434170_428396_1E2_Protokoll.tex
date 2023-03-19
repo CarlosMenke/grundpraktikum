@@ -26,16 +26,17 @@
 \section{Gurndlagen}
 %TODO add stroemungs DGL
 Ein einfacher Schwingkreis besteht aus einer in Reihe geschlateten Spule und einem Kondensator.
-Angenommen der Kondensator ist am anfang aufgeladen (1),
-dann entlädt sich der Kondensator(2), der durch die Spule fließende Strom induziert ein Magnetfeld (3), und das Magnetfeld induziert einen Gegenstrom sodass der Kondensator entgegengesetzt aufgeladen wird.
-Anschließend passiert das ganze umgekehrt sodass man wieder im anfangszustand ist.
+Angenommen der Kondensator ist am Anfang aufgeladen,
+dann entlädt sich der Kondensator, der durch die Spule fließende Strom induziert ein Magnetfeld, und das Magnetfeld induziert einen Gegenstrom sodass der Kondensator entgegengesetzt aufgeladen wird.
+Anschließend passiert das ganze umgekehrt bis man wieder im Anfangszustand ist. Dies wiederholt sich unendlich oft.
 Dadurch entsteht eine Schwingung.
-Dieser Schaltplan ist allerdings idealisiert, da die elektrischen Wiederstände der Bauteile nicht berücksichtigt wurden.
+Dieser Schaltplan ist allerdings idealisiert, da die elektrischen Widerstände der Bauteile nicht berücksichtigt wurden dies dämpft die Schwingung.
 Aufgrund der Kettenregen (die Summe aller Spannungen muss 0 sein), ergibt sich die DGL:
 \begin{equation}
     \frac{d^2 Q}{dt^2} + \frac{R}{L} \cdot \frac{d U}{dt} + \frac{1}{LC} \cdot U = 0
 \end{equation}
-Aus der DGL kann man folgende beziehungen ableiten. $\omega_0$ ist dabei die Eigenfrequenz ohne dämpfung, $\omega$ die Eigenfrequenz mit dämpfung.
+Q steht für die Ladung, R für den Widerstand, L für die Induktivität, U für die Spannung und C für die Kapazität. 
+Aus der DGL kann man folgende Beziehungen ableiten. $\omega_0$ ist dabei die Eigenfrequenz ohne Dämpfung, $\omega$ die Eigenfrequenz mit Dämpfung.
 $\delta$ ist die Dämpfungskonstante.
 \begin{equation}
     \delta = \frac{R}{2L}
@@ -54,8 +55,8 @@ Dabei sieht die allgemeine Schwingungsgleichung wie folgt aus:
     U(t) = U_0 \cdot e ^ {-\delta t} + U_{off}
 \end{equation}
 
-Man kann zwei Schwingkreise aber auch koppeln, da mit einer Spule eine Spannung in der Spule des anderen Schwingkreises induziert werden kann.
-Dafür müssen die Schwingkreise in ca die gleiche Eigenfrequenz haben, was bei uns der Fall ist, da sie baugleich sind.
+Man kann zwei Schwingkreise koppeln. Mit einer Spule wird eine Spannung in der Spule des anderen Schwingkreises induziert.
+Dafür müssen die Schwingkreise in ungefähr die gleiche Eigenfrequenz haben.
 Wenn zwei Schwingkreise gekoppelt sind, und nur in einem Schwingkreis eine Schwingung erzwungen wird, kommt es anschließend zu Schwebung.
 Die Fundamentalschwingungen sind dabei die Schwingungen welche man in diesem Falle im Fourierspektrum als Maxima erkennen kann.
 Dabei ist $f_-$ das rechte Maximum und $f_+$ das linke.

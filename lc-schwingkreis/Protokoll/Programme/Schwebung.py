@@ -75,13 +75,13 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, y_2: str, plotname, start, en
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
  
-cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
+cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1", 'U_A1',  filename[:-5], 0, 500)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
-        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
+        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1", 'U_A1',  filename[:-5], 0, 500)
 
  
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
@@ -195,6 +195,7 @@ print('fminus_2', f_minus_2)
 Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_0cm_01_FFT_zoom', 100, 100) 
 Schwebung_FFT('../Messdaten/Schwebung_0.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_0.5cm_01_FFT_zoom', 100, 100) 
 Schwebung_FFT('../Messdaten/Schwebung_3.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_3.5cm_01_FFT_zoom', 70, 70) 
+Schwebung_FFT('../Messdaten/Schwebung_3cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_3cm_01_FFT_zoom', 70, 70) 
 Schwebung_FFT('../Messdaten/Schwebung_2.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_2.5cm_01_FFT_zoom', 70, 70) 
 
 
@@ -253,7 +254,7 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, plotname, delta1, delta2, rig
     plt.figure()
     plt.title(plotname)
     plt.plot(freq_fft[q-delta1:q+delta2],amp_fft[q-delta1:q+delta2],'.',color='blue', label = 'Messdaten')
-    plt.axvline(freq_fft[q],color='green', label="Maximale Amplitude")
+    #plt.axvline(freq_fft[q],color='green', label="Maximale Amplitude")
     plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')
@@ -278,13 +279,14 @@ for filename in sorted(os.listdir(cassy_dir)):
             #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
             #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
             #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
-        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -15, 20, right=True)
     if '.labx' in filename and '2.5cm' in filename:
         #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
         #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
         #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
         #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
-        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
+        pass
  
 def sigma_k_calc(f_plus, f_minus):
     return 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)

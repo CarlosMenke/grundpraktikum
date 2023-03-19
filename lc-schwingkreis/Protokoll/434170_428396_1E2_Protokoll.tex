@@ -93,6 +93,7 @@ Zudem kann man aufgrund der Dämpfung von dem internen Wiederstand unseres Schwi
 Diese ist für $ k < 0.2$ (was bei uns der Fall sein wird):
 \begin{equation}
     \Delta t \approx \frac{1}{2 \pi \cdot f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
+   \label{DeltaT}
 \end{equation}
 
 
@@ -685,9 +686,11 @@ Für diese ergibt sich:
 
 \begin{equation}
     f_k = \frac{f_- + f_+}{2}
+    \label{Funktion f Schwebung}
 \end{equation}
 \begin{equation}
     f_{schw} = \frac{f_- - f_+}{2}
+    \label{Funktion f grund}
 \end{equation}
 
 Für den Fehler auf diese Frequenzen müssen wir den Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Aus der Gauß'schen Fehlerfortpflanzung ergibt sich:
@@ -708,6 +711,7 @@ Da Jedoch der Fehler auf $f_+$ und $f_-$ gleich ist, und für die beiden Funktio
 
 \begin{equation}
 \sigma_f = \frac{1}{2}\sigma_{f_+}^2
+\label{Fehler auf Schwebung}
 \end{equation}
 
 Mit den Fundamentalfrequenzen aus beiden Schwingkreisen ergibt sich somit:
@@ -736,6 +740,7 @@ Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bes
 
 \begin{equation}
     \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
+    \label{Kopplungsgrad}
 \end{equation}
 
 Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
@@ -755,26 +760,21 @@ $k_2$ = 0.126 $\pm$ 0.002
 
 Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt haben deutlich kleiner ist als der von Schwingkreis 2. 
 Dies war bereits zu erwarten, da in Schwingkreis 1 die bestimmten Frequenzen deutlich enger beieinander lagen. 
-%TODO : Warum ist Kopplung hier kleiner?
+Ein Grund hierfür kann sein, dass unsere Schwingkreise nicht komplett identisch sind. 
+
 \subsubsection{Zeitliche Verschiebung}
 
-Da unser Kopplungsgrad kleiner als 0.2 ist können wir als Näherung für die zeitliche Verschiebung die Formel verwenden die in den Grundlagen angegeben ist. 
+Da unser Kopplungsgrad kleiner als 0.2 ist können wir als Näherung für die zeitliche Verschiebung die Formel \ref{DeltaT} verwenden. 
 Diese Zeitliche Verschiebung beschreibt, den unterschied zu unserer Erwartung von einer Phasenverschiebung von $\frac{\pi}{2}$ (zwischen Nulldurchgang der Schwebung bei Kondensator 1 und Maximum bei Kondensator 2).
-  
-\begin{equation}
-    \Delta t \approx \frac{1}{2 \pi f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
-\end{equation}
 
 $\Delta t$ berechnen wir sowohl mit den Ergebnissen aus SK1 als auch aus SK2 hier werden leicht unterschiedliche Ergebnisse heraus kommen. 
 Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen haben und für R den Widerstand den wir aus den Einzelschwingkreisen bestimmt haben. \\
+Dies dient dazu, den später Graphisch bestimmten Wert für $\Delta T$ mit dem Rechnerischen zu vergleichen.
 
-Sämtliche Fehler die Hier eingehen sind statistischer Natur, wir können also den Gesamtfehler auf $\Delta t$ direkt aus der quadratischen Fehlerfortpflanzung schließen.
-Hierfür muss Gleichung \ref{Fehlerfortpflanzung} nach sämtlichen Größen auf welche wir Fehler haben abgeleitet werden. Daraus ergibt sich für die Verschiebung:
+Sämtliche Fehler die Hier eingehen sind statistischer Natur. Für den Vergleich interessieren wir uns maßgeblich an dem Berechneten Wert für $\Delta T$ 
 \begin{center}
-$\Delta t_1$ = $-2.277 \quad 10^{-3}s \quad \pm $
-\end{center}
-\begin{center}
-$\Delta t_2$ = $-2.040 \quad 10^{-3}s \quad \pm $
+$\Delta t_1$ = $-2.277 \cdot 10^{-3}s  $ \qquad
+$\Delta t_2$ = $-2.040 \cdot 10^{-3}s  $
 \end{center}
 
 Diese Verschiebung können wir auch aus dem Graphen in welchem wir die Schwebung beobachten können Ablesen. 
@@ -839,7 +839,10 @@ Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen
 \subsubsection{Kopplung mit Eisenkern}
 
 
-Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt.
+Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. 
+Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt. 
+Diese haben wir 3x durchgeführt, um zu sehen, ob die Ergebnisse sich reproduzieren, dies war der Fall.
+Im folgenden werten wir die erste Messung aus (Schwebung\_Eisenkern\_01.labx).
 
 Der Eisenkern hat einen Einfluss auf die Kopplung da diese über die Induktivität mit der magnetischen Permeabilität zusammen hängt.
 Die Induktivität einer Spule ist gegeben als:
@@ -854,6 +857,93 @@ $\mu_{r_1} = (6.19 \pm 0.22)\frac{H}{m} \qquad \mu_{r_2} = (6.25 \pm 0.22)\frac{
 \end{center}
 
 Da wir jedoch den gleichen Eisenkern für beide Spulen verwendet haben, und der Unterschied der beiden Werte im Rahmen der Messunsicherheit auf diese liegt, verwenden wir im weiteren den Mittelwert der zwei Werte ($\mu_r = (6.22 \pm 0.16)\frac{H}{m}$).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_Eisen_01_1_small_zoom.pdf}
+    \caption{Schwingungsverlauf im ersten Schwingkreis mit Eisenkern }
+\end{figure}
+
+Hier können Sie den Schwingungsverlauf in Schwingkreis 1 sehen, wenn dieser mit dem Eisenkern mit Schwingkreis 2 gekoppelt ist. 
+Die Letzten 0.4s Wurden in diesem Graphen weg geschnitten, da hier die Amplitude auf null abgefallen war, und sonst die Schwingung nicht sichtbar wäre.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_Eisenkern_01.pdf}
+    \caption{Schwingungsverlauf im ersten Schwingkreis mit Eisenkern }
+    \label{Eisenkern beide Schwingungen}
+\end{figure}
+
+Hier kann eine Nahaufnahme der Schwingungen in beiden Schwingkreisen gesehen werden. Was hier auffällt ist, dass das Signal nicht mehr Sinus bzw. Kosinus förmig ist. Es ist jedoch trotzdem ein Periodisches Signal.
+
+Da der Eisenkern die Induktivität der Spule erhöht hat, erwarten wir jetzt auch kleinere Frequenzen als ohne. Dies kann man auch direkt sehen wenn man diesen Graphen mit Graph \ref{Schwebung} vergleicht. 
+
+Das dazugehörigen Fourierspecktrum ist:
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.49\textwidth]{plots/Schwebung_Eisenkern_01_FFT_zoom.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.49\textwidth]{plots/Schwebung_Eisenkern_01_FFT_zoom+.pdf}}
+    \caption{FFT der Schwebungsmessung mit Eisenkern }
+\end{figure}
+
+Hier reicht es den Bereich bis zu 1600Hz zu betrachten, da wir in Graph \ref{Eisenkern beide Schwingungen} bereits sehen können, dass wir keine höheren Frequenzen haben werden. Hier kann man bereits sehen, dass die Peaks näher beieinander liegen als in der Kopplung ohne Eisenkern.
+Dargestellt sind zwei verschiedene zoom Ausschnitte der FFT, so kann Position und Form der Maxima gesehen werden.
+ Zur Bestimmung der genauen Position der Maxima haben wir jeweils nur den Ausschnitt am Peak betrachtet, und dieses wie zuvor auch Graphisch bestimmt.
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.49\textwidth]{plots/Schwebung_Eisenkern_01_FFT_peak.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.49\textwidth]{plots/Schwebung_Eisenkern_01_FFT_peak_2.pdf}}
+    \caption{Graphen zur bestimmung der Fundamentalfrequenzen}
+\end{figure}
+
+durch Ablesen ergibt sich für die Frequenzen.
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Schwingkreis} & \textbf{$f_+$ } & \textbf{$f_-$ } & \textbf{Fehler $(\sigma)$}\\
+        \midrule
+        1 & 411Hz & 703Hz & 1.2Hz\\
+        2 & 410Hz & 705Hz & 1.2Hz\\
+        \bottomrule
+    \end{tabularx}
+    \caption{Fundamentalschwingungen der zwei Schwingkreise mit Eisenkern}
+    \label{•}
+\end{table}
+
+Da wir die gleiche Auflösung verwenden wie bei der Bestimmung der Maxima ohne Eisenkern bleibt der Ablesefehler gleich. Sowie die gleiche statistische Unsicherheit die wir aus dem Einzelschwingkreis haben. Diese dürfen wir verwenden, da wir die gleichen Messwerterfassungseinstellungen verwendet haben. 
+Hier kann man sehen, dass die Werte für die Fundamentalschwingungen maximal um 2Hz abweichen in den beiden Schwingkreisen.
+
+Für die Berechnung der Schwebungsfrequenz und der Grundfrequenz können wir Gleichung \ref{Funktion f Schwebung} und \ref{Funktion f grund} verwenden. 
+Für den Fehler auf diese verwenden wir Gleichung \ref{Fehler auf Schwebung}.
+Daraus ergibt sich:
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
+        \toprule
+        \textbf{Schwingkreis} & \textbf{$f_k$} & \textbf{$f_{schw}$} & \textbf{$\sigma_f$} \\
+        \midrule
+        1 & 557Hz & 146Hz & 0.72Hz\\
+        2 & 557.5Hz & 147.5Hz & 0.72Hz \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Schwebungsfrequenz und Grundfrequenz der Schwingkreise mit Eisenkern}
+    \label{•}
+\end{table} 
+Da die Grundfrequenz und Schwebungsfrequenz hier um einiges näher zusammen liegen führt das auch dazu, dass in Graph \ref{Eisenkern beide Schwingungen} das Signal aperiodisch scheint.
+
+Mit Gleichung \ref{Kopplungsgrad} können wir nun auch den Kopplungsgrad berechnen. Zur Berechnung des Fehlers auf diesen verwenden wir Gleichung \ref{Fehlerfortpflanzung_kopplung}
+
+\begin{center}
+$k_1$ = 0.491 $\pm$ 0.003 \qquad $k_2$ = 0.495 $\pm$ 0.003
+\end{center}
+
+Im Fall der Kopplung mit den Eisenkernen erhalten wir für beide Schwingkreise den nahezu gleichen Wert für die Kopplung.
+Die Abweichung ist in der dritten Nachkommastelle und liegt innerhalb der Messunsicherheit.
 
 \begin{aufgabe}{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
   Stellen Sie für einen festen Kopplungsgrad $k$ nacheinander die
@@ -965,3 +1055,4 @@ Das  bedeutet, das unsere Kopplungsgrade übereinstimmen.
 %TODO : Peaks neu bestimmen
 %TODO : Delta t fertig berechnen und Vergleichen, Dinge besser begründen.
 %TODO : Peak beschriften
+%TODO : Ergebnisse aus zweiter Messung von Schwingkreis 2 auch darstellen und berechnen

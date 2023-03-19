@@ -78,13 +78,13 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
  
 cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
 
-for filename in sorted(os.listdir(cassy_dir)):
+'''for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
-
+'''
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 12.0
@@ -136,13 +136,13 @@ def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     else:
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
         
-for filename in sorted(os.listdir(cassy_dir)):
+'''for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung_0cm' in filename:
         cassy_plot_clear(cassy_dir + filename, "t", "U_B1",  filename[:-5] + '_1_complete', -1, 'Schwingkreise 1') 
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung_0cm' in filename:
         cassy_plot_clear(cassy_dir + filename , 't',  'U_A1',  filename[:-5] + '_2_complete', -1 , 'Schwingkreis 2')
-
+'''
 cassy_plot_clear('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', 'Schwebung_0cm_01_1_zoom', 1000, 'Schwingkreis 1') 
 cassy_plot_clear('../Messdaten/Schwebung_0cm_01.labx','t', 'U_A1', 'Schwebung_0cm_01_2_zoom', 1000, 'Schwingkreis 2')       
 cassy_plot_clear('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1', 'Schwebung_Eisen_01_1_complete', -1, 'Schwingkreis 1')
@@ -194,6 +194,7 @@ print('Fminus_1', f_minus_1)
 print('fplus_2', f_plus_2)
 print('fminus_2', f_minus_2)
 Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_zoom', 100, 100) 
+
 
 def f_s(f_plus, f_minus):
     f_s = (f_minus-f_plus)/2
@@ -369,3 +370,93 @@ sig_mu_2 = err_mu(L1_2, L2_2, u)
 
 print('fehler auf mu 1:', sig_mu_1)
 print('Fehler auf mu 2:', sig_mu_2)
+def Schwebung_FFT_Eisen(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
+    
+    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
+    plt.rcParams['font.size'] = 16    
+    
+    freq_fft,amp_fft = analyse.fourier_fft(x,y)
+    freq_fft_2,amp_fft_2 = analyse.fourier_fft(x,y_2)
+    a =205
+
+    plt.figure()
+    plt.title(plotname)
+    plt.plot(freq_fft[a-delta1:a+delta2],amp_fft[a-delta1:a+delta2],'.',color='blue', label = 'Schwingkreis 1')
+    plt.plot(freq_fft_2[a-delta1:a+delta2],amp_fft_2[a-delta1:a+delta2],'.',color='magenta', label = 'Schwingkreis 2')
+    plt.legend()
+    plt.xlabel('$f$ / Hz')
+    plt.ylabel('amp')
+    plt.grid()
+    
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
+        
+    return 
+Schwebung_FFT_Eisen('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1','../Messdaten/Schwebung_Eisenkern_01.labx' , 'U_A1', 'Schwebung_Eisenkern_01_FFT_zoom', 200,600 )
+Schwebung_FFT_Eisen('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1','../Messdaten/Schwebung_Eisenkern_01.labx' , 'U_A1', 'Schwebung_Eisenkern_01_FFT_zoom+', 40,180 )
+def Schwebung_FFT_Eisen_max(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
+    
+    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
+    plt.rcParams['font.size'] = 16    
+    
+    freq_fft,amp_fft = analyse.fourier_fft(x,y)
+    freq_fft_2,amp_fft_2 = analyse.fourier_fft(x,y_2)
+    a =205
+
+    plt.figure()
+    plt.title(plotname)
+    plt.plot(freq_fft[a-delta1:a+delta2],amp_fft[a-delta1:a+delta2],'o',color='blue', label = 'Schwingkreis 1')
+    plt.plot(freq_fft_2[a-delta1:a+delta2],amp_fft_2[a-delta1:a+delta2],'o',color='magenta', label = 'Schwingkreis 2')
+    plt.legend()
+    plt.xlabel('$f$ / Hz')
+    plt.ylabel('amp')
+    plt.grid()
+    
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
+        
+    return 
+Schwebung_FFT_Eisen_max('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1','../Messdaten/Schwebung_Eisenkern_01.labx' , 'U_A1', 'Schwebung_Eisenkern_01_FFT_peak',2,3)
+def Schwebung_FFT_Eisen_max_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
+    
+    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
+    plt.rcParams['font.size'] = 16   
+    
+    freq_fft,amp_fft = analyse.fourier_fft(x,y)
+    freq_fft_2,amp_fft_2 = analyse.fourier_fft(x,y_2)
+    a =353
+
+    plt.figure()
+    plt.title(plotname)
+    plt.plot(freq_fft[a-delta1:a+delta2],amp_fft[a-delta1:a+delta2],'o',color='blue', label = 'Schwingkreis 1')
+    plt.plot(freq_fft_2[a-delta1:a+delta2],amp_fft_2[a-delta1:a+delta2],'o',color='magenta', label = 'Schwingkreis 2')
+    plt.legend()
+    plt.xlabel('$f$ / Hz')
+    plt.ylabel('amp')
+    plt.grid()
+    
+    if SHOW_PLOTS:
+        plt.show()
+    else:
+        plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
+        
+    return 
+Schwebung_FFT_Eisen_max_2('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1','../Messdaten/Schwebung_Eisenkern_01.labx' , 'U_A1', 'Schwebung_Eisenkern_01_FFT_peak_2',3,3)
+
+f_E_plus_1 = 411
+f_E_plus_2 = 410
+f_E_minus_1 = 703
+f_E_minus_2 = 705
+
+k_1 = k(f_E_plus_1, f_E_minus_1)
+k_2 = k(f_E_plus_2, f_E_minus_2)
+print('k1 mit eisenkern', k_1)
+print('k2 mit eisenkern', k_2)
+sigma_k1 = sigma_k_calc(f_E_plus_1, f_E_minus_1)
+sigma_k2 = sigma_k_calc(f_E_plus_2, f_E_minus_2)
+print('sigma k1 eisen', sigma_k1)
+print('sigma k2 eisen', sigma_k2)

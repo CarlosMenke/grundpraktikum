@@ -46,17 +46,23 @@ def cassy_begin(datei: str, x: str, y: str):
     return x, y, xstr, ystr
  
     
-def f_max(datei: str, x: str, y: str):
+def f_max(datei: str, x: str, y: str, y_2: str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     data = cassy.CassyDaten(datei)
     messung = data.messung(1)
     x = messung.datenreihe(x)
     y = messung.datenreihe(y)
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    y_2 = messung.datenreihe(y_2)
      
     freq_fft,amp_fft = analyse.fourier_fft(x.werte,y.werte)
+    freq_fft_2, amp_fft_2 = analyse.fourier_fft(x.werte,y_2.werte)
     f = np.max(amp_fft)
     a = np.where(amp_fft == f)[0][0]
-    return a, freq_fft[a]
+    f2 = np.max(amp_fft_2)
+    b = np.where(amp_fft == f2)[0][0]
+    return a, freq_fft[a], b, freq_fft_2[b]
 
 def Plot_begin_2(datei: str, x: str, y: str, y_2: str):
     plt.rcParams['font.size'] = 14.0

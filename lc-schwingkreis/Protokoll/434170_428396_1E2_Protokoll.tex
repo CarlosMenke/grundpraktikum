@@ -897,7 +897,7 @@ Hier die Tabelle mit allen Maxima:
             1cm SK2 &  1061.5 & 1167.5 \\
             1.5cm SK1 &  1079.5 & 1143 \\
             1.5cm SK2 &  1068 & 1158.5 \\
-            2.0cm SK1 &  1086.75 & 1133.5 \\
+            2.0cm SK1 &  1086.75 & 1146.5 \\ %TODO right is wrong!!!
             2.0cm SK2 &  1073 & 1152.5 \\
             2.5cm SK1 &  1092.75 & 1143 \\ %TODO right is wrong!!!
             2.5cm SK2 &  1078.5 & 1146.5 \\
@@ -1026,7 +1026,7 @@ Die Abweichung ist in der dritten Nachkommastelle und liegt innerhalb der Messun
 \end{aufgabe}
 
 \section{Gekoppelte Schwingung: gleich- und gegensinnige Anregung}
-\subsection{Aufbau}
+\subsection{Aufbau und Durchführung}
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=0.49\textwidth]{schaltplan-gleichsinnig.pdf}}
@@ -1039,69 +1039,83 @@ Vor der Messung haben wir erst beide Kondensatoren mit offenem Schalter aufgelad
 Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und somit auch die Schwinngung beginnt.
 Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veräbnder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
 Dabei haben wir die Spulen der beiden Schwingkreise direkt nebeneinander gestellt, um die Kopplung zu maximieren.
-Die Kopplung haben wir während der gesamten Messung konstant gehalten.
+Die Kopplung haben wir während der gesamten Messung konstant gehalten.\\
 
-\subsection{Durchführung}
-Alle Messeinstellungen haben wir so gelassen wie vorher, da sich hier nichts wesentliches verändert hat.
+Alle Messeinstellungen haben wir so gelassen wie in den vorherigen Versuchen, da sich hier nichts wesentliches verändert hat.
 Zum umwechseln von gleichsinnig zu gegensinnig haben wir die Spule im 1. Stromkreis umgedreht, da dann der Strom andersherum durch sie hindurch fließt.
-Sowohl die gleich wie die gegensinnige schwingung haben wir einmal vermessen.
+Sowohl die gleich wie die gegensinnige Schwingung haben wir einmal vermessen.
+Wir haben auch ein mal die Spannungsquelle umgepolt, um gleichsinnige schwingung zu erhalten, dies führt jedoch nur dazu, dass wir ein Phasensprung zwischen den zwei Schwingkreisen haben. 
+Zur Auswertung verwenden wir die Messungen die wir mit Drehung der Spule aufgenommen haben.
 
 \subsection{Gleichsinnige Schwingung}
 Bei der Gleichsinnigen Schwingung ist die Maximale Frequenz wie in den Grundlagen diskutiert $f_+$.
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule.pdf}}
-    \caption{Gleichsinnige Schwingung}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gleichsinnig_01_spule.pdf}}
+    \caption{Gleichsinnige Schwingung beider Schwingkreise}
+    \label{gleichsinnige Schwingung}
 \end{figure}
+Hier kann man sehr gut sehen, dass die Schwingungen in beinden SK nahezu deckungsgleich sind. Sie werden eine sehr ähnliche Frequenz haben, man kann auch keinen Phasensprung zwischen den beiden erkennen.
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule_fft_zoom.pdf}}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gleichsinnig_01_spule_fft_zoom.pdf}}
     \caption{Gleichsinnige Schwingung FFT mit ausschnitt um den Peak}
 \end{figure}
-Zum Auswerten haben wir uns die Fouriertransformation angeschaut, und die Maxima selber bestimmt, da wir so das Maximum genauer bestimmen konnten.
-Dies liegt daran, dass wenn wir nur die Frequenz mit dem größten Wert nehmen, man anhand der Verteilung der Werte daneben sehr gut abschätzen kann ob das einetliche Maximum etwas links oder rechts davon liegt.
+Zum Auswerten haben wir uns die Fouriertransformation angeschaut, und die Maxima graphisch abgelesen, da wir so das Maximum genauer bestimmen können als wenn wir einfach nur den Wert mit der Maximalen Amplitude aus der FFT wählen.
+Dies liegt daran, da die Verteilung nicht vollkommen symmetrisch ist.
+Oben können Sie den Ausschnitt der FFT sehen in welchem Die Maxima liegen. 
+Hier ist gut zu sehen, dass für die Messwerte bei Schwingkreis 1 und 2 nahezu gleiche Frequenzen raus kommen.\\
+Wie in Graph \ref{gleichsinnige Schwingung} zu sehen ist, haben wir ein Kosinus förmiges Signal. Wir erwarten also nur einen Peak in dem Fourierspektrum, also stimmt unser Fourierspektrum mit den Erwartungen überein. 
 
-Für die Gleichsinnige Schwingung haben wir folgenden Wert als Maximale Frequenz ermittelt:
+
+Für die Gleichsinnige Schwingung haben wir das Maxima aus diesem Graphen bestimmt. 
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gleichsinnig_01_spule_fft_zoom_peak.pdf}}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gleichsinnig_01_spule_fft_zoom_peak.pdf}}
     \caption{Gleichsinnige Schwingung FFT Zoom in}
 \end{figure}
-Da das Intervall um das Maximum herum nachezu symetrisch aussieht, haben wir hier $f_+=1050Hz$ als maximale Frequenz genommen.
+Aus der Form der Verteilung um das Maximum können wir schließen, dass die gesuchte Frequenz bei $f_+=1051Hz$ liegt. Dies gilt für die Messung an beiden Kondensatoren.
+Desweiteren können wir sehen, dass hier die Ablesegenauigkeit gleich wie der Schwebung bei 2Hz liegt. Somit können wir den gleichen Ablese Fehler verwenden.
 
  
 \subsection{Gegensinnige Schwingung}
-Mit der Gegensinnigen Schwingung kann man $f_-$ bestimmen. Diese ist die Maximale Frequenz der Schwingung, und kann so mitterls FFT leicht gefunden werden.
+Mit der Gegensinnigen Schwingung kann man $f_-$ bestimmen. Hier gehen wir gleich vor wie bei der gleichsinnigen Messung.
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01.pdf}}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gegensinnig_01.pdf}}
     \caption{Gegensinnige Schwingung}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01_fft_zoom.pdf}}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gegensinnig_01_fft_zoom.pdf}}
     \caption{Gegensinnige Schwingung FFT mit ausschnitt um den Peak}
 \end{figure}
-Für die Gegensinnige Schwingung haben wir die Werte wiefolgt ausgewertet:
+Hier können Wir sehen, dass wir für gegensinnige Anregung ähnliche Ergebnisse erhalten wie für die gleichsinnige. Der Signifikante Unterschied ist, dass die Frequenz leicht erhöht ist. 
+Das Maximum der FFt ist nun nöher bei 1200Hz.\\
+ 
+Für die Gegensinnige Schwingung haben wir das Maximum ebenfalls abgelesen.
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[width=1.0\textwidth]{plots/gegensinnig_01_fft_zoom_peak.pdf}}
+    \subfloat{\includegraphics[width=0.8\textwidth]{plots/gegensinnig_01_fft_zoom_peak.pdf}}
     \caption{Gegensinnige Schwingung FFT Zoom in}
 \end{figure}
-Der grüne Strich makiert hier die Frequenz, welche die größte Amplitude hat in der FFT hat.
+Der grüne Strich markiert hier die Frequenz, welche die größte Amplitude in der FFT hat.
 Dabei haben wir die Maximale Frequenz auf $f_-=1184.5Hz$ geschätzt.
 Wir haben sie leicht nach rechts verschoben, da 1186Hz etwas häufiger vorkommt als 1182Hz.
+Dieser Wert gilt für die Messungen an beiden Schwingkreisen, da die Werte Deckungsgleich sind.
+Für den Ablese Fehler gilt das gleiche wie bei gleichsinniger Anregung.
 
 \subsection{Kopplungsgrad}
 Der Kopplungsgrad ist definiert als:
 \begin{equation}
     k_g = \frac{f_-^2-f_+^2}{f_-^2+f_+^2} = \frac{1184.5^2-1050^2}{1184.5^2+1050^2} = 0.120
 \end{equation}
-
+Hier ergibt es keinen Sinn ein $k_1$ und $k_2$ für die unterschiedlichen Messungen an den beiden Schwingkreisen zu bestimmen, da wir für diese die gleichen Werte erhalten haben. \\
+ 
 Als Fehler auf k gehen dabei nur die statistischen Fehler von $f_+$ und $f_-$ ein.
 Da diese wieder aus der FFT bestimmt wurden, gibt es hier einmal den statistischen Ablesefehler und den statistischen Messfehler (welchen wir im Versuch mit der 10 fachen Messung des gleichen Schwingkreises bestimmt haben ).
-Diese beiden Fehler haben wir bei der Feherberechnung der Schwebung (\ref{Fehlerfortpflanzung_kopplung}) schon auf die Fromel des Kopplungsgrades fortpflanzt.
-Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da diese nicht von dem Wert der Frequenz abhängen sondern von der Methode wie wir diese bestimmt haben.
+Diese beiden Fehler haben wir bei der Fehlerberechnung der Schwebung (\ref{Fehlerfortpflanzung_kopplung}) schon auf die Formel des Kopplungsgrades fortpflanzt.
+Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da diese nicht von dem Wert der Frequenz abhängen sind.
  
 \begin{equation}
     \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
@@ -1112,19 +1126,20 @@ Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da
 \end{equation}
 
 Verglichen mit $k_1 = (0.110 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ außerhalb der statistichen Abweichungen.
-Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ ebenfalls deutlich außerhalb der statistischen Abweichungen, da es dieses mal zu klein ist.
+Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ ebenfalls deutlich außerhalb der statistischen Abweichungen.\\
  
-Da wir bei der Schwebung den einen Kopplungsgrad mithilfe von Schwingkreis 1 bestimmt haben, und  den anderen mit Schwinkgreis 2.
-Das haben wir auch schon bei der bestimmun geseheng der Eigenfrequenzen herausgefunden, das die beiden Schwingkreise eine Signifikante andere Eigenfrequenz haben.
-Da wir bei der gleich und gegensinnigen Schwingung jedoch immer beide Schwingkreise verwenden, ergibt es Sinn, den Mittelwert von $k_1$ und $k_2$ zu betrachten.
+Bei der Schwebung haben wir unterschiedliche Werte für die Messungen an den beiden Schwingkreisen erhalten, so überrascht es nicht, dass diese sich von dem Ergebnis mit gleichsinniger und gegensinniger Anregung unterscheiden.
+Dies könnte daran liegen, dass im Fall der Schwebung ein größerer Energieverlust ist. \\
+
+Wenn wir nun den Mittelwert von $k_1$ und $k_2$ zu betrachten,
 $k_r = \frac{k_1 + k_2}{2} = 0.119 \pm 0.001$ 
-(für die Abweichung haben wir den Fehler auf den Mittelwert berechnet, da beide Kopplungsgrade den gleichen Fehler haben)
-Jetzt liegt $k_r$ innerhalb einer Standardabweichung Abweichungen von $k_g$.
-Das  bedeutet, das unsere Kopplungsgrade übereinstimmen.
+(für den Fehler haben wir den Fehler auf den Mittelwert verwendet)
+liegt $k_r$ innerhalb einer Standardabweichung Abweichungen von $k_g$.
+Das  bedeutet, unsere Kopplungsgrade stimmen überein.
 
 \end{document}
 
-%TODO : Peaks neu bestimmen
+%TODO : Peak bei einzelschwingkreis
 %TODO : Delta t fertig berechnen und Vergleichen, Dinge besser begründen.
 %TODO : Peak beschriften
 %TODO : Ergebnisse aus zweiter Messung von Schwingkreis 2 auch darstellen und berechnen

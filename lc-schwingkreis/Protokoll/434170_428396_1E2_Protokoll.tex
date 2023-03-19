@@ -885,28 +885,74 @@ Hier die Tabelle mit allen Maxima:
 \begin{table}[H]
         \centering
         \caption{Abgelesene Maximal Frequenzen}
-        \begin{tabularx}{0.4\textwidth}{X c c c}
+        \begin{tabularx}{0.7\textwidth}{X c c c}
             \toprule
             \textbf{Abstand} & \textbf{$f_+$} & \textbf{$f_-$} & \textbf{stat. Fehler} \\
             \midrule
-            0cm SK2 &  1047 & 1188 \\
-            0cm SK1 &  1054 & 1177 \\
-            0.5cm SK1 &  1063.5 & 1163.5 \\
-            0.5cm SK2 &  1055 & 1176.5 \\
-            1cm SK1 &  1071.5 & 1153.5 \\
-            1cm SK2 &  1061.5 & 1167.5 \\
-            1.5cm SK1 &  1079.5 & 1143 \\
-            1.5cm SK2 &  1068 & 1158.5 \\
-            2.0cm SK1 &  1086.75 & 1146.5 \\ %TODO right is wrong!!!
-            2.0cm SK2 &  1073 & 1152.5 \\
-            2.5cm SK1 &  1092.75 & 1143 \\ %TODO right is wrong!!!
-            2.5cm SK2 &  1078.5 & 1146.5 \\
+
+            0cm SK1 &  1054 Hz & 1177 Hz & 1.2Hz \\
+            0cm SK2 &  1047 Hz & 1188 Hz & 1.2 Hz\\
+            0.5cm SK1 &  1063.5 Hz & 1163.5 Hz & 1.2Hz \\
+            0.5cm SK2 &  1055 Hz & 1176.5 Hz & 1.2Hz \\
+            1cm SK1 &  1071.5 Hz & 1153.5 Hz & 1.2Hz \\
+            1cm SK2 &  1061.5 Hz & 1167.5 Hz & 1.2Hz \\
+            1.5cm SK1 &  1079.5 Hz & 1143 Hz & 1.2Hz \\
+            1.5cm SK2 &  1068 Hz & 1158.5 Hz & 1.2Hz \\
+            2.0cm SK1 &  1086.8 Hz & 1133.5 Hz & 1.2Hz \\
+            2.0cm SK2 &  1073 Hz & 1152.5 Hz & 1.2Hz \\
+            2.5cm SK1 &  1092.8 Hz & 1121 Hz & 1.2Hz \\
+            2.5cm SK2 &  1078.5 Hz & 1146.5 Hz & 1.2Hz \\
+
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
     \end{table}
 Dabei haben wir die Frequenz für 0cm Abstand aus der Vorheringen Messung übernommen.
 
+Anschließend haben wir die Kopplung und den Fehler auf die Kopplung berechnet.
+Da sich an der Auswertung nichts geändert hat, haben wir die Formel aus der Vorherigen Auswertung übernommen (\ref{Kopplungsgrad}).
+Da wir die Frequenzen genaus gemessen haben, ändert sich auch an der Fehlerrechnung nichts vorher (\ref{Fehlerfortpflanzung_kopplung}).
+
+Die errechneten Kopplungsgrade mit Fehlern sind dann:
+\begin{table}[H]
+        \centering
+        \caption{Kopplungsgrade}
+        \begin{tabularx}{0.7\textwidth}{X c c c}
+            \toprule
+            \textbf{Abstand} & \textbf{K} & \textbf{stat. Fehler} \\
+            \midrule
+            0cm SK1 &  0.126  & 0.002 \\
+            0cm SK2 &  0.11  & 0.002 \\
+            0.5cm SK1 &  0.109  & 0.002 \\
+            0.5cm SK2 &  0.09  & 0.002 \\
+            1cm SK1 &  0.095  & 0.002 \\
+            1cm SK2 &  0.074  & 0.002 \\
+            1.5cm SK1 &  0.081  & 0.002 \\
+            1.5cm SK2 &  0.057  & 0.002 \\
+            2cm SK1 &  0.071  & 0.002 \\
+            2cm SK2 &  0.042  & 0.002 \\
+            2.5cm SK1 &  0.061  & 0.002 \\
+            2.5cm SK2 &  0.025  & 0.002 \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/Kopplung_abstand.pdf}
+    \caption{Kopplung gegen den Abstand geplottet}
+\end{figure}
+Wie zu sehen ist, nimmt die Kopplung mit zunehmendem Abstand linear ab.
+
+Dabei haben wir die Linare Regression für jeden Schwingkreis einzeln durchgeführt, da wie zu sehen ist, die Schwinkgreise schon bei gleichem Abstand sehr unterschliedliche Kopplungen haben.
+Die Ergebnisse sind dabei (mit x in cm):
+\begin{equation}
+    K_1 = (-0.026 \pm 0.001) \cdot x + (0.123 \pm 0.001) cm
+\end{equation}
+\begin{equation}
+    K_2 = (-0.033 \pm 0.001) \cdot x + (0.108 \pm 0.001) cm
+\end{equation}
 
 \subsubsection{Kopplung mit Eisenkern}
 

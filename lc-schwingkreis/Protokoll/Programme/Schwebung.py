@@ -273,20 +273,19 @@ Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1', 'Schwebung
 Schwebung_FFT_maxi('../Messdaten/Schwebung_0.5cm_01.labx', 't', 'U_A1', 'Schwebung_0.5cm_02_1_FFT_Maximum', 3, 3)
 Schwebung_FFT_maxi('../Messdaten/Schwebung_2.5cm_01.labx', 't', 'U_A1', 'Schwebung_2.5cm_02_2_FFT_Maximum', 3, 3, right=True)        
 
+'''
 for filename in sorted(os.listdir(cassy_dir)):
     if '.labx' in filename and '2cm' in filename:
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
-            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
-            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
-            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
         Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -15, 20, right=True)
-    if '.labx' in filename and '2.5cm' in filename:
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
-        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
         pass
+    elif '.labx' in filename and '2.5cm' in filename:
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -7, 15, right=True)
+    elif '.labx' in filename and 'cm' in filename:
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
+'''
  
 def sigma_k_calc(f_plus, f_minus):
     return 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)

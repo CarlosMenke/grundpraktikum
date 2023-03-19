@@ -642,34 +642,26 @@ Die genaue Lage der Peaks haben wir wie beim Einzelschwingkreis bestimmt, indem 
 Hierfür haben wir aus dem oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss.
 Dabei ist in grün immer die Frequenz mit der Maximalen Amplitude zu sehen. Diese  haben wir aber nicht zwangsweise auch in der Auswertung verwendent, sonder teilweise noch angepasst, wenn die umliegenden Werte nicht gleichstark gesunken sind.\\
 
-In diesem fallen die umliegenden Punkte gleichstark ab, sodass wir hier $f_{1+} = 1054 Hz$ genommen haben.
+Im linken Plot fallen die umliegenden Punkte gleichstark ab, sodass wir hier $f_{1+} = 1054 Hz$ genommen haben.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_1_FFT_Maximum.pdf}
-    \caption{Bestimmung des Maximums von $f_+$ in SK 1}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0cm_01_1_FFT_Maximum.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0cm_01_2_FFT_Maximum.pdf}}
+    \caption{Bestimmung des Maximums von $f_{1+}$ (links) und $f_{1-}$ (rechts) in SK 1}
     \label{Schwebung_Maxima}
 \end{figure}
+Im rechten Fall haben wir nicht den Peak genommen, sonder den punkt um 1Hz rechts davon, da es so aussieht als wäre das  Maximum genau zwischen 1176 und 1178 Hz. $f_{1-} = 1177 Hz$
  
+Für $f_{2+}$ haben wir wieder den Mittelpunkt genommen, da die Amplituden von 1046 nahezu genau so hoch ist wie bei 1048. $f_{2+} = 1047 Hz$
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_2_FFT_Maximum.pdf}
-    \caption{Bestimmung des Maximums von $f_-$ in SK 1}
-    \label{Schwebung_Maxima}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0cm_02_1_FFT_Maximum.pdf}}
+    \hfill
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0cm_02_2_FFT_Maximum.pdf}}
+    \caption{Bestimmung des Maximums von $f_{2+}$ (links) und $f_{2-}$ (rechts) in SK 1}
 \end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_1_FFT_Maximum.pdf}
-    \caption{Bestimmung des Maximums von $f_+$ in SK 2}
-\end{figure}
-
-Hier fallen die Frequenzen im höheren Bereich deutlich langsamer ab, sodass wir hier $f_{2-} = 1177 Hz$ genommen haben.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_02_2_FFT_Maximum.pdf}
-    \caption{Bestimmung des Maximums von $f_-$ in SK 2}
-    \label{Schwebung_Maxima}
-\end{figure}
+Bei $f_{2-}$ fallen die Frequenzen im höheren Bereich deutlich langsamer ab, sodass wir hier $f_{2-} = 1188 Hz$ genommen haben.
  
 %TODO : Messunsicherheiten auf f+ und f- 
 
@@ -689,8 +681,8 @@ So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreise
         \toprule
         \textbf{Schwingkreis} & \textbf{$f_+$ } & \textbf{$f_-$ } & \textbf{Fehler $(\sigma)$}\\
         \midrule
-        1 & 1054Hz & 1176Hz & 1.2Hz\\
-        2 & 1046Hz & 1188Hz & 1.2Hz\\
+        1 & 1054Hz & 1177Hz & 1.2Hz\\
+        2 & 1047Hz & 1188Hz & 1.2Hz\\
         \bottomrule
     \end{tabularx}
     \caption{Fundamentalschwingungen der zwei Schwingkreise}
@@ -742,8 +734,8 @@ Mit den Fundamentalfrequenzen aus beiden Schwingkreisen ergibt sich somit:
         \toprule
         \textbf{Schwingkreis} & \textbf{$f_k$} & \textbf{$f_{schw}$} & \textbf{$\sigma_f$} \\
         \midrule
-        1 & 1115Hz & 61Hz & 0.72Hz\\
-        2 & 1117Hz & 71Hz & 0.72Hz \\
+        1 & 1115.5Hz & 61.5Hz & 0.72Hz\\
+        2 & 1117.5Hz & 70.5Hz & 0.72Hz \\
         \bottomrule
     \end{tabularx}
     \caption{Fundamentalschwingungen der zwei Schwingkreise}
@@ -770,11 +762,11 @@ Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ quadratisch fortpflanz
 
 Daraus ergibt sich für die gemessenen Frequenzen aus Schwingkreis 1 eine Kopplung von:
 \begin{center}
-$k_1$ = 0.109 $\pm$ 0.002
+$k_1$ = 0.110 $\pm$ 0.002
 \end{center}
 und für den zweiten:
 \begin{center}
-$k_2$ = 0.127 $\pm$ 0.002
+$k_2$ = 0.126 $\pm$ 0.002
 \end{center}
 
 Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt haben deutlich kleiner ist als der von Schwingkreis 2. 
@@ -795,10 +787,10 @@ Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen 
 Sämtliche Fehler die Hier eingehen sind statistischer Natur, wir können also den Gesamtfehler auf $\Delta t$ direkt aus der quadratischen Fehlerfortpflanzung schließen.
 Hierfür muss Gleichung \ref{Fehlerfortpflanzung} nach sämtlichen Größen auf welche wir Fehler haben abgeleitet werden. Daraus ergibt sich für die Verschiebung:
 \begin{center}
-$\Delta t_1$ = $-2.289 \quad 10^{-3}s \quad \pm $
+$\Delta t_1$ = $-2.277 \quad 10^{-3}s \quad \pm $
 \end{center}
 \begin{center}
-$\Delta t_2$ = $-2.031 \quad 10^{-3}s \quad \pm $
+$\Delta t_2$ = $-2.040 \quad 10^{-3}s \quad \pm $
 \end{center}
 
 Diese Verschiebung können wir auch aus dem Graphen in welchem wir die Schwebung beobachten können Ablesen. 

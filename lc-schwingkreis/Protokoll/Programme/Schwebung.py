@@ -185,7 +185,10 @@ def Schwebung_FFT(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, 
     return freq_fft[q], freq_fft[p], freq_fft_2[r], freq_fft_2[s]
 
 f_plus_1, f_minus_1, f_plus_2, f_minus_2 = Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_complete', 550, 5000) 
-f_minus_2 = 1177 # da per hand abgelesen und korrigiert
+f_plus_1 = 1054# da per hand abgelesen und korrigiert
+f_minus_1 = 1177 # da per hand abgelesen und korrigiert
+f_plus_2 = 1047# da per hand abgelesen und korrigiert
+f_minus_2 = 1188 # da per hand abgelesen und korrigiert
 print('Fplus_1', f_plus_1)   
 print('Fminus_1', f_minus_1)    
 print('fplus_2', f_plus_2)
@@ -246,8 +249,8 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
     
     plt.figure()
     plt.title(plotname)
-    plt.plot(freq_fft[q-delta1:q+delta2],amp_fft[q-delta1:q+delta2],'.',color='blue', label = 'Schwingkreis 1')
-    plt.axvline(freq_fft[q],color='green', label="Maximum f_+")
+    plt.plot(freq_fft[q-delta1:q+delta2],amp_fft[q-delta1:q+delta2],'.',color='blue', label = 'Messdaten')
+    plt.axvline(freq_fft[q],color='green', label="Maximale Amplitude")
     plt.legend()
     plt.xlabel('$f$ / Hz')
     plt.ylabel('amp')

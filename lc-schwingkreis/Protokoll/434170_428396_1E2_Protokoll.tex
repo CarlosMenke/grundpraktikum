@@ -756,7 +756,7 @@ Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bes
 
 Hier müssen wir ebenfalls die Fehler auf $f_+$ und $f_-$ quadratisch fortpflanzen. Wir gehen davon aus, dass diese unkorelliert sind.
 \begin{equation}
-    \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
+    \sigma_k =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
     label{Fehlerfortpflanzung_kopplung}
 \end{equation}
 
@@ -922,8 +922,16 @@ Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da
     k_g = (0.120 \pm 0.002) Hz
 \end{equation}
 
-Verglichen mit $k_1 = (0.109 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ innerhalb der statistichen Abweichungen.
-Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ außerhalb der statistischen Abweichungen.
+Verglichen mit $k_1 = (0.110 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ außerhalb der statistichen Abweichungen.
+Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ ebenfalls deutlich außerhalb der statistischen Abweichungen, da es dieses mal zu klein ist.
+ 
+Da wir bei der Schwebung den einen Kopplungsgrad mithilfe von Schwingkreis 1 bestimmt haben, und  den anderen mit Schwinkgreis 2.
+Das haben wir auch schon bei der bestimmun geseheng der Eigenfrequenzen herausgefunden, das die beiden Schwingkreise eine Signifikante andere Eigenfrequenz haben.
+Da wir bei der gleich und gegensinnigen Schwingung jedoch immer beide Schwingkreise verwenden, ergibt es Sinn, den Mittelwert von $k_1$ und $k_2$ zu betrachten.
+$k_r = \frac{k_1 + k_2}{2} = 0.119 \pm 0.001$ 
+(für die Abweichung haben wir den Fehler auf den Mittelwert berechnet, da beide Kopplungsgrade den gleichen Fehler haben)
+Jetzt liegt $k_r$ innerhalb einer Standardabweichung Abweichungen von $k_g$.
+Das  bedeutet, das unsere Kopplungsgrade übereinstimmen.
 
 \end{document}
 

@@ -267,6 +267,14 @@ Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdat
 Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_1_FFT_Maximum', 3, 3) 
 Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_2_FFT_Maximum', 3, 3, right=True)        
 
+def sigma_k_calc(f_plus, f_minus):
+    return 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)
+
+sigma_k_1 = sigma_k_calc(f_plus_1, f_minus_1)
+sigma_k_2 = sigma_k_calc(f_plus_2, f_minus_2)
+print('sigma_k_1: ', sigma_k_1)
+print('sigma_k_2: ', sigma_k_2)
+
         
 def Schwebung_FFT_maxi_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
     

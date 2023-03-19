@@ -56,10 +56,9 @@ Dabei sieht die allgemeine Schwingungsgleichung wie folgt aus:
 \end{equation}
 
 Man kann zwei Schwingkreise koppeln. Mit einer Spule wird eine Spannung in der Spule des anderen Schwingkreises induziert.
-Dafür müssen die Schwingkreise in ungefähr die gleiche Eigenfrequenz haben.
+Dafür müssen die Schwingkreise ungefähr die gleiche Eigenfrequenz haben.
 Wenn zwei Schwingkreise gekoppelt sind, und nur in einem Schwingkreis eine Schwingung erzwungen wird, kommt es anschließend zu Schwebung.
-Die Fundamentalschwingungen sind dabei die Schwingungen welche man in diesem Falle im Fourierspektrum als Maxima erkennen kann.
-Dabei ist $f_-$ das rechte Maximum und $f_+$ das linke.
+Die Fundamentalschwingungen sind die Schwingungen welche entstehen, wenn die Spulen vom Strom gleich oder gegensinnig durchlaufen werden.
 Dabei gilt für die Fundamentalschwingungen:
 \begin{equation}
     \omega_+ = \frac{\omega_0}{\sqrt{1 + k}}
@@ -67,30 +66,30 @@ Dabei gilt für die Fundamentalschwingungen:
 \begin{equation}
     \omega_- = \frac{\omega_0}{\sqrt{1 - k}}
 \end{equation}
+Daraus folgt, dass $f_- > f_+$ ist.
 \begin{equation}
     \Rightarrow k = \frac{\omega_0^2}{\omega_+^2} - 1 = - \frac{\omega_0^2}{\omega_-^2} + 1
 \end{equation}
 \begin{equation}
     \Rightarrow k = \frac{f_-^2 - f_+^2}{f_-^2 + f_+^2}
 \end{equation}
-Im Falle der Schwebung kann man beim verlauf der Spannung am Kondensator sehen, das es eine innere Schwingung und eine Einüllende gibt. \\
-Dabei gilt für die innere Frequenzen $f_k$ und die Schwebungsfrequenz $f_{schw}$:
+Eine Schwebung entsteht, wenn nur einer der beiden Kondensator aufgeladen wird.
+Im Falle der Schwebung kann man beim Verlauf der Spannung am Kondensator sehen, das es eine Grundschwingung und eine Einüllende Schwingung gibt. \\
+Dabei gilt für die Grundfrequenzen $f_k$ und die Schwebungsfrequenz $f_{schw}$:
 \begin{equation}
     f_k = \frac{f_- + f_+}{2}
 \end{equation}
 \begin{equation}
     f_{schw} = \frac{f_- - f_+}{2}
 \end{equation}
-    
-
 Wenn beide Schwingkreise angeregt werden, dann kann man zwischen gleichsinniger und gegensinniger Aufladung unterscheiden.
 Bei gleichsinniger Aufladung fließen die Ströme in die gleiche Richtung durch die Spulen.
 Hier kann man im Fourierspektrum $f_+$ als Maximum messen.
 Bei gegensinniger Aufladung kann man $f_-$ als Maximum des Fourierspektrums messen.
 
-So kann man sowohl mit der Schwebung, wie auch mit gleich und gegensinniger Anregung den Kopplungsgrad mithilfe der oben angegeben Formel bestimmen.:
+So kann man sowohl mit der Schwebung, wie auch mit gleich und gegensinniger Anregung den Kopplungsgrad mithilfe der oben angegeben Formel bestimmen.
 
-Zudem kann man aufgrund der Dämpfung von dem internen Wiederstand unseres Schwingkreises eine leichte zeitliche Verschiebung zwischen Maximaler Spannung am einen Kondensator und Nulldurchgang der Spannung am anderen Kondensator.
+Zudem kann man Aufgrund der Dämpfung des internen Wiederstandes unseres Schwingkreises eine leichte zeitliche Verschiebung zwischen Maximaler Spannung am einen Kondensator und Nulldurchgang der Spannung am anderen Kondensator.
 Diese ist für $ k < 0.2$ (was bei uns der Fall sein wird):
 \begin{equation}
     \Delta t \approx \frac{1}{2 \pi \cdot f_{schw}} \left[ \frac{1}{\pi} - \arctan{\left( \frac{k}{R} \cdot \sqrt{\frac{L}{C}} \right)} \right]
@@ -109,7 +108,7 @@ Diese ist für $ k < 0.2$ (was bei uns der Fall sein wird):
 \subsection{Kurze Zusammenfassung des Aufbaus und Durchführung}
 
 Detaillierter Aufbau und Durchführung zu den einzelnen Versuchsteilen, finden Sie am Anfang von den jeweiligen Abschnitten. 
-Hier soll der Gesamtversuch kurz Dargestellt werden.\\
+Hier soll der Gesamtversuch kurz Dargestellt werden.\\dem 
 
 Der Versuch besteht aus insgesamt 3 Teilen. Für den ersten Teilversuch haben wir zwei LC-Schwingkreise Aufgebaut mit gleichen Bauteilen und die Schwingung in diesen einzeln gemessen. 
 Diese sind Schwingkreise mit je einem Kondensator und einer Spule.
@@ -162,7 +161,7 @@ So konnten wie sämtliche Bauteile Charakterisieren und sind für unseren zweite
             Kondensator 2 & (2.262 $\pm$ 0.006) $\mu$F \\
             \bottomrule
         \end{tabularx}
-        \caption{Ergebnisse der Messung mit dem Multimeter}
+        \caption{Ergebnisse der Messung mit der Messbrücke}
         \label{tab:mytable}
     \end{table}
 
@@ -189,23 +188,13 @@ Aufgrund dessen haben wir dann unseren $10\mu F$ Kondensator durch einen $2.2 \m
 
 Zuerst haben zwei ungekoppelte Schwingkreise aufgebaut mit gleichen Bauteilen.
  
-\textbf{Material Liste}
-\begin{itemize}
-  \item 2x Spule $9mH$
-  \item 2x Kondensator $2.2 \mu F$
-  \item Spannungsqelle vom Cassy
-  \item Schalter
-  \item Kabel
-  \item Steckplatte DIN A4
-\end{itemize}
-
 \subsubsection{Aufbau}
 
 Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
 Darauf zu achten ist, dass die Spannung parallel am Kondensator zu messen ist, mit dem Sensor CASSY. Der Schalter Schließt die Spannungsquelle kurz, und schließt somit den Schwingkreis.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{schaltplan-einzelschwingkreis.pdf}
+    \includegraphics[width=0.5\textwidth]{schaltplan-einzelschwingkreis.pdf}
     \caption{Aufbau der Schwingkreise}
 \end{figure}
 \begin{figure}[H]
@@ -215,7 +204,7 @@ Darauf zu achten ist, dass die Spannung parallel am Kondensator zu messen ist, m
 \end{figure}
 
 Oben ist ein Bild von beiden Schwingkreisen zu sehen, wobei links der 1. ist und rechts der 2.
-Hier wird der 2. Schwingkreis vermessen, weshalb der 1. Schwingkreis auch nicht eingesteckt machen im CASSY.
+Hier wird der 2. Schwingkreis vermessen, weshalb der 1. Schwingkreis auch nicht eingesteckt ist im CASSY.
  
 Zudem haben wir mit Spule zwei und Kondensator zwei einen zweiten Schwingkreis aufgebaut.
 Der Aufbau und die Schaltskizze des zweiten Schwingkreises ist gleich zu dem des ersten.
@@ -230,13 +219,13 @@ Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei dieser Spannung 
 Also haben wir als Spannungsbereich des CASSY-10V bis 10V eingestellt.
 Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
 Diese Testmessungen haben wir jedoch noch mit unserer 'alten' Kapazität gemacht ( $C = 10 \mu F$ ).
-Beim einbauen der neuen haben wir die Messparameter aber angepasst.\\
+Beim einbauen der neuen haben wir die Messparameter angepasst.\\
 Dafür haben wir die Periodendauer ohne Widerstand genähert (da dieser für eine grobe Abschätzung vernachlässigbar klein ist).
 \begin{equation}
     T = 2 \pi \sqrt{LC} = 2 \pi \sqrt{9mH \cdot 2.2 \mu F} = 884 \mu s
 \end{equation}
 Nach dem Nequisst Theorem muss die Abtastrate mindestens doppelt so groß sein wie die Frequenz.
-Um eine ausreichende Auflösung des Fourier Peaks zu haben, und da diese Messung nur eine Abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das 10x ist.
+Um eine ausreichende Auflösung des Fourier Peaks zu haben, und da diese Messung nur eine Abschätzung war, haben wir $ 50 \mu s $ als Messintervall gewählt, da dieses mehr als das zehnfache ist.
 
  
 Die Schwingung im Schwingkreis startet in dem Moment, in dem man den Taster drückt, und sich der Kondensator anfängt zu entladen, da soll auch die Messung starten.
@@ -246,11 +235,12 @@ Dabei haben wir 6.1V gewählt, da so noch der Großteil der ersten Schwingungspe
 0.1V Abstand sind genug um Störeffekte vom schließen des Schalters nicht auf zu zeichnen.
 Den zweiten Schwingkreis haben wir dabei 10 mal vermessen, um die Statistische Unsicherheit auf die Frequenz zu bestimmen.
 
-Den ersten Schwingkreis haben wir dabei nur einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir den gleichen Aufbau verwendet haben und auch sonst gleiche Messbedingungen hatten.
+Den ersten Schwingkreis haben wir einmal vermessen, da wir davon ausgehen können, das die Statistische Unsicherheit bei beiden Schwingkreisen gleich ist, da wir die gleichen Messwerterfassungseinstellungen haben da wir die gleichen Messwerterfassungseinstellungen haben.
 
 
 
-Nachdem die Messung beendet ist, wir das Frequenz Spektrum mit hilfe einer Fouriertransformation analysiert.
+%TODO frage nach wegen achsen beschriftung nach FFT. AMP???
+Nachdem die Messung beendet ist, wir das Frequenz Spektrum mit Hilfe einer Fouriertransformation analysiert.
 Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformation.
  
 \begin{figure}[H]
@@ -259,16 +249,17 @@ Die Länge der Messung beeinflusst dabei die Auflösung der Fouriertransformatio
     \caption{Zoomin Plot der FFT der Testmessung mit Messdauer = 0.01s}
 \end{figure}
 Wie zu sehen ist bei diese Testmessung, ist das Fourierspektrum nur auf $ \pm 100Hz $ genau. Das bedeutet das die Messdauer von 0.01s zu kurz ist.
-Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann einen zufridenstellenden (weniger als 0.1\%) Abeshe Fehler hatten.
+Als Messdauer haben wir später 0.5s Sekunden gewählt, da wir dann einen zufridenstellenden (weniger als 0.1\%) ablese Fehler hatten.
 
-Hier eine übersicht der Messeinstellungen. Dabei haben wir den Kanal auf den getriggert wird immer auf den gestellt, an welchem der zu messende Schwingkreis angeschlossen war.
+Hier eine übersicht der Messeinstellungen. Diese gelgen für beide Kanäle. 
+Dabei haben wir den Kanal auf den getriggert wird immer auf den gestellt, an welchem der zu messende Schwingkreis angeschlossen war.
 \begin{table}[H]
     \centering
     \begin{tabularx}{1\textwidth}{X X X X} % adjust width as needed
         \toprule
         \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Messbereich (für beide Eingäge)} \\
         \midrule
-        200$\mu$s  & 0.5s & 6.1V fallend & -10V - 10V \\
+        200$\mu$s  & 0.5s & 6.1V fallend & -10V bis 10V \\
         \bottomrule
     \end{tabularx}
     \caption{Messwertserfassungseinstellungen des CASSY}
@@ -286,23 +277,23 @@ So wie eine Rauschmessung bei 0V und bei ca. 6V.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_2_01.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/schwingkreis_2_01.pdf}
     \caption{Schwingungsverlauf im zweiten Schwingkreis}
 \end{figure}
 
 Oben können sie Exemplarisch einen Schwingungsverlauf im zweiten Schwingkreis sehen. 
 Das obere Bild zeigt die Messung über die gesamte Messdauer. 
 Sehr gut kann hier der Exponentielle Abfall der Amplitude erkannt werden. Bereits nach ca. 0.03s ist die Amplitude auf null abgefallen. 
-Das Messen des großen Zeitintervalls ergibt sin, dass dies die Auflösung bei der FFT erhöht.
+Das Messen des großen Zeitintervalls ergibt Sinn, dass dies die Auflösung bei der FFT erhöht.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/schwingkreis_1_01.pdf}
     \caption{Schwingungsverlauf im ersten Schwingkreis}
 \end{figure}
-hier noch der Schwingungsverläufe von unserem Ersten Schwingkreis. Dieser sieht Augenscheinlich sehr ähnlich zu den des zweiten aus.
+Hier noch der Schwingungsverläufe von unserem ersten Schwingkreis. Dieser sieht Augenscheinlich sehr ähnlich zu den des zweiten aus.
 Dies ist auch zu erwarten, da wir gleich Bauteil verwendet haben.
 
-Das die zwei Schwingungen sehr ähnlich sind, kann man sehr gut daran erkennen, wenn man in den noch schwingenden Bereich der Messung zoomt.
+Das die zwei Schwingungen sehr ähnlich sind, kann man sehr gut erkennen, wenn man in den noch schwingenden Bereich der Messung zoomt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreise_zoom.pdf}
@@ -318,14 +309,14 @@ Oben ist der des zweiten Schwingkreis unten der des Ersten.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_2_01_fft_complete.pdf}
-    \caption{Schwingungsverlauf im ersten Schwingkreis}
+    \includegraphics[width=0.8\textwidth]{plots/schwingkreis_2_01_fft_complete.pdf}
+    \caption{FFT des ersten Schwingkreis}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_complete.pdf}
-    \caption{Schwingungsverlauf im ersten Schwingkreis}
+    \includegraphics[width=0.8\textwidth]{plots/schwingkreis_1_01_fft_complete.pdf}
+    \caption{FFT des zweiten Schwingkreis}
 \end{figure}
 
 Zu sehen ist, dass wir einen klaren peak bei einer bestimmten Frequenz haben, es sind keine Frequenzen von anderen Schwingungen zu sehen. 
@@ -337,21 +328,25 @@ Dies war aus den Kosinus förmigen Verlauf der Messung zu erwarten. In diesem Zo
     \caption{Schwingkreis 1 und 2 FFT Zoom-in}
 \end{figure}
 
-Im diesem Graphen ist ein Zoom-in der FFT zu sehen bei beiden Schwingungen, hier kann man gut erkennen, dass wir eine klare Spitze haben.Des weiteren kann man sehen, dass der Peak bei den beiden Schwingkreisen leicht gegeneinander verschoben sind 
+Im diesem Graphen ist ein Zoom-in der FFT beider Schwingungen zu sehen, hier kann man gut erkennen, dass wir eine klare Spitze haben. Der Peak der beiden Schwingkreisen ist leicht gegeneinander verschoben.
 Die Frequenz des Schwingkreis kann später durch weiteres zoomen festgestellt werden.
 
 
 \subsubsection{Auswertung}
 Da wir die Frequenz der Schwingkreise bestimmen sollten, haben wir uns die FFT im Bereich des Peaks genauer angesehen.
-Zum bestimmen des Maximums haben wir immer den x-Wert genommen, welcher die größte Amplitude hat.
-Alternativ hätten wir auch den Peakschwerpunkt nehmen können. Da die Verteilung aber unsymetrisch ist, haben wir uns dagegen entschieden.
+Dabei haben wir das Maximum aus den Graphen abgelesen. Wir haben nicht den Peakschwerpunkt verwendet, da es eine unsymetrische Verteilung ist.
+Man kann anhand der umliegenden Werte sehen ob das Maximum etwas rechts oder links des höchsten Punktes liegt.
+
+Diese Methode haben wir für alle Auswertungen verwerdet, außer bei der 10maligen Messung des Schwingkreises 2.
+Hier haben wir immer die Frequenz mit der Maximalen Amplitude genommen, da wir sie später mitteln.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/schwingkreis_1_01_fft_zoom.pdf}
     \caption{FFT Zoom vom ersten Schwinkgreis mit eingezeichnetem Peak}
     \label{fig:peak}
 \end{figure}
-Dabei kann dem zoom-in plot entnommen werden, das wir Messpunkte in 2Hz schritten haben.
+Dem zoom-in plot kann entnommen werden, das wir Messpunkte in 2Hz schritten haben.
 Daraus ergibt sich für den Fehler auf Grund der Ablesegenauigkeit $ \frac{2Hz}{\sqrt{12}} = 0.6Hz $ 
  Diesen Ablesefehler nehmen wir als statistisch an.
 
@@ -386,13 +381,11 @@ Der Erwartungswert des 2. Schwingkreises ist:
 \begin{equation}
     f_2 = 1117.3 Hz
 \end{equation}
-Dabei ist der Statistische Fehler auf den Einzelwert also die Frequenz, also die Unsicherheit auf den Erwartungswert, gegeben durch:
+Dabei ist der Statistische Fehler auf den Einzelwert der Frequenz gegeben durch:
 \begin{equation}
     \sigma_{f_2 stat} = 1.0 Hz
 \end{equation}
-Hier ist noch an zu merken, dass der Ablesefehler größer ist wenn wir die Auswertung mit Python machen, jedoch ist der statistische Fehler ( $\sigma_{f_{2stat}}$) größer als der Fehler aufgrund des ablesens, weswegen wir hier keine Genauigkeit gewinnen, wenn wir die Auswertungsmethode gewinnen.
-
-Somit ergibt sich der Fehler insgesamt aus der quadratischen Addition der beiden Fehlerbeiträge. Für den Fehler auf $f$ erhlaten wir.
+Somit ergibt sich der gesamt Fehler aus der quadratischen Addition der beiden Fehlerbeiträge. Für den Fehler auf $f$ erhlaten wir.
 \begin{equation}
 \sigma_f = 1.2Hz
 \end{equation}
@@ -401,7 +394,7 @@ Somit ergibt sich der Fehler insgesamt aus der quadratischen Addition der beiden
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/f_peak_errorbar.pdf}
-    \caption{Schwingungsverlauf vom zweiten Schwingkreis zoom-in}
+    \caption{Residueplot der Maximalfrequenzen von Schwingkreis 2}
 \end{figure}
 Wie im Residueplot gut zu sehen ist, schwankt der Peak zwischen 2 Frequenzen.
  
@@ -414,42 +407,43 @@ Der Grund dafür ist in dem untenstehenden Plot gut zu erkennen.
 \end{figure}
 Hier sieht man, wie bei der 2. Messung die Amplituden der Frequenz 1116Hz und 1118Hz sehr ähnlich sind.
 Der Grund das die gefundene Amplitude um 2 Hz schwankt, liegt also in der Auflösung der FFT.
-Da wir aber eine Messreihe von 10 Messungen durchgeführt haben, ist es aber nicht schlimm, das wir immer die Frequenz mit der Maximalen Amplitude genommen haben und nicht das Maximum abgeschätzt haben,
-da wir durch das errechnen des Mittelwertes die Messungen entsprechend gewichten und mitteln. \\
+Da wir eine Messreihe von 10 Messungen durchgeführt haben, ist es nicht schlimm, das wir immer die Frequenz mit der Maximalen Amplitude genommen haben und nicht das Maximum abgeschätzt haben,
+da wir den Mittelwert bilden.  \\
 
-Unsere theoretische überlegung bezüglich der erwarteten Frequenz, haben wir mithilfe folgender Formel gemacht:
+Unsere theoretische Überlegung bezüglich der erwarteten Frequenz, haben wir mithilfe folgender Formel berechnet:
 \begin{equation}
     f_1 = \sqrt{\omega_0^2 - \delta^2} = \sqrt{ \frac{1}{LC} - \left( \frac{R}{2L} \right)^2}
 \end{equation}
 Da die erste Spule laut Messbrücke einen Wiederstand von $ 2.344  \Omega$ hat und die zweite von $2.423 \Omega$, und wir den Wiederstand des restlichen Stromkreises auf $0.3 \Omega$ geschätzt haben, schätzen wir einen Gesamtwiederstand von $ 2.644 \Omega$ für den ersten und $ 2.723 \Omega$ für den 2. Schwingkreis.
-Mit den in der Messbrücke gemessen Werten für die Induktivität und Kapazität, haben wir folgende Frequenzen ausgerechnet und erwartet:
+Mit den in der Messbrücke gemessen Werten für die Induktivität und Kapazität, haben wir folgende Frequenzen ausgerechnet:
 \begin{equation}
     f_1 = 1104.6 Hz
 \end{equation}
 \begin{equation}
     f_2 = 1116.4 Hz
 \end{equation}
-Damit liegen unsere Erwartungen innerhalb des statistischen Messfehlers von einem Hz. \\
+Damit liegen unsere Erwartungen innerhalb des statistischen Messfehlers von 1.2 Hz. \\
+Dabei haben wir die Fehler für unsere Erwartung nicht berechnet, da unsere schätzung schon in der Ungenauigkeit der gemessenen Frequenz liegt. \\
 
-Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der Rauschmessung bei nicht gedrücktem Schalter als Histogramm:
+Als nächstes haben wir die Rauschmessung ausgewertet. Hier eine Darstellung der Rauschmessung bei gedrücktem Schalter als Histogramm:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{plots/rauschen_0V_01.pdf}
     \caption{Rauschmessung bei 0V}
 \end{figure}
-Beim auswerten der Daten, haben wir für den Erwartungswert $ U_{off} = 4.882 mV$ erhalten, mit einer Standardabweichung von $\sigma_{off} = 0.761 mV$.
-Dabei ist der Erwartungswert der Offset welchen wir später für die berechnung des Wiederstandes brauchen, und sigma die Statistische Unsicherheit auf die Messwerte.
+Beim auswerten der Daten, haben wir den Mittelwert $ U_{off} = 4.882 mV$ als Offset erhalten, mit einer Standardabweichung von $\sigma_{off} = 0.761 mV$.
+Dabei verwenden wir diese Größen hinterher bei der Berechnung des Wiederstandes.
 Hierbei gehen wir davon aus, das beide Schwingkreise den gleichen Offset haben.
 
 Als letztes haben wir, um den Wiederstand der beiden Schwingkreise zu bestimmen, die Einhüllende der beiden Schwingkreise bestimmt.
-Dafür haben wir von den Spannungswerten der Messdaten den durch die Rauschmessung bestimmten Offset abgezogen.
+Dafür haben wir von den Spannungswerten der Messdaten den Offset abgezogen.
 Die Anpassung wurde mithilfe der Praktikums Libary durchgeführt.
  
 Hier die Graphische Darstellung der Einhüllenden.
-Die untere Einhüllende ist dabei die obere mal minus 1.
+Die untere Einhüllende ist dabei die obere Funktion an der x-Achse gespiegelt.
 Diese haben wir noch zusätzlich dargestellt um die Genauigkeit der Anpassung besser zu beurteilen.
 Für den Fit wurde das gesamte Messintervall verwendet, in dem Plot haben wir lediglich den Anfang dargestellt, da man dort die abweichung der Messwerte vom Fit besser beurteilen kann.
-Als statistische Unsicherheit auf die Spannungsmesswerte haben dabei den Fehler von der Rauschmessung und den digitalisierungs Fehler genommen.
+Als statistische Unsicherheit auf die Spannungsmesswerte haben wir den Fehler von der Rauschmessung und den digitalisierungs Fehler des CASSYS genommen.
 Den digitalisieruns Fehler haben wir mit der Formel $ \sigma_{digital} = \frac{V_{max} - V_{min}}{2^{12} \sqrt{12}} = 1.4 \cdot 10^{-3}$ bestimmt.
 Diesen nehmen wir als statistischen Fehler an, da wir davon ausgehen können das die Messwerte gleichverteilt im Intervall sind.
 \begin{equation}
@@ -474,7 +468,7 @@ Für den ersten Schwingkreis haben wir folgende Werte erhalten:
 \end{equation}
 
 Die in den Gleichungen angegeben Fehler sind dabei die statistischen Fehler.
-Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiederstand die Statistische Fehler von $B$ und $L$ mithilfe Gauss'schen Fehlerfortpflanzung verrechnet werden.
+Da $R_2 = 2 B \cdot L$ gilt, müssen für den statistischen Fehler auf den Wiederstand die Statistische Fehler von $B$ und $L$ mithilfe Gauss'schen Fehlerfortpflanzung berechnet werden.
 \begin{equation}
     \sigma_{R_1 stat} = \sqrt{ \left( \frac{\partial R_1}{\partial B} \right)^2 \cdot \sigma_{B}^2 + \left( \frac{\partial R_1}{\partial L} \right)^2 \cdot \sigma_{L}^2} 
     = 0.007
@@ -520,7 +514,7 @@ Allgemein sind damit die gemessenen Werte aber sehr realistisch.
   Kopplung durch Verwendung eines Eisenkerns in den beiden Spulen.
 \end{aufgabe}
 
-in diesem Versuchsteil wollen wir nun die gekoppelten Schwingkreise auf ihre Frequenz untersuchen. Wobei hier nur einer der beiden Kondensatoren aufgeladen wird.
+In diesem Versuchsteil wollen wir nun die gekoppelten Schwingkreise auf ihre Frequenz untersuchen. Wobei hier nur einer der beiden Kondensatoren aufgeladen wird.
 Hierfür haben wir zunächst die zwei Spulen ohne Abstand nebeneinander gestellt (jeweils mit dem Loch zueinander). 
 Außerdem haben wir die Spannung am zweiten Kondensator gemessen, indem wir das Sensor CASSY parallel zu diesem geschallten haben. 
 Die Schaltung kann dem Schaltbild unten entnommen werden. \\

@@ -822,11 +822,12 @@ Die Fehler wurden hier quadratisch addiert. \\
 Was auffällt ist, dass dieser Graphisch bestimmte Wert in etwa der der Hälfte des rechnerisch bestimmten Wert entspricht. 
 
 \subsubsection{Einfluss des Abstands auf die Kopplung}
- 
- 
 Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt. 
 Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
 Ab 3cm Abstand waren diese nicht mehr zu trennen.
+Entsprechnend haben wir 5 Messungen durchgefürt, bei denen die Spulen im Abstand von 0.5cm, 1cm, 1.5cm, 2cm und 2.5cm zueinander standen.
+
+Dabei haben wir bei diesem Experiment alle Messeinstellungen (Intervall, Messlänge, Auflösung, Trigger) so gelassen, wie bei den vorherigen Messungen.
 
 \begin{figure}[H]
     \centering
@@ -835,6 +836,77 @@ Ab 3cm Abstand waren diese nicht mehr zu trennen.
 \end{figure}
 
 Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen länger trennbar sind als im ersten.  
+
+Hier einmal beispielhaft die Spannungsverläufe für 0.5cm und 3.5cm Abstand.
+Dabei sieht man schön, wie bei größerem Abstand die Dämpfung einen stärkeren Dämpfungseinfluss hat als die Schwebung.
+Dennoch kann man auch bei 3.5cm die Schwebung und auch das 2. Maximum der Schwebung von Schwingkreis 2 erkennen.
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0.5cm_01.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_3.5cm_01.pdf}}
+    \caption{Spannungsverlauf bei 0.5cm (links) und 3.5cm (rechts) Abstand}
+\end{figure}
+
+Anschließend haben wir die Spannungsverläufe der beiden Schwingkreise in der FFT dargestellt, um die Maxima zu bestimmen.
+Hier einmal von 0.5cm und von 3.5cm Abstand die Fourierspektren.
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0.5cm_01_FFT_zoom.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_3.5cm_01_FFT_zoom.pdf}}
+    \caption{FFT bei 0.5cm (links) und 3.5cm (rechts) Abstand}
+\end{figure}
+
+Dabei kann man aber wie gut zu erkennen ist die Peaks bei 3.5 vom 1. Schwingreis nicht mehr klar trennen.
+Dies liegt daran, das hier die Kopplung schon zu gerings ist und die Dämpfung zu hoch.
+
+Bei 3.0cm Abstand ist dies auch immer noch der Fall, bei 2.5cm Abstand aber nicht mehr, wie unten dargestellt.
+
+Deshalb haben wir zur weitern Auswertung nur die Messungen bis 2.5cm Abstand genommen.
+Dies sind immer noch 5 Messungen, sodass wir immer noch ausreichend Messpunkte um sinnvoll eine Anpassung des Funktionalen Zusammenhangs durchzuführen.
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_2.5cm_01_FFT_zoom.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_3cm_01_FFT_zoom.pdf}}
+    \caption{FFT bei 2.5cm (links) und 3cm (rechts) Abstand}
+\end{figure}
+ 
+ 
+Hier 2 Beispiele, wie wir die Maxima bestimmt haben.
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0.5cm_02_1_FFT_Maximum.pdf}}
+    \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_2.5cm_02_2_FFT_Maximum.pdf}}
+    \caption{$f_+$ bei 0.5cm (links) und $f_-$ bei 2.5cm Abstand (rechts)}
+\end{figure}
+Im linken fall haben wir $f_+ = 1055$ gewählt, da der Punkt rechts vom eingezeichneten Maximum fast genauso groß ist.
+Im rechten Fall ist der eingezeichnete Peak auch da wo wir das Maximum erwarten erwarten würden, also bei $f_- = 1146$.
+Wir sind dabei genauso vorgegangen, wie bei der vorheringen Auswertung auch.
+Hier die Tabelle mit allen Maxima:
+\begin{table}[H]
+        \centering
+        \caption{Abgelesene Maximal Frequenzen}
+        \begin{tabularx}{0.4\textwidth}{X c c c}
+            \toprule
+            \textbf{Abstand} & \textbf{$f_+$} & \textbf{$f_-$} & \textbf{stat. Fehler} \\
+            \midrule
+            0cm SK2 &  1047 & 1188 \\
+            0cm SK1 &  1054 & 1177 \\
+            0.5cm SK1 &  1063.5 & 1163.5 \\
+            0.5cm SK2 &  1055 & 1176.5 \\
+            1cm SK1 &  1071.5 & 1153.5 \\
+            1cm SK2 &  1061.5 & 1167.5 \\
+            1.5cm SK1 &  1079.5 & 1143 \\
+            1.5cm SK2 &  1068 & 1158.5 \\
+            2.0cm SK1 &  1086.75 & 1146.5 \\ %TODO right is wrong!!!
+            2.0cm SK2 &  1073 & 1152.5 \\
+            2.5cm SK1 &  1092.75 & 1143 \\ %TODO right is wrong!!!
+            2.5cm SK2 &  1078.5 & 1146.5 \\
+            \bottomrule
+        \end{tabularx}
+        \label{tab:mytable}
+    \end{table}
+Dabei haben wir die Frequenz für 0cm Abstand aus der Vorheringen Messung übernommen.
+
 
 \subsubsection{Kopplung mit Eisenkern}
 

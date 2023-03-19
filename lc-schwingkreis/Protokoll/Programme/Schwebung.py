@@ -57,9 +57,8 @@ def Plot_begin_2(datei: str, x: str, y: str, datei_2: str, y_2: str):
     
 
 # Dieser Teil des Programms Erstellt aus den Gemessenen Spannungen an Kondensator 1 und Kondensator 2 einen Plot in welchem diese gemeinsam sind
-def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, start, end):
-    
-    x, y, y_2, xstr, ystr = Plot_begin_2(datei, x, y, datei_2, y_2)
+def cassy_plot_clear_2(datei: str, x: str, y: str, y_2: str, plotname, start, end):
+    x, y, y_2, xstr, ystr = Plot_begin_2(datei, x, y, datei, y_2)
 
     # Ungeschnittenen Fouriert
     plt.figure()
@@ -77,14 +76,14 @@ def cassy_plot_clear_2(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
         plt.savefig('../plots/' +plotname + '.pdf', bbox_inches='tight')
  
 cassy_plot_clear_2('../Messdaten/Schwebung_0cm_01.labx','t', 'U_B1', '../Messdaten/Schwebung_0cm_01.labx', 'U_A1', 'Schwebung_0cm_01_Denta_T', 66, 145 )
-
-'''for filename in sorted(os.listdir(cassy_dir)):
+for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'cm' in filename:
-        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
+        cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1", 'U_A1',  filename[:-5], 0, 500)
 for filename in sorted(os.listdir(cassy_dir)):
     if 'Schwebung' in filename and 'Eisen' in filename:
         cassy_plot_clear_2(cassy_dir + filename, "t", "U_B1",cassy_dir + filename, 'U_A1',  filename[:-5], 0, 500)
-'''
+
+ 
 def cassy_plot_clear(datei: str, x: str, y: str, plotname, end, Name : str):
     # Gut lesbare und ausreichend große Beschriftung der Achsen, nicht zu dünne Linien.
     plt.rcParams['font.size'] = 12.0
@@ -148,9 +147,9 @@ cassy_plot_clear('../Messdaten/Schwebung_0cm_01.labx','t', 'U_A1', 'Schwebung_0c
 cassy_plot_clear('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1', 'Schwebung_Eisen_01_1_complete', -1, 'Schwingkreis 1')
 cassy_plot_clear('../Messdaten/Schwebung_Eisenkern_01.labx', 't', 'U_B1', 'Schwebung_Eisen_01_1_small_zoom', 2000, 'Schwingkreis 1')
 
-def Schwebung_FFT(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2):
+def Schwebung_FFT(datei: str, x: str, y: str, y_2: str, plotname, delta1, delta2):
     
-    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
+    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei, y_2)
     
     
     freq_fft,amp_fft = analyse.fourier_fft(x,y)
@@ -184,7 +183,7 @@ def Schwebung_FFT(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, 
         
     return freq_fft[q], freq_fft[p], freq_fft_2[r], freq_fft_2[s]
 
-f_plus_1, f_minus_1, f_plus_2, f_minus_2 = Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_complete', 550, 5000) 
+f_plus_1, f_minus_1, f_plus_2, f_minus_2 = Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_0cm_01_FFT_complete', 550, 5000) 
 f_plus_1 = 1054# da per hand abgelesen und korrigiert
 f_minus_1 = 1177 # da per hand abgelesen und korrigiert
 f_plus_2 = 1047# da per hand abgelesen und korrigiert
@@ -193,7 +192,10 @@ print('Fplus_1', f_plus_1)
 print('Fminus_1', f_minus_1)    
 print('fplus_2', f_plus_2)
 print('fminus_2', f_minus_2)
-Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_FFT_zoom', 100, 100) 
+Schwebung_FFT('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_0cm_01_FFT_zoom', 100, 100) 
+Schwebung_FFT('../Messdaten/Schwebung_0.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_0.5cm_01_FFT_zoom', 100, 100) 
+Schwebung_FFT('../Messdaten/Schwebung_3.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_3.5cm_01_FFT_zoom', 70, 70) 
+Schwebung_FFT('../Messdaten/Schwebung_2.5cm_01.labx', 't', 'U_B1', 'U_A1', 'Schwebung_2.5cm_01_FFT_zoom', 70, 70) 
 
 
 def f_s(f_plus, f_minus):
@@ -234,9 +236,9 @@ def sigma_f(f_plus, f_minus):
 
 print('fehler auf k' ,sigma_f(f_plus_1, f_minus_1))
 
-def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotname, delta1, delta2, right=False):
+def Schwebung_FFT_maxi(datei: str, x: str, y: str, plotname, delta1, delta2, right=False):
     
-    x, y, y_2, _, _ = Plot_begin_2(datei, x, y, datei_2, y_2)
+    x, y, _, _, _ = Plot_begin_2(datei, x, y, datei, y)
     
     
     freq_fft,amp_fft = analyse.fourier_fft(x,y)
@@ -263,11 +265,27 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, datei_2: str, y_2: str, plotn
         plt.savefig('../plots/' +plotname +'.pdf', bbox_inches='tight')
 
 
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_1_FFT_Maximum', 3, 3) 
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_01_2_FFT_Maximum', 3, 3, right=True)        
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_1_FFT_Maximum', 3, 3) 
-Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1','../Messdaten/Schwebung_0cm_01.labx' , 'U_A1', 'Schwebung_0cm_02_2_FFT_Maximum', 3, 3, right=True)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1', 'Schwebung_0cm_01_1_FFT_Maximum', 3, 3) 
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_B1','Schwebung_0cm_01_2_FFT_Maximum', 3, 3, right=True)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1', 'Schwebung_0cm_02_1_FFT_Maximum', 3, 3) 
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0cm_01.labx', 't', 'U_A1', 'Schwebung_0cm_02_2_FFT_Maximum', 3, 3, right=True)        
+Schwebung_FFT_maxi('../Messdaten/Schwebung_0.5cm_01.labx', 't', 'U_A1', 'Schwebung_0.5cm_02_1_FFT_Maximum', 3, 3)
+Schwebung_FFT_maxi('../Messdaten/Schwebung_2.5cm_01.labx', 't', 'U_A1', 'Schwebung_2.5cm_02_2_FFT_Maximum', 3, 3, right=True)        
 
+for filename in sorted(os.listdir(cassy_dir)):
+    if '.labx' in filename and '2cm' in filename:
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
+            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
+            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
+            #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
+    if '.labx' in filename and '2.5cm' in filename:
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2l", 3, 3)
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_A1", filename[:-5] + "_2r", 3, 3, right=True)
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1l", 3, 3)
+        #Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", 3, 3, right=True)
+        Schwebung_FFT_maxi(cassy_dir + filename, "t", "U_B1", filename[:-5] + "_1r", -10, 30, right=True)
+ 
 def sigma_k_calc(f_plus, f_minus):
     return 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)
 

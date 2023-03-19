@@ -57,3 +57,45 @@ def f_max(datei: str, x: str, y: str):
     f = np.max(amp_fft)
     a = np.where(amp_fft == f)[0][0]
     return a, freq_fft[a]
+
+def Plot_begin_2(datei: str, x: str, y: str, y_2: str):
+    plt.rcParams['font.size'] = 14.0
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.weight'] = 'bold'
+    plt.rcParams['axes.labelsize'] = 'medium'
+    plt.rcParams['axes.labelweight'] = 'bold'
+    plt.rcParams['axes.linewidth'] = 1.2
+    plt.rcParams['lines.linewidth'] = 2.0
+    plt.rcParams["savefig.pad_inches"] = 0.5
+
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    x = messung.datenreihe(x)
+    y = messung.datenreihe(y)
+
+    data = cassy.CassyDaten(datei)
+    messung = data.messung(1)
+    y_2 = messung.datenreihe(y_2)
+     
+    xsymbol = x.symbol
+    xsymbol = xsymbol.replace('&D', '\Delta{}')
+    mx = re.match(r'([\\{}\w^_]+)_([\w^_]+)', xsymbol)
+    if mx:
+        xstr = '$%s_\mathrm{%s}$' % mx.groups()
+    else:
+        xstr = '$%s$' % xsymbol
+    if x.einheit:
+        xstr += ' / %s' % x.einheit
+
+    ysymbol = y.symbol
+    ysymbol = ysymbol.replace('&D', '\Delta{}')
+    my = re.match(r'([\\{}\w^_]+)_([\w^_]+)', ysymbol)
+    if my:
+        ystr = '$%s_\mathrm{%s}$' % my.groups()
+    else:
+        ystr = '$%s$' % ysymbol
+    if y.einheit:
+        ystr += ' / %s' % y.einheit
+    
+    return x.werte, y.werte, y_2.werte, xstr, ystr
+    

@@ -19,14 +19,17 @@ PLOTS_DIR = '../plots/434170_428396_1A3_'
 cassy_dir = "../Messdaten/"
 
 
-def cassy_plot_clear(datei: str, x: str, y: str, plotname, end):
-    x, y, xstr, ystr = ch.cassy_begin(datei, x, y)
+def cassy_plot_clear(datei: str, x: str, y: str, y_2: str, plotname, end):
+    
+    x, y, y_2, xstr, ystr = ch.Plot_begin_2(datei, x, y, y_2)
     # Ungeschnittenen Fouriert
     plt.figure()
     plt.title(plotname)
-    plt.plot(x.werte[:end], y.werte[:end],color='blue')
+    plt.plot(x[:end], y[:end],color='blue', label = 'Schwingkreis 1')
+    plt.plot(x[:end], y_2[:end], color='magenta', label = 'Schwingkreis 2')
     plt.xlabel(xstr)
     plt.ylabel(ystr)
+    plt.legend()
     plt.grid()
      
     if SHOW_PLOTS:
@@ -67,9 +70,9 @@ for filename in sorted(os.listdir(cassy_dir)):
             except:
                 cassy_plot_clear(cassy_dir + filename, "t", "U_B1", filename[:-5], -1)
 
-cassy_plot_clear(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinnig_01", 500)
-cassy_plot_clear(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 500)
-cassy_plot_clear(cassy_dir + "gleichsinnig_01_spannung_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spannung", 500)
+cassy_plot_clear(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_B1", 'U_A1',"gegensinnig_01", 500)
+cassy_plot_clear(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_B1",'U_A1', "gleichsinnig_01_spule", 500)
+#cassy_plot_clear(cassy_dir + "gleichsinnig_01_spannung_gedreht" + ".labx", "t",'U_B1', "U_A1", "gleichsinnig_01_spannung", 500)
 
 cassy_plot_fft(cassy_dir + "gegensinnig_01" + ".labx", "t", "U_A1", "gegensinnig_01", 3, True)
 cassy_plot_fft(cassy_dir + "gleichsinnig_01_spule_gedreht" + ".labx", "t", "U_A1", "gleichsinnig_01_spule", 3, True)

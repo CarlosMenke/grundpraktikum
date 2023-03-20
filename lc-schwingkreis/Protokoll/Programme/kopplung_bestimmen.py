@@ -67,8 +67,8 @@ def k_calc(f1, f2):
     return (f1**2-f2**2)/(f1**2+f2**2)
 k = [ k_calc(f1, f2) for f1, f2 in zip(f_minus, f_plus)]
 
-k2 = k[::2]
-k1 = k[1::2]
+k2 = k[1::2]
+k1 = k[::2]
 
 def sigma_k_calc(f_plus, f_minus):
     return 4*1.2*(f_plus*f_minus)/(f_plus**2+f_minus**2)**2*np.sqrt(f_minus**2+f_plus**2)

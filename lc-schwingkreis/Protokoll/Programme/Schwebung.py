@@ -253,7 +253,7 @@ def Schwebung_FFT_maxi(datei: str, x: str, y: str, plotname, delta1, delta2, rig
     
     plt.figure()
     plt.title(plotname)
-    plt.plot(freq_fft[q-delta1:q+delta2],amp_fft[q-delta1:q+delta2],'.',color='blue', label = 'Messdaten')
+    plt.plot(freq_fft[q-delta1:q+delta2],amp_fft[q-delta1:q+delta2],'o',color='blue', label = 'Messdaten')
     #plt.axvline(freq_fft[q],color='green', label="Maximale Amplitude")
     plt.legend()
     plt.xlabel('$f$ / Hz')

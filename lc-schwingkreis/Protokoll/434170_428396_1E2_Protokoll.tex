@@ -171,9 +171,9 @@ So konnten wie sämtliche Bauteile Charakterisieren und sind für unseren zweite
   Messunsicherheit. Vergleichen Sie sie mit Ihrer Erwartung.
 \end{aufgabe}
 
-\subsection{Ungekoppelter Schwingkreis}
+\section{Ungekoppelter Schwingkreis}
 
-\subsubsection{Materialien}
+\subsection{Materialien}
 
 
 Vor Beginn des Versuchs haben wir unsere Bauteile gewählt. Wir hatten uns erst für einen $10\mu F$ Kondensator entschieden und eine Spule mit 500 Windungen.
@@ -188,7 +188,7 @@ Aufgrund dessen haben wir dann unseren $10\mu F$ Kondensator durch einen $2.2 \m
 
 Zuerst haben zwei ungekoppelte Schwingkreise aufgebaut mit gleichen Bauteilen.
  
-\subsubsection{Aufbau}
+\subsection{Aufbau}
 
 Der erste Schwingkreis wurde dabei wie unten skizziert aufgebaut.
 Darauf zu achten ist, dass die Spannung parallel am Kondensator zu messen ist, mit dem Sensor CASSY. Der Schalter Schließt die Spannungsquelle kurz, und schließt somit den Schwingkreis.
@@ -214,7 +214,7 @@ Deshalb haben wir die Spannungsquelle und den Schalter dann jeweils umgesteckt, 
 
 
 
-\subsubsection{Durchführung}
+\subsection{Durchführung}
 Zuerst haben wir eine Spannung von $U_0 = 6.2V$ angelegt da bei dieser Spannung die Maximale Stromstärke der Spule ( $2.5A$ ) nicht überschritten wird.
 Also haben wir als Spannungsbereich des CASSY-10V bis 10V eingestellt.
 Anschließend haben wir ein paar Testmessungen gemacht, um die optimalen Messeinstellungen zu finden.
@@ -270,7 +270,7 @@ Anschließend haben wir noch zwei Rauschmessung gemacht: einmal mit geöffnetem 
 Diese haben wir gemacht, um daraus Offsets zu berechnen um unsere Messung des Wiederstandes zu präzisieren.
 
 
-\subsubsection{Rohdaten}
+\subsection{Rohdaten}
 
 Insgesamt hatten wir also die Kondenstorspannung beim Schwingungsvorgang in zweiten Schwingkreis 10x gemessen. Und im ersten Schwingkreis ein mal. 
 So wie eine Rauschmessung bei 0V und bei ca. 6V. 
@@ -332,7 +332,7 @@ Im diesem Graphen ist ein Zoom-in der FFT beider Schwingungen zu sehen, hier kan
 Die Frequenz des Schwingkreis kann später durch weiteres zoomen festgestellt werden.
 
 
-\subsubsection{Auswertung}
+\subsection{Auswertung}
 Da wir die Frequenz der Schwingkreise bestimmen sollten, haben wir uns die FFT im Bereich des Peaks genauer angesehen.
 Dabei haben wir das Maximum aus den Graphen abgelesen. Wir haben nicht den Peakschwerpunkt verwendet, da es eine unsymetrische Verteilung ist.
 Man kann anhand der umliegenden Werte sehen ob das Maximum etwas rechts oder links des höchsten Punktes liegt.
@@ -461,10 +461,12 @@ Für den ersten Schwingkreis haben wir folgende Werte erhalten:
 \begin{equation}
     U_1(t) = (5.98 \pm 0.001)V \cdot e^{-t \cdot (149.43 \pm 0.05) \frac{1}{s} } - 0.0049 V
     %R_1 = 2 B \cdot L =  2.690 \Omega \\
+    \label{U1 Widerstandanpassung}
 \end{equation}
 \begin{equation}
     %R_2 = 2 B \cdot L =  2.880 \Omega
     U_2(t) = (5.8863 \pm 0.001)V \cdot e^{-t \cdot (160.03 \pm 0.05) \frac{1}{s} } - 0.0049 V
+    \label{U2 Widerstandanpassung}
 \end{equation}
 
 Die in den Gleichungen angegeben Fehler sind dabei die statistischen Fehler.
@@ -521,7 +523,7 @@ Die Schaltung kann dem Schaltbild unten entnommen werden. \\
 
 
 
-\subsubsection{Gekoppelte Schwingung: Schwebung}
+\section{Gekoppelte Schwingung: Schwebung}
 
 \begin{figure}[H]
     \centering
@@ -530,19 +532,18 @@ Die Schaltung kann dem Schaltbild unten entnommen werden. \\
 \end{figure}
 
 Wenn nun Spannung angelegt wird, wird der Kondensator in einem Schwingkreis aufgeladen. 
-Erst durch drücken des Tasters wird dieser Schwingkreis geschlossen und die Schwingung startet. 
-Durch die Kopplung über die Spulen wird so auch der andere Schwingkreis zur Schwingung angeregt.
-Für den gekoppelten Schwingkreise haben wir die selben Messwerterfassungseinstellungen wie beim Messen der einzelnen Verwendet. 
+Durch drücken des Tasters wird dieser Schwingkreis geschlossen und die Schwingung startet. 
+Für den eingekoppelten Schwingkreise haben wir die selben Messwerterfassungseinstellungen wie beim Messen der einzelnen Verwendet. 
 So ist unsere Messung wieder durch einen Triger 6.1V Fallende Flanke auf Schwingkreis 2 gestartet.
 
 Um eine Messung auf zu nehmen wird der Kondensator in Schwingkreis 2 zunächst geladen.
 Durch drücken des Tasters wird die Spannungsquelle kurzgeschlossen, und der Schwingkreis 2 geschlossen. In diesem beginnt der Schwingungsvorgang.
 Über die Kopplung der Spulen wird der erste Schwingkreis ebenfalls zur Schwingung angeregt. An beiden Schwingkreisen messen wir den Spannungsverlauf am Kondensator. 
-Bei diesem konnten wir gut den Schwingungsverlauf des gekoppelten Schwingkreis sehen, als auch die Schwebung. 
+Bei beiden konnten wir gut den Schwingungsverlauf des gekoppelten Schwingkreis sehen, sowie die Schwebung. 
 Von beiden haben wir eine FFT gemacht, um daraus die Fundamentalschwingungen des Schwingkreises zu bestimmen welche sich als zwei Peaks im Graph der FFT gezeigt haben.\\ 
 
 
-\subsubsection{Rohdaten}
+\subsection{Rohdaten}
 
 Insgesamt haben wir in diesem Versuchsteil also 9 Messungen durchgeführt, 8 Messungen mit verschiedenen Abständen und eine Messung mit dem Eisenkern. 
 Im Folgenden werden zu erst sämtliche Daten zu 0cm Abstand angeführt. Die Diskussion der anderen Messungen wird später durchgeführt.\\
@@ -556,24 +557,24 @@ In den Graphen in welchen wir die ersten 0.05s der Schwingung sehen, können wir
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_1_complete.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_1_complete.pdf}
     \caption{Spannungsverlauf an Kondensator 1}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_1_zoom.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_1_zoom.pdf}
     \caption{Spannungsverlauf an Kondensator 1 zoom}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_2_complete.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_2_complete.pdf}
     \caption{Spannungsverlauf an Kondensator 2}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_2_zoom.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_2_zoom.pdf}
     \caption{Spannungsverlauf an Kondensator 2 zoom}
 \end{figure}
 
@@ -601,11 +602,11 @@ Hier ist die Komplette FFT für die Spannungsverläufe an den beiden Schwingkrei
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_FFT_complete.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_FFT_complete.pdf}
     \caption{FFT der Schwingungen in Schwingkreis 1 und 2}
 \end{figure}
 
-\subsubsection{Bestimmen der Fundamentalfrequenzen}
+\subsection{Bestimmen der Fundamentalfrequenzen}
 
 \begin{figure}[H]
     \centering
@@ -615,13 +616,15 @@ Hier ist die Komplette FFT für die Spannungsverläufe an den beiden Schwingkrei
 
 Um die Peaks der zwei Fundamentalschwingungen zu sehen, haben wir auch einen Zoom-in der FFT betrachtet. 
 Hier kann man sehr gut sehen, dass in beiden Schwingkreisen zwei Peaks vorliegen, wobei die Peaks in Schwingkreis 2 deutlich schärfer sind. 
+Dies liegt daran, da hier die Spannungsquelle angeschlossen war.\\
 Des weiteren kann man hier sehen, dass die Peaks leicht gegeneinander verschoben sind. Also die Fundamentalschwingungen der beiden Schwingkreise (SK) leicht voneinander abweichen werden.
 Der Tiefpunkt zwischen den beiden Peaks sollte ungefähr bei der Grundfrequenz des Schwingkreises liegen.\\
 
 
 Die genaue Lage der Peaks haben wir wie beim Einzelschwingkreis bestimmt, indem wir die Maxima in den entsprechenden Intervallen gesucht haben.
-Hierfür haben wir aus dem oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss.
-Dabei ist in grün immer die Frequenz mit der Maximalen Amplitude zu sehen. Diese  haben wir aber nicht zwangsweise auch in der Auswertung verwendent, sonder teilweise noch angepasst, wenn die umliegenden Werte nicht gleichstark gesunken sind.\\
+Hierfür haben wir aus dem oberen Graphen den Frequenzbereich entnommen in welchem das Maximum liegen muss. Mit einer Nahaufnahme des Peaks konnten wir die Maximalfrequenz ablesen.
+Unten dargestellt sind die Graphen die wir verwendet haben zum ablesen.
+
 
 Im linken Plot fallen die umliegenden Punkte gleichstark ab, sodass wir hier $f_{1+} = 1054 Hz$ genommen haben.
 \begin{figure}[H]
@@ -632,7 +635,7 @@ Im linken Plot fallen die umliegenden Punkte gleichstark ab, sodass wir hier $f_
     \caption{Bestimmung des Maximums von $f_{1+}$ (links) und $f_{1-}$ (rechts) in SK 1}
     \label{Schwebung_Maxima}
 \end{figure}
-Im rechten Fall haben wir nicht den Peak genommen, sonder den punkt um 1Hz rechts davon, da es so aussieht als wäre das  Maximum genau zwischen 1176 und 1178 Hz. $f_{1-} = 1177 Hz$
+Im rechten Fall haben wir nicht den Peak genommen, sonder den Punkt um 1Hz rechts davon, da es so aussieht als wäre das  Maximum genau zwischen 1176 und 1178 Hz. $f_{1-} = 1177 Hz$
  
 Für $f_{2+}$ haben wir wieder den Mittelpunkt genommen, da die Amplituden von 1046 nahezu genau so hoch ist wie bei 1048. $f_{2+} = 1047 Hz$
 \begin{figure}[H]
@@ -642,13 +645,11 @@ Für $f_{2+}$ haben wir wieder den Mittelpunkt genommen, da die Amplituden von 1
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0cm_02_2_FFT_Maximum.pdf}}
     \caption{Bestimmung des Maximums von $f_{2+}$ (links) und $f_{2-}$ (rechts) in SK 1}
 \end{figure}
-Bei $f_{2-}$ fallen die Frequenzen im höheren Bereich deutlich langsamer ab, sodass wir hier $f_{2-} = 1188 Hz$ genommen haben.
+Bei $f_{2-}$ scheint die Verteilung symmetrisch, sodass wir hier $f_{2-} = 1188 Hz$ genommen haben.
  
 
-Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann aus Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
-Des weiteren haben wir einen Fehler der auf Grund der statistischen Schwankung der Ergebnisse, wenn man die Messung mehrfach wiederholt. 
-Diesen haben wir ebenfalls bereits bei den Einzelschwingkreisen bestimmt, indem wir SK 2 zehn mal gemessen haben. 
-Hier hat sich der Statistische Fehler von $\pm 1Hz$ Ergeben.\\
+Hier ist so wie bei den Einzelschwingkreisen einer der Fehler auf die Fundamentalfrequenz die Ableseungenauigkeit. Diese kann Graphik \ref{Schwebung_Maxima} entnommen werden und ist gleich zu der im Einzelschwingkreis, da wir die gleichen Messwerterfassungseinstellungen verwendet haben.
+Des weiteren haben wir den statistischen Fehler welchen wir durch 10x Messung von SK 2 bestimmt hatten. \\
 
 Bein Sensor CASSY können wir davon ausgehen, dass wir keinen Fehler auf die Zeit haben, weswegen dies kein Einfluss auf den Fehler auf die Fundamentalfrequenzen hat.
 Auf die Fundamentalfrequenzen haben wir keinen Systematischen Fehler.
@@ -669,10 +670,11 @@ So erhalten wir als Ergebnisse auf $ f_+$ und $ f_-$ in den beiden Schwingkreise
     \label{•}
 \end{table}
 
-Die bestimmten Frequenzen unterscheiden sich leicht, obwohl nach theoretischer Erwartung diese gleich sein sollten, ob man von die Spannung an Kondensator 1 oder 2 misst.
+Die bestimmten Frequenzen unterscheiden sich leicht, obwohl nach theoretischer Erwartung diese gleich sein sollten, unabhängig davon welchen Schwingkreis man misst.
 Jedoch sind unsere Schwingkreise nicht komplett gleich, so variiert z.b. der Widerstand in diesen leicht. Dies führt dazu, dass wir bei den Messungen leicht unterschiedliche Ergebnisse haben. 
 Dies wird natürlich auch Einfluss auf die Größen die aus $f_+$ und $f_-$ bestimmt werden haben. So werden wir für die zwei Messungen unterschiedliche Kopplungsgrade erhalten.
-\subsubsection{Bestimmen der Eigenfrequenz und Schwebungsfrequenz}
+
+\subsection{Bestimmen der Eigenfrequenz und Schwebungsfrequenz}
 
 
 Als weitere interessante Frequenzen, haben wir in dem gekoppelten Schwingkreis, die Frequenz der Schwebung und die Grundfrequenz des gekoppelten Schwingkreises. 
@@ -705,7 +707,7 @@ $ \sigma_{f_+} $ und $ \sigma_{f_-}$ für die Fehler auf diese Größen.
 Da Jedoch der Fehler auf $f_+$ und $f_-$ gleich ist, und für die beiden Funktionen durch das quadrieren der Ableitungen das Vorzeichen keinen einfluss auf den Fehler hat ergibt sich für beide:
 
 \begin{equation}
-\sigma_f = \frac{1}{2}\sigma_{f_+}^2
+\sigma_f = \frac{1}{\sqrt{2}}\sigma_{f_+}
 \label{Fehler auf Schwebung}
 \end{equation}
 
@@ -717,8 +719,8 @@ Mit den Fundamentalfrequenzen aus beiden Schwingkreisen ergibt sich somit:
         \toprule
         \textbf{Schwingkreis} & \textbf{$f_k$} & \textbf{$f_{schw}$} & \textbf{$\sigma_f$} \\
         \midrule
-        1 & 1115.5Hz & 61.5Hz & 0.72Hz\\
-        2 & 1117.5Hz & 70.5Hz & 0.72Hz \\
+        1 & 1115.5Hz & 61.5Hz & 0.85Hz\\
+        2 & 1117.5Hz & 70.5Hz & 0.85Hz \\
         \bottomrule
     \end{tabularx}
     \caption{Fundamentalschwingungen der zwei Schwingkreise}
@@ -729,7 +731,7 @@ Diese Schwebungsfrequenzen passen auch mit der Frequenz die wir in Graph \ref{Sc
 Bei einer Frequenz von 61Hz haben wir eine Periodendauer von ca. 0.016s. 
 In dem Graph können wir sehen, dass die Schwebung von Schwingkreis 1 nach ca. 0.016s eine gesamte Schwingungsperiode durchlaufen hat.
 
-\subsubsection{Bestimmung des Kopplungsgrads}
+\subsection{Bestimmung des Kopplungsgrads}
 
 Mit den Beiden Fundamentalfrequenzen können wir ebenfalls den Kopplungsgrad bestimmen wie in den Grundlagen eingeführt.
 
@@ -757,7 +759,7 @@ Hier kann man sehen, dass der Kopplungsgrad den wir für Schwingkreis 1 bestimmt
 Dies war bereits zu erwarten, da in Schwingkreis 1 die bestimmten Frequenzen deutlich enger beieinander lagen. 
 Ein Grund hierfür kann sein, dass unsere Schwingkreise nicht komplett identisch sind. 
 
-\subsubsection{Zeitliche Verschiebung}
+\subsection{Zeitliche Verschiebung}
 
 Da unser Kopplungsgrad kleiner als 0.2 ist können wir als Näherung für die zeitliche Verschiebung die Formel \ref{DeltaT} verwenden. 
 Diese Zeitliche Verschiebung beschreibt, den unterschied zu unserer Erwartung von einer Phasenverschiebung von $\frac{\pi}{2}$ (zwischen Nulldurchgang der Schwebung bei Kondensator 1 und Maximum bei Kondensator 2).
@@ -766,14 +768,14 @@ $\Delta t$ berechnen wir sowohl mit den Ergebnissen aus SK1 als auch aus SK2 hie
 Für L und C verwenden wir die Größen welche wir mit der Messbrücke gemessen haben und für R den Widerstand den wir aus den Einzelschwingkreisen bestimmt haben. \\
 Dies dient dazu, den später Graphisch bestimmten Wert für $\Delta T$ mit dem Rechnerischen zu vergleichen.
 
-Sämtliche Fehler die Hier eingehen sind statistischer Natur. Für den Vergleich interessieren wir uns maßgeblich an dem Berechneten Wert für $\Delta T$ 
+Sämtliche Fehler die Hier eingehen sind statistischer Natur. Für den Vergleich interessieren wir uns maßgeblich an dem Berechneten Wert für $\Delta T$.
 \begin{center}
 $\Delta t_1$ = $-2.277 \cdot 10^{-3}s  $ \qquad
 $\Delta t_2$ = $-2.040 \cdot 10^{-3}s  $
 \end{center}
 
 Diese Verschiebung können wir auch aus dem Graphen in welchem wir die Schwebung beobachten können Ablesen. 
-Hierzu muss die Position von dem Minimum der Schwebung des einen Schwingkreises mit der Position des Schwebung des anderen Schwingkreis verglichen werden.  
+Hierzu muss die Position von dem Minimum der Schwebung des einen Schwingkreises mit der Position des Maximums der Schwebung des anderen Schwingkreis verglichen werden.  
 
 \begin{figure}[H]
     \centering
@@ -783,7 +785,7 @@ Hierzu muss die Position von dem Minimum der Schwebung des einen Schwingkreises 
 
 Hier kann man die Schwingung an den Beiden Kondensatoren erneut sehen. 
 In orange und grün sind die Einhüllenden die auf Grund der Schwebung und der Dämpfung zustande kommen dargestellt. 
-Da die Einhüllende einer Funktion der Form $ f(x) = sin(\frac{x}{\omega})Ae^{-x\delta}$ folgt, kann mit unseren Ergebnissen für die Schwebungsfrequenzen und den Parametern aus der Anpassung der Exponentialfunktion der genaue Verlauf dieser ermittelt werden.
+Da die Einhüllende einer Funktion der Form $ f(x) = sin\left(x2\pi f_s\right)Ae^{-x\delta}$ folgt, kann mit unseren Ergebnissen für die Schwebungsfrequenzen und den Parametern aus der Anpassung der Exponentialfunktion (Gleichung \ref{U1 Widerstandanpassung} und \ref{U2 Widerstandanpassung}) der genaue Verlauf dieser ermittelt werden.
 Wenn wir nun die Verschiebung bestimmen wollen, brauchen wir einen Ausschnitt, ich welchem wir die Position das Minimum bzw. das Maximum der Schwebung sehen können. 
 
 Da die zwei Schwebungen unterschiedliche Frequenzen haben, laufen diese auseinander, weswegen möglichst ein Vergleich am Anfang der Messzeit betrachtet werden sollte.
@@ -793,7 +795,7 @@ Zur Bestimmung betrachte ich den ersten Nulldurchgang der in grün eingezeichnet
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_Delta_T_zoom.pdf}
+    \includegraphics[width=0.7\textwidth]{plots/Schwebung_0cm_01_Delta_T_zoom.pdf}
     \caption{Zoom des ersten Nulldurchgangs der Schwebung des Schwingkreis 2}
 \end{figure}
 
@@ -802,8 +804,8 @@ Das erste Minimum der Schwebung des zweiten Schwingkreis liegt bei $ t_2 = 376 \
 Diese Werte haben wir aus einem weiteren Zoom in bestimmt, hier exemplarisch für das Maximum dargestell.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/Schwebung_0cm_01_Delta_T_Max.pdf}
-    \caption{Zoom des ersten Nulldurchgangs der Schwebung des Schwingkreis 2}
+    \includegraphics[width=0.8\textwidth]{plots/Schwebung_0cm_01_Delta_T_Max.pdf}
+    \caption{Zoom des Maximum der orangefarbenen Schwebung}
 \end{figure}
 
 Hierbei ist die Ablesegenauigkeit der relevante Fehler auf diese Größe, da wir bei CASSY davon ausgehen können, dass wir kein Digitalisierungsfehler auf die Zeit haben. 
@@ -816,11 +818,9 @@ Somit ergibt sich für $\Delta t$
 Die Fehler wurden hier quadratisch addiert. \\
 Was auffällt ist, dass dieser Graphisch bestimmte Wert in etwa der der Hälfte des rechnerisch bestimmten Wert entspricht. 
 
-\subsubsection{Einfluss des Abstands auf die Kopplung}
-Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt. 
+\subsection{Einfluss des Abstands auf die Kopplung}
+Zur Bestimmung des Einfluss des Abstands auf den Kopplungsgrad haben wir die Spulen in 0.5cm schritten auseinander bewegt von 0 bis 3.5cm. 
 Bei jedem dieser schritte haben wir eine Messung wie oben durchgeführt. Dabei haben wir jedes mal uns die FFT der beiden Schwingkreise angeschaut, um zu schauen ab welchem Abstand die Peaks bei der FFT nicht mehr zu trennen sind. Durch Vergrößerung des Abstands sind die Peaks näher zusammen gerückt.
-Ab 3cm Abstand waren diese nicht mehr zu trennen.
-Entsprechnend haben wir 5 Messungen durchgefürt, bei denen die Spulen im Abstand von 0.5cm, 1cm, 1.5cm, 2cm und 2.5cm zueinander standen.
 
 Dabei haben wir bei diesem Experiment alle Messeinstellungen (Intervall, Messlänge, Auflösung, Trigger) so gelassen, wie bei den vorherigen Messungen.
 
@@ -833,7 +833,7 @@ Dabei haben wir bei diesem Experiment alle Messeinstellungen (Intervall, Messlä
 Dabei ist uns aufgefallen, dass in Schwingkreis 2 die zwei Fundamentalfrequenzen länger trennbar sind als im ersten.  
 
 Hier einmal beispielhaft die Spannungsverläufe für 0.5cm und 3.5cm Abstand.
-Dabei sieht man schön, wie bei größerem Abstand die Dämpfung einen stärkeren Dämpfungseinfluss hat als die Schwebung.
+Dabei sieht man schön, wie bei größerem Abstand die Dämpfung einen stärkeren Einfluss hat als die Schwebung.
 Dennoch kann man auch bei 3.5cm die Schwebung und auch das 2. Maximum der Schwebung von Schwingkreis 2 erkennen.
 \begin{figure}[H]
     \centering
@@ -851,13 +851,13 @@ Hier einmal von 0.5cm und von 3.5cm Abstand die Fourierspektren.
     \caption{FFT bei 0.5cm (links) und 3.5cm (rechts) Abstand}
 \end{figure}
 
-Dabei kann man aber wie gut zu erkennen ist die Peaks bei 3.5 vom 1. Schwingreis nicht mehr klar trennen.
-Dies liegt daran, das hier die Kopplung schon zu gerings ist und die Dämpfung zu hoch.
+Gut zu erkennen ist, dass die Peaks bei 3.5 vom 1. Schwingreis nicht mehr klar zu trennen sind.
+Dies liegt daran, das hier die Kopplung schon zu gering ist und die Dämpfung zu hoch.
 
 Bei 3.0cm Abstand ist dies auch immer noch der Fall, bei 2.5cm Abstand aber nicht mehr, wie unten dargestellt.
 
-Deshalb haben wir zur weitern Auswertung nur die Messungen bis 2.5cm Abstand genommen.
-Dies sind immer noch 5 Messungen, sodass wir immer noch ausreichend Messpunkte um sinnvoll eine Anpassung des Funktionalen Zusammenhangs durchzuführen.
+Deshalb haben wir zur weiteren Auswertung nur die Messungen bis 2.5cm Abstand genommen.
+Dies 5 Messpunkte sind ausreichend um den funktionalen Zusammenhang zu bestimmen.
 \begin{figure}[H]
     \centering
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_2.5cm_01_FFT_zoom.pdf}}
@@ -871,16 +871,16 @@ Hier 2 Beispiele, wie wir die Maxima bestimmt haben.
     \centering
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_0.5cm_02_1_FFT_Maximum.pdf}}
     \subfloat{\includegraphics[width=0.5\textwidth]{plots/Schwebung_2.5cm_02_2_FFT_Maximum.pdf}}
-    \caption{$f_+$ bei 0.5cm (links) und $f_-$ bei 2.5cm Abstand (rechts)}
+    \caption{$f_+$ bei 0.5cm (links) und $f_-$ bei 2.5cm Abstand (rechts) beides für SK2}
 \end{figure}
-Im linken fall haben wir $f_+ = 1055$ gewählt, da der Punkt rechts vom eingezeichneten Maximum fast genauso groß ist.
-Im rechten Fall ist der eingezeichnete Peak auch da wo wir das Maximum erwarten erwarten würden, also bei $f_- = 1146$.
+Im linken fall haben wir $f_+ = 1055$ gewählt, da die Verteilung Asymmetrisch wirkt.
+Hier scheint die Verteilung symmetrisch, also können wir $f_- = 1146$ wählen.
 Wir sind dabei genauso vorgegangen, wie bei der vorheringen Auswertung auch.
 Hier die Tabelle mit allen Maxima:
 \begin{table}[H]
         \centering
         \caption{Abgelesene Maximal Frequenzen}
-        \begin{tabularx}{0.7\textwidth}{X c c c}
+        \begin{tabularx}{1\textwidth}{X X X X}
             \toprule
             \textbf{Abstand} & \textbf{$f_+$} & \textbf{$f_-$} & \textbf{stat. Fehler} \\
             \midrule
@@ -905,29 +905,29 @@ Hier die Tabelle mit allen Maxima:
 Dabei haben wir die Frequenz für 0cm Abstand aus der Vorheringen Messung übernommen.
 
 Anschließend haben wir die Kopplung und den Fehler auf die Kopplung berechnet.
-Da sich an der Auswertung nichts geändert hat, haben wir die Formel aus der Vorherigen Auswertung übernommen (\ref{Kopplungsgrad}).
-Da wir die Frequenzen genaus gemessen haben, ändert sich auch an der Fehlerrechnung nichts vorher (\ref{Fehlerfortpflanzung_kopplung}).
+Zur berechnung des Kopplungsgrads aus den Fundamentalschwingungen können wir wieder folgende Formeln nehmen. (\ref{Kopplungsgrad}).
+Da wir die Frequenzen gleich bestimmt haben, ändert sich auch an der Fehlerrechnung nichts zu vorher wur können Gleichung(\ref{Fehlerfortpflanzung_kopplung}) Verwenden.
 
 Die errechneten Kopplungsgrade mit Fehlern sind dann:
 \begin{table}[H]
         \centering
         \caption{Kopplungsgrade}
-        \begin{tabularx}{0.7\textwidth}{X c c c}
+        \begin{tabularx}{0.7\textwidth}{X X X}
             \toprule
-            \textbf{Abstand} & \textbf{K} & \textbf{stat. Fehler} \\
+            \textbf{Abstand} & \textbf{Kopplungsfaktor} & \textbf{stat. Fehler} \\
             \midrule
-            0cm SK1 &  0.126  & 0.002 \\
-            0cm SK2 &  0.11  & 0.002 \\
-            0.5cm SK1 &  0.109  & 0.002 \\
-            0.5cm SK2 &  0.09  & 0.002 \\
-            1cm SK1 &  0.095  & 0.002 \\
-            1cm SK2 &  0.074  & 0.002 \\
-            1.5cm SK1 &  0.081  & 0.002 \\
-            1.5cm SK2 &  0.057  & 0.002 \\
-            2cm SK1 &  0.071  & 0.002 \\
-            2cm SK2 &  0.042  & 0.002 \\
-            2.5cm SK1 &  0.061  & 0.002 \\
-            2.5cm SK2 &  0.025  & 0.002 \\
+0.0cm SK1 &  0.11  & 0.002 \\
+0.0cm SK2 &  0.126  & 0.002 \\
+0.5cm SK1 &  0.09  & 0.002 \\
+0.5cm SK2 &  0.109  & 0.002 \\
+1.0cm SK1 &  0.074  & 0.002 \\
+1.0cm SK2 &  0.095  & 0.002 \\
+1.5cm SK1 &  0.057  & 0.002 \\
+1.5cm SK2 &  0.081  & 0.002 \\
+2.0cm SK1 &  0.042  & 0.002 \\
+2.0cm SK2 &  0.071  & 0.002 \\
+2.5cm SK1 &  0.025  & 0.002 \\
+2.5cm SK2 &  0.061  & 0.002 \\
             \bottomrule
         \end{tabularx}
         \label{tab:mytable}
@@ -945,32 +945,32 @@ Dabei haben wir die Linare Regression für jeden Schwingkreis einzeln durchgefü
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/Kopplung_1_abstand_linreg.pdf}
-    \caption{Linare Regression der 1. Kopplung}
+    \caption{Linare Regression der Kopplung gemessen aus SK 1}
 \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/Kopplung_2_abstand_linreg.pdf}
-    \caption{Linare Regression der 2. Kopplung}
+    \caption{Linare Regression der Kopplung gemessen aus SK 2}
 \end{figure}
-Wie zu sehen ist, ist der Fit für den 2. Schwingkeis besser als für den 1. Schwingkreis.
+Wie zu sehen ist, ist der Fit für den 1. Schwingkreis besser als für den 2. Schwingkreis.
 Dies spiegelt sich auch in den Chi-Quadrat/ndof Werten wider, die für den 1. Schwingkreis 1.05 und für den 2. Schwingkreis 3.3 betragen.
  
 Die Ergebnisse sind dabei (mit x in cm):
 \begin{equation}
-    k_1 = (-0.026 \pm 0.001) \cdot \frac{x}{cm} + (0.123 \pm 0.001)
+    k_2 = (-0.026 \pm 0.001) \cdot \frac{x}{cm} + (0.123 \pm 0.001)
 \end{equation}
 \begin{equation}
-    k_2 = (-0.033 \pm 0.001) \cdot \frac{x}{cm} + (0.108 \pm 0.001)
+    k_1 = (-0.033 \pm 0.001) \cdot \frac{x}{cm} + (0.108 \pm 0.001)
 \end{equation}
 
 Hier haben wir erwarte, das die Steigung für beide Schwingkreise gleich ist. Die Schwingkreise haben zwar etwas andere Eigenfrequenzen, aber die Kopplung sollte trotzdem um den gleichen Wert pro cm Abstand abnehmen.
 
-Dies ist aber nicht der Fall, wobei der Fehler gerade noch im Rahmen von 3 Standartabweichungen liegt.
+Dies ist aber nicht der Fall, wobei der Fehler gerade nicht im Rahmen von 3 Standartabweichungen liegt.
 
-\subsubsection{Kopplung mit Eisenkern}
+\subsection{Kopplung mit Eisenkern}
 
 
-Zuletzt haben wir in die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. 
+Zuletzt haben wir die zwei Spulen auf einen gemeinsamen Eisenkern geschoben, um die Kopplung so zu erhöhen. 
 Mit dieser Konfiguration haben wir die Messung noch mal durchgeführt. 
 Diese haben wir 3x durchgeführt, um zu sehen, ob die Ergebnisse sich reproduzieren, dies war der Fall.
 Im folgenden werten wir die erste Messung aus (Schwebung\_Eisenkern\_01.labx).
@@ -995,7 +995,7 @@ Da wir jedoch den gleichen Eisenkern für beide Spulen verwendet haben, und der 
 \end{figure}
 
 Hier können Sie den Schwingungsverlauf in Schwingkreis 1 sehen, wenn dieser mit dem Eisenkern mit Schwingkreis 2 gekoppelt ist. 
-Die Letzten 0.4s Wurden in diesem Graphen weg geschnitten, da hier die Amplitude auf null abgefallen war, und sonst die Schwingung nicht sichtbar wäre.
+Die Letzten 0.4s wurden in diesem Graphen weg geschnitten, da hier die Amplitude auf null abgefallen war, und sonst die Schwingung nicht sichtbar wäre.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/Schwebung_Eisenkern_01.pdf}
@@ -1017,7 +1017,7 @@ Das dazugehörigen Fourierspecktrum ist:
     \caption{FFT der Schwebungsmessung mit Eisenkern }
 \end{figure}
 
-Hier reicht es den Bereich bis zu 1600Hz zu betrachten, da wir in Graph \ref{Eisenkern beide Schwingungen} bereits sehen können, dass wir keine höheren Frequenzen haben werden. Hier kann man bereits sehen, dass die Peaks näher beieinander liegen als in der Kopplung ohne Eisenkern.
+Hier reicht es den Bereich bis zu 1600Hz zu betrachten, da wir in Graph \ref{Eisenkern beide Schwingungen} bereits sehen können, dass wir keine höheren Frequenzen haben werden. Hier kann man bereits sehen, dass die Peaks weiter außeinander liegen als in der Kopplung ohne Eisenkern.
 Dargestellt sind zwei verschiedene zoom Ausschnitte der FFT, so kann Position und Form der Maxima gesehen werden.
  Zur Bestimmung der genauen Position der Maxima haben wir jeweils nur den Ausschnitt am Peak betrachtet, und dieses wie zuvor auch Graphisch bestimmt.
 
@@ -1058,8 +1058,8 @@ Daraus ergibt sich:
         \toprule
         \textbf{Schwingkreis} & \textbf{$f_k$} & \textbf{$f_{schw}$} & \textbf{$\sigma_f$} \\
         \midrule
-        1 & 557Hz & 146Hz & 0.72Hz\\
-        2 & 557.5Hz & 147.5Hz & 0.72Hz \\
+        1 & 557Hz & 146Hz & 0.85Hz\\
+        2 & 557.5Hz & 147.5Hz & 0.85Hz \\
         \bottomrule
     \end{tabularx}
     \caption{Schwebungsfrequenz und Grundfrequenz der Schwingkreise mit Eisenkern}
@@ -1093,10 +1093,10 @@ Die Abweichung ist in der dritten Nachkommastelle und liegt innerhalb der Messun
     \subfloat{\includegraphics[width=0.49\textwidth]{schaltplan-gegensinnig.pdf}}
     \caption{links gleichsinnig rechts gegensinnig gekoppelt}
 \end{figure}
-Dabei ist in beiden Schaltbildern links der 2. Schwingkreis und rechts der 1.
+Dabei ist in beiden Schaltbildern links der zweite Schwingkreis und rechts der erster.
 Vor der Messung haben wir erst beide Kondensatoren mit offenem Schalter aufgeladen.
-Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und somit auch die Schwinngung beginnt.
-Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veräbnder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
+Gestartet hat die Messung, wenn wir den Schalter geschlossen haben, da dann der entlade Vorgang der Kondensatoren und somit auch die Schwingung beginnt.
+Den Trigger haben wir so eingestellt wie vorher da sich hierfür nichts relevantes veränder hat, also bei 6.1V fallende Flanke von der Spannung am Kondensator vom 2. Schwingkreis.
 Dabei haben wir die Spulen der beiden Schwingkreise direkt nebeneinander gestellt, um die Kopplung zu maximieren.
 Die Kopplung haben wir während der gesamten Messung konstant gehalten.\\
 
@@ -1133,11 +1133,13 @@ Für die Gleichsinnige Schwingung haben wir das Maxima aus diesem Graphen bestim
     \subfloat{\includegraphics[width=0.8\textwidth]{plots/gleichsinnig_01_spule_fft_zoom_peak.pdf}}
     \caption{Gleichsinnige Schwingung FFT Zoom in}
 \end{figure}
+Der Grün eingezeichnete Strich, ist die Frequenz mit der Größten Amplitude.
 Aus der Form der Verteilung um das Maximum können wir schließen, dass die gesuchte Frequenz bei $f_+=1051Hz$ liegt. Dies gilt für die Messung an beiden Kondensatoren.
-Desweiteren können wir sehen, dass hier die Ablesegenauigkeit gleich wie der Schwebung bei 2Hz liegt. Somit können wir den gleichen Ablese Fehler verwenden.
+Desweiteren können wir sehen, dass hier die Ablesegenauigkeit gleich wie bei der Schwebung bei 2Hz liegt. Somit können wir den gleichen Ablese Fehler verwenden.
 
  
 \subsection{Gegensinnige Schwingung}
+
 Mit der Gegensinnigen Schwingung kann man $f_-$ bestimmen. Hier gehen wir gleich vor wie bei der gleichsinnigen Messung.
 \begin{figure}[H]
     \centering
@@ -1150,7 +1152,7 @@ Mit der Gegensinnigen Schwingung kann man $f_-$ bestimmen. Hier gehen wir gleich
     \caption{Gegensinnige Schwingung FFT mit ausschnitt um den Peak}
 \end{figure}
 Hier können Wir sehen, dass wir für gegensinnige Anregung ähnliche Ergebnisse erhalten wie für die gleichsinnige. Der Signifikante Unterschied ist, dass die Frequenz leicht erhöht ist. 
-Das Maximum der FFt ist nun nöher bei 1200Hz.\\
+Das Maximum der FFt ist nun näher bei 1200Hz.\\
  
 Für die Gegensinnige Schwingung haben wir das Maximum ebenfalls abgelesen.
 \begin{figure}[H]
@@ -1177,20 +1179,20 @@ Diese beiden Fehler haben wir bei der Fehlerberechnung der Schwebung (\ref{Fehle
 Dabei ist $\sigma_{f_+}$ und $\sigma_{f_-}$ ebenfalls unverändert geblieben, da diese nicht von dem Wert der Frequenz abhängen sind.
  
 \begin{equation}
-    \sigma_f =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
-    = 0.002 Hz
+    \sigma_k =\sqrt{\left(\frac{4f_+f_-^2}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_+}\right)^2 + \left(\frac{4f_+^2f_-}{\left(f_+^2+f_-^2\right)^2}\sigma_{f_-}\right)^2}
+    = 0.002 
 \end{equation}
 \begin{equation}
-    k_g = (0.120 \pm 0.002) Hz
+    k_g = 0.120 \pm 0.002
 \end{equation}
 
-Verglichen mit $k_1 = (0.110 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ außerhalb der statistichen Abweichungen.
-Bei $k_2 = (0.127 \pm 0.002) Hz$ aus der Schwebung liegt $k_g$ ebenfalls deutlich außerhalb der statistischen Abweichungen.\\
+Verglichen mit $k_1 = 0.110 \pm 0.002$ aus der Schwebung liegt $k_g$ außerhalb der statistischen Abweichungen.
+Bei $k_2 = 0.127 \pm 0.002$ aus der Schwebung liegt $k_g$ ebenfalls deutlich außerhalb der statistischen Abweichungen.\\
  
 Bei der Schwebung haben wir unterschiedliche Werte für die Messungen an den beiden Schwingkreisen erhalten, so überrascht es nicht, dass diese sich von dem Ergebnis mit gleichsinniger und gegensinniger Anregung unterscheiden.
 Dies könnte daran liegen, dass im Fall der Schwebung ein größerer Energieverlust ist. \\
 
-Wenn wir nun den Mittelwert von $k_1$ und $k_2$ zu betrachten,
+Wenn wir nun den Mittelwert von $k_1$ und $k_2$  betrachten,
 $k_r = \frac{k_1 + k_2}{2} = 0.119 \pm 0.001$ 
 (für den Fehler haben wir den Fehler auf den Mittelwert verwendet)
 liegt $k_r$ innerhalb einer Standardabweichung Abweichungen von $k_g$.

@@ -1,0 +1,78 @@
+\documentclass[twoside]{protokoll}
+% ... wenn Sie nicht doppelseitig ausdrucken können, lassen Sie sie
+% weg:
+%\documentclass{protokoll}
+
+% Setzen Sie hier "I" für den Teil 1 oder "II" für den Teil 2 ein:
+\praktikum{I}
+ 
+% Setzen Sie hier das jeweilige Versuchsgebiet ein (Mechanik,
+% Akustik, Thermodynamik, Elektrizitätslehre, usw.):
+\versuchsgebiet{(Gebiet)}
+
+% Setzen Sie hier Ihren Namen und Ihre Matrikelnummer sowie Ihre
+% Gruppennummer ein (ohne die Klammern):
+\teilnehmer{Name 1. Teilnehmer, (Matrikelnummer)}
+\teilnehmer{Name 2. Teilnehmer, (Matrikelnummer)}
+\gruppe{(Gruppennummer)}
+
+\begin{document}
+
+% Ersetzen Sie den folgenden Text durch eine kurze Beschreibung der
+% Versuchsziele.
+\begin{versuchsziele}
+  Kurze Beschreibung der Versuchsziele aller Teilversuche.
+\end{versuchsziele}
+
+\section{1M1 Messung der Erdbeschleunigung mit dem Pendel}
+
+\begin{aufgabe}{Grundlagen}
+  Knappe Beschreibung der theoretischen Grundlagen, Angabe der
+  benötigten Formel(n), ohne Herleitung. Definition der verwendeten
+  Formelzeichen.
+\end{aufgabe}
+
+Die simpleste Form eines Pendels ist das Mathematische Pendel.
+Hierbei wird das Pendel als Punktmasse genähert und es gilt nur für kleine Auslenkungen, da dort $sin(\varphi) \approx \varphi$ gilt.
+Die Rückstellkraft hängt von der Masse, der Erdbeschleunigung und der Auslenkungen des Pendels ab.
+Mithilfe der kleinwinkel Näherung gilt für das Rückstellende Drehmoment:
+\begin{equation}
+    J \cdot \varphi'' = -m \cdot g \cdot l \cdot \varphi
+\end{equation}
+Für das Trägheitsmoment gilt $J = m_T \cdot l^2$.
+
+% Bitte belassen Sie die Aufgabentexte in Ihrem Protokoll und beginnen
+% Sie hier mit der Lösung der ersten Aufgabe:
+
+
+
+\begin{aufgabe}{Versuchsaufbau und Versuchsdurchführung}
+  Beschreibung des Versuchsaufbaus einschließlich beschrifteter Skizze
+  oder Foto. Beschreibung der Versuchsdurchführung: Handgriffe an der
+  Apparatur, verwendete Messwerterfassungseinstellungen, Messbereiche,
+  Triggerbedingungen, etc.
+\end{aufgabe}
+
+
+\begin{aufgabe}{Rohdaten}
+  Stellen Sie Ihre Rohdaten dar, tabellarisch für $l_p$ und $r_p$,
+  grafisch für den Verlauf der Schwingung der Stange ohne Pendelkörper
+  sowie der Pendelschwingung (für mindestens drei Messreihen).
+\end{aufgabe}
+
+
+\begin{aufgabe}{Auswertung}
+  Bestimmen Sie für alle Messreihen die Periodendauer und ihre
+  Messunsicherheit, indem Sie eine geeignete lineare Regression
+  durchführen. Demonstrieren Sie, dass Sie das Trägheitsmoment der
+  Stange kompensiert haben. Tabellieren Sie die Zwischenergebnisse
+  der relevanten Größen samt ihrer Messunsicherheiten. Berechnen
+  Sie die Erdbeschleunigung. Führen Sie eine Fehlerrechnung zur
+  Bestimmung der Messunsicherheit durch. Geben Sie bei Ihrer
+  Fehlerrechnung die Größe der Einzelbeiträge an, die zu dem
+  Gesamtfehler führen. Diskutieren Sie, welcher Fehler den
+  Gesamtfehler dominiert. Vergleichen Sie Ihr Endergebnis mit dem
+  relevanten Literaturwert.
+\end{aufgabe}
+
+\end{document}

@@ -85,6 +85,7 @@ Wenn man das Drehmoment und das Trägheitsmoment jetzt expliziet ausdrückt, dan
 Nach g Aufgelöst ergibt sich:
 \begin{equation}
     g = \omega^2 \cdot l_G \left( 1 + \frac{r_G^2}{2 \cdot l_G^2} \right)
+    \label{eq:pendel_g}
 \end{equation}
 
 
@@ -150,15 +151,112 @@ Mit der Wasserwaage haben wir überprüft, dass der Winkelaufnehmer horizontal i
 Diesen haben wir stark befestigt, dass das Gewicht des Pendelkörpers diesen später nicht verdreht.
  
 Die Pendelstange haben wir an dem U-Profil mit den davor vorgesehenen Schrauben festgeschraubt, und dieses dann mit den Nadeln in die Nut des Winkelaufnehmers gestellt.\\
+Vor beginn der Mmessung haben wir den Winkelaufnehmer genullt. 
+Wir haben beide Winkelaufnehmer an CASSY angeschlossen, um zu überprüfen, welchen wir besser Nullen können.
+Hierfür haben wir den Winkelaufnehmer in die Steckdose eingesteckt, und an dem Drehregler des Geräts gedreht, bis bei CASSy ungefähr null Volt angezeigt wurden.
+Der auf den Bildern und Skizzen linke Winkelaufnehmer konnten wir besser nullen, weswegen wir diesen für die weiteren Messungen verwendet haben.
+Den Winkelaufnehmer haben wir an Input A des CASSY angeschlossen\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/gesamtaufbau.pdf}
+    \caption{Bild des Gesamtaufbaus}
+    \end{figure}
+Hier ein Bild des Gesamtaufbaus. Zu sehen ist das 3-Bein Stativ und das Daran befestigte Pendel.
+In diesem betrachten wir das Pendelverhalten der yweiten Stange welche wir nicht gew'hlt haben.\\
 
 Da unsere Kleinwinkelnäherung bis Maximal 5° geht, haben wir ausgerechnet, um welche Strecke am Boden das Pendel ausgelenkt werden darf sodass wir unter 5° bleiben. 
+Diese Auslenkung haben wir mit einem Geodreieck auf dem Boden gemsessen. 
+Die Maximale Auslenkung war 9cm weswegen wir unser Pendel 7cm Ausgelenkt haben.
+Bei einer Auslenkung von 7cm hatten wir eine Spannungzwischen -0.4V und 0.4V weswegen wir den Messbereich auf -1V bis 1V gestellt haben.\\
 
+Zur Bestimmung der Messwerterfassungseinstellungen haben wir erst eine Testmessung über wenige Schwingungsperioden durchgeführt, um zu überprüfen wie gut ablesbar die Maxima sind.
+Unser erstes Messintervall war 20ms, Mit diesem Konnten wir die Maxima schon gut ablesen, bei einem Messintervall von 10ms war dies jedoch besser.\\
+Wir haben ebenfalls die zweite Pendelstange aufgehangen und überprüft wie gut ablesbar bei dieser die Maxima sind.
+ Diese waren unsauberer, was daran liegen könnte, dass die Stange gebogen war, und die Schwingung dadurch nicht so gleichförmig abgelaufen ist.
+ Diese Vergleichsmessung haben wir unter Test-Vergleich-01 abgespeicherrt. \\
+
+ Als nächstes haben wir das Pendel in drei Abschnitte eingeteilt in welche wir die Länge des Pendels Mmessen. 
+ Die genaue Aufteilung mit Skizze wird in de rohdaten noch beschrieben. Kurz zusammengefasst messen wir den Abstand zwischen den Nadeln und U-Pprofil Boden ($l_1$).
+Vom U-Profil boden bis zur ersten Einkerbung der Pendelstangen Halterung ($l_2$) und von dort bis zum Mittelpunkt des Pendelkörpers ($l_3$).
+Für $l_1$ und $l_2$ haben wir die Messungen vor dem Pendeln durchgeführt. 
+Wir haben jede Strecke 3 mal gemessen. Den Abstand zwischen Nadel und U-Profil boden haben wir pro Nadel 3 mal gemessen.\\
+
+Dann haben wir die erste Messung gestartet. 
+Die Messung haben wir Manuell gestartet, also ohne trigger, sodass wir anfängliche Störungen vom Auslenken des Pendels nicht aufzeichnen. 
+Wir haben jede Messung von Hand abgebrochen nach ca. 185 Sekunden. 
+\begin{table}[H]
+        \centering
+        \begin{tabularx}{1.0\textwidth}{X X X X} % adjust width as needed
+            \toprule
+            \textbf{Intervall} & \textbf{Messzeit} & \textbf{Trigger} & \textbf{Bereich} \\
+            \midrule
+            1ms & 185s & kein Trigger & -1V bis 1V \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Mmesswerterfassungseinstellungen}
+        \label{tab:mytable}
+    \end{table}
+
+Hier eine Übersicht unserer Messwerterfassungseinstellungen.\\
+Das Penel haben wir mit der Hand ca. 7cm ausgelenkt, dies haben wir mit dem Geodreieck gemessen (Auf Bild unten zu sehen). 
+Bei jeder Messung haben wir versucht in etwa die gleiche Auslenkung zu haben. 
+Das pendel sollte möglichst störungsarm losgelassen werden, um mögliche Effekte des Startens zu minimiren. 
+Falls das Pendel zu sehr hin und her gewackelt hat, haben wir die Messung abgebrochen und neu gestartet.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/geodreieck.pdf}
+    \caption{Bestimmung der Auslenkung mit Geodreieck}
+    \end{figure}
+Die Messung nur mit der Pendel Stange haben wir insgesamt drei mal durchgeführt. 
+Für jede dieser Messungen haben wir die Periodendauer überschlagen.
+Wir haben den Zeitpunkt des ersten Maximums mit dem Peakschwerpunkt bestimmt. Das selbe haben wir mit dem zwanzigsten Maximum getan. 
+Die Periodendauer haben wir damm mit der folgenden Formel bestimmt.
+\begin{equation}
+T = \frac{t_{20} - t_{1}}{19}
+\end{equation}
+Bei der Rechnung nach nach der Messung haben wir durch die falsche Periodenzahl (20) geteilt. 
+Dies ist uns aufgefallen, als wir g bestimmt haben, weshalb wir unsere Rechnungen für die Periodendauer wiederholt haben.\\
+
+Nachdem wir diese durchgeführt haben, haben wir den Pendelkörper an der Pendelstange befestigt. 
+Und das Pendel erneut aufgehangen. 
+Diesesmal waren wir beim aufhängen besoders vorsichtig, daas die Masse des Pendels nun um einiges größer war, und somit den Winkelaufnehmer verdrehen könnte
+An den anderen Winkelaufnehmer haben wir die andere Pendelstange gehangen, und beidee Pendel ausgelenkt.
+Nach augenmaß haben wir überprüft, ob diese ungefähr die gleiche Frequenz haben. Und haben gegebenenfalls Die Position des Pendelkörpers angepasst.
+Wenn dass Ppendel mit Pendelkörper eine kleinerre Periodendauer hat, muss der Pendelkörper nach unten bewegt werden, wenn es eine größere Periodendauerhat nach oben.
+Diese Justierungen habemn wir durchgeführt, bis die Frequenz augenscheinlich übereingestimmt hat. \\
+
+Danach haben wir mit CASSY einige Schwingungsperioden (zwischen 10 und 50) aufgenommen um zu überprüfen, ob die Frequenzen der beiden übereinstimmen. 
+Hierfür haben wir die Lage der Maximas der beiden Schwingungen (Schwingung mit Pendelkörper und ohne) verglichen.
+Ob deren rellative position zueinander im Verlauf der Messung gleich geblieben ist.
+Hier haben wir den Pendelkörper ebenfalls einigemale neu justiert und den Vergleich erneut durchgeführt bis die rellative Position der Maxima gleich geblieben sind.\\
+
+Mit dieser Pendelkörperposition haben wir dann eine gesamte Messung durchgeführt.
+Dies haben wir gleich wie bei dem Pendel ohne Pendelkörper gemacht. Wir haben wieder 185 Sekunden aufgezeichnet. 
+Daraus haben wier ebenfalls die Periodendauer überschlagen. 
+Dies haben wir auf die gleiche weise getan wie ohne Pendelkörper. Wobei wir wieder durch 20 geteilt haben.
+Da die Periodendauern übereingestimmt haben, haben wir mit dieser Position zwei weitere Messungen durchgeführt.
+Für diese haben wir jedes mal die Periodendauer überschlagen.\\
+
+Den Abstand vom Pendelkörpermittelpunkt bis zu der ersten Einkerbung der Pendelaufhängung haben wir in hängendem Zustand mit dem Mmmaßband gemessen ($l_3$).
+Hierfür haben wir mit dem Maßband den Mittelpunkt des Pendelkörpers bestimmt und markiert. Dann haben wir von der ersten einkerbung bis zu diesem Punkt gemessen.
+Dabei haben wir darauf geachtet, dass das Maßband nicht gebogen ist, und gerade runter hängt. 
+Auch diese Messung haben wir drei mal durchgeführt.\\
+Nachdem wir den Pendelkörper abmonitiert haben, konnten wir von diesem den Durchmesser bestimmen.
+Diesen haben wir mit der Schieblehre drei mal gemessen.\\
+
+Zuletzt haben wir dann eine überschlagsrechnung für g gemacht. Dies haben wir mit Formel \ref{eq:formel} gemacht.
+Da wir kein sinnvolles Ergebnis erhalten haben, ist uns aufgefallen, dass in der Vorherigen beerechnung von T einen Fehler gemacht haben. 
+So konnten wir unsere Rechnung für T korrigieren und g erneut bestimmen. Da dieses Ergebniss mit unseren Erwartungen (von ca. 9.81$m/s^2$) übereinstimmt haben wir den Versuch beendet.
 
 \begin{aufgabe}{Rohdaten}
   Stellen Sie Ihre Rohdaten dar, tabellarisch für $l_p$ und $r_p$,
   grafisch für den Verlauf der Schwingung der Stange ohne Pendelkörper
   sowie der Pendelschwingung (für mindestens drei Messreihen).
 \end{aufgabe}
+
+Zur Bestimmung der pendellänge haben wir daaas Pendel in verschiedene Teilstücke unterteilt, damit wir diese Möglichst genau messen können. 
+Diese Abschnitte haben wir so gewählt, dass wir diese mit dem jewailigen Messinstrument möglichst exact bestimmen können. 
+
 
 
 \begin{aufgabe}{Auswertung}
@@ -176,3 +274,8 @@ Da unsere Kleinwinkelnäherung bis Maximal 5° geht, haben wir ausgerechnet, um 
 \end{aufgabe}
 
 \end{document}
+
+
+%TODO : g neu berechnen auf Protokoll
+%TODO : Auf messprotokoll noch das ablesen genauer drauf schreiben und now für letzten zwei messungen überschlag hinzufügen aber in falsch
+ 

@@ -1,30 +1,29 @@
 \documentclass[twoside]{protokoll}
-% ... wenn Sie nicht doppelseitig ausdrucken können, lassen Sie sie
-% weg:
-%\documentclass{protokoll}
-
-% Setzen Sie hier "I" für den Teil 1 oder "II" für den Teil 2 ein:
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float} 
 \praktikum{I}
- 
-% Setzen Sie hier das jeweilige Versuchsgebiet ein (Mechanik,
-% Akustik, Thermodynamik, Elektrizitätslehre, usw.):
+\usepackage{subfig}
+\usepackage{amsmath}
+
 \versuchsgebiet{(Mechanik)}
 
-% Setzen Sie hier Ihren Namen und Ihre Matrikelnummer sowie Ihre
-% Gruppennummer ein (ohne die Klammern):
-\teilnehmer{Maximilian Carlos Menke, (434170)}
-\teilnehmer{Andrea Roth, (428396)}
-\gruppe{(Gruppennummer)}
+
+\teilnehmer{Maximilian Carlos Menke, 434170}
+\teilnehmer{Andrea Roth, 428396}
+\gruppe{A3}
 
 \begin{document}
-
-% Ersetzen Sie den folgenden Text durch eine kurze Beschreibung der
-% Versuchsziele.
-\begin{versuchsziele}
-  Kurze Beschreibung der Versuchsziele aller Teilversuche.
-\end{versuchsziele}
-
+ 
+%TODO check section name
 \section{1M1 Messung der Erdbeschleunigung mit dem Pendel}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Bilder/signal-2023-03-22-155329_002.pdf}
+    \caption{Schwingkreis 1}
+    \label{fig:Schwingkreis1}
+\end{figure}
 
 \begin{aufgabe}{Grundlagen}
   Knappe Beschreibung der theoretischen Grundlagen, Angabe der
@@ -80,8 +79,7 @@ Wenn man die Position des Gewichtes so einstellt, dass die Schwingung der Stange
 \begin{equation}
     \omega^2 = \frac{M_{st}}{J_{st}} = \frac{M_G}{J_G}
 \end{equation}
-Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als wäre es an einer Massefreihen stange aufgehangen.
-
+Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als wäre es an einer Massefreihen Stange aufgehangen.
 
 
 

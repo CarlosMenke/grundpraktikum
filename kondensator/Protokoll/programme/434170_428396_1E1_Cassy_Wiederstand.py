@@ -104,7 +104,7 @@ def cassy_hist(datei: str, x: str, y: str, y_2: str, plotname: str):
 
      
      
-plots = ['messung-aufladen-kondensator-01', 'messung-entladen-kondensator-02', 'messung-wiederstand-07']
+plots = ['messung-wiederstand-01']
   
  
 for filename in sorted(os.listdir(cassy_dir)):

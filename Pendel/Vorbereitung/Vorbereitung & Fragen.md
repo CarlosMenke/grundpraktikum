@@ -6,6 +6,8 @@
 - Was ist die Maximale Auslenkung?
 - Müssen wir mit Erwartung vergleichen?
     - Fehler auf Erwartung?
+- Können wir Ableseungenauigkeiten Gelichverteilt annehmen?
+- Ableseunsicherhit bei Schwingung wenn asymmetrisch gleich verteilt?
 
 # Versuch's Tag
 
@@ -48,4 +50,19 @@
 
 # Auswertung
 
-#
+# Notizen
+- kleinder als 5 grad
+- ob die pendel stange weg ist oder nicht ist egal
+    - es ist egal ob wir die Pendelstange oder den Pendelkörper weg lassen
+- l_p in teilstrecken messen jede mindestens 3x
+- Exacte Zeichnung von Aufbau und genaue benennung welche Teillstrecken wo sind
+- Um die 20 ms
+- bei ca. 30 mal pendeln und Ableseunsicherhit
+- Ablesen mit Peakschwerpunkt
+- Beschreiben und darstellen wie man zu den Daten gekommen ist
+- Schwankung bei variation des Peakschwerpunkt grenzen als Fehler Verwenden
+    - Fehler 2 bis 3 mal bestimmen
+- 7 bis 10 Werte in der Linearen Regression
+- Benutzen der Schönen Maxima
+- auf i kein fehler
+- 3x mit und 3x ohne pendelkörper und alles Auswerten

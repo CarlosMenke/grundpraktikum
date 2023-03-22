@@ -1,3 +1,6 @@
+## Carlos Notizen Vorgespraech
+- mit peakschwerpunkt
+
 # Fragen
 - Jewails 3 Schwingungsverläufe aufgezeichnet?
     - Stange 3x und Final eingestelltes Pendel x3 oder auch alle zwischenpositionen?

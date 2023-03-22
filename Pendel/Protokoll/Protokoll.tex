@@ -32,17 +32,49 @@
   Formelzeichen.
 \end{aufgabe}
 
-Die simpleste Form eines Pendels ist das Mathematische Pendel.
-Hierbei wird das Pendel als Punktmasse genähert und es gilt nur für kleine Auslenkungen, da dort $sin(\varphi) \approx \varphi$ gilt.
-Die Rückstellkraft hängt von der Masse, der Erdbeschleunigung und der Auslenkungen des Pendels ab.
-Mithilfe der kleinwinkel Näherung gilt für das Rückstellende Drehmoment:
+Ein Pendel kann als physikalischens Pendel beschrieben werden.
+Dabei wirkt auf das Pendel eine Kraft von $F_g = m_S \cdot g$, wobei $g$ die zu bestimmende Erdbeschleunigung ist und $m_S$ die Schwere Masse des Pendels.
+Beim Schwingen, befindet sich das Pendel oftmals nicht in der Ruhelage, sondern ist in einer Auslenkung $\varphi$ vom Gleichgewichtszustand entfernt.
+Dann wirkt ein rückstellendes Drehmoment $ M = l \cdot F_r$ (mit $l$ als Länge von der Rotations Achse zum Schwerpunkt).
+Da unser Pendel Träge ist, entsteht eine Schwingung: 
 \begin{equation}
-    J \cdot \varphi'' = -m \cdot g \cdot l \cdot \varphi
+    J \cdot \ddot{\varphi} = -m \cdot g \cdot l^2 \cdot \sin(\varphi)
 \end{equation}
-Für das Trägheitsmoment gilt $J = m_T \cdot l^2$.
+Dabei verwenden wir im Folgenden die Kleinwinkel näherung $\sin(\varphi) \approx \varphi$.
+Diese gilt für Auslenkungen von weniger als $5$°. Damit lässt sich die Bewegungsgleichung vereinfachen:
+\begin{equation}
+    J \cdot \ddot{\varphi} \approx -m \cdot g \cdot l^2 \cdot \varphi
+\end{equation}
+Das Trägheitsmoment ist dabei wie folgt definiert:
+\begin{equation}
+    J =  m_T \cdot l^2
+\end{equation}
+Hierbei ist $m_T$ die Träge Masse des Pendels. Dies ist nach dem Einsteinischen Äquivalenzprinzip aber gleich der schweren Masse, und somit $m_T = m$.
+Aufgelöst nach $\ddot{\varphi}$ ergibt sich ( mit $\omega$ als Winkelgeschwindigkeit der Schwingung):
+\begin{equation}
+    \ddot{\varphi} \approx -\frac{g}{l} \cdot \varphi = - \omega^2 \cdot \varphi
+\end{equation}
+Aus dieser DGL lässt sich $\varphi(t)$ bestimmen, zu:
+\begin{equation}
+    \varphi(t) = \varphi_{max} \cdot \cos(\omega \cdot t)
+\end{equation}
+Daraus ergibt sich (mit $T$ als dauer einer Schwingungsperiode):
+\begin{equation}
+    \omega^2 = \frac{m \cdot g \cdot l_s}{J}
+\end{equation}
+\begin{equation}
+    \Rightarrow T = \frac{1}{g} 4 \cdot \pi^2 \cdot \frac{J}{m l_s}
+\end{equation}
+Dabei kann man $\omega$ als Quotient von rückstellendem Drehmoment und Trägheitsmoment beschreiben.
+\begin{equation}
+    \omega_{st}^2 = \frac{M_{st}}{J_{st}}
+\end{equation}
+\begin{equation}
+    \omega_{G}^2 = \frac{M_G}{J_G}
+\end{equation}
+Wenn man die Position des Gewichtes so einstellt, dass sowohl die 
 
-% Bitte belassen Sie die Aufgabentexte in Ihrem Protokoll und beginnen
-% Sie hier mit der Lösung der ersten Aufgabe:
+
 
 
 

@@ -16,15 +16,8 @@
 
 \begin{document}
  
-%TODO check section name
 \section{1M1 Messung der Erdbeschleunigung mit dem Pendel}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{Bilder/signal-2023-03-22-155329_002.pdf}
-    \caption{Schwingkreis 1}
-    \label{fig:Schwingkreis1}
-\end{figure}
-
+ 
 \begin{aufgabe}{Grundlagen}
   Knappe Beschreibung der theoretischen Grundlagen, Angabe der
   benötigten Formel(n), ohne Herleitung. Definition der verwendeten
@@ -49,7 +42,7 @@ Das Trägheitsmoment ist dabei wie folgt definiert:
     J =  m_T \cdot l^2
 \end{equation}
 Hierbei ist $m_T$ die Träge Masse des Pendels. Dies ist nach dem Einsteinischen Äquivalenzprinzip aber gleich der schweren Masse, und somit $m_T = m$.
-Aufgelöst nach $\ddot{\varphi}$ ergibt sich ( mit $\omega$ als Winkelgeschwindigkeit der Schwingung):
+Aufgelöst nach $\ddot{\varphi}$ ergibt sich ( mit $\omega = 2 \pi f = \frac{2 \pi}{T}$ als Winkelgeschwindigkeit der Schwingung):
 \begin{equation}
     \ddot{\varphi} \approx -\frac{g}{l} \cdot \varphi = - \omega^2 \cdot \varphi
 \end{equation}
@@ -79,8 +72,28 @@ Wenn man die Position des Gewichtes so einstellt, dass die Schwingung der Stange
 \begin{equation}
     \omega^2 = \frac{M_{st}}{J_{st}} = \frac{M_G}{J_G}
 \end{equation}
-Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als wäre es an einer Massefreihen Stange aufgehangen.
+Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als wäre es an einer Massefreihen Stange aufgehängen.
+Das Trägheitsmoment des Gewichtes (der 1. Summand) und das zusätzliche Trägheitsmoment welches durch die verschiebung der Rotationsachse mit dem Satz von Steiner hinzukommt:
+\begin{equation}
+    J_G = \frac{1}{2} m_G \cdot r_G^2 + m_G \cdot l_G^2
+\end{equation}
+Hier ist $r_G$ der Radius des Gewichtes und $l_G$ der Abstand vom Gewicht zur Rotationsachse.
+Wenn man das Drehmoment und das Trägheitsmoment jetzt expliziet ausdrückt, dann erhält man:
+\begin{equation}
+    \omega^2 = \frac{m_G \cdot g \cdot l_G}{\frac{1}{2} m_G \cdot r_G^2 + m_G \cdot l_G^2}
+\end{equation}
+Nach g Aufgelöst ergibt sich:
+\begin{equation}
+    g = \omega^2 \cdot l_G \left( 1 + \frac{r_G^2}{2 \cdot l_G^2} \right)
+\end{equation}
 
+
+Die Auslenkung des Winkels messen wir dabei mit der Hallsonde.
+Das Magnetfeld kann dabei so orientiert werden, dass es vertikal steht.
+Die Hallspannung wird dabei von der Hallkonstante und  der Dicke des Stromdurchflossenen Plättchens beeinflusst.
+Hinzu kommt noch das Kreuzprodukt von Magnetfeld und Stromdurchfluss. Da sowohl das Magnetfeld als auch der Stromdurchfluss konstant sind, hängt das Kreuzprodukt nur von vom sinus des Winkels der beiden ab.
+Da wir nur kleine Winkel betrachten, kann man in guter Näherung annehmen, das $\sin(\varphi) \approx \varphi$ ist.
+Folglich ist die Hallspannung nur proportional zur Auslenkung des Winkels, da alle anderen Größen konstant sind.
 
 
 

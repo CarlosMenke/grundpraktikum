@@ -48,6 +48,12 @@ for i in Maxima_gewicht_3:
     if i == 1: continue
     #print((Maxima_gewicht_3[1] - Maxima_gewicht_3[i])/ (i-1))
     
+for i1, i2, i3, i4, i5, i6 in zip(Maxima_stange_1, Maxima_stange_2, Maxima_stange_3, Maxima_gewicht_1, Maxima_gewicht_2, Maxima_gewicht_3):
+    print(str(i1) + " & " + str(Maxima_stange_1[i1]) + "s & ", str(i2) + " & " + str(Maxima_stange_2[i2]) + "s & ", str(i3) + " & " + str(Maxima_stange_3[i3]) + "s \\\\")
+
+for i1, i2, i3, i4, i5, i6 in zip(Maxima_stange_1, Maxima_stange_2, Maxima_stange_3, Maxima_gewicht_1, Maxima_gewicht_2, Maxima_gewicht_3):
+    #print(str(i4) + " & " + str(Maxima_gewicht_1[i4]) + "s & ", str(i5) + " & " + str(Maxima_gewicht_2[i5]) + "s & ", str(i6) + " & " + str(Maxima_gewicht_3[i6]) + "s \\\\")
+    pass
 
 def maximale_abweichung(l):
     return max(abs(min(l) - np.mean(np.array(l))), abs(max(l) - np.mean(np.array(l))))
@@ -84,7 +90,7 @@ def lin_reg(x, y, y_err, plotname):
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)
     print('Chiquadrat / nf:', chiq / (len(x)-2))
-    print('b:', b)
+    print('T:', R)
     axarray[0].plot(x, R*x+b, color='green')
     sigmaRes = np.sqrt(y_err**2)
     axarray[0].errorbar(x, y, yerr=y_err, color='red', fmt='.', marker='o', markeredgecolor='red')
@@ -97,14 +103,21 @@ def lin_reg(x, y, y_err, plotname):
     axarray[1].set_ylabel(f'$(K-({round(R, 2)}x+{round(b, 2)}))$')
     plt.title(plotname)
 
-    if SHOW_PLOTS: plt.show()
-    else: plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
-    return round(R, 3), round(eR, 3), round(b, 3), round(eb, 3)
+    #if SHOW_PLOTS: plt.show()
+    #else: plt.savefig("../plots/" + plotname+ '.pdf', bbox_inches = 'tight')
+    return round(R, 6), round(eR, 6), round(b, 6), round(eb, 6)
 
 
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_1.keys()))), np.array(list(Maxima_stange_1.values())), stange_1_err*np.ones(12), 'stange 1')
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_2.keys()))), np.array(list(Maxima_stange_2.values())), stange_2_err*np.ones(12), 'stange 2')
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_3.keys()))), np.array(list(Maxima_stange_3.values())), stange_3_err*np.ones(12), 'stange 3')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_1.keys()))), np.array(list(Maxima_gewicht_1.values())), gewicht_1_err*np.ones(12), 'gewicht 1')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_2.keys()))), np.array(list(Maxima_gewicht_2.values())), gewicht_2_err*np.ones(12), 'gewicht 2')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_3.keys()))), np.array(list(Maxima_gewicht_3.values())), gewicht_3_err*np.ones(12), 'gewicht 3')
+stange_T1, stange_eT1, stange_b1, stange_eb1 = lin_reg(np.array(list(float(i) for i in list(Maxima_stange_1.keys()))), np.array(list(Maxima_stange_1.values())), stange_1_err*np.ones(12), 'stange 1')
+stange_T2, stange_eT2, stange_b2, stange_eb2 = lin_reg(np.array(list(float(i) for i in list(Maxima_stange_2.keys()))), np.array(list(Maxima_stange_2.values())), stange_2_err*np.ones(12), 'stange 2')
+stange_T3, stange_eT3, stange_b3, stange_eb3 = lin_reg(np.array(list(float(i) for i in list(Maxima_stange_3.keys()))), np.array(list(Maxima_stange_3.values())), stange_3_err*np.ones(12), 'stange 3')
+gewicht_T1, gewicht_eT1, gewicht_b1, gewicht_eb1 = lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_1.keys()))), np.array(list(Maxima_gewicht_1.values())), gewicht_1_err*np.ones(12), 'gewicht 1')
+gewicht_T2, gewicht_eT2, gewicht_b2, gewicht_eb2 = lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_2.keys()))), np.array(list(Maxima_gewicht_2.values())), gewicht_2_err*np.ones(12), 'gewicht 2')
+gewicht_T3, gewicht_eT3, gewicht_b3, gewicht_eb3 = lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_3.keys()))), np.array(list(Maxima_gewicht_3.values())), gewicht_3_err*np.ones(12), 'gewicht 3')
+ 
+stange_T = np.array([stange_T1, stange_T2, stange_T3])
+gewicht_T = np.array([gewicht_T1, gewicht_T2, gewicht_T3])
+print('T stange', stange_T)
+print('T gewicht', gewicht_T)
+error_T_relativ = np.mean(stange_T) / np.mean(gewicht_T)
+print('T error von stange zu gewicht', error_T_relativ)

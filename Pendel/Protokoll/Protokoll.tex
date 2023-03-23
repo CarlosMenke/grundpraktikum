@@ -454,35 +454,103 @@ Dies ist jedoch zur Bestimmung des Peaks kein problem, da wir hierfür den Peaks
   relevanten Literaturwert.
 \end{aufgabe}
 \section{Auswertung}
-\subsection{Unseicherheiten auf den Abgelesenen Zeitpunkt}
+\subsection{Unseicherheiten auf den Abgelesenen Zeitpunkte}
 Allgemein unterscheidet man immer zwischen systematischen und statistischen Fehlern.
 Bei der Zeit gibt es aber keinen Systematischen Fehler.
-Der Statistische Fehler kommt in unserem Falle vom Ablesen.
+Der Statistische Fehler kommt in unserem Falle vom ablesen.
 Um diesen möglichst präzise zu bestimmen, haben wir ihn für jede der 6 Messungen einzeln bestimmt.
 Eigentlich sollte der einmal bestimmte ablesefehler für alle Messungen gelten, da wir immer die gleiche Messmethode und Messeinstellungen hatten, und auch alle Pendel ungefär mit der gleichen Frequenz geschwungen sind.
 Da wir beim anschauen der Rohdaten aber festgestellt haben, das nicht alle Peaks von allen Messreihen gleich sauber sind, haben wir es für jede Messreihen einzeln analysiert.
 Zudem ist die hier bestimmte Unsicherheit auch wichtig für das Chi-Quadrat, weshalb es für jede Messreihe genau passen sollte.
  
-Dafür haben wir uns immer einen Peak genommen, und hier mehrfach mit der Peakschwerpunkts Methode das Maximum zu bestimmen.
-Anschließend haben wir den Mittelwert gebiltet.
-Dieses ist Sinnvoll, da alle Peaks gleichwarscheinlich sind, entsprechned können wir sie alle gleich gewichten.
-Anschließend haben wir eine konservative Fehlerbestimmung durchgeführt, indem wir die Differenz zu dem Wert genommen haben, welcher am stärksten vom Mittelpunkt abweicht.
-Diese Differenz haben wir dann als Fehler angenommen.
  
-Da es immer mehrere Möglichkeiten für sinnvolle Grenzen beim Peakfinder gibt, haben wir hier einmal für die 1. Messung die gewählten Grenzen bei der Fehler bestimmung genau gezeigt.
+Wir haben alle Peaks mit der Peakschwerpunkt Methode von Cassy bestimmt.
+Diese haben wir benutzt, da wir wissen, das unser Signal einer Sinusfunktion folgt und nicht einer Gleichverteilung oder änlichem.
+Mithilfe der Schwerpunkts Methode haben wir berücksichtigt, das wenn das Maximum zwischen 2 Punkten liegt, es vermutlich dichter am höheren ist.
+Da es immer mehrere Möglichkeiten für sinnvolle Grenzen für den Peakschwerpunkt gibt, haben wir hier einmal für die 1. Messung des Pendels ohne Gewicht die gewählten Grenzen bei der Fehler bestimmung genau gezeigt.
+Dabei haben wir bei der bestimmung des Ablesefehlers die Grenzen immer so änlich gewählt, wie wir sie auch vorher bei der bestimmung der Peaks gewählt haben.
+Insegasmt haben wir 5 bis 6 verschieden Grenzen genommen. Das haben wir vom Peak abhänging gemacht, da wir keine unsinvollen Grenzen inkludieren wollten.
+5 bis 6 ist dabei aber schon ausreichend genug, um sie danach statistisch zu analysieren.
 (Die Reihenfolge der Nummerierung ist nicht die reihenfolge der Grenzen, sonder dinet nur um sie zu beschreiben)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/unsicherheit-bestimmen-stange1-punkte.pdf}
-    \caption{Peakfinder Grenzen}
+    \caption{Peakfinder Variation der Grenzen bei Messung Stange 1}
      
 \end{figure}
-Zuerst haben wir als Grenzen 3 - 4, 2-5 und 1-6 genommen, da diese Punkte immer in etwa auf der gleichen höhe lagen.
+Zuerst haben wir als Grenzen 3-4, 2-5 und 1-6 genommen, da diese Punkte immer in etwa auf der gleichen höhe lagen.
 Da wir beim Auswerten aber nicht immer Punkte auf der gleichen höhe nehmen konnten, haben wir auch noch leicht verschobene Grenzen genommen.
 Dies war auch nötig, damit in der anschließenden Fehlerbestimmung für die Streuung ein Realistischer Wert herauskommt.
-Darum haben wir noch die Kombinationen 1-5, 2-6 und 3-5 genommen.
-Von diesen haben wir dann den Mittelwert gebildet und den Peakt mit der größten Differenz davon als statistischen Fehler genommen.
+Darum haben wir noch die Kombinationen 1-5, 5-3 und 2-6 genommen.
+Anschließend haben wir den Mittelwert gebiltet.
+Dieses ist Sinnvoll, da alle Peaks gleichwarscheinlich sind, entsprechned können wir sie alle gleich gewichten.
+Anschließend haben wir eine konservative Fehlerbestimmung durchgeführt, indem wir die Differenz zu dem Wert genommen haben, welcher am stärksten vom Mittelpunkt abweicht.
+Diese Differenz haben wir dann als Fehler angenommen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{plots/unsicherheit-bestimmen-gewicht-1.pdf}
+    \caption{Peaks bei Messung Pendel mit Gewicht 1}
+\end{figure}
 
+
+\subsection{Bestimmung er Periodendauer}
+Wir haben jede Messung (3x ohne Gewicht und 3x mit) einzeln ausgewertet bei der bestimmung der Periodendauer.
+Für jede Messung haben wir über 110 Perioden aufgezeichnet. 
+Zur Auswertung haben wir immer in etwa jeden 10. Peak genommen, sodass wir insgesamt 12 Peaks für jede Messung haben.
+Dies sind somit schon genung Messungen um anschließend Sinnvoll eine Linare Regression durchzuführen.
+Dabei haben wir aber nicht immer strikt jeden 10 Peak genommen, da manche Peaks nur sehr ungenau abzulesen wären.
+Wenn dies der Fall war, haben wir den Peak davor oder dahinter genommen.
+In der Folgenden Tabelle sind die Ergebnise von allen Messungen dargestellt.
+Bei den Messdaten haben wir die Messdaten mit den eingezeichneten Peaks immer mit Suffix `mit-maxima` abgespeichert.
+Dort lassen sich alle bestimmten Peas (auch die für die Fehlerbestimmung) nachschauen.
+Hierbei ist N das Anzahl der Maximums, vobei immer in der Spalte rechts daneben die Zeit steht.
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1.0\textwidth}{X X X X X X}
+       \textbf{N}  & \textbf{Stange 1} & \textbf{N} & \textbf{Stange 2} & \textbf{N} & \textbf{Stange 3} \\
+       \toprule
+       2 & 3.138s &  1 & 1.455s &  1 & 1.528s \\
+       11 & 18.063s &  10 & 16.382s &  11 & 18.088s \\
+       20 & 32.935s &  20 & 32.944s &  20 & 33.022s \\
+       30 & 49.473s &  29 & 47.857s &  29 & 47.909s \\
+       40 & 66.058s &  39 & 64.411s &  39 & 64.471s \\
+       50 & 82.598s &  50 & 82.628s &  51 & 84.347s \\
+       60 & 99.19s &  60 & 99.192s &  60 & 99.269s \\
+       70 & 115.729s &  69 & 114.075s &  69 & 114.162s \\
+       79 & 130.651s &  80 & 132.288s &  79 & 130.7s \\
+       90 & 148.843s &  90 & 148.857s &  90 & 148.936s \\
+       101 & 167.079s &  100 & 165.417s &  101 & 167.164s \\
+       112 & 185.279s &  111 & 183.626s &  111 & 183.715s \\
+       \bottomrule
+    \end{tabularx}
+    \caption{Maxima bei der Messung von der Stange}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1.0\textwidth}{X X X X X X}
+       \textbf{N}  & \textbf{Gewicht 1} & \textbf{N} & \textbf{Gewicht 2} & \textbf{N} & \textbf{Gewicht 3} \\
+       \toprule
+       1 & 1.508s &  1 & 1.636s &  1 & 1.59s \\
+       11 & 18.062s &  11 & 18.176s &  12 & 19.772s \\
+       21 & 34.581s &  21 & 34.733s &  21 & 34.653s \\
+       31 & 51.141s &  31 & 51.253s &  30 & 49.539s \\
+       41 & 67.679s &  39 & 64.501s &  39 & 64.445s \\
+       50 & 82.562s &  50 & 82.71s &  50 & 82.636s \\
+       60 & 99.13s &  60 & 99.246s &  59 & 97.518s \\
+       70 & 115.653s &  69 & 114.136s &  69 & 114.06s \\
+       79 & 130.521s &  82 & 135.616s &  80 & 132.239s \\
+       91 & 150.368s &  91 & 150.532s &  90 & 148.788s \\
+       99 & 163.627s &  100 & 165.394s &  101 & 166.969s \\
+       108 & 178.526s &  111 & 183.606s &  110 & 181.893s \\
+    \end{tabularx}
+    \caption{Maxima bei der Messung von der Stange und Gewicht}
+\end{table}
+
+ 
+ 
 \end{document}
 
 

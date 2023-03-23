@@ -263,6 +263,7 @@ So konnten wir unsere Rechnung für T korrigieren und g erneut bestimmen. Da die
   sowie der Pendelschwingung (für mindestens drei Messreihen).
 \end{aufgabe}
 
+\section{Rohdaten}
 Zur Bestimmung der Pendellänge haben wir daaas Pendel in verschiedene Teilstücke unterteilt, damit wir diese Möglichst genau messen können. 
 Dies Abschnitte haben wir so gewählt, dass wir diese mit dem jewailigen Messinstrument möglichst exact bestimmen können. 
 
@@ -326,9 +327,10 @@ Die statistischen Fehler können aus der ablesegenauigkeit bestimmt werden. Dies
     \end{table}
      
 Die Messung der Schwingung ohne Pendelkörper, haben wir insgesammt drei mal durchgeführt.
+Für jede haben wir die Schwingungsverläufe aufgezeichnet.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{plots/stange-1-komplett.PNG}
+    \includegraphics[width=0.9\textwidth]{plots/stange-1-komplett.PNG}
     \caption{Gesamtschwingungsverlauf der ersten Messung ohne Pendelkörper}
 \end{figure}
 Hier können sie Exemplarisch den gesamtschwingungsverlauf der ersten Messung sehen bis 185 Sekunden.
@@ -336,7 +338,105 @@ Gut zu erkennen ist, dass wir eine Dämpfung der Schwingung haben.
 Dies kann man daran sehen, dass die Amplitude der Schwingung mit der Zeit abnimmt. 
 
 Um den genauen Verlauf der Schwingung nach zu volziehen, betrachten wir einen Ausschnitt dieser. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/stange-1-mehrere-schwingungeng.PNG}
+    \caption{Ausschnitt des Schwingungsverlauf der ersten Messung ohne Pendelkörper}
+\end{figure}
+
+Auf dem Bild sind die ersten 2.25 Schwingungsperioden zu sehen.
+Hier können wir gut erkennen, dass die Schwingung einem Kosinusförmigen verlauf hat.  
+Sie hat eine Amplitude von ca 0.35 Volt. 
+Die in der Graphik angezeigte nullinie, wird nicht genau null sein, da es nicht möglich war den Winkelaufnehmer perfekt zu nullen.
+Die leichten unregelmäßigkeiten in der Kurve stammen daher, dass wir nur diskrete Messpunkte haben. 
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.45\textwidth]{plots/stange-2-komplett.PNG}}
+    \hfill
+    \subfloat{\includegraphics[width=0.45\textwidth]{plots/stange-2-mehrere-schwingungeng.PNG}}
+    \caption{Schwingungsverläufe der zweiten Messung ohne Pendelkörper}
+\end{figure}
+
+Hier sind die Schwingungsverläufe der zweiten Messung ohne Pendelkörper dargestellt. 
+Auch hier können wir die Abnahme der Amplitude sehen.
+Hier ist ein größerer Ausschnitt zu sehen. Hier kann man erkennen, dass die Schwingung auch Kosinusförmig verläuft. 
+Beim betrachten der Gesamten Schwingung in CASSY konnten wir sehen, dass dieser Kosinus färmige verlauf die gesamte Messung über beibehalten wird.
+Dies stimmt auch mit den Theoretischen Erwartungen überein.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/stange-3-komplett.PNG}
+    \caption{Schwingungsverlauf der dritten Messung ohne Pendelkörper}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.45\textwidth]{plots/stange-3-mehrere-schwingungeng.PNG}}
+    \hfill
+    \subfloat{\includegraphics[width=0.45\textwidth]{plots/stange-3-maximum.PNG}}
+    \caption{Ausschnitt des Schwingungsverlauf der dritten Messung ohne Pendelkörper}
+\end{figure}
+
+Hier sind die Schwingungsverläufe der dritten Messung dargestellt. Diese weisen die selbe charakteristik auf wie die vorherigen.
+Dieses Bild zeigt exemplarisch ein Maxima der Schwingung mit eingezeichneten Datenpunkten. 
+Gut zu sehen ist, dass wir diskrete Datenpunkte haben, es liegen genug Datenpunkte im Bereich des Maximums um mit diesen das Maximum zu bestimmen.\\
+%TODO : Einfügen eines Bilds wo der erste Peak bestimmt wird
+Wärend den Messungen haben wir damit wir die Periodendauer überschlagen können, bei CASSY mit dem Peakschwerpunkt das erste und das zwanzigste Maximum bestimmt.
+
+Sobald das Pendel mit Pendelkörper synchronisiert war zu dem ohne Pendelkörper haben wir hier auch drei Messungen durchgeführt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{plots/gewicht-1-komplett.PNG}
+    \caption{Schwingungsverlauf der ersten Messung mit Pendelkörper}
+    \end{figure}
+
+In diesem Graphen kann man erkennen, dass im Gegensatz, zu dem Schwingvorgang ohne Pendelkörper, die Amplitude der Schwingung nicht abnimmt.
+Die Dämpfung ist nach 185s also noch nicht zu sehen.\\
+
+Die zwei Hauptfaktoren der Dämpfung sind der Luftwiederstand und die Reibung am Auflagepunkt der Nadel. 
+Da wir keine Amplitudenabnahme mit Pendelkörper feststellen können, können wir daraus schließen, dass der Luftwiederstand den größeren Anteil der dämpfung liefert.
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.4\textwidth]{plots/gewicht-1-mehrere-schwingungen.PNG}}
+    \hfill
+    \subfloat{\includegraphics[width=0.55\textwidth]{plots/gewicht-1-peak-schnell.PNG}}
+    \caption{Ausschnitt des Schwingungsverlauf der ersten Messung mit Pendelkörper}
+    \end{figure}
+
+Auch hier können wir erkennen, dass die Schwingung einem Kosinusförmigen Verlauf folgt.
+Zum Vergleich der Periodendauern haben wir wieder das erste und das zwanzigste Maximum bestimmt.
+Exemplarisch ist hier das Ablesen des ersten Maximums dargestellt.
+
+Für die Weiteren Messungen sid hir auch die Schwingungsverläufe Dargestellt.
+Für jede Messung der komplette Schwingungsverlauf und ein Ausschnitt der Schwingung. 
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.55\textwidth]{plots/gewicht-2-komplett.PNG}}
+    \hfill
+    \subfloat{\includegraphics[width=0.40\textwidth]{plots/gewicht-2-schwungungen.PNG}}
+    \caption{Schwingungsverlauf der zweiten Messung mit Pendelkörper}
+    \end{figure}
  
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[width=0.55\textwidth]{plots/gewicht-3-komplett.PNG}}
+    \hfill
+    \subfloat{\includegraphics[width=0.40\textwidth]{plots/gewicht-3-schwungungen.PNG}}
+    \caption{Schwingungsverlauf der dritten Messung mit Pendelkörper}
+    \end{figure}
+
+Zuletzt ist hier noch eine Nahaufnahme eines Maximas gezeigt, in dieser kann man erkennen, dass die Messpunkte um das Maxima nicht perfekt Kosinunsförmig sind.
+Dies ist jedoch zur bestimmung des Peaks kein problem, da wir hierfür den Peakschwerpunkt berechnen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/gewicht-2-peak.PNG}
+    \caption{Peak der zweiten Messung mit Pendelkörper}
+    \end{figure}
+     
+     
 \begin{aufgabe}{Auswertung}
   Bestimmen Sie für alle Messreihen die Periodendauer und ihre
   Messunsicherheit, indem Sie eine geeignete lineare Regression

@@ -696,7 +696,32 @@ Die Periodendauer für die erste Messung vom Pendel mit Gewicht ist $T = (1.6542
 \end{center}
 Wie im oberen Plot zu sehen ist, sind die Messpunkte linear angeordnet.
 Entsprechend wurde eine Linare Regression durchgeführt.
+Wie dem Residuen Plot zu entnehmen ist, gibt es keine Systematik.
+Es gibt keine Ausreißer und alle Werte streuen statistisch um die Linare Regression.
+Die Fehler haben wir leicht zu groß abgeschätzt, aber immer noch gut, da das $\chi^2$ kleiner 1.3 ist. Dies ist dennoch eine sehr gut Anpassung.
+Aus der Linaren Regression ergibt sich $b = (-0.0147 \pm 0.0053)s$ und $T = (1.6542 \pm 0.0001)s$.
+Diese Werte sprechen beide für eine sehr gute Anpassung.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{plots/lineare_regression_gewicht_3.pdf}
+    \caption{3. Messung von der Stange + Gewicht mit Lineare Regression und Residuen Plot}
+\end{figure}
+\begin{center}
+    $ \frac{\chi^2}{ndof}  =  1.8$
+\end{center}
+Auch hier ist im oberen Plot zu sehen, wie die Messwerte linar angeordnet sind.
+Im Residuen Plot ist keine Systematik zu erkennen, was bedeutet das wir keine Anpassung an der anzupassenden Funktion vornehmen müssen.
+Es liegen 3 Werte nicht innerhalb von $1\sigma$, aber keiner von diesen ist ein Ausreißer. Damit sind die Messwerte wie es sein sollte normalverteilt um die Anpassung.
+Das $\chi^2$ ist kleiner als 3, was bedeutet das wir den Messfehler etwas unterschätzt haben, aber es ist immer noch eine gute Anpassung.
+$b = ( -0.0733 \pm 0.0046)s$ und $T = (1.6541 \pm 0.0001)s$ sind die Werte, welche wir aus der Linaren Regression erhalten haben.
+Beide stellen keine Ausreißer dar. \\
+
+Damit konnten wir alle 3 Messungen vom Pendel mit Gewicht gut auswerten.
+Dabei lag in keiner Messung eine Systematik vor, was bedeutet das die Linare Funktion die passende Anpassung ist.
+Da die $\chi^2$ gut waren, heißt es, das wir keine großen Messfehler vergessen haben.
+
+ 
 \subsection{Bestimmung von $l_p$}
 
 Als Fehlerbeiträge auf $l_p$ haben wir den systematischen Fehler welche bei der Messung der Einzellängen auftreten.

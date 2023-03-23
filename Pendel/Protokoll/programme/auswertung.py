@@ -49,7 +49,28 @@ for i in Maxima_gewicht_3:
     #print((Maxima_gewicht_3[1] - Maxima_gewicht_3[i])/ (i-1))
     
 
+def maximale_abweichung(l):
+    return max(abs(min(l) - np.mean(np.array(l))), abs(max(l) - np.mean(np.array(l))))
 
+error_stange_1 = []
+
+
+error_stange_1 = [3.141, 3.134, 3.142, 3.137, 3.142, 3.133]
+error_stange_1 = [8.105, 8.099, 8.10, 8.088, 8.098, 8.107]
+stange_1_err = maximale_abweichung(error_stange_1)
+print(stange_1_err)
+error_stange_2 = [3.14, 3.144, 3.150, 3.141, 3.139, 3.143]
+stange_2_err = maximale_abweichung(error_stange_2)
+error_stange_3 = [3.197, 3.204, 3.187, 3.194, 3.201, 3.202, 3.201]
+stange_3_err = maximale_abweichung(error_stange_3)
+
+error_gewicht_1 = [4.816, 4.806, 4.816, 4.812, 4.824, 4.819]
+gewicht_1_err = maximale_abweichung(error_gewicht_1)
+error_gewicht_2 = [3.296, 3.286, 3.293, 3.295, 3.2923, 3.304]
+gewicht_2_err = maximale_abweichung(error_gewicht_2)
+error_gewicht_3 = [9.852, 9.841, 9.843, 9.845, 9.855, 9.840, 9.85]
+gewicht_3_err = maximale_abweichung(error_gewicht_3)
+print(gewicht_1_err)
 
 def lin_reg(x, y, y_err, plotname):
     plt.rcParams['font.size'] = 28.0
@@ -81,9 +102,9 @@ def lin_reg(x, y, y_err, plotname):
     return round(R, 3), round(eR, 3), round(b, 3), round(eb, 3)
 
 
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_1.keys()))), np.array(list(Maxima_stange_1.values())), 0.0001*np.ones(12), 'stange 1')
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_2.keys()))), np.array(list(Maxima_stange_2.values())), 0.0001*np.ones(12), 'stange 2')
-lin_reg(np.array(list(float(i) for i in list(Maxima_stange_3.keys()))), np.array(list(Maxima_stange_3.values())), 0.0001*np.ones(12), 'stange 3')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_1.keys()))), np.array(list(Maxima_gewicht_1.values())), 0.0001*np.ones(12), 'gewicht 1')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_2.keys()))), np.array(list(Maxima_gewicht_2.values())), 0.0001*np.ones(12), 'gewicht 2')
-lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_3.keys()))), np.array(list(Maxima_gewicht_3.values())), 0.0001*np.ones(12), 'gewicht 3')
+lin_reg(np.array(list(float(i) for i in list(Maxima_stange_1.keys()))), np.array(list(Maxima_stange_1.values())), stange_1_err*np.ones(12), 'stange 1')
+lin_reg(np.array(list(float(i) for i in list(Maxima_stange_2.keys()))), np.array(list(Maxima_stange_2.values())), stange_2_err*np.ones(12), 'stange 2')
+lin_reg(np.array(list(float(i) for i in list(Maxima_stange_3.keys()))), np.array(list(Maxima_stange_3.values())), stange_3_err*np.ones(12), 'stange 3')
+lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_1.keys()))), np.array(list(Maxima_gewicht_1.values())), gewicht_1_err*np.ones(12), 'gewicht 1')
+lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_2.keys()))), np.array(list(Maxima_gewicht_2.values())), gewicht_2_err*np.ones(12), 'gewicht 2')
+lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_3.keys()))), np.array(list(Maxima_gewicht_3.values())), gewicht_3_err*np.ones(12), 'gewicht 3')

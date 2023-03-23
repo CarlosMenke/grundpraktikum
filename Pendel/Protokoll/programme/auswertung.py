@@ -132,8 +132,8 @@ T_stange = sum(T_stange_einzeln / T_stange_einzeln_stat**2) / sum(1 / T_stange_e
 T_gewicht = sum(T_gewicht_einzeln / T_gewicht_einzeln_stat**2) / sum(1 / T_gewicht_einzeln_stat**2)
 T_stange_stat = np.sqrt(1/sum(1/T_stange_einzeln_stat**2))
 T_gewicht_stat = np.sqrt(1/sum(1/T_gewicht_einzeln_stat**2))
-print('T stange', T_stange, '+-', T_stange_stat)
-print('T gewicht', T_gewicht, '+-', T_gewicht_stat)
+print('T stange', round(T_stange, 5), '+-', round(T_stange_stat, 5))
+print('T gewicht', round(T_gewicht, 5), '+-', round(T_gewicht_stat, 5))
 error_T_relativ = T_stange / T_gewicht
 print('T error von stange zu gewicht', error_T_relativ)
 

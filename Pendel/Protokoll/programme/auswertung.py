@@ -108,3 +108,24 @@ lin_reg(np.array(list(float(i) for i in list(Maxima_stange_3.keys()))), np.array
 lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_1.keys()))), np.array(list(Maxima_gewicht_1.values())), gewicht_1_err*np.ones(12), 'gewicht 1')
 lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_2.keys()))), np.array(list(Maxima_gewicht_2.values())), gewicht_2_err*np.ones(12), 'gewicht 2')
 lin_reg(np.array(list(float(i) for i in list(Maxima_gewicht_3.keys()))), np.array(list(Maxima_gewicht_3.values())), gewicht_3_err*np.ones(12), 'gewicht 3')
+
+
+l_1 = [2.595, 2.590, 2.585, 2.600, 2.605, 2.605]
+l_2 = [1.110, 1.110, 1.110]
+l_3 = [64.3, 64.4, 64.3]
+d = [8.080, 8.080, 8.080]
+
+l1 = np.array(l_1)
+l3 = np.array(l_3)
+
+l1_m = np.mean(l1)
+l3_m = np.mean(l3)
+
+l1_sigma = np.std(l1, ddof=1)
+l3_sigma = np.std(l3, ddof=1)
+print('mittelwert, l1:',l1_m)
+print('sigma l1:', l1_sigma/np.sqrt(6))
+    
+
+print('mean l3:',l3_m)
+print('sigma l3:', l3_sigma/np.sqrt(3))

@@ -140,20 +140,28 @@ print('T error von stange zu gewicht', error_T_relativ)
 
 l_1 = [2.595, 2.590, 2.585, 2.600, 2.605, 2.605]
 l_2 = [1.110, 1.110, 1.110]
-l_3 = [64.3, 64.4, 64.3]
+l_3 = [64.1, 64.2, 64.2]
 d = [8.080, 8.080, 8.080]
 
 l1 = np.array(l_1)
+l2 = np.array(l_2)
 l3 = np.array(l_3)
 
 l1_m = np.mean(l1)
+l2_m = np.mean(l2)
 l3_m = np.mean(l3)
+
 
 l1_sigma = np.std(l1, ddof=1)
 l3_sigma = np.std(l3, ddof=1)
-print('mittelwert, l1:',l1_m)
-print('sigma l1:', l1_sigma/np.sqrt(6))
+print('mittelwert, l1:',round(l1_m, 5))
+print('sigma l1:', round(l1_sigma/np.sqrt(6), 5))
 
 
-print('mean l3:',l3_m)
-print('sigma l3:', l3_sigma/np.sqrt(3))
+print('mean l3:',round(l3_m, 5))
+print('sigma l3:', round(l3_sigma/np.sqrt(3), 5))
+
+l = (l1_m + l2_m + l3_m)/100
+
+g = 4 * (np.pi)**2 /(T_gewicht**2) * l * (1 + 1/2 * (d[0]/2/100)**2/(l**2))
+print('g:', g)

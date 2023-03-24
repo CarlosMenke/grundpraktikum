@@ -166,8 +166,21 @@ l = (l1_m + l2_m + l3_m)/100
 g = 4 * (np.pi)**2 /(T_gewicht**2) * l * (1 + 1/2 * (d[0]/2/100)**2/(l**2))
 print('g:', g)
 
-d = d[0]/100
+r = d[0]/100/2
 T = T_gewicht
 #TODO check l_sigma
-l_sigma = 0.029
-g_stat = (8*(np.pi)**2/T**3 * l * (1 + 1/2 * d**2/(l**2)))**2 * T_gewicht_stat**2 + ()**2 * l_sigma**2
+l_sigma = 0.029 / 100
+r_sigma = 0.005 / 100
+g_stat_var = (8*(np.pi)**2/(T**3) * l * (1 + 1/2 * r**2/(l**2)))**2 * T_gewicht_stat**2 + (4*np.pi**2/T**2*(1-r**2/(2*l**2)))**2 * l_sigma**2 + (4*np.pi**2/T**2 * r/l)**2 * r_sigma**2
+g_stat = np.sqrt(g_stat_var)
+
+l_syst = 0.07 / 100
+g_syst = (4*np.pi**2/T**2*(1-r**2/(2*l**2))) * l_syst
+
+
+print('g_stat:', round(g_stat, 4), 'm/s^2')
+print('g_syst:', round(g_syst, 4), 'm/s^2')
+
+g_fehler_ges = np.sqrt(g_stat**2 + g_syst**2)
+print('g_fehler_ges:', round(g_fehler_ges, 4), 'm/s^2')
+print('g_fehler_ges rel :', round(g_fehler_ges / g * 100, 2), '%')

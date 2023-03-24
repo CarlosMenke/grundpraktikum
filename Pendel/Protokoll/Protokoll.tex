@@ -26,9 +26,10 @@
 
 \section{Grundlagen}
 
-Ein Pendel kann als physikalisches Pendel beschrieben werden.
+Das Pendel in diesem Versuch, welches aus einem Pendelkörper, einer Pendelstange und einer Aufhängung, bei welcher zwei Nadeln in die Nut eines Winkelaufnehmers gestellt werden, besteht kann als Physikalisches Pendel betrachtet werden.
+Den Genauen Aufbau des Pendels können sie Skizze \ref{Pendel Aufbau} entnehmen.
 Dabei wirkt auf das Pendel eine Kraft von $F_g = m_S \cdot g$, wobei $g$ die zu bestimmende Erdbeschleunigung ist und $m_S$ die Schwere Masse des Pendels.
-Beim Schwingen, befindet sich das Pendel oftmals nicht in der Ruhelage, sondern ist in einer Auslenkung $\varphi$ vom Gleichgewichtszustand entfernt.
+Beim Schwingen, befindet sich das Pendel oftmals nicht in der Ruhelage, sondern ist um den Winkel $\varphi$ vom Gleichgewichtszustand Ausgelenkt.
 Dann wirkt ein rückstellendes Drehmoment $ M = l \cdot F_r$ (mit $l$ als Länge von der Rotationsachse zum Schwerpunkt).
 Da unser Pendel Träge ist, entsteht eine Schwingung: 
 \begin{equation}
@@ -44,7 +45,7 @@ Das Trägheitsmoment ist dabei wie folgt definiert:
     J =  m_T \cdot l^2
 \end{equation}
 Hierbei ist $m_T$ die Träge Masse des Pendels. Dies ist nach dem Einsteinnischen Äquivalenzprinzip aber gleich der schweren Masse, und somit $m_T = m$.
-Aufgelöst nach $\ddot{\varphi}$ ergibt sich ( mit $\omega = 2 \pi f = \frac{2 \pi}{T}$ als Winkelgeschwindigkeit der Schwingung):
+Aufgelöst nach $\ddot{\varphi}$ ergibt sich ( mit $\omega = 2 \pi f = \frac{2 \pi}{T}$) als Winkelgeschwindigkeit der Schwingung):
 \begin{equation}
     \ddot{\varphi} \approx -\frac{g}{l} \cdot \varphi = - \omega^2 \cdot \varphi
 \end{equation}
@@ -52,13 +53,13 @@ Aus dieser DGL lässt sich $\varphi(t)$ bestimmen, zu:
 \begin{equation}
     \varphi(t) = \varphi_{max} \cdot \cos(\omega \cdot t)
 \end{equation}
-Daraus ergibt sich (mit $T$ als dauer einer Schwingungsperiode):
+Daraus ergibt sich (mit $T$ als Dauer einer Schwingungsperiode):
 \begin{equation}
     \omega^2 = \frac{m \cdot g \cdot l_s}{J}
 \end{equation}
 \begin{equation}
     \Rightarrow T = \frac{1}{g} 4 \cdot \pi^2 \cdot \frac{J}{m l_s}
-    label{periodendauer}
+    \label{periodendauer}
 \end{equation}
 Dabei kann man $\omega$ als Quotient von rückstellendes Drehmoment und Trägheitsmoment beschreiben.
 Hier sind alle Größen mit einem einem $_{G}$ versehen sind dem Pendel mit Stange und Gewicht zugehörig. Die mit einem $_{st}$ versehenen Größen gehören nur zur Stange.
@@ -69,7 +70,7 @@ Hier sind alle Größen mit einem einem $_{G}$ versehen sind dem Pendel mit Stan
     \omega_{G}^2 = \frac{M_G}{J_G} = \frac{M_{st} + M_P}{J_{st} + J_P}
 \end{equation}
 Hierbei sind $M_P$ und $J_P$ das Trägheitsmoment und das rückstellende Drehmoment welche auf das zusätzliche angebrachte Gewicht wirken.
-Wenn man die Position des Gewichtes so einstellt, dass die Schwingung der Stange die gleiche Periodendauer hat wie die Schwingung des Gewichtes, dann gilt:
+Wenn man die Position des Gewichtes so einstellt, dass die Schwingung der Stange die gleiche Periodendauer hat wie die Schwingung der Stange mit Gewichtes, dann gilt:
 \begin{equation}
     \omega_{st}^2 = \omega_{G}^2
 \end{equation}
@@ -89,7 +90,7 @@ Folgich da alle Frequenz gleich sind, kann man $\frac{M_G}{J_G} = \omega_{st}^2 
 Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als würde nur der Pendelkörper schwingen. 
 Es macht also kein Unterschied, ob wir die Stange weg lassen oder den Pendelkörper in unseren Berechnungen. \\
 Nun muss noch das Trägheitsmoment des Gewichtes bestimmt werden.
-Das Trägheitsmoment des Gewichtes wenn die Rotationsachse in der Symetrieachse ist bekannt. (1. Summand)
+Für das Trägheitsmoment des Gewichtes wenn dieses in der Rotationsachse liegen würde, kann das Trägheitsmoment eines Zylinders verwendet werden.
 Mit dem Satz von Steiner kann noch das zusätzliche Trägheitsmoment bestimmt werden, welches durch die Verschiebung der Rotationsachse entsteht. (2. Summand)
 \begin{equation}
     J_G = \frac{1}{2} m_G \cdot r_G^2 + m_G \cdot l_G^2
@@ -115,9 +116,10 @@ Nach $g$ Aufgelöst ergibt sich:
 Die Auslenkung des Winkels messen wir dabei mit der Hall-Sonde.
 Das Magnetfeld kann dabei so orientiert werden, dass es vertikal steht.
 Die Hall-Spannung wird dabei von der Hall-Konstante und  der Dicke des stromdurchflossenen Plättchens beeinflusst.
-Hinzu kommt noch das Kreuzprodukt von Magnetfeld und Stromdurchfluss. Da sowohl das Magnetfeld als auch der Stromdurchfluss konstant sind, hängt das Kreuzprodukt nur von vom Sinus des Winkels der beiden ab.
+Hinzu kommt noch das Kreuzprodukt von Magnetfeld und Stromstärke. Da sowohl das Magnetfeld als auch der Stromfluss konstant sind, hängt das Kreuzprodukt nur vom Sinus des Winkels der beiden ab.
 Da wir nur kleine Winkel betrachten, kann man in guter Näherung annehmen, das $\sin(\varphi) \approx \varphi$ ist.
 Folglich ist die Hall-Spannung nur proportional zur Auslenkung des Winkels, da alle anderen Größen konstant sind.
+Deshalb können wir mit der Hall-Sonde unsere Schwingung aufzeichnen.
 
 
 
@@ -134,7 +136,7 @@ An diesen Winkelaufnehmer Wird ein Pendel gehangen, welches aus einem U-Profil, 
 \subsection{Aufbau}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Bilder/Kompletter-Aufbau.pdf}
+    \includegraphics[width=0.9\textwidth]{Bilder/Kompletter-Aufbau.pdf}
     \caption{Nahaufnahme von der Nut mit Nadel}
 \end{figure}
 
@@ -336,16 +338,17 @@ Dies Abschnitte haben wir so gewählt, dass wir diese mit dem jeweiligen Messins
     \subfloat[Skizze U-Profil mit Längenabschnitten]{\includegraphics[width=0.45\textwidth]{Bilder/u-profiel-L.pdf}}
     \hfill 
     \subfloat[Skizze des Gesamten Pendel mit Längenabschnitten]{\includegraphics[width=0.3\textwidth]{Bilder/pendel-gesamt-L.pdf}}
+    \label{Pendel Aufbau}
 \end{figure}
-In den Beiden Skizzen ist zu sehen wie wir die Längenabschnitte gewählt haben. 
+In den beiden Skizzen ist zu sehen wie wir die Längenabschnitte gewählt haben. 
 Hier ist zu beachten, dass die Zeichnung nicht Maßstabsgetreu ist.
 $l_1$ ist der Abstand zwischen Nadelspitze und dem Boden des U-Profils. 
 Dies haben wir mit der Schieblehre gemessen, wären die Pendelstange noch nicht montiert war und das U-Profil nicht auf gehangen.\\
 
-$l_1$ bezeichnet den Abschnitt zwischen dem Boden des U-Profils und der ersten Einkerbug der Pendelaufhängung.
-$l_2$ ist der Abstand zwischen der Ersten Einkerbung bis zum Mittelpunkt des Pendelkörpers.\\ 
+$l_2$ bezeichnet den Abschnitt zwischen dem Boden des U-Profils und der ersten Einkerbug der Pendelaufhängung.
+$l_3$ ist der Abstand zwischen der Ersten Einkerbung bis zum Mittelpunkt des Pendelkörpers.\\ 
 
-Da dad U-Profil zwei Nadeln hat, haben wir von jeder jeweils den Abstand zum Boden gemessen. 
+Da das U-Profil zwei Nadeln hat, haben wir von jeder jeweils den Abstand zum Boden gemessen. 
 Die eine Messung bezeichnen wir als $l_1$ die andere als $l_4$.
 \begin{figure}[H]
     \centering
@@ -355,7 +358,7 @@ Die eine Messung bezeichnen wir als $l_1$ die andere als $l_4$.
 
 Für den Radius des Pendelkörpers haben wir den Durchmesser ($d_p$) von diesem bestimmt.
 Auf diese Längenmessungen gibt es auch Fehler, hier liegen sowohl systematische Fehler als auch statistische Fehler vor.
-Die Systematischen Fehler können den Herstellerangaben entnommen werden für die Messschieber und für das Maßband.
+Die Systematischen Fehler können den Herstellerangaben entnommen werden für das Maßband. Der Messschieber hat kein Systematischen Fehler.
 Die statistischen Fehler können aus der Ablesegenauigkeit bestimmt werden. Diese Fehler werden in der Auswertung genauer diskutiert. 
 
 
@@ -390,7 +393,7 @@ Die statistischen Fehler können aus der Ablesegenauigkeit bestimmt werden. Dies
         \label{tab:längen}
     \end{table}
      
-Die Messung der Schwingung ohne Pendelkörper, haben wir insgesammt drei mal durchgeführt.
+Die Messung der Schwingung ohne Pendelkörper, haben wir insgesamt drei mal durchgeführt.
 Für jede haben wir die Schwingungsverläufe aufgezeichnet.
 \begin{figure}[H]
     \centering
@@ -411,7 +414,7 @@ Um den genauen Verlauf der Schwingung nach zu volziehen, betrachten wir einen Au
 Auf dem Bild sind die ersten 2.25 Schwingungsperioden zu sehen.
 Hier können wir gut erkennen, dass die Schwingung einem Kosinus förmigen verlauf hat.  
 Sie hat eine Amplitude von ca 0.35 Volt. 
-Die in der Graphik angezeigte null Linie, wird nicht genau null sein, da es nicht möglich war den Winkelaufnehmer perfekt auf null zu kalibrieren.
+Die in der Graphik angezeigte Nulllinie, wird nicht genau null sein, da es nicht möglich war den Winkelaufnehmer perfekt auf null zu kalibrieren.
 Die leichten Unregelmäßigkeiten in der Kurve stammen daher, dass wir nur diskrete Messpunkte haben. 
 
 \begin{figure}[H]
@@ -424,8 +427,8 @@ Die leichten Unregelmäßigkeiten in der Kurve stammen daher, dass wir nur diskr
 
 Hier sind die Schwingungsverläufe der zweiten Messung ohne Pendelkörper dargestellt. 
 Auch hier können wir die Abnahme der Amplitude sehen.
-Hier ist ein größerer Ausschnitt zu sehen. Hier kann man erkennen, dass die Schwingung auch Kosinus förmig verläuft. 
-Beim betrachten der Gesamten Schwingung in CASSY konnten wir sehen, dass dieser Kosinus förmige verlauf die gesamte Messung über beibehalten wird.
+Hier ist ein größerer Ausschnitt zu sehen. Hier kann man erkennen, dass die Schwingung auch Kosinus förmig Verläuft. 
+Beim betrachten der Gesamten Schwingung in CASSY konnten wir sehen, dass dieser Kosinus förmige Verlauf die gesamte Messung über beibehalten wird.
 Dies stimmt auch mit den Theoretischen Erwartungen überein.
 
 \begin{figure}[H]
@@ -444,7 +447,6 @@ Dies stimmt auch mit den Theoretischen Erwartungen überein.
 Hier sind die Schwingungsverläufe der dritten Messung dargestellt. Diese weisen die selbe Charakteristik auf wie die vorherigen.
 Dieses Bild zeigt exemplarisch ein Maxima der Schwingung mit eingezeichneten Datenpunkten. 
 Gut zu sehen ist, dass wir diskrete Datenpunkte haben, es liegen genug Datenpunkte im Bereich des Maximums um mit diesen das Maximum zu bestimmen.\\
-%TODO : Einfügen eines Bilds wo der erste Peak bestimmt wird
 Während den Messungen haben wir damit wir die Periodendauer überschlagen können, bei CASSY mit dem Peakschwerpunkt das erste und das zwanzigste Maximum bestimmt.
 
 Sobald das Pendel mit Pendelkörper synchronisiert war zu dem ohne Pendelkörper haben wir hier auch drei Messungen durchgeführt.
@@ -454,11 +456,12 @@ Sobald das Pendel mit Pendelkörper synchronisiert war zu dem ohne Pendelkörper
     \caption{Schwingungsverlauf der ersten Messung mit Pendelkörper}
     \end{figure}
 
-In diesem Graphen kann man erkennen, dass im Gegensatz, zu dem Schwingvorgang ohne Pendelkörper, die Amplitude der Schwingung nicht abnimmt.
-Die Dämpfung ist nach 185s also noch nicht zu sehen.\\
+In diesem Graphen kann man erkennen, dass im Gegensatz, zu dem Schwingvorgang ohne Pendelkörper, die Amplitude der Schwingung kaum abnimmt.
+Die Dämpfung ist nach 185s kaum zu erkennen.
+Die Amplitude der Maxima schwankt leicht, dies ist in allen Schwingungsverläufen mit und ohne Pendelkörper zu sehen.\\
 
 Die zwei Hauptfaktoren der Dämpfung sind der Luftwiederstand und die Reibung am Auflagepunkt der Nadel. 
-Da wir keine Amplitudenabnahme mit Pendelkörper feststellen können, können wir daraus schließen, dass der Luftwiederstand den größeren Anteil der Dämpfung liefert.
+Da wir kaum Amplitudenabnahme mit Pendelkörper feststellen können, können wir daraus schließen, dass der Luftwiederstand den größeren Anteil der Dämpfung liefert.
 
 \begin{figure}[H]
     \centering
@@ -491,7 +494,7 @@ Für jede Messung der komplette Schwingungsverlauf und ein Ausschnitt der Schwin
     \caption{Schwingungsverlauf der dritten Messung mit Pendelkörper}
     \end{figure}
 
-Zuletzt ist hier noch eine Nahaufnahme eines Maxima gezeigt, in dieser kann man erkennen, dass die Messpunkte um das Maxima nicht perfekt Kosinuns förmig sind.
+Zuletzt ist hier noch eine Nahaufnahme eines Maxima gezeigt, in dieser kann man erkennen, dass die Messpunkte um das Maxima nicht perfekt Kosinus förmig sind.
 Dies ist jedoch zur Bestimmung des Peaks kein problem, da wir hierfür den Peakschwerpunkt berechnen.
 
 \begin{figure}[H]
@@ -560,7 +563,7 @@ Auch die Einflussfaktoren auf das Pendel, wärend der Versuchszeit (Dämpfung Er
 Hier noch eine Grafik wo wir den Fehler auf die Zeit der ersten Messung mit Pendelkörper bestimmt haben. 
 Hier sind wir gleich vorgegangen wie oben erklärt. 
 
-\subsection{Bestimmung er Periodendauer}
+\subsection{Bestimmung der Periodendauer}
 Wir haben jede Messung (3x ohne Gewicht und 3x mit) einzeln ausgewertet um die Periodendauer zu bestimmen.
 Für jede Messung haben wir über 110 Perioden aufgezeichnet und diese auch ausgewertet. 
 Zur Auswertung haben wir immer in etwa jeden 10. Peak den Zeitpunkt bestimmt, sodass wir insgesamt 12 Peaks für jede Messung haben.
@@ -783,7 +786,8 @@ Wir haben das Pendel genau genug kalibriert und müssen keinen Korrekturterm bes
 
 Als Fehlerbeiträge auf $l_p$ haben wir den systematischen Fehler welche bei der Messung der Einzellängen auftreten.
 Diese gibt der Hersteller der Messgeräte an. 
-Für das Maßband der Güteklasse zwei ist das ein Fehler von 0.7mm. 
+Für das Maßband der Güteklasse zwei ist das ein Fehler von $(0.3 + 0.2\cdot1)mm$, da wir von dem Maßband 1m ausgenutzt haben.
+Zwar haben wir nicht den kompletten Meter ausgenutzt, wir wollen hier jedoch eine konservative Abschätzung machen. 
 Für den Messschieber liegt kein systematischer Fehler vor.
 
 Des weiteren haben wir noch einen Fehler aufgrund der Ablesegenauigkeit, dies ist ein statistischer Fehler.
@@ -831,7 +835,7 @@ Damit ergibt sich für die einzelnen Abschnitte:
             \midrule
             $l_1$ und $l_4$ & 2.597 & 0.001 & 0 \\
             $l_2$ & 1.110 & 0.001 & 0\\
-            $l_3$ & 64.166 & 0.029 & 0.07\\
+            $l_3$ & 64.166 & 0.029 & 0.05\\
             $d_p$ & 8.080 & 0.001 & 0\\
             \bottomrule
         \end{tabularx}
@@ -844,7 +848,7 @@ Hier könnte man argumentieren, dass auf Grund unseres Vorgehen bei der Messung 
 Jedoch ist der Fehler auf den Messschieber eine Größenordnung kleiner und hat keinen signifikanten Einfluss auf unsere Messung von $l_1$.\\
 Den Radius berechnen wir aus $r_p = \frac{d_p}{2}$
 \begin{center}
-$l_p$ = ($67.873 \pm$ $0.029_{stat}$ $\pm 0.07_{syst}$)$cm$   \qquad $r_p$ = ($4.040$ $\pm 0.0005_{stat}$)$cm$
+$l_p$ = ($67.873 \pm$ $0.029_{stat}$ $\pm 0.05_{syst}$)$cm$   \qquad $r_p$ = ($4.040$ $\pm 0.0005_{stat}$)$cm$
 \end{center}
 
 Für den Fehler auf $l_p$ haben wir die Fehler auf die einzelnen Teilstrecken quadratisch addiert und dann die Wurzel gezogen.
@@ -863,7 +867,7 @@ Dabei haben wir für $T$ das gewichtete Mittel der Periodendauer mit Pendelkörp
             \toprule
             \textbf{Größe} & \textbf{Wert} & $\mathbf{\sigma_{stat}}$ & $\mathbf{\sigma_{syst}}$ \\
             \midrule
-            $l_p$ & 67.873cm & 0.029cm & 0.07cm \\
+            $l_p$ & 67.873cm & 0.029cm & 0.05cm \\
             $r_p$ & 4.040cm & 0.0005cm & --\\
             $T$ & 1.65415s & 0.00004s & --\\
             \bottomrule
@@ -901,31 +905,31 @@ Da unser Abweichung der Periodendauern aber wie in \ref{abweichung_T} gezeigt kl
 Auch den Systematischen Fehler wollen wir mithilfe der Gauß'schen Fehlerfortpflanzung berechnen.
 Als Systematischen Fehler bleibt nur der auf $l_p$, womit sich ergibt:
 \begin{equation}
-    \sigma_{g-syst}^2 =  \sqrt{\left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2} = 0.0101 \frac{m}{s^2}
+    \sigma_{g-syst}^2 =  \sqrt{\left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2} = 0.0072 \frac{m}{s^2}
 \end{equation}
 
 Damit ergibt sich für g:
 
 \begin{equation}
-    g = (9.8102 \pm 0.0042_{stat} \pm 0.0101_{syst}) \frac{m}{s^2}
+    g = (9.8102 \pm 0.0042_{stat} \pm 0.0072_{syst}) \frac{m}{s^2}
 \end{equation}
 Um den Gesamtfehler zu berechnen habe wir Systematischen und Statistischen Fehler quadratisch addiert und dann die Wurzel gezogen.
 \begin{equation}
-    \sigma_{g-ges} = \sqrt{\sigma_{g-stat}^2 + \sigma_{g-syst}^2} = 0.0109 \frac{m}{s^2}
+    \sigma_{g-ges} = \sqrt{\sigma_{g-stat}^2 + \sigma_{g-syst}^2} = 0.0083 \frac{m}{s^2}
 \end{equation}
 \begin{equation}
-    g = (9.8102 \pm 0.0011_{ges}) \frac{m}{s^2}
+    g = (9.8102 \pm 0.0083_{ges}) \frac{m}{s^2}
 \end{equation}
-Damit haben wir einen relativen gesamten Fehler auf $g$ von 1.1\textperthousand.
+Damit haben wir einen relativen gesamten Fehler auf $g$ von 0.9\textperthousand.
 Dabei kommt ein großer Teil des Fehlers von dem Systematischen Fehler.
-Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der Systematische Fehler hierbei wiederum nur vom Maßband kam.
+Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der Systematische Fehler vom Maßband stammt, da der Messschieber keinen hat.
 Der systematische Fehler beim Maßband ist auch größer als der statistische Fehler beim Maßband.
 Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Pendelkörper zur Aufhängung hätten nehmen müssen.
 
 Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma_{g} = 0.0042 \frac{m}{s^2}$.
 Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn alle  Fehlerbeiträge berücksichtigt werden.
 Folglich ist die Statistische Unsicherheit auf $l_p$ mit Abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$. \\
-Dies liegt daran, dass unser Fehler auf die Periodendauer dank guter Auflösung, vielen Messwerten und verwenden der Linearen Regression als Auswertungsmethode sehr klein ist. 
+Dies liegt daran, dass unser Fehler auf die Periodendauer dank guter Auflösung, vielen Messwerten und verwenden der Linearen Regression, als Auswertungsmethode, sehr klein ist. 
 Er also vernachlässigbar wird. \\
 
 
@@ -943,9 +947,10 @@ $g_{lit} = \left(9.811 \pm 0.02 \right)\frac{m}{s^2}$
 \end{center}
 
 Unser Wert für g hat also einen kleineren Fehler als der Literaturwert. 
-Wir haben eine absolute Abweichung von $\Delta g = g_{lit} - g = (0.0007 \pm 0.0011) \frac{m}{s^2}$.
-Wie zu sehen ist, ist die die Abweichung kleiner als unsere Unsicherheit auf $g$.
-Dies bedeutet der von uns Experimentell bestimmte Wert innerhalb von 1$\sigma$ des Literaturwertes liegt, und somit ein sehr gutes Ergebnis darstellt.
+Wir haben eine absolute Abweichung von $\Delta g = g_{lit} - g = (0.0007 \pm 0.0217) \frac{m}{s^2}$.
+Wie zu sehen ist, ist die Abweichung kleiner als die Unsicherheit auf die Abweichung von $g$.
+Wir können also davon ausgehen, dass unser Wert genau genug mit dem Literaturwert übereinstimmt.
+An dem Fehler auf unser bestimmtes $g$ kann man sehen, dass der Experimentell bestimmte Wert innerhalb von 1$\sigma$ des Literaturwertes liegt, und somit ein sehr gutes Ergebnis darstellt.
 Der relative Unterschied vom Literaturwert zum gemessenen Wert ist: $\frac{g_{lit}}{g} =  0.07$ \textperthousand
 Dies ist ebenfalls eine sehr gute Übereinstimmung.
 

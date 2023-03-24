@@ -175,7 +175,7 @@ r_sigma = 0.005 / 100
 g_stat_var = (8*(np.pi)**2/(T**3) * l * (1 + 1/2 * r**2/(l**2)))**2 * T_gewicht_stat**2 + (4*np.pi**2/T**2*(1-r**2/(2*l**2)))**2 * l_sigma**2 + (4*np.pi**2/T**2 * r/l)**2 * r_sigma**2
 g_stat = np.sqrt(g_stat_var)
 
-l_syst = 0.07 / 100
+l_syst = 0.05 / 100
 g_syst = (4*np.pi**2/T**2*(1-r**2/(2*l**2))) * l_syst
 
 

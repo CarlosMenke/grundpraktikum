@@ -141,7 +141,7 @@ An diesen Winkelaufnehmer Wird ein Pendel gehangen, welches aus einem U-Profil, 
 \end{figure}
 
 Der Oberen Skizze kann der Gesamtaufbau entnommen werden. 
-Zunächst werden zwei Tischklemmen mit je einer Stativ Stange am vorne Tisch befestigt.
+Zunächst werden zwei Tischklemmen mit je einer Stativ Stange am vorderen Tisch befestigt.
 Die dritte Stativ Stange wird auf der anderen Seite des Tisches in der bereits angebrachten Halterung befestigt. 
 Mit Kreuzmuffen (in Skizze mit Klemme beschriftet) werden nun die langen Metallstangen verwendet um diese 3 Stativ Stangen zu verbinden, und so ein Dreieck zu bilden.
 Es sollte darauf geachtet, werden, das die Stangen gut in den Kreuzmuffen liegen. 
@@ -149,15 +149,15 @@ Bei der vorderen Stange an welcher später das Pendel auf gehangen wird, muss da
 Dies kann mithilfe der Wasserwaage überprüft werden.\\
 
 Wenn diese Konstruktion stabil ist, kann vorne an der Stange der Winkelaufnehmer befestigt werden. 
-Dieser besteht aus einer Stange in welcher 2 Nut sind mit eine Hall-Sonde. 
+Dieser besteht aus einer Stange in welcher 2 Nut sind mit einer Hall-Sonde. 
 Dies wird an das CASSY angeschlossen.
 Wir haben beide Winkelaufnehmer befestigt, um zu überprüfen welchen wir besser Nullen können, und damit wir später ein Pendel mit und eins ohne Pendelkörper bei der Synchronisation vergleichen können.
 Bei den Winkelaufnehmern muss darauf geachtet werden, dass diese fest genug befestigt sind, sodass sich diese nicht verdrehen bei dem Pendelvorgang.\\
 
-Die beide Pendelstangen werden an ein U-Profil geschraubt.
+Die beiden Pendelstangen werden an ein U-Profil geschraubt.
 Das U-Profil besteht aus zwei Permanentmagneten die ein homogenes Magnetfeld um die Hall-Sonde erzeugen, Zwei Nadeln auf denen das Pendel schwingen wird, und einer Halterung für die Stange. 
 Die zwei Nadeln, werden in die Nut an dem Winkelaufnehmer gestellt.
-Der Stellpunkt der Nadeln ist die Rotationsachse des der Pendelschwingung. \\
+Der Stellpunkt der Nadeln ist die Rotationsachse der Pendelschwingung. \\
 
 \begin{figure}[H]
     \centering
@@ -196,7 +196,7 @@ Bei einer Auslenkung von 7cm hatten wir eine Spannung zwischen -0.4V und 0.4V we
 
 Zur Bestimmung der Messwerterfassungseinstellungen haben wir erst eine Testmessung über wenige Schwingungsperioden durchgeführt, um zu überprüfen wie gut ablesbar die Maxima sind.
 Unser erstes Messintervall war 20ms, Mit diesem Konnten wir die Maxima schon gut ablesen, bei einem Messintervall von 10ms war dies jedoch besser.\\
-Wir haben ebenfalls die zweite Pendelstange auf gehangen und überprüft wie gut ablesbar bei dieser die Maxima sind.
+Wir haben ebenfalls die zweite Pendelstange aufgehangen und überprüft wie gut ablesbar bei dieser die Maxima sind.
  Diese waren unsauberer, was daran liegen könnte, dass die Stange gebogen war, und die Schwingung dadurch nicht so gleichförmig abgelaufen ist.
  Diese Vergleichsmessung haben wir unter Test-Vergleich-01 abgespeichert. \\
 
@@ -534,7 +534,7 @@ Diese haben wir benutzt, da wir wissen, das unser Signal einer Sinusfunktion fol
 Mithilfe der Schwerpunkts Methode wird berücksichtigt, das wenn das Maximum zwischen 2 Punkten liegt, die umliegenden Punkte mit verwendet werden können, um die genaue position des Maximums zu gewichten.
 Da es immer mehrere mögliche sinnvolle Grenzen für den Peakschwerpunkt gibt, haben wir hier für die 1. Messung des Pendels ohne Gewicht, die gewählten Grenzen bei der Fehler Bestimmung genau gezeigt.
 Dabei haben wir bei der Bestimmung des Ablesefehlers die Grenzen versucht ähnlich zu wählen, wie wir sie auch vorher bei der Bestimmung der Peaks gewählt haben.
-Insegasmt haben wir 5 bis 6 verschieden Grenzen genommen. Diese haben wir vom Peak abhängig gemacht. Wir haben darauf geachtet diese nicht immer symmetrisch zu wählen.
+Insegasmt haben wir 6 bis 7 verschieden Grenzen genommen. Diese haben wir vom Peak abhängig gemacht. Wir haben darauf geachtet diese nicht immer symmetrisch zu wählen.
 Die schwankung der bestimmten peaks haben wir dann statistisch analysiert. 
 (Die Reihenfolge der Nummerierung ist nicht die Reihenfolge der Grenzen, sonder dient um das vorgehen zu beschreiben)
 \begin{figure}[H]
@@ -554,6 +554,28 @@ Dabei haben wir diesen Fehler auf die Zeit für alle bestimmten Peaks von der Me
 Dies ist eine valide Annahme, da wir bei allen Peaks die gleiche Auflösung in der Zeit und der Spannung haben, und auch alle Peaks mit der gleichen Methode abgelesen haben.
 Auch die Einflussfaktoren auf das Pendel, wärend der Versuchszeit (Dämpfung Erschütterungen etc.) waren nicht so groß, dass sie einen Einfluss auf den Fehler haben werden.
 
+Hier eine Übersicht von den Maxima und den daraus bestimmten Statistischen Fehler hier in der Tabelle:
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{1.0\textwidth}{X X X X X X X X X}
+       \textbf{M} & \textbf{1 in s}  & \textbf{2 in s} & \textbf{3 in s} & \textbf{4 in s} & \textbf{5 in s} & \textbf{6 in s} & \textbf{7 in s} & \textbf{$\sigma_T$ in s} \\
+       \toprule
+        S1 & 8.105 & 8.099 & 8.100 & 8.088 & 8.098 & 8.107 &    -- & 0.0115 \\
+        S2 & 3.140 & 3.144 & 3.150 & 3.141 & 3.139 & 3.143 &    -- & 0.0072 \\
+        S3 & 3.197 & 3.204 & 3.187 & 3.194 & 3.201 & 3.202 & 3.201 & 0.0110 \\
+        G1 & 4.816 & 4.806 & 4.816 & 4.812 & 4.824 & 4.819  &    -- & 0.0095 \\
+        G2 & 3.296 & 3.286 & 3.293 & 3.295 & 3.292 & 3.304 &    -- & 0.0094 \\
+        G3 & 9.852 & 9.841 & 9.843 & 9.845 & 9.855 & 9.840 & 9.85 &0.0084 \\
+       \midrule
+       \toprule
+    \end{tabularx}
+    \caption{Bestimmung der Statistischen Fehler}
+\end{table}
+Dabei bezeichnet S die Messungen bei denen das Pendel nur aus einer Stange bestand, (S1 ist die 1. Messung, S2 die 2....) und G1 bis G3 meint die Messungen 1 bis 3 von Stange mit Pendelkörper.
+
+ 
+ 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/unsicherheit-bestimmen-gewicht-1.pdf}

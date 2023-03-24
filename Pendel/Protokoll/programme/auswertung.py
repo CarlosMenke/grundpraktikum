@@ -89,7 +89,7 @@ def lin_reg(x, y, y_err, plotname):
     plt.rcParams['axes.labelweight'] = 'normal'
     plt.rcParams['axes.linewidth'] = 1.2
     plt.rcParams['lines.linewidth'] = 2.0
-    plt.rcParams["savefig.pad_inches"] = 0.5
+    plt.rcParams["savefig.pad_inches"] = 1.5
     fig, axarray = plt.subplots(2, 1, figsize=(20,10), sharex=True, gridspec_kw={'height_ratios': [5, 2]})
 
     R,eR,b,eb,chiq,corr = analyse.lineare_regression(x, y, y_err)

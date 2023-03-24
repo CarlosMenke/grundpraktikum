@@ -750,6 +750,7 @@ Wie in den Grundlagen und in der Durchführung diskutiert, sollte die Periodenda
 Daher wollen wir hier die relative Abweichung der Periodendauern berechnen, um zu prüfen, ob dies gegeben ist.
 \begin{equation}
     \frac{\Delta T}{T} = \frac{T_{Stange} - T_{Gewicht}}{T_{Stange}} = \frac{1.65599 - 1.65415}{1.65415} = 0.0011
+    \label{eq:abweichung_T}
 \end{equation}
 Es ist nicht möglich im Rahmen des Experiments eine Abweichung von 0\% zu erreichen.
 Damit wir die Auswertungsmethode welche bereits in den Grundlagen diskutiert wurde verwenden können, muss die Abweichung jedoch kleiner als 0.5\% sein. 
@@ -872,8 +873,13 @@ In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 3.5\cdot10^{-3} $
 dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr klein wird in der Fehlerrechnung.
 Trotzdem wollen wir ihn in der Fehlerrechnung beachten. Somit ergibt sich: $\sigma_{g-stat} = 0.0042 \frac{m}{s^2}$.
 
+%TODO fehler auf T durch verschiebung mit beachten
+Da unsere Periodendauer von dem Pendel mit Pendelkörper und ohne Pendelkörper nicht exakt übereinstimmen, entsteht hierdurch eine systematische Verschiebung pro Schwingung.
+Dies bedeutet auch, das das Gewicht nicht auf der Perfekten höhe angebracht war.
+Diese Stellen einen Systematischen Fehler für das Ergebnis da.
+Da unser Abweichung der Periodendauern aber wie in \ref{abweichung_T} gezeigt kleiner als 0.1\% ist, können wir diesen Fehler in der weiteren Fehlerbetrachtung vernachlässigen, da der systematische Fehler auf $l_p$ überwiegt.
 Auch den Systematischen Fehler wollen wir mithilfe der Gaußischen Fehlerfortpflanzung berücksichtigen.
-Da wir nur einen Systematischen Fehler auf $l_p$ haben, ergibt sich:
+Als Systematischen Fehler bleibt nur der auf $l_p$, womit sich ergibt:
 \begin{equation}
     \sigma_{g-syst}^2 =  \sqrt{\left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2} = 0.0101 \frac{m}{s^2}
 \end{equation}
@@ -896,7 +902,6 @@ Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der System
 Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Gewicht hätten nehmen müssen.
 Dies bedeutet aber auch, das wir die Messung oft genung durchgefüht haben, um den statistischen Fehler kleiner als den Systematischen zu bekommen.
 
-%TODO fehler auf T durch verschiebung mit beachten
 Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma_{g} = 0.0042 \frac{m}{s^2}$.
 Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn auch der statistische Fehlerbeitrag auf $T$ und $r$ berücksichtigt wird.
 Folglich ist die Statistische Unsicherheit auf $l_p$ mit abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$. \\

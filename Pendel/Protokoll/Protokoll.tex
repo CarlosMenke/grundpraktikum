@@ -60,23 +60,36 @@ Daraus ergibt sich (mit $T$ als dauer einer Schwingungsperiode):
     \Rightarrow T = \frac{1}{g} 4 \cdot \pi^2 \cdot \frac{J}{m l_s}
 \end{equation}
 Dabei kann man $\omega$ als Quotient von rückstellendes Drehmoment und Trägheitsmoment beschreiben.
-Hier sind alle Größen mit einem einem G versehen sind dem Gewicht zugehörig. Die mit einem $_st$ versehenen Größen gehören nur zur Stange.
+Hier sind alle Größen mit einem einem $_{G}$ versehen sind dem Pendel mit Stange und Gewicht zugehörig. Die mit einem $_{st}$ versehenen Größen gehören nur zur Stange.
 \begin{equation}
     \omega_{st}^2 = \frac{M_{st}}{J_{st}}
 \end{equation}
 \begin{equation}
-    \omega_{G}^2 = \frac{M_G}{J_G}
+    \omega_{G}^2 = \frac{M_G}{J_G} = \frac{M_{st} + M_P}{J_{st} + J_P}
 \end{equation}
+Hierbei sind $M_P$ und $J_P$ das Trägheitsmoment und das rückstellende Drehmoment welche auf das zusätzliche angebrachte Gewicht wirken.
 Wenn man die Position des Gewichtes so einstellt, dass die Schwingung der Stange die gleiche Periodendauer hat wie die Schwingung des Gewichtes, dann gilt:
 \begin{equation}
     \omega_{st}^2 = \omega_{G}^2
 \end{equation}
 \begin{equation}
-    \omega^2 = \frac{M_{st}}{J_{st}} = \frac{M_G}{J_G}
+    \omega^2 = \omega_p^2 \frac{1 + \frac{M_{st}}{M_P}}{1+\frac{J_{st}}{J_P}} = \omega_{st}^2 \frac{1 + \frac{M_P}{M_{st}}}{1+\frac{J_P}{J_{st}}}
 \end{equation}
+\begin{equation}
+    \Rightarrow \frac{M_P}{M_{st}} = \frac{J_P}{J_{st}}
+\end{equation}
+\begin{equation}
+    \Rightarrow \frac{M_P}{M_{st}} = \frac{J_P}{J_{st}}
+\end{equation}
+\begin{equation}
+    \omega^2 = \frac{M_{st}}{J_{st}} = \frac{M_P}{J_P}
+\end{equation}
+Folgich da alle Frequenz gleich sind, kann man $\frac{M_G}{J_G} = \omega_{st}^2 = \frac{M_{st}}{J_{st}}$ ersetzen.
 Das bedeutet das wir das Pendel mit Gewicht so behandeln können, als würde nur der Pendelkörper schwingen. 
-Es macht also kein Unterschied, ob wir die Stange weg lassen oder den Pendelkörper in unseren Berechnungen.
-Das Trägheitsmoment des Gewichtes (der 1. Summand) und das zusätzliche Trägheitsmoment welches durch die Verschiebung der Rotationsachse mit dem Satz von Steiner hinzukommt:
+Es macht also kein Unterschied, ob wir die Stange weg lassen oder den Pendelkörper in unseren Berechnungen. \\
+Nun muss noch das Trägheitsmoment des Gewichtes bestimmt werden.
+Das Trägheitsmoment des Gewichtes wenn die Rotationsachse in der Symetrieachse ist bekannt. (1. Summand)
+Mit dem Satz von Steiner kann noch das zusätzliche Trägheitsmoment bestimmt werden, welches durch die Verschiebung der Rotationsachse entsteht. (2. Summand)
 \begin{equation}
     J_G = \frac{1}{2} m_G \cdot r_G^2 + m_G \cdot l_G^2
 \end{equation}

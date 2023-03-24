@@ -495,8 +495,9 @@ Dies ist jedoch zur Bestimmung des Peaks kein problem, da wir hierfür den Peaks
   relevanten Literaturwert.
 \end{aufgabe}
 \section{Auswertung}
+
 \subsection{Unsicherheiten auf den Abgelesenen Zeitpunkte}
-Allgemein unterscheidet man immer zwischen systematischen und statistischen Fehlern.
+Allgemein unterscheidet man zwischen systematischen und statistischen Fehlern.
 Bei der Zeit haben wir keinen Systematischen Fehler.
 Der Statistische Fehler kommt in unserem Falle durch das ablesen.
 Um diesen möglichst präzise zu bestimmen, haben wir ihn für jede der 6 Messungen einzeln bestimmt.
@@ -508,46 +509,49 @@ Zudem ist die hier bestimmte Unsicherheit auch wichtig für das Chi-Quadrat, wes
 Wir haben alle Peaks mit der Peakschwerpunkt Methode von Cassy bestimmt.
 Diese haben wir benutzt, da wir wissen, das unser Signal einer Sinusfunktion folgt.
 Mithilfe der Schwerpunkts Methode wird berücksichtigt, das wenn das Maximum zwischen 2 Punkten liegt, die umliegenden Punkte mit verwendet werden können, um die genaue position des Maximums zu gewichten.
-Da es immer mehrere Möglichkeiten für sinnvolle Grenzen für den Peakschwerpunkt gibt, haben wir hier einmal für die 1. Messung des Pendels ohne Gewicht die gewählten Grenzen bei der Fehler bestimmung genau gezeigt.
-Dabei haben wir bei der bestimmung des Ablesefehlers die Grenzen immer so änlich gewählt, wie wir sie auch vorher bei der bestimmung der Peaks gewählt haben.
-Insegasmt haben wir 5 bis 6 verschieden Grenzen genommen. Das haben wir vom Peak abhänging gemacht, da wir keine unsinvollen Grenzen inkludieren wollten.
-5 bis 6 ist dabei aber schon ausreichend genug, um sie danach statistisch zu analysieren.
-(Die Reihenfolge der Nummerierung ist nicht die reihenfolge der Grenzen, sonder dinet nur um sie zu beschreiben)
+Da es immer mehrere mögliche sinnvolle Grenzen für den Peakschwerpunkt gibt, haben wir hier für die 1. Messung des Pendels ohne Gewicht, die gewählten Grenzen bei der Fehler Bestimmung genau gezeigt.
+Dabei haben wir bei der Bestimmung des Ablesefehlers die Grenzen versucht ähnlich zu wählen, wie wir sie auch vorher bei der Bestimmung der Peaks gewählt haben.
+Insegasmt haben wir 5 bis 6 verschieden Grenzen genommen. Diese haben wir vom Peak abhängig gemacht. Wir haben darauf geachtet diese nicht immer symmetrisch zu wählen.
+Die schwankung der bestimmten peaks haben wir dann statistisch analysiert. 
+(Die Reihenfolge der Nummerierung ist nicht die Reihenfolge der Grenzen, sonder dient um das vorgehen zu beschreiben)
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/unsicherheit-bestimmen-stange1-punkte.pdf}
-    \caption{Peakfinder Variation der Grenzen bei Messung Stange 1}
-     
+    \caption{Peakfinder Variation der Grenzen bei Messung Stange 1}     
 \end{figure}
-Zuerst haben wir als Grenzen 3-4, 2-5 und 1-6 genommen, da diese Punkte immer in etwa auf der gleichen höhe lagen.
-Da wir beim Auswerten aber nicht immer Punkte auf der gleichen höhe nehmen konnten, haben wir auch noch leicht verschobene Grenzen genommen.
+Zuerst haben wir als Grenzen 3-4, 2-5 und 1-6 genommen, da diese Punkte immer in etwa auf der gleichen Höhe lagen.
+Da wir beim Auswerten aber nicht immer Punkte auf der gleichen Höhe nehmen konnten, haben wir auch noch leicht verschobene Grenzen gewählt.
 Dies war auch nötig, damit in der anschließenden Fehlerbestimmung für die Streuung ein Realistischer Wert herauskommt.
 Darum haben wir noch die Kombinationen 1-5, 5-3 und 2-6 genommen.
-Anschließend haben wir den Mittelwert gebiltet.
-Dieses ist Sinnvoll, da alle Peaks gleichwarscheinlich sind, entsprechned können wir sie alle gleich gewichten.
-Anschließend haben wir eine konservative Fehlerbestimmung durchgeführt, indem wir die Differenz zu dem Wert genommen haben, welcher am stärksten vom Mittelpunkt abweicht.
+Anschließend haben wir den Mittelwert gebildet.
+Dieses ist Sinnvoll, da alle Peaks gleichwarscheinlich sind, entsprechend können wir sie alle gleich gewichten.
+Anschließend haben wir eine konservative Fehlerabschätzung gemacht, indem wir die Differenz zu dem Wert genommen haben, welcher am stärksten vom Mittelwert abweicht.
 Diese Differenz haben wir dann als Fehler angenommen.
 Dabei haben wir diesen Fehler auf die Zeit für alle bestimmten Peaks von der Messung angenommen.
-Dies ist eine valide Annahme, da wir bei allen Peaks die gleiche Auflösung in der Zeit und der Spannung haben, und auch alle Peaks gleich abgelesehn haben.
-Auch am Pendel hat sich in der Zeit eines Versuches nichts verändert, sodass der statistische Fehler immer gleich ist.
+Dies ist eine valide Annahme, da wir bei allen Peaks die gleiche Auflösung in der Zeit und der Spannung haben, und auch alle Peaks mit der gleichen Methode abgelesen haben.
+Auch die Einflussfaktoren auf das Pendel, wärend der Versuchszeit (Dämpfung Erschütterungen etc.) waren nicht so groß, dass sie einen Einfluss auf den Fehler haben werden.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{plots/unsicherheit-bestimmen-gewicht-1.pdf}
     \caption{Peaks bei Messung Pendel mit Gewicht 1}
 \end{figure}
 
+Hier noch eine Grafik wo wir den Fehler auf die Zeit der ersten Messung mit Pendelkörper bestimmt haben. 
+Hier sind wir gleich vorgegangen wie oben erklärt. 
 
 \subsection{Bestimmung er Periodendauer}
-Wir haben jede Messung (3x ohne Gewicht und 3x mit) einzeln ausgewertet bei der bestimmung der Periodendauer.
-Für jede Messung haben wir über 110 Perioden aufgezeichnet. 
-Zur Auswertung haben wir immer in etwa jeden 10. Peak genommen, sodass wir insgesamt 12 Peaks für jede Messung haben.
-Dies sind somit schon genug Messungen um anschließend Sinnvoll eine Linare Regression durchzuführen.
-Dabei haben wir aber nicht immer strikt jeden 10 Peak genommen, da manche Peaks nur sehr ungenau abzulesen wären.
+Wir haben jede Messung (3x ohne Gewicht und 3x mit) einzeln ausgewertet um die Periodendauer zu bestimmen.
+Für jede Messung haben wir über 110 Perioden aufgezeichnet und diese auch ausgewertet. 
+Zur Auswertung haben wir immer in etwa jeden 10. Peak den Zeitpunkt bestimmt, sodass wir insgesamt 12 Peaks für jede Messung haben.
+Dies sind somit schon genug Messungen um anschließend Sinnvoll eine Lineare Regression durchzuführen.
+Dabei haben wir aber nicht immer strikt jeden 10 Peak genommen, dabei manchen Peaks kein klares Maximum zu erkennen war.
 Wenn dies der Fall war, haben wir den Peak davor oder dahinter genommen.
 In der Folgenden Tabelle sind die Ergebnise von allen Messungen dargestellt.
-Bei den Messdaten haben wir die Messdaten mit den eingezeichneten Peaks immer mit Suffix `mit-maxima` abgespeichert.
-Dort lassen sich alle bestimmten Peas (auch die für die Fehlerbestimmung) nachschauen.
-Hierbei ist N das Anzahl der Maximums, vobei immer in der Spalte rechts daneben die Zeit steht.
+Da wir die Auswertung mit CASSY gemacht haben, haben wir eine Messung bei welcher wir alle benötigten Maxima bestimmt haben, gesondert abgespeichert mit dem Suffix "mit-maxima".
+Dort lassen sich alle bestimmten Peaks (auch die für die Fehlerbestimmung) nachschauen.
+
+In der Tabelle ist N der Index des Maximums, also das wievielte Maximum vorliegt , in der Spalte rechts daneben ist der Zeitpunkt dieses Maxima eingetragen.
 
 \begin{table}[H]
     \centering
@@ -572,7 +576,7 @@ Hierbei ist N das Anzahl der Maximums, vobei immer in der Spalte rechts daneben 
         & 0.0115s & & 0.0072s & & 0.0110s \\
        \toprule
     \end{tabularx}
-    \caption{Maxima \& stat Fehler bei Messung von der Stange}
+    \caption{Maxima \& stat Fehler bei Messung des Pendels ohne Pendelkörper}
 \end{table}
 
  
@@ -600,86 +604,93 @@ Hierbei ist N das Anzahl der Maximums, vobei immer in der Spalte rechts daneben 
         & 0.0095s & & 0.0096s & & 0.0084s \\
        \toprule
     \end{tabularx}
-    \caption{Maxima \& stat Fehler bei der Messung von der Stange und Gewicht}
+    \caption{Maxima \& stat Fehler bei der Messung des Pendels mit Pendelkörper}
 \end{table}
 
 Wie zu sehen ist, hat sich das bestimmen der verschiedenen Statistischen Fehler gelohnt, da diese zum teil sehr unterschiedlich sind.
-Das sie so unterschiedlich sind, kann aber auch zufall sein, da wir immer einen zufälligne Peak untersucht haben.
- 
+Das sie so unterschiedlich sind, kann aber auch zufall sein, da wir immer einen zufälligne Peak untersucht haben.\\
+
+\subsubsection{Bestimmen von T des Pendels ohne Pendelkörper}
 Anschließend haben wir N (auf der x-Achse) gegen die Zeit (y-Achse) geplottet.
 Dabei gibt es keinen Fehler auf N, da wir davon ausgehen das wir uns nicht verzählt haben.
 Der Fehler auf die Zeit ist dabei der statistische Fehler vom ablesen.
 
-Anschließend haben wir eine linare Regression gemacht.
-Dabei ist die Steigung die Periodendauer.
-Der Fehler auf die Periodendauer ist dann der Fehler auf die Steigung von der Linearen Regression.
-Die Chi-Quadrate sind am Ende in einer Tabelle übersichtlich dargestellt.
-Hier der Graph von N gegen T von allen bestimmten Peaks mit der Linearen Regression und Residuen Plot.
+Anschließend haben wir eine lineare Regression gemacht.
+Dabei ist die Steigung der Geraden die Periodendauer.
+Der Fehler auf die Periodendauer ist dann der Fehler auf die Steigung welchen wir aus der linearen Regression erhalten.
+Im folgenden werden Sämtliche lineare Regressionen dargestellt.
+Im obere Graph ist immer die Anzahl gegen die Zeit aufgetragen. 
+Der untere Graph stellt die Abweichung unserer Werte von der linearen Regression dar. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/lineare_regression_stange_1.pdf}
-    \caption{1. Messung von der Stange mit Lineare Regression und Residuen Plot}
+    \caption{1. Messung ohne Pendelkörper mit Lineare Regression und Residuen Plot}
 \end{figure}
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  1.8$
 \end{center}
-Im obrigen Graphen der 1. Messung von der Stange sieht man, wie die gemessene Zeit für N Perioden linear ansteigt.
-Folglich haben wir eine Lineare Funktion als anzupassende Funktion gewählt.
-Im unteren Graphen ist der Residuen Plot zu sehen. Hier haben wir auf der y-Achse die Differenz von gemessener Zeit und der mit der Linaren Regression errechnete Zeit für die Periodenzahl.
+
+Im obigen Graphen der 1. Messung ohne Pendelkörper sieht man, wie die gemessene Zeit für N Perioden linear ansteigt.
+Daran kann man erkennen, dass das anpassen einer linearen Funktion an die Messpunkte eine sinnvolle Herangehensweise ist.
+Im unteren Graphen ist der Residuen Plot zu sehen. Hier haben wir auf der y-Achse die Differenz von gemessener Zeit und der mit der Linaren Regression errechnete Zeit aufgetragen. 
+Auf der x-Achse ist ebenfalls N aufgetragen.
 Im Residuen Plot liegt keine Systematik vor, was für eine gute Anpassung spricht.
 Zudem gibt es keine Ausreißer, da kein Messwert weiter als $3\sigma$ von der Anpassung entfernt ist.
-Nach Augenmaß liegen 5 Messwerte weniger als $1\sigma$ von der Anpassung entfernt. Dies ist etwas mehr als man bei einer Normalverteilung erwarten würde, aber noch ok, da 3 davon fast innerhalb von $1 \sigma$ sodass die Messwerte normalverteilt um die Linare Regression streuen.
-Das $\chi^2$ ist zwar größer als 1, was bedeutet das wir unsere Messfehler etwas unterschätzt haben, aber immer noch gut das es kleiner als 3 ist was bedeutet das wir unsere Messfehler etwas unterschätzt haben, aber immer das es kleiner als 3 ist.
-Der y-Achsenabschnitt ist $ (-0.1773 \pm 0.0063)s$, was gegenüber der Messdauer von über 180s und einer Periodendauer von ca 1.65s sehr klein.
+Nach Augenmaß liegen 6 Messwerte weniger als $1\sigma$ von der Anpassung entfernt. Dies ist etwas weniger als man bei einer Normalverteilung erwarten würde hier sollten 68\% innerhalb einer Standardabweichung liegen. Es liegen jedoch 95\% innerhalb von zwei Standardabweichungen sodass wir schließen können, dass die Messwerte normalverteilt um die Linare Regression streuen.
+Das $\chi^2$ ist zwar größer als 1, was bedeutet das wir unsere Messfehler etwas unterschätzt haben, aber immer noch gut das es kleiner als 3 ist.
+Der y-Achsenabschnitt ist $ (-0.1773 \pm 0.0063)s$, was gegenüber der Messdauer von über 180s und einer Periodendauer von ca 1.65s  klein ist.
 Aus der Steigung ergibt sich $T = (1.6559 \pm 0.0001)s$, was mit unseren überschlagenen Werten von 1.65s übereinstimmt.
 Damit handelt es sich um eine gute Anpassung.
  
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/lineare_regression_stange_2.pdf}
-    \caption{2. Messung von der Stange mit Lineare Regression und Residuen Plot}
+    \caption{2. Messung ohne Pendelkörper mit Lineare Regression und Residuen Plot}
 \end{figure}
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  2.3$
 \end{center}
 Im oberen Graphen der 2. Messung von der Stange sieht man, wie die gemessene Zeit für N Perioden linear ansteigt.
-Im Residuen Plot könnte der 1. Wert ein Ausreißer sein, er liegt aber knapp weniger als $3\sigma$ von der Anpassung entfernt ist.
+Im Residuen Plot könnte der 1. Wert ein Ausreißer sein, er liegt aber knapp weniger als $3\sigma$ von der Anpassung entfernt.
 Die anderen Werte streuen statistisch um die Anpassung und es liegt keine systematische Abweichung vor.
-Dem $\chi^2$ zufolge haben wir die Messfehler unterschätzt, aber immer noch gut das es kleiner als 3 ist.
+Dem $\chi^2$ zufolge haben wir die Messfehler leicht unterschätzt, aber immer noch gut das es kleiner als 3 ist.
 Folglich ist es eine gute Anpassung und die Wahl der Linaren Regression war richtig.
-Mit $b = (-0.1781 \pm 0.0039)s$ ist dieses so wie oben Argumentiert vernachlässigbar nahe an 0, und somit gut.
-Durch die Regression konnte $T = (1.6559 \pm 0.0001)s$ bestimmt werden.
+Mit $b = (-0.1781 \pm 0.0039)s$ ist dieses so wie oben Argumentiert vernachlässigbar nahe an 0.
+Durch die Regression konnte die Periodendauer zu $T = (1.6559 \pm 0.0001)s$ bestimmt werden.
 
 
  
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/lineare_regression_stange_3.pdf}
-    \caption{3. Messung von der Stange mit Lineare Regression und Residuen Plot}
+    \caption{3. Messung ohne Pendelkörper mit Lineare Regression und Residuen Plot}
 \end{figure}
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  1.0$
 \end{center}
 Auch hier kann man im oberen Graphen klar sehen, das die Gesamte Zeit für N Perioden linear ansteigt.
-Im Residuen Plot gibt es keine Ausreißer und 3 Messwerte, welche nicht innerhalb von einer standartabweichung von der Anpassung liegen.
-Dies spiegelt ich im $\chi^2$ wieder, welches genau 1 ist und somit sehr gut.
+Im Residuen Plot gibt es keine Ausreißer und 3 Messwerte, welche nicht innerhalb von einer Standartabweichung von der Anpassung liegen.
+Dies spiegelt sich im $\chi^2$ wieder, welches genau 1 ist und somit sehr gut.
 Dabei ist der y-Achsenabschnitt $b =(-0.1200 \pm 0.0060)s$ und die Steigung $T = (1.6562 \pm 0.0001)s$.
 $b$ ist dabei gegenüber der deutlich größeren Periodendauer vernachlässigbar klein.
-Dies würde man auch erwarten, wenn die Messwerte normalverteilt sind.
+Dies würde man auch erwarten, wenn keine Systematik vorliegt.
 
-Zusammenfassen kann festgehalten werden, das alle Messungen vom Pendel mit der Stange gut mit einer Linaren Regression als Anpassung ausgewertet werden können, und somit über die Steigung die Periodendauer bestimmt werden kann.
-Befor wir die Periodendauer verrechnen, wollen wir die Periodendauern vom Pendel mit Gewicht noch auswerten.
+Zusammenfassen kann festgehalten werden, das alle Messungen vom Pendel ohne Pendelkörper gut mit einer Linearen Regression als Anpassung ausgewertet werden können, und somit über die Steigung die Periodendauer bestimmt werden kann.
+
+Das gleiche Vorgehen wählen wir auch zur Bestimmung der Periodendauer des Pendels mit Pendelkörper.
+
+\subsubsection{Bestimmung von T des Pendels mit Pendelkörper}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/lineare_regression_gewicht_1.pdf}
-    \caption{1. Messung von der Stange + Gewicht mit Lineare Regression und Residuen Plot}
+    \caption{1. Messung mit Pendelkörper: Lineare Regression und Residuen Plot}
 \end{figure}
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  2.0$
 \end{center}
 Oben sind die Messwerte für unsere erste Messung von der Stange mit Gewicht zu sehen.
-Auch diese folgen einer geraden.
+Auch diese folgen einem linearen Zusammenhang.
 Wie im Residuen Plot zu sehen ist, liegt keine Systematik vor.
 Es ist kein Ausreißer dabei, wobei 5 Werte mehr als $1\sigma$ von der Anpassung entfernt liegen.
 Dies ist aber noch akzeptabel, und da das $\chi^2$ kleiner als 3 ist, haben wir den Messfehler auch nicht unterschätzt.
@@ -689,17 +700,17 @@ Die Periodendauer für die erste Messung vom Pendel mit Gewicht ist $T = (1.6542
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{plots/lineare_regression_gewicht_2.pdf}
-    \caption{2. Messung von der Stange + Gewicht mit Lineare Regression und Residuen Plot}
+    \caption{2. Messung mit Pendelkörper: Lineare Regression und Residuen Plot}
 \end{figure}
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  1.3$
 \end{center}
 Wie im oberen Plot zu sehen ist, sind die Messpunkte linear angeordnet.
-Entsprechend wurde eine Linare Regression durchgeführt.
+Entsprechend wurde eine Lineare Regression durchgeführt.
 Wie dem Residuen Plot zu entnehmen ist, gibt es keine Systematik.
-Es gibt keine Ausreißer und alle Werte streuen statistisch um die Linare Regression.
-Die Fehler haben wir leicht zu groß abgeschätzt, aber immer noch gut, da das $\chi^2$ kleiner 1.3 ist. Dies ist dennoch eine sehr gut Anpassung.
-Aus der Linaren Regression ergibt sich $b = (-0.0147 \pm 0.0053)s$ und $T = (1.6542 \pm 0.0001)s$.
+Es gibt keine Ausreißer und alle Werte streuen statistisch um die Lineare Regression.
+Die Fehler haben wir leicht zu groß abgeschätzt, aber immer noch gut, da das $\chi^2$ kleiner 3 ist. Dies ist eine sehr gut Anpassung.
+Aus der Linearen Regression ergibt sich $b = (-0.0147 \pm 0.0053)s$ und $T = (1.6542 \pm 0.0001)s$.
 Diese Werte sprechen beide für eine sehr gute Anpassung.
 
 \begin{figure}[H]
@@ -710,20 +721,20 @@ Diese Werte sprechen beide für eine sehr gute Anpassung.
 \begin{center}
     $ \frac{\chi^2}{ndof}  =  1.8$
 \end{center}
-Auch hier ist im oberen Plot zu sehen, wie die Messwerte linar angeordnet sind.
-Im Residuen Plot ist keine Systematik zu erkennen, was bedeutet das wir keine Anpassung an der anzupassenden Funktion vornehmen müssen.
+Auch hier ist im oberen Plot zu sehen, wie die Messwerte einem linearen Verlauf folgen.
+Im Residuen Plot ist keine Systematik zu erkennen, was bedeutet, dass unsere Anpassung zum tatsächlichen funktionalen Zusammenhang passt.
 Es liegen 3 Werte nicht innerhalb von $1\sigma$, aber keiner von diesen ist ein Ausreißer. Damit sind die Messwerte wie es sein sollte normalverteilt um die Anpassung.
-Das $\chi^2$ ist kleiner als 3, was bedeutet das wir den Messfehler etwas unterschätzt haben, aber es ist immer noch eine gute Anpassung.
-$b = ( -0.0733 \pm 0.0046)s$ und $T = (1.6541 \pm 0.0001)s$ sind die Werte, welche wir aus der Linaren Regression erhalten haben.
-Beide stellen keine Ausreißer dar. \\
+Das $\chi^2$ ist mit 1.8 nahe an 1 uns wir haben somit eine gute Anpassung. 
+$b = ( -0.0733 \pm 0.0046)s$ und $T = (1.6541 \pm 0.0001)s$ sind die Werte, welche wir aus der Linearen Regression erhalten haben.
+Beide passen zu den Erwartungen. \\
 
 Damit konnten wir alle 3 Messungen vom Pendel mit Gewicht gut auswerten.
-Dabei lag in keiner Messung eine Systematik vor, was bedeutet das die Linare Funktion die passende Anpassung ist.
-Da die $\chi^2$ gut waren, heißt es, das wir keine großen Messfehler vergessen haben.
+Dabei lag in keiner Messung eine Systematik vor, was bedeutet das die Lineare Funktion die passende Anpassung ist.
+Da die $\chi^2$ gut waren, heißt es, das wir bei der Bestimmung unserer Messfehler gut vorgegangen sind, und auch keine vergessen haben oder überschätzt.
 
 
-Zur wieteren Auswertung haben wir die Periodendauern für das Pendel mit Stange und das Pendel mit Stange und Gewicht mithilfe des Gewichteten Mittels verrechnet.
-Als Unsicherheit haben wir die Unsicherheit auf $T$ aus der Linaren Regression genommen.
+Zur weiteren Auswertung haben wir die Periodendauern für das Pendel mit Stange und das Pendel mit Stange und Gewicht mithilfe des Gewichteten Mittels verrechnet.
+Als Unsicherheit haben wir die Unsicherheit auf $T$ aus der Linearen Regression genommen.
 Der Fehler ergibt sich dabei aus der Wurzel der Varianz der Gewichteten Mittels.
 \begin{equation}
     T_{Stange} = (1.65599 \pm 0.00004)s
@@ -731,18 +742,21 @@ Der Fehler ergibt sich dabei aus der Wurzel der Varianz der Gewichteten Mittels.
 \begin{equation}
     T_{Gewicht} = (1.65415 \pm 0.00004)s
 \end{equation}
-Dabei ist die relative statistische Ungenauigkeit auf $T_{Stange}$ und $T_{Gewicht}$ mit $0.02$\textperthousand gegeben. (Dies haben wir mit aus dem Quotieten des statistischen Fehlers durch den Wert von $T_{Stange}$ bzw. $T_{Gewicht}$ berechnet.
-Da T quadratisch in $g$ eingeht, muss für eine ausreichende Genauigkeit von $g$, $T$ kleiner als $0.1$ \textperthousand sein.
-Dies ist also gegeben
-%TODO ergibt das Sinn? Und muss eine einheit hinter das prozen zeichen?
+Dabei ist die relative statistische Ungenauigkeit auf $T_{Stange}$ und $T_{Gewicht}$ mit $0.02$\textperthousand \quad gegeben. (Dies haben wir aus dem Quotieten des statistischen Fehlers durch den Wert von $T_{Stange}$ bzw. $T_{Gewicht}$ berechnet).
+Da T quadratisch in $g$ eingeht, muss für eine ausreichende Genauigkeit von $g$, der relative Fehler auf  $T$ kleiner als $0.1$ \textperthousand sein.
+Dies ist in unserem Fall gegeben.\\
 
 Wie in den Grundlagen und in der Durchführung diskutiert, sollte die Periodendauer in beiden Fällen gleich sein.
 Daher wollen wir hier die relative Abweichung der Periodendauern berechnen, um zu prüfen, ob dies gegeben ist.
 \begin{equation}
     \frac{\Delta T}{T} = \frac{T_{Stange} - T_{Gewicht}}{T_{Stange}} = \frac{1.65599 - 1.65415}{1.65415} = 0.0011
 \end{equation}
-Da wir keine Abweichung von 0\% erreichen mussten um unsere Auswertungs Methoden aus den Grundlagen noch Sinnvoll anzuwenden, war die Grenzen bei 0.5\%.
-Da wir eine Abweichung von 0.11\% haben, sind unsere Auswertungsmethoden noch Sinnvoll sind und wir haben das Pendel genau genung kalibriert.
+Es ist nicht möglich im Rahmen des Experiments eine Abweichung von 0\% zu erreichen.
+Damit wir die Auswertungsmethode welche bereits in den Grundlagen diskutiert wurde verwenden können, muss die Abweichung jedoch kleiner als 0.5\% sein. 
+Diese ist bei unserer Messung gegeben. 
+Da wir eine Abweichung von 0.11\% haben, können wir diese Auswertungsmethoden noch Sinnvoll verwenden. 
+Wir haben das Pendel genau genug kalibriert und müssen keinen Korrekturterm bestimmen.\\
+
  
 \subsection{Bestimmung von $l_p$}
 
@@ -828,9 +842,9 @@ Dabei haben wir für $T$ die bestimme Periodendauer mit Gewicht genommen.
             \toprule
             \textbf{Größe} & \textbf{Wert} & $\mathbf{\sigma_{stat}}$ & $\mathbf{\sigma_{syst}}$ \\
             \midrule
-            $l_p$ & 68.007 & 0.029cm & 0.07cm \\
-            $r_p$ & 4.040 & 0.0005cm & 0cm\\
-            $T$ & 1.65415s & 0.00004s &\\
+            $l_p$ & 68.007cm & 0.029cm & 0.07cm \\
+            $r_p$ & 4.040cm & 0.0005cm & --\\
+            $T$ & 1.65415s & 0.00004s & --\\
             \bottomrule
         \end{tabularx}
         \caption{Relevanten Observablen und ihre Fehler}
@@ -845,7 +859,7 @@ Dabei haben wir für $T$ die bestimme Periodendauer mit Gewicht genommen.
 
 Für den Fehler auf g erhalten wir mit der Gauß'schen Fehlerfortpflanzung :
 \begin{equation}
-\sigma_g^2 = \left(\frac{8\pi^2}{T^3}l_p\left(1+\frac{r_p^2}{2l_p^2}\right)^2\right)^2 \sigma_T^2 + \left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2 + \left(\frac{4\pi^2}{T^2}\frac{r_p}{l_p}\right)^2\sigma_r^2 
+\sigma_g^2 = \left(\frac{8\pi^2}{T^3}l_p\left(1+\frac{r_p^2}{2l_p^2}\right)\right)^2 \sigma_T^2 + \left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2 + \left(\frac{4\pi^2}{T^2}\frac{r_p}{l_p}\right)^2\sigma_r^2 
 %TODO muss 1 + r/2l quadiert werden im ersten summanten?
 \end{equation}
 
@@ -853,8 +867,7 @@ Der letzte Beitrag welcher proportional zu $\sigma_r$ ist, kann vernachlässigt 
 der Fehler auf $r_p$ ist im Vergleich zu den anderen Fehlerbeiträgen klein. 
 Außerdem ist in der Fehlerrechnung $\sigma_r^2 \propto \left(\frac{r_p}{l_p}\right)^2$.
 Dieser Quotient ist sehr klein, da $ r_p \ll l_p^2 $. 
-%TODO stimmt die zahl fuer r/l ^2? ich habe da 0.003 raus
-In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 4.5\cdot10^{-3} $
+In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 3.5\cdot10^{-3} $
 
 dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr klein wird in der Fehlerrechnung.
 Trotzdem wollen wir ihn in der Fehlerrechnung beachten.

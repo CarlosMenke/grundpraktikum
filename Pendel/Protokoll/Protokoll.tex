@@ -870,21 +870,44 @@ Dieser Quotient ist sehr klein, da $ r_p \ll l_p^2 $.
 In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 3.5\cdot10^{-3} $
 
 dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr klein wird in der Fehlerrechnung.
-Trotzdem wollen wir ihn in der Fehlerrechnung beachten.
+Trotzdem wollen wir ihn in der Fehlerrechnung beachten. Somit ergibt sich: $\sigma_{g-stat} = 0.0042 \frac{m}{s^2}$.
 
+Auch den Systematischen Fehler wollen wir mithilfe der Gaußischen Fehlerfortpflanzung berücksichtigen.
+Da wir nur einen Systematischen Fehler auf $l_p$ haben, ergibt sich:
+\begin{equation}
+    \sigma_{g-syst}^2 =  \sqrt{\left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2} = 0.0101 \frac{m}{s^2}
+\end{equation}
 
 Damit ergibt sich für g:
 
-\begin{center}
-g = 
-\end{center}
+\begin{equation}
+    g = (9.8102 \pm 0.0042_{stat} \pm 0.0101_{syst}) \frac{m}{s^2}
+\end{equation}
+Um den Gesamtfehler zu berechnen habe wir Systematischen und Statistischen Fehler quadratisch addiert und dann die Wurzel gezogen.
+\begin{equation}
+    \sigma_{g-ges} = \sqrt{\sigma_{g-stat}^2 + \sigma_{g-syst}^2} = 0.0109 \frac{m}{s^2}
+\end{equation}
+\begin{equation}
+    g = (9.8102 \pm 0.00109_{ges}) \frac{m}{s^2}
+\end{equation}
+Damit haben wir einen relativen gesamten Fehler auf $g$ von 1.1\textperthousand.
+Dabei kommt ein großer Teil des Fehlers von dem Systematischen Fehler.
+Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der Systematische Fehler hierbei wiederum nur vom Maßband kam.
+Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Gewicht hätten nehmen müssen.
+Dies bedeutet aber auch, das wir die Messung oft genung durchgefüht haben, um den statistischen Fehler kleiner als den Systematischen zu bekommen.
+
+Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma{g} = 0.0042 \frac{m}{s^2}$.
+Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn auch der statistische Fehlerbeitrag auf $T$ und $r$ berücksichtigt wird.
+Folglich ist die Statistische Unsicherheit auf $l_p$ mit abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$.
+
+...\\
 
 Zum Vergleich mit den Literaturwert haben wir zunächst mit einer Karte die geographische Breite und Länge des Modulbau II Physik bestimmt.
 Dort haben wir auch die Höhe über dem Meeresspiegel abgelesen. 
 Die Höhe des Gebäudes haben wir auf 5m geschätzt also insgesamt eine Höhe von 215m.
 
 Diese Parameter haben wir in die Webseite zur Onlineberechnung des Schwerewerts g des Bundesamt für Kartographie eingetragen. 
-Somit haben wir einen erwarteten Wert für $g = 9.810853 \frac{m}{s^2}$
+Somit haben wir einen erwarteten Wert für $g_{lit} = 9.810853 \frac{m}{s^2}$
 
 \end{document}
 

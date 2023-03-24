@@ -162,6 +162,7 @@ print('mean l3:',round(l3_m, 5))
 print('sigma l3:', round(l3_sigma/np.sqrt(3), 5))
 
 l = (l1_m + l2_m + l3_m)/100
+print('l:', round(l * 100, 3), 'cm')
 
 g = 4 * (np.pi)**2 /(T_gewicht**2) * l * (1 + 1/2 * (d[0]/2/100)**2/(l**2))
 print('g:', round(g, 4), 'm/s^2')

@@ -888,7 +888,7 @@ Um den Gesamtfehler zu berechnen habe wir Systematischen und Statistischen Fehle
     \sigma_{g-ges} = \sqrt{\sigma_{g-stat}^2 + \sigma_{g-syst}^2} = 0.0109 \frac{m}{s^2}
 \end{equation}
 \begin{equation}
-    g = (9.8102 \pm 0.00109_{ges}) \frac{m}{s^2}
+    g = (9.8102 \pm 0.0011_{ges}) \frac{m}{s^2}
 \end{equation}
 Damit haben wir einen relativen gesamten Fehler auf $g$ von 1.1\textperthousand.
 Dabei kommt ein großer Teil des Fehlers von dem Systematischen Fehler.
@@ -896,18 +896,25 @@ Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der System
 Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Gewicht hätten nehmen müssen.
 Dies bedeutet aber auch, das wir die Messung oft genung durchgefüht haben, um den statistischen Fehler kleiner als den Systematischen zu bekommen.
 
-Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma{g} = 0.0042 \frac{m}{s^2}$.
+%TODO fehler auf T durch verschiebung mit beachten
+Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma_{g} = 0.0042 \frac{m}{s^2}$.
 Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn auch der statistische Fehlerbeitrag auf $T$ und $r$ berücksichtigt wird.
-Folglich ist die Statistische Unsicherheit auf $l_p$ mit abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$.
+Folglich ist die Statistische Unsicherheit auf $l_p$ mit abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$. \\
 
-...\\
 
 Zum Vergleich mit den Literaturwert haben wir zunächst mit einer Karte die geographische Breite und Länge des Modulbau II Physik bestimmt.
 Dort haben wir auch die Höhe über dem Meeresspiegel abgelesen. 
 Die Höhe des Gebäudes haben wir auf 5m geschätzt also insgesamt eine Höhe von 215m.
 
 Diese Parameter haben wir in die Webseite zur Onlineberechnung des Schwerewerts g des Bundesamt für Kartographie eingetragen. 
-Somit haben wir einen erwarteten Wert für $g_{lit} = 9.810853 \frac{m}{s^2}$
+Somit haben wir einen erwarteten Literaturwert von $g_{lit} = 9.810853 \frac{m}{s^2}$.
+Den Fehler auf $g_{lit}$ haben wir dabei vernachlässigt, da wir ihn mit 7 Signifikante Stellen ablesehn konnten, womit die Ungenauigkeit auf unser gemessenes $g$ deutlich überwiegt.
+Entsprechend haben wir ihn für die folgende Rechnung auf 5 Signifikante Stellen aufgerundet.
+Damit haben wir eine absolute Abweichung von $\Delta g = g_{lit} - g = (0.0007 \pm 0.0011) \frac{m}{s^2}$.
+Wie zu sehen ist, ist die die abweichung kleiner als unsere Unsicherheit auf $g$.
+Dies bedeutet der von uns Experimentell bestimmte Wert innerhalb von 1$\sigma$ des Literaturwertes liegt, und somit ein sehr gutes Ergebnis darstellt.
+Der relative Unterschied vom Literaturwert zum gemessenen Wert ist: $\frac{g_{lit}}{g} =  0.07$ \textperthousand
+Dies ist ebenfalls eine sehr gute Übereinstimmung.
 
 \end{document}
 

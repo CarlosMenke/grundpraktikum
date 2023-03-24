@@ -835,7 +835,7 @@ Da wir nur einen Systematischen Fehler auf $l_3$ haben, bleibt dieser bei der qu
 \subsection{Bestimmen von g}
 
 Zur Berechnung der Erdbeschleunigung brauchen wir die Folgenden Größen und ihre Fehler:
-Dabei haben wir für $T$ die bestimme Periodendauer mit Gewicht genommen.
+Dabei haben wir für $T$ das gewichtete Mittel der Periodendauer mit Pendelkörper verwendet.
  
 \begin{table}[H]
         \centering
@@ -844,7 +844,7 @@ Dabei haben wir für $T$ die bestimme Periodendauer mit Gewicht genommen.
             \textbf{Größe} & \textbf{Wert} & $\mathbf{\sigma_{stat}}$ & $\mathbf{\sigma_{syst}}$ \\
             \midrule
             $l_p$ & 67.873cm & 0.029cm & 0.07cm \\
-            $r_p$ & 4.040cm & 0.0005cm & 0cm\\
+            $r_p$ & 4.040cm & 0.0005cm & --\\
             $T$ & 1.65415s & 0.00004s & --\\
             \bottomrule
         \end{tabularx}
@@ -875,11 +875,10 @@ Trotzdem wollen wir ihn in der Fehlerrechnung beachten. Somit ergibt sich: $\sig
 
 %TODO fehler auf T durch verschiebung mit beachten
 Da unsere Periodendauer von dem Pendel mit Pendelkörper und ohne Pendelkörper nicht exakt übereinstimmen, entsteht dadurch eine systematische Verschiebung pro Schwingung.
-Dies bedeutet auch, das das Gewicht etwas zu etwas zu hoch angebracht, da $T_{Stange} > T_{Gewicht}$ ist.
-Dieser Fehler verschiebt die Periodendauer als systematisch nach unten.
-Diese Stellen einen Systematischen Fehler für das Ergebnis da.
+Dies bedeutet auch, dass das Gewicht etwas zu hoch angebracht war, da $T_{Stange} > T_{Gewicht}$ ist.
+Dieser Fehler verschiebt die Periodendauer systematisch nach unten und stellt einen systematischen Fehler für das Ergebnis dar.
 Da unser Abweichung der Periodendauern aber wie in \ref{abweichung_T} gezeigt kleiner als 0.1\% ist, können wir diesen Fehler in der weiteren Fehlerbetrachtung vernachlässigen, da der systematische Fehler auf $l_p$ überwiegt.
-Auch den Systematischen Fehler wollen wir mithilfe der Gaußischen Fehlerfortpflanzung berücksichtigen.
+Auch den Systematischen Fehler wollen wir mithilfe der Gauß'schen Fehlerfortpflanzung berechnen.
 Als Systematischen Fehler bleibt nur der auf $l_p$, womit sich ergibt:
 \begin{equation}
     \sigma_{g-syst}^2 =  \sqrt{\left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2} = 0.0101 \frac{m}{s^2}
@@ -900,31 +899,35 @@ Um den Gesamtfehler zu berechnen habe wir Systematischen und Statistischen Fehle
 Damit haben wir einen relativen gesamten Fehler auf $g$ von 1.1\textperthousand.
 Dabei kommt ein großer Teil des Fehlers von dem Systematischen Fehler.
 Dieser kommt wiederum ausschließlich von dem Fehler auf $l_p$, wobei der Systematische Fehler hierbei wiederum nur vom Maßband kam.
-Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Gewicht hätten nehmen müssen.
-Dies bedeutet aber auch, das wir die Messung oft genung durchgefüht haben, um den statistischen Fehler kleiner als den Systematischen zu bekommen.
+Der systematische Fehler beim Maßband ist auch größer als der statistische Fehler beim Maßband.
+Das bedeutet, was wir um unser Unsicherheit auf $g$ zu verringern am besten eine genauere Messmethode für den Abstand vom Pendelkörper zur Aufhängung hätten nehmen müssen.
 
 Wenn man für den Statistischen Fehler auf $g$ nur die statistische Unsicherheit auf die Längenmessung betrachtet, dann ergibt sich $\sigma_{g} = 0.0042 \frac{m}{s^2}$.
-Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn auch der statistische Fehlerbeitrag auf $T$ und $r$ berücksichtigt wird.
-Folglich ist die Statistische Unsicherheit auf $l_p$ mit abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$. \\
+Wie man erkennen kann, ist dies auf 2 Signifikante Stellen das gleiche wie wenn alle  Fehlerbeiträge berücksichtigt werden.
+Folglich ist die Statistische Unsicherheit auf $l_p$ mit Abstand der größte Fehlerbeitrag auf $\sigma_{g-stat}$. \\
+Dies liegt daran, dass unser Fehler auf die Periodendauer dank guter Auflösung, vielen Messwerten und verwenden der Linearen Regression als Auswertungsmethode sehr klein ist. 
+Er also vernachlässigbar wird. \\
+
 
 
 Zum Vergleich mit den Literaturwert haben wir zunächst mit einer Karte die geographische Breite und Länge des Modulbau II Physik bestimmt.
 Dort haben wir auch die Höhe über dem Meeresspiegel abgelesen. 
 Die Höhe des Gebäudes haben wir auf 5m geschätzt also insgesamt eine Höhe von 215m.
 
-Diese Parameter haben wir in die Webseite zur Onlineberechnung des Schwerewerts g des Bundesamt für Kartographie eingetragen. 
+Diese Parameter haben wir in die Webseite zur Onlineberechnung des Schwerewerts g des Bundesamt für Kartographie und Geodäsie eingetragen. 
 Somit haben wir einen erwarteten Literaturwert von $g_{lit} = 9.810853 \frac{m}{s^2}$.
-Den Fehler auf $g_{lit}$ haben wir dabei vernachlässigt, da wir ihn mit 7 Signifikante Stellen ablesehn konnten, womit die Ungenauigkeit auf unser gemessenes $g$ deutlich überwiegt.
-Entsprechend haben wir ihn für die folgende Rechnung auf 5 Signifikante Stellen aufgerundet.
-Damit haben wir eine absolute Abweichung von $\Delta g = g_{lit} - g = (0.0007 \pm 0.0011) \frac{m}{s^2}$.
-Wie zu sehen ist, ist die die abweichung kleiner als unsere Unsicherheit auf $g$.
+Die Genauigkeit auf $g_{lit}$ ist auf der Webseite als besser als 2 mgal bei stark bewegter Topographie angegeben.
+1 mgal = 0.01$\frac{m}{s^2}$. Also ist der Literaturwert gegeben als:
+\begin{center}
+$g_{lit} = \left(9.811 \pm 0.02 \right)\frac{m}{s^2}$
+\end{center}
+
+Unser Wert für g hat also einen kleineren Fehler als der Literaturwert. 
+Wir haben eine absolute Abweichung von $\Delta g = g_{lit} - g = (0.0007 \pm 0.0011) \frac{m}{s^2}$.
+Wie zu sehen ist, ist die die Abweichung kleiner als unsere Unsicherheit auf $g$.
 Dies bedeutet der von uns Experimentell bestimmte Wert innerhalb von 1$\sigma$ des Literaturwertes liegt, und somit ein sehr gutes Ergebnis darstellt.
 Der relative Unterschied vom Literaturwert zum gemessenen Wert ist: $\frac{g_{lit}}{g} =  0.07$ \textperthousand
 Dies ist ebenfalls eine sehr gute Übereinstimmung.
 
 \end{document}
 
-%TODO : g neu berechnen auf Protokoll
-%TODO : Auf messprotokoll noch das ablesen genauer drauf schreiben und now für letzten zwei messungen überschlag hinzufügen aber in falsch
-%TODO : l_3 in ALLEN tabellen umändern
-%TODO : Fehler auf Lineare Regression überarbeiten

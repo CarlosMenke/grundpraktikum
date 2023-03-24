@@ -495,19 +495,19 @@ Dies ist jedoch zur Bestimmung des Peaks kein problem, da wir hierfür den Peaks
   relevanten Literaturwert.
 \end{aufgabe}
 \section{Auswertung}
-\subsection{Unseicherheiten auf den Abgelesenen Zeitpunkte}
+\subsection{Unsicherheiten auf den Abgelesenen Zeitpunkte}
 Allgemein unterscheidet man immer zwischen systematischen und statistischen Fehlern.
-Bei der Zeit gibt es aber keinen Systematischen Fehler.
-Der Statistische Fehler kommt in unserem Falle vom ablesen.
+Bei der Zeit haben wir keinen Systematischen Fehler.
+Der Statistische Fehler kommt in unserem Falle durch das ablesen.
 Um diesen möglichst präzise zu bestimmen, haben wir ihn für jede der 6 Messungen einzeln bestimmt.
-Eigentlich sollte der einmal bestimmte ablesefehler für alle Messungen gelten, da wir immer die gleiche Messmethode und Messeinstellungen hatten, und auch alle Pendel ungefär mit der gleichen Frequenz geschwungen sind.
-Da wir beim anschauen der Rohdaten aber festgestellt haben, das nicht alle Peaks von allen Messreihen gleich sauber sind, haben wir es für jede Messreihen einzeln analysiert.
-Zudem ist die hier bestimmte Unsicherheit auch wichtig für das Chi-Quadrat, weshalb es für jede Messreihe genau passen sollte.
+Eigentlich sollte der einmal bestimmte Ablesefehler für alle Messungen gelten, da wir immer die gleiche Messmethode und Messeinstellungen hatten, und auch alle Pendel ungefähr mit der gleichen Frequenz geschwungen sind.
+Da wir beim anschauen der Rohdaten aber festgestellt haben, das nicht alle Peaks von allen Messreihen gleich sauber sind, haben wir den Fehler für jede Messung einzeln analysiert.
+Zudem ist die hier bestimmte Unsicherheit auch wichtig für das Chi-Quadrat, weshalb es für jede Messreihe genau passen sollte.\\
  
  
 Wir haben alle Peaks mit der Peakschwerpunkt Methode von Cassy bestimmt.
-Diese haben wir benutzt, da wir wissen, das unser Signal einer Sinusfunktion folgt und nicht einer Gleichverteilung oder änlichem.
-Mithilfe der Schwerpunkts Methode haben wir berücksichtigt, das wenn das Maximum zwischen 2 Punkten liegt, es vermutlich dichter am höheren ist.
+Diese haben wir benutzt, da wir wissen, das unser Signal einer Sinusfunktion folgt.
+Mithilfe der Schwerpunkts Methode wird berücksichtigt, das wenn das Maximum zwischen 2 Punkten liegt, die umliegenden Punkte mit verwendet werden können, um die genaue position des Maximums zu gewichten.
 Da es immer mehrere Möglichkeiten für sinnvolle Grenzen für den Peakschwerpunkt gibt, haben wir hier einmal für die 1. Messung des Pendels ohne Gewicht die gewählten Grenzen bei der Fehler bestimmung genau gezeigt.
 Dabei haben wir bei der bestimmung des Ablesefehlers die Grenzen immer so änlich gewählt, wie wir sie auch vorher bei der bestimmung der Peaks gewählt haben.
 Insegasmt haben wir 5 bis 6 verschieden Grenzen genommen. Das haben wir vom Peak abhänging gemacht, da wir keine unsinvollen Grenzen inkludieren wollten.
@@ -831,7 +831,20 @@ Außerdem ist in der Fehlerrechnung $\sigma_r^2 \propto \left(\frac{r_p}{l_p}\ri
 Dieser Quotient ist sehr klein, da $ r_p \ll l_p^2 $. 
 In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 4.5\cdot10^{-3} $
 dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr klein wird in der Fehlerrechnung.
+Trotzdem wollen wir ihn in der Fehlerrechnung beachten.
 
+Damit ergibt sich für g:
+
+\begin{center}
+g = 
+\end{center}
+
+Zum Vergleich mit den Literaturwert haben wir zunächst mit einer Karte die geographische Breite und Länge des Modulbau II Physik bestimmt.
+Dort haben wir auch die Höhe über dem Meeresspiegel abgelesen. 
+Die Höhe des Gebäudes haben wir auf 5m geschätzt also insgesamt eine Höhe von 215m.
+
+Diese Parameter haben wir in die Webseite zur Onlineberechnung des Schwerewerts g des Bundesamt für Kartographie eingetragen. 
+Somit haben wir einen erwarteten Wert für $g = 9.810853 \frac{m}{s^2}$
 
 \end{document}
 
@@ -841,3 +854,5 @@ dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr kl
 
 %TODO : g neu berechnen auf Protokoll
 %TODO : Auf messprotokoll noch das ablesen genauer drauf schreiben und now für letzten zwei messungen überschlag hinzufügen aber in falsch
+%TODO : l_3 in ALLEN tabellen umändern
+%TODO : Fehler auf Lineare Regression überarbeiten

@@ -731,6 +731,10 @@ Der Fehler ergibt sich dabei aus der Wurzel der Varianz der Gewichteten Mittels.
 \begin{equation}
     T_{Gewicht} = (1.65415 \pm 0.00004)s
 \end{equation}
+Dabei ist die relative statistische Ungenauigkeit auf $T_{Stange}$ und $T_{Gewicht}$ mit $0.02$\textperthousand gegeben. (Dies haben wir mit aus dem Quotieten des statistischen Fehlers durch den Wert von $T_{Stange}$ bzw. $T_{Gewicht}$ berechnet.
+Da T quadratisch in $g$ eingeht, muss für eine ausreichende Genauigkeit von $g$, $T$ kleiner als $0.1$ \textperthousand sein.
+Dies ist also gegeben
+%TODO ergibt das Sinn? Und muss eine einheit hinter das prozen zeichen?
 
 Wie in den Grundlagen und in der Durchführung diskutiert, sollte die Periodendauer in beiden Fällen gleich sein.
 Daher wollen wir hier die relative Abweichung der Periodendauern berechnen, um zu prüfen, ob dies gegeben ist.
@@ -816,16 +820,17 @@ Da wir nur einen Systematischen Fehler auf $l_3$ haben, bleibt dieser bei der qu
 \subsection{Bestimmen von g}
 
 Zur Berechnung der Erdbeschleunigung brauchen wir die Folgenden Größen und ihre Fehler:
+Dabei haben wir für $T$ die bestimme Periodendauer mit Gewicht genommen.
  
 \begin{table}[H]
         \centering
         \begin{tabularx}{1.0\textwidth}{X X X X} % adjust width as needed
             \toprule
-            \textbf{Größe} & \textbf{Wert} & $\mathbf{\sigma_{stat}}$ in cm & $\mathbf{\sigma_{syst}}$ in cm\\
+            \textbf{Größe} & \textbf{Wert} & $\mathbf{\sigma_{stat}}$ & $\mathbf{\sigma_{syst}}$ \\
             \midrule
-            $l_p$ & 68.007 & 0.029 & 0.07 \\
-            $r_p$ & 4.040 & 0.0005 & 0\\
-            $T$ & ....& ...&\\
+            $l_p$ & 68.007 & 0.029cm & 0.07cm \\
+            $r_p$ & 4.040 & 0.0005cm & 0cm\\
+            $T$ & 1.65415s & 0.00004s &\\
             \bottomrule
         \end{tabularx}
         \caption{Relevanten Observablen und ihre Fehler}
@@ -841,14 +846,18 @@ Zur Berechnung der Erdbeschleunigung brauchen wir die Folgenden Größen und ihr
 Für den Fehler auf g erhalten wir mit der Gauß'schen Fehlerfortpflanzung :
 \begin{equation}
 \sigma_g^2 = \left(\frac{8\pi^2}{T^3}l_p\left(1+\frac{r_p^2}{2l_p^2}\right)^2\right)^2 \sigma_T^2 + \left(\frac{4\pi^2}{T^2}\left(1-\frac{r_p^2}{2l_p^2}\right)\right)^2\sigma_l^2 + \left(\frac{4\pi^2}{T^2}\frac{r_p}{l_p}\right)^2\sigma_r^2 
+%TODO muss 1 + r/2l quadiert werden im ersten summanten?
 \end{equation}
 
 Der letzte Beitrag welcher proportional zu $\sigma_r$ ist, kann vernachlässigt werden. 
 der Fehler auf $r_p$ ist im Vergleich zu den anderen Fehlerbeiträgen klein. 
 Außerdem ist in der Fehlerrechnung $\sigma_r^2 \propto \left(\frac{r_p}{l_p}\right)^2$.
 Dieser Quotient ist sehr klein, da $ r_p \ll l_p^2 $. 
+%TODO stimmt die zahl fuer r/l ^2? ich habe da 0.003 raus
 In unserem Fall ist $\left(\frac{r_p}{l_p}\right)^2 \approx 4.5\cdot10^{-3} $
-dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ sehr klein wird in der Fehlerrechnung.
+dies führt dazu, dass der Fehlerbeitrag des absoluten Fehlers von $r_p$ in der Fehlerrechnung gegenüber den anderen Fehlern sehr klein wird.
+Entsprechend haben haben den Summanden für den Fehler von $r_p$ in der Fehlerrechnung auf $g$ vernachlässigt.
+
 
 
 \end{document}

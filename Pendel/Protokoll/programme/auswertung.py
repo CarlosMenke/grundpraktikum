@@ -165,3 +165,9 @@ l = (l1_m + l2_m + l3_m)/100
 
 g = 4 * (np.pi)**2 /(T_gewicht**2) * l * (1 + 1/2 * (d[0]/2/100)**2/(l**2))
 print('g:', g)
+
+d = d[0]/100
+T = T_gewicht
+#TODO check l_sigma
+l_sigma = 0.029
+g_stat = (8*(np.pi)**2/T**3 * l * (1 + 1/2 * d**2/(l**2)))**2 * T_gewicht_stat**2 + ()**2 * l_sigma**2

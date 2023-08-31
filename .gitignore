@@ -5,9 +5,6 @@
 *.log
 *.cls
 *.synctex.gz
-akustik/vorbereitung/Protokoll.pdf
-akustik/Protokoll/Protokoll.pdf
-akustik/Protokoll/434170_428396_1A3_Protokoll.pdf
 akustik/Protokoll/Protokoll.tex.bak
 akustik/Protokoll/plots
 kondensator/Protokoll/plots
@@ -27,7 +24,6 @@ lc-schwingkreis/Protokoll/Programme/__pycache__
 lc-schwingkreis/Protokoll/Protokoll.pdf
 lc-schwingkreis/Protokoll/Protokoll.tex.bak
 lc-schwingkreis/Protokoll/434170_428396_1E3_Protokoll.pdf
-Pendel/Protokoll/Protokoll.pdf
 Pendel/Protokoll/plots/lineare_regression_gewicht_1.pdf
 Pendel/Protokoll/plots/lineare_regression_gewicht_1.pdf
 Pendel/Protokoll/plots/lineare_regression_gewicht_2.pdf
